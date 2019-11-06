@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048DDFE336092F6392613758 /* Pods_LastFmClient_LastFmClientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94703BFECF5492FD1BB29B6 /* Pods_LastFmClient_LastFmClientUITests.framework */; };
+		3D5C2889C931053DD9608F4B /* Pods_LastFmClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B58F173981E82C8CBBEAF /* Pods_LastFmClient.framework */; };
 		9EBBCE542373666500862456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE532373666500862456 /* AppDelegate.swift */; };
 		9EBBCE562373666500862456 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE552373666500862456 /* ViewController.swift */; };
 		9EBBCE592373666500862456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* Main.storyboard */; };
@@ -14,6 +16,7 @@
 		9EBBCE5E2373666600862456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */; };
 		9EBBCE692373666600862456 /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE682373666600862456 /* LastFmClientTests.swift */; };
 		9EBBCE742373666600862456 /* LastFmClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE732373666600862456 /* LastFmClientUITests.swift */; };
+		CBCA809DEDC5BC5942EE27A2 /* Pods_LastFmClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3A1A335361B0BC4A769C9B /* Pods_LastFmClientTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F3A1A335361B0BC4A769C9B /* Pods_LastFmClientTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFmClientTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		336B58F173981E82C8CBBEAF /* Pods_LastFmClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFmClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37157B6C884AEFE394288BB4 /* Pods-LastFmClient-LastFmClientUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient-LastFmClientUITests.debug.xcconfig"; path = "Target Support Files/Pods-LastFmClient-LastFmClientUITests/Pods-LastFmClient-LastFmClientUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5386E873B34A89515F960ED6 /* Pods-LastFmClientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClientTests.release.xcconfig"; path = "Target Support Files/Pods-LastFmClientTests/Pods-LastFmClientTests.release.xcconfig"; sourceTree = "<group>"; };
+		631095619D1612FFE5333156 /* Pods-LastFmClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient.debug.xcconfig"; path = "Target Support Files/Pods-LastFmClient/Pods-LastFmClient.debug.xcconfig"; sourceTree = "<group>"; };
+		664F400C9AF25EB2E691D525 /* Pods-LastFmClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClientTests.debug.xcconfig"; path = "Target Support Files/Pods-LastFmClientTests/Pods-LastFmClientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7CC8BBB1F16DADDD1D9F6C06 /* Pods-LastFmClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient.release.xcconfig"; path = "Target Support Files/Pods-LastFmClient/Pods-LastFmClient.release.xcconfig"; sourceTree = "<group>"; };
 		9EBBCE502373666500862456 /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBBCE532373666500862456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EBBCE552373666500862456 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +57,8 @@
 		9EBBCE6F2373666600862456 /* LastFmClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastFmClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBBCE732373666600862456 /* LastFmClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFmClientUITests.swift; sourceTree = "<group>"; };
 		9EBBCE752373666600862456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3F15A73CD2C43D84091110A /* Pods-LastFmClient-LastFmClientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient-LastFmClientUITests.release.xcconfig"; path = "Target Support Files/Pods-LastFmClient-LastFmClientUITests/Pods-LastFmClient-LastFmClientUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E94703BFECF5492FD1BB29B6 /* Pods_LastFmClient_LastFmClientUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFmClient_LastFmClientUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D5C2889C931053DD9608F4B /* Pods_LastFmClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBCA809DEDC5BC5942EE27A2 /* Pods_LastFmClientTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048DDFE336092F6392613758 /* Pods_LastFmClient_LastFmClientUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A89C175B51EF3DB68476E07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				631095619D1612FFE5333156 /* Pods-LastFmClient.debug.xcconfig */,
+				7CC8BBB1F16DADDD1D9F6C06 /* Pods-LastFmClient.release.xcconfig */,
+				37157B6C884AEFE394288BB4 /* Pods-LastFmClient-LastFmClientUITests.debug.xcconfig */,
+				D3F15A73CD2C43D84091110A /* Pods-LastFmClient-LastFmClientUITests.release.xcconfig */,
+				664F400C9AF25EB2E691D525 /* Pods-LastFmClientTests.debug.xcconfig */,
+				5386E873B34A89515F960ED6 /* Pods-LastFmClientTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		512712FC8574A3A5BF36B93B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				336B58F173981E82C8CBBEAF /* Pods_LastFmClient.framework */,
+				E94703BFECF5492FD1BB29B6 /* Pods_LastFmClient_LastFmClientUITests.framework */,
+				1F3A1A335361B0BC4A769C9B /* Pods_LastFmClientTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9EBBCE472373666500862456 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +119,8 @@
 				9EBBCE672373666600862456 /* LastFmClientTests */,
 				9EBBCE722373666600862456 /* LastFmClientUITests */,
 				9EBBCE512373666500862456 /* Products */,
+				4A89C175B51EF3DB68476E07 /* Pods */,
+				512712FC8574A3A5BF36B93B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EBBCE782373666600862456 /* Build configuration list for PBXNativeTarget "LastFmClient" */;
 			buildPhases = (
+				A90AEE5ECE89073091154538 /* [CP] Check Pods Manifest.lock */,
 				9EBBCE4C2373666500862456 /* Sources */,
+				9E2A6BFA237370370097F997 /* Swift Lint */,
 				9EBBCE4D2373666500862456 /* Frameworks */,
 				9EBBCE4E2373666500862456 /* Resources */,
+				96E988DC19EC921BCAF19ACB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +192,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EBBCE7B2373666600862456 /* Build configuration list for PBXNativeTarget "LastFmClientTests" */;
 			buildPhases = (
+				85D927EC0A5D5E0A0E58BB12 /* [CP] Check Pods Manifest.lock */,
 				9EBBCE602373666600862456 /* Sources */,
 				9EBBCE612373666600862456 /* Frameworks */,
 				9EBBCE622373666600862456 /* Resources */,
@@ -167,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EBBCE7E2373666600862456 /* Build configuration list for PBXNativeTarget "LastFmClientUITests" */;
 			buildPhases = (
+				831D3184BD3D2EA2DB206C27 /* [CP] Check Pods Manifest.lock */,
 				9EBBCE6B2373666600862456 /* Sources */,
 				9EBBCE6C2373666600862456 /* Frameworks */,
 				9EBBCE6D2373666600862456 /* Resources */,
+				D4DE9578ABF5F32D11FD3E28 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,6 +296,127 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		831D3184BD3D2EA2DB206C27 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LastFmClient-LastFmClientUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85D927EC0A5D5E0A0E58BB12 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LastFmClientTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96E988DC19EC921BCAF19ACB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LastFmClient/Pods-LastFmClient-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LastFmClient/Pods-LastFmClient-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LastFmClient/Pods-LastFmClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E2A6BFA237370370097F997 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		A90AEE5ECE89073091154538 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LastFmClient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4DE9578ABF5F32D11FD3E28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LastFmClient-LastFmClientUITests/Pods-LastFmClient-LastFmClientUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LastFmClient-LastFmClientUITests/Pods-LastFmClient-LastFmClientUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LastFmClient-LastFmClientUITests/Pods-LastFmClient-LastFmClientUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9EBBCE4C2373666500862456 /* Sources */ = {
@@ -430,11 +597,14 @@
 		};
 		9EBBCE792373666600862456 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 631095619D1612FFE5333156 /* Pods-LastFmClient.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H488UP8W94;
 				INFOPLIST_FILE = LastFmClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -448,11 +618,14 @@
 		};
 		9EBBCE7A2373666600862456 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CC8BBB1F16DADDD1D9F6C06 /* Pods-LastFmClient.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H488UP8W94;
 				INFOPLIST_FILE = LastFmClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +639,7 @@
 		};
 		9EBBCE7C2373666600862456 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 664F400C9AF25EB2E691D525 /* Pods-LastFmClientTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +661,7 @@
 		};
 		9EBBCE7D2373666600862456 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5386E873B34A89515F960ED6 /* Pods-LastFmClientTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +683,7 @@
 		};
 		9EBBCE7F2373666600862456 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37157B6C884AEFE394288BB4 /* Pods-LastFmClient-LastFmClientUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,6 +704,7 @@
 		};
 		9EBBCE802373666600862456 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3F15A73CD2C43D84091110A /* Pods-LastFmClient-LastFmClientUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
