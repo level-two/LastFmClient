@@ -19,6 +19,8 @@
 		9EF829FA2374A7F9006CCEC2 /* AlbumCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF829F92374A7F9006CCEC2 /* AlbumCardCell.swift */; };
 		9EF829FD2374A86E006CCEC2 /* AlbumCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF829FC2374A86E006CCEC2 /* AlbumCardCell.xib */; };
 		9EF82A002374B3E4006CCEC2 /* UICollectionViewCell+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF829FF2374B3E4006CCEC2 /* UICollectionViewCell+nib.swift */; };
+		9EF82A022374CE1D006CCEC2 /* ArtistSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF82A012374CE1D006CCEC2 /* ArtistSearchViewController.swift */; };
+		9EF82A042374CE2A006CCEC2 /* ArtistSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A032374CE2A006CCEC2 /* ArtistSearch.storyboard */; };
 		CBCA809DEDC5BC5942EE27A2 /* Pods_LastFmClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3A1A335361B0BC4A769C9B /* Pods_LastFmClientTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		9EF829F92374A7F9006CCEC2 /* AlbumCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCardCell.swift; sourceTree = "<group>"; };
 		9EF829FC2374A86E006CCEC2 /* AlbumCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCardCell.xib; sourceTree = "<group>"; };
 		9EF829FF2374B3E4006CCEC2 /* UICollectionViewCell+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+nib.swift"; sourceTree = "<group>"; };
+		9EF82A012374CE1D006CCEC2 /* ArtistSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSearchViewController.swift; sourceTree = "<group>"; };
+		9EF82A032374CE2A006CCEC2 /* ArtistSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistSearch.storyboard; sourceTree = "<group>"; };
 		D3F15A73CD2C43D84091110A /* Pods-LastFmClient-LastFmClientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient-LastFmClientUITests.release.xcconfig"; path = "Target Support Files/Pods-LastFmClient-LastFmClientUITests/Pods-LastFmClient-LastFmClientUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E94703BFECF5492FD1BB29B6 /* Pods_LastFmClient_LastFmClientUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFmClient_LastFmClientUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -201,6 +205,8 @@
 		9EC109F2237390A00012986F /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				9EF82A012374CE1D006CCEC2 /* ArtistSearchViewController.swift */,
+				9EF82A032374CE2A006CCEC2 /* ArtistSearch.storyboard */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -335,6 +341,7 @@
 				9EBBCE5E2373666600862456 /* LaunchScreen.storyboard in Resources */,
 				9EF829FD2374A86E006CCEC2 /* AlbumCardCell.xib in Resources */,
 				9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */,
+				9EF82A042374CE2A006CCEC2 /* ArtistSearch.storyboard in Resources */,
 				9EBBCE592373666500862456 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +492,7 @@
 				9EF82A002374B3E4006CCEC2 /* UICollectionViewCell+nib.swift in Sources */,
 				9EBBCE542373666500862456 /* AppDelegate.swift in Sources */,
 				9EF829FA2374A7F9006CCEC2 /* AlbumCardCell.swift in Sources */,
+				9EF82A022374CE1D006CCEC2 /* ArtistSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

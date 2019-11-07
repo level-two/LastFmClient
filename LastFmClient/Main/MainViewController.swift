@@ -7,6 +7,13 @@ class MainViewController: UICollectionViewController {
         super.viewDidLoad()
 
         collectionView.register(AlbumCardCell.nib, forCellWithReuseIdentifier: reuseIdentifier)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
+                                                            target: self,
+                                                            action: #selector(self.action(sender:)))
+    }
+
+    @objc func action(sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "ArtistSearch", sender: nil)
     }
 }
 

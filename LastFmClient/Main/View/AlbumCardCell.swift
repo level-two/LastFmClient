@@ -16,16 +16,17 @@ class AlbumCardCell: UICollectionViewCell {
     }
 
     override public func awakeFromNib() {
-        commonInit()
+        setupCell()
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        setupCell()
     }
 }
 
 extension AlbumCardCell {
-    func commonInit() {
+    func setupCell() {
         tracksNumber?.text = "1"
     }
 }
