@@ -1,11 +1,3 @@
-//
-//  LastFmClientUITests.swift
-//  LastFmClientUITests
-//
-//  Created by Yauheni Lychkouski on 11/6/19.
-//  Copyright © 2019 Yauheni Lychkouski. All rights reserved.
-//
-
 import XCTest
 
 class LastFmClientUITests: XCTestCase {

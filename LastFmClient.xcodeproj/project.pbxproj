@@ -10,12 +10,15 @@
 		048DDFE336092F6392613758 /* Pods_LastFmClient_LastFmClientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94703BFECF5492FD1BB29B6 /* Pods_LastFmClient_LastFmClientUITests.framework */; };
 		3D5C2889C931053DD9608F4B /* Pods_LastFmClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B58F173981E82C8CBBEAF /* Pods_LastFmClient.framework */; };
 		9EBBCE542373666500862456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE532373666500862456 /* AppDelegate.swift */; };
-		9EBBCE562373666500862456 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE552373666500862456 /* ViewController.swift */; };
+		9EBBCE562373666500862456 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE552373666500862456 /* MainViewController.swift */; };
 		9EBBCE592373666500862456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* Main.storyboard */; };
 		9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5A2373666600862456 /* Assets.xcassets */; };
 		9EBBCE5E2373666600862456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */; };
 		9EBBCE692373666600862456 /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE682373666600862456 /* LastFmClientTests.swift */; };
 		9EBBCE742373666600862456 /* LastFmClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE732373666600862456 /* LastFmClientUITests.swift */; };
+		9EF829FA2374A7F9006CCEC2 /* AlbumCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF829F92374A7F9006CCEC2 /* AlbumCardCell.swift */; };
+		9EF829FD2374A86E006CCEC2 /* AlbumCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF829FC2374A86E006CCEC2 /* AlbumCardCell.xib */; };
+		9EF82A002374B3E4006CCEC2 /* UICollectionViewCell+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF829FF2374B3E4006CCEC2 /* UICollectionViewCell+nib.swift */; };
 		CBCA809DEDC5BC5942EE27A2 /* Pods_LastFmClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3A1A335361B0BC4A769C9B /* Pods_LastFmClientTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +49,7 @@
 		7CC8BBB1F16DADDD1D9F6C06 /* Pods-LastFmClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient.release.xcconfig"; path = "Target Support Files/Pods-LastFmClient/Pods-LastFmClient.release.xcconfig"; sourceTree = "<group>"; };
 		9EBBCE502373666500862456 /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBBCE532373666500862456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9EBBCE552373666500862456 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9EBBCE552373666500862456 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9EBBCE582373666500862456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9EBBCE5A2373666600862456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9EBBCE5D2373666600862456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +60,9 @@
 		9EBBCE6F2373666600862456 /* LastFmClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastFmClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBBCE732373666600862456 /* LastFmClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFmClientUITests.swift; sourceTree = "<group>"; };
 		9EBBCE752373666600862456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EF829F92374A7F9006CCEC2 /* AlbumCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCardCell.swift; sourceTree = "<group>"; };
+		9EF829FC2374A86E006CCEC2 /* AlbumCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCardCell.xib; sourceTree = "<group>"; };
+		9EF829FF2374B3E4006CCEC2 /* UICollectionViewCell+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+nib.swift"; sourceTree = "<group>"; };
 		D3F15A73CD2C43D84091110A /* Pods-LastFmClient-LastFmClientUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient-LastFmClientUITests.release.xcconfig"; path = "Target Support Files/Pods-LastFmClient-LastFmClientUITests/Pods-LastFmClient-LastFmClientUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E94703BFECF5492FD1BB29B6 /* Pods_LastFmClient_LastFmClientUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFmClient_LastFmClientUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,8 +144,11 @@
 			isa = PBXGroup;
 			children = (
 				9EBBCE532373666500862456 /* AppDelegate.swift */,
-				9EBBCE552373666500862456 /* ViewController.swift */,
-				9EBBCE572373666500862456 /* Main.storyboard */,
+				9EC109EF2373904A0012986F /* Main */,
+				9EC109F2237390A00012986F /* Search */,
+				9EC109F02373906A0012986F /* Albums */,
+				9EC109F1237390870012986F /* Details */,
+				9EF829FE2374B3D6006CCEC2 /* Extensions */,
 				9EBBCE5A2373666600862456 /* Assets.xcassets */,
 				9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */,
 				9EBBCE5F2373666600862456 /* Info.plist */,
@@ -163,6 +172,54 @@
 				9EBBCE752373666600862456 /* Info.plist */,
 			);
 			path = LastFmClientUITests;
+			sourceTree = "<group>";
+		};
+		9EC109EF2373904A0012986F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9EBBCE552373666500862456 /* MainViewController.swift */,
+				9EBBCE572373666500862456 /* Main.storyboard */,
+				9EF829FB2374A84C006CCEC2 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		9EC109F02373906A0012986F /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		9EC109F1237390870012986F /* Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		9EC109F2237390A00012986F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		9EF829FB2374A84C006CCEC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9EF829F92374A7F9006CCEC2 /* AlbumCardCell.swift */,
+				9EF829FC2374A86E006CCEC2 /* AlbumCardCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9EF829FE2374B3D6006CCEC2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9EF829FF2374B3E4006CCEC2 /* UICollectionViewCell+nib.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EBBCE5E2373666600862456 /* LaunchScreen.storyboard in Resources */,
+				9EF829FD2374A86E006CCEC2 /* AlbumCardCell.xib in Resources */,
 				9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */,
 				9EBBCE592373666500862456 /* Main.storyboard in Resources */,
 			);
@@ -423,8 +481,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EBBCE562373666500862456 /* ViewController.swift in Sources */,
+				9EBBCE562373666500862456 /* MainViewController.swift in Sources */,
+				9EF82A002374B3E4006CCEC2 /* UICollectionViewCell+nib.swift in Sources */,
 				9EBBCE542373666500862456 /* AppDelegate.swift in Sources */,
+				9EF829FA2374A7F9006CCEC2 /* AlbumCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

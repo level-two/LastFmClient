@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AlbumCardCell" customModule="LastFmClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="388"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXI-0i-gYZ" userLabel="Card container">
+                    <rect key="frame" x="0.0" y="0.0" width="392" height="388"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3b-9g-GCn" userLabel="Cover container">
+                            <rect key="frame" x="0.0" y="0.0" width="392" height="343.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S2W-1T-mba" userLabel="Cover">
+                                    <rect key="frame" x="0.0" y="0.0" width="392" height="343.5"/>
+                                    <color key="backgroundColor" red="0.78623381830000005" green="1" blue="0.95530640739999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HYA-Qo-NXZ" userLabel="Tracks icon">
+                                    <rect key="frame" x="329" y="322.5" width="21" height="21"/>
+                                    <color key="backgroundColor" red="1" green="0.74576418573045777" blue="0.68014749755514281" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="HYA-Qo-NXZ" secondAttribute="height" multiplier="1:1" id="Q8d-QA-iXq"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFV-31-EbE" userLabel="Tracks number">
+                                    <rect key="frame" x="350" y="322.5" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="S2W-1T-mba" firstAttribute="centerY" secondItem="B3b-9g-GCn" secondAttribute="centerY" id="5wr-S2-WmU"/>
+                                <constraint firstAttribute="trailing" secondItem="OFV-31-EbE" secondAttribute="trailing" id="8yu-Fb-kOU"/>
+                                <constraint firstItem="S2W-1T-mba" firstAttribute="centerX" secondItem="B3b-9g-GCn" secondAttribute="centerX" id="HKd-Yo-3vK"/>
+                                <constraint firstItem="OFV-31-EbE" firstAttribute="height" secondItem="HYA-Qo-NXZ" secondAttribute="height" id="Q6A-tL-uex"/>
+                                <constraint firstAttribute="bottom" secondItem="OFV-31-EbE" secondAttribute="bottom" id="Ucx-YY-S3D"/>
+                                <constraint firstItem="OFV-31-EbE" firstAttribute="leading" secondItem="HYA-Qo-NXZ" secondAttribute="trailing" id="YYl-3f-SA7"/>
+                                <constraint firstItem="OFV-31-EbE" firstAttribute="centerY" secondItem="HYA-Qo-NXZ" secondAttribute="centerY" id="fRs-cb-r7o"/>
+                                <constraint firstItem="S2W-1T-mba" firstAttribute="width" secondItem="B3b-9g-GCn" secondAttribute="width" id="g6C-vV-RT1"/>
+                                <constraint firstItem="S2W-1T-mba" firstAttribute="height" secondItem="B3b-9g-GCn" secondAttribute="height" id="sKZ-DV-DrF"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7l1-Y5-qtE">
+                            <rect key="frame" x="0.0" y="343.5" width="82" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8H-XN-uHr">
+                            <rect key="frame" x="0.0" y="367" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="B3b-9g-GCn" secondAttribute="trailing" id="FJT-OT-vqF"/>
+                        <constraint firstItem="V8H-XN-uHr" firstAttribute="leading" secondItem="GXI-0i-gYZ" secondAttribute="leading" id="Udx-ad-qT5"/>
+                        <constraint firstItem="B3b-9g-GCn" firstAttribute="top" secondItem="GXI-0i-gYZ" secondAttribute="top" id="VJu-cB-rod"/>
+                        <constraint firstItem="V8H-XN-uHr" firstAttribute="baseline" secondItem="7l1-Y5-qtE" secondAttribute="firstBaseline" constant="24" symbolType="layoutAnchor" id="XeB-Fm-eE7"/>
+                        <constraint firstItem="B3b-9g-GCn" firstAttribute="leading" secondItem="GXI-0i-gYZ" secondAttribute="leading" id="YQk-Qm-ycH"/>
+                        <constraint firstItem="7l1-Y5-qtE" firstAttribute="leading" secondItem="GXI-0i-gYZ" secondAttribute="leading" id="YX3-SF-uUp"/>
+                        <constraint firstItem="B3b-9g-GCn" firstAttribute="bottom" secondItem="7l1-Y5-qtE" secondAttribute="top" id="afh-Dd-BPt"/>
+                        <constraint firstAttribute="bottom" secondItem="V8H-XN-uHr" secondAttribute="bottom" id="iBK-Ko-79A"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="GXI-0i-gYZ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="A0k-87-v5D"/>
+                <constraint firstItem="GXI-0i-gYZ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="ACl-pz-hf4"/>
+                <constraint firstItem="GXI-0i-gYZ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="B2f-Z4-U5c"/>
+                <constraint firstItem="GXI-0i-gYZ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="qj2-XT-Nv1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="albumTitle" destination="7l1-Y5-qtE" id="CUO-o8-zF9"/>
+                <outlet property="artistName" destination="V8H-XN-uHr" id="2GY-IU-J29"/>
+                <outlet property="coverImage" destination="S2W-1T-mba" id="clR-gT-3bS"/>
+                <outlet property="tracksIcon" destination="HYA-Qo-NXZ" id="BH9-7h-cVG"/>
+                <outlet property="tracksNumber" destination="OFV-31-EbE" id="PxG-El-7XS"/>
+            </connections>
+            <point key="canvasLocation" x="67.200000000000003" y="-77.361319340329842"/>
+        </view>
+    </objects>
+</document>
