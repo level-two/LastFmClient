@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
-	<string>ArtistDetails</string>
+	<string>Main</string>
 	<key>UIMainStoryboardFile</key>
-	<string>ArtistDetails</string>
+	<string>AlbumDetails</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

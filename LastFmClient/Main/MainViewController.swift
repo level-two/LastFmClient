@@ -1,12 +1,10 @@
 import UIKit
 
 class MainViewController: UICollectionViewController {
-    fileprivate let reuseIdentifier = "AlbumCardCell"
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.register(AlbumCardCell.nib, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.registerReusableCell(AlbumCardCell.self)
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
                                                             target: self,
                                                             action: #selector(self.action(sender:)))
@@ -20,18 +18,12 @@ class MainViewController: UICollectionViewController {
 extension MainViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-
         return 10
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier,
-                                                            for: indexPath) as? AlbumCardCell else {
-            return UICollectionViewCell()
-        }
-
+        let cell = collectionView.dequeueReusableCell(AlbumCardCell.self, for: indexPath)
         return cell
     }
 }

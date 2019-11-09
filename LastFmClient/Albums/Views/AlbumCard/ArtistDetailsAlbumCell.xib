@@ -12,28 +12,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="wGi-hE-SB3" customClass="ArtistDetailsAlbumCard" customModule="LastFmClient" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="wGi-hE-SB3" customClass="ArtistDetailsAlbumCell" customModule="LastFmClient" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="392" height="388"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3f-sQ-cnJ" userLabel="Card container">
                     <rect key="frame" x="0.0" y="0.0" width="392" height="388"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3sV-Q3-HDq" userLabel="Cover container">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sV-Q3-HDq" userLabel="Cover container">
                             <rect key="frame" x="0.0" y="0.0" width="392" height="367"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="LaunchImage-320x480" translatesAutoresizingMaskIntoConstraints="NO" id="tbh-Vu-sqt" userLabel="Cover">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage-320x480" translatesAutoresizingMaskIntoConstraints="NO" id="tbh-Vu-sqt" userLabel="Cover">
                                     <rect key="frame" x="0.0" y="0.0" width="392" height="367"/>
                                     <color key="backgroundColor" red="0.78623381830000005" green="1" blue="0.95530640739999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RNZ-jB-Icj" userLabel="Tracks icon">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RNZ-jB-Icj" userLabel="Tracks icon">
                                     <rect key="frame" x="329" y="346" width="21" height="21"/>
                                     <color key="backgroundColor" red="1" green="0.74576418570000003" blue="0.68014749760000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="RNZ-jB-Icj" secondAttribute="height" multiplier="1:1" id="JYa-5H-8In"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBK-cJ-9Hb" userLabel="Tracks number">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBK-cJ-9Hb" userLabel="Tracks number">
                                     <rect key="frame" x="350" y="346" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,7 +59,7 @@
                                 <constraint firstAttribute="trailing" secondItem="bBK-cJ-9Hb" secondAttribute="trailing" id="qe6-Nw-MKr"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Album title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAU-Ob-FDF">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Album title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAU-Ob-FDF">
                             <rect key="frame" x="0.0" y="367" width="82" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -1,6 +1,6 @@
 import UIKit
 
-class ArtistInformationCell: UICollectionViewCell {
+class ArtistInformationCell: UICollectionViewCell, NibLoadable {
     @IBOutlet weak var artistInformation: UILabel?
     @IBOutlet weak var readMoreButton: UIButton?
 

@@ -1,6 +1,6 @@
 import UIKit
 
-class AlbumCardCell: UICollectionViewCell {
+class AlbumCardCell: UICollectionViewCell, NibLoadable {
     @IBOutlet weak var coverImage: UIImageView?
     @IBOutlet weak var tracksNumber: UILabel?
     @IBOutlet weak var tracksIcon: UIImageView?

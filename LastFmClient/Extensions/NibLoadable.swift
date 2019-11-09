@@ -1,6 +1,10 @@
 import UIKit
 
-extension UICollectionViewCell {
+protocol NibLoadable where Self: UIView {
+    static var nib: UINib { get }
+}
+
+extension NibLoadable {
     static var nib: UINib {
         let bundle = Bundle(for: self)
         let nibName = String(describing: self)

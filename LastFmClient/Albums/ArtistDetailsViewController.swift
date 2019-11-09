@@ -14,11 +14,8 @@ class ArtistDetailsViewController: UIViewController {
         let screenBounds = UIScreen.main.bounds
         cellsPerRow = min(screenBounds.width, screenBounds.height) > 1000 ? 2 : 1
 
-        // FIXME: make generic methods for cell registration and instantiation
-        collectionView?.register(ArtistInformationCell.nib,
-                                 forCellWithReuseIdentifier: String(describing: ArtistInformationCell.self))
-        collectionView?.register(ArtistDetailsAlbumCard.nib,
-                                 forCellWithReuseIdentifier: String(describing: ArtistDetailsAlbumCard.self))
+        collectionView?.registerReusableCell(ArtistInformationCell.self)
+        collectionView?.registerReusableCell(ArtistDetailsAlbumCell.self)
     }
 }
 
@@ -35,14 +32,10 @@ extension ArtistDetailsViewController: UICollectionViewDelegate, UICollectionVie
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ArtistInformationCell.self),
-                                                                for: indexPath) as? ArtistInformationCell
-                else { return UICollectionViewCell() }
+            let cell = collectionView.dequeueReusableCell(ArtistInformationCell.self, for: indexPath)
             return cell
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ArtistDetailsAlbumCard.self),
-                                                                for: indexPath) as? ArtistDetailsAlbumCard
-                else { return UICollectionViewCell() }
+            let cell = collectionView.dequeueReusableCell(ArtistDetailsAlbumCell.self, for: indexPath)
             return cell
         default:
             return UICollectionViewCell()
@@ -68,7 +61,8 @@ extension ArtistDetailsViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width, height: 150)
         case 1:
             let itemSpacing = flowLayout.minimumInteritemSpacing
-            let cellSize = (collectionView.bounds.width - insetsSpace - itemSpacing * CGFloat(cellsPerRow - 1))/CGFloat(cellsPerRow)
+            let cellsNum = CGFloat(cellsPerRow)
+            let cellSize = (collectionView.bounds.width - insetsSpace - itemSpacing * (cellsNum - 1)) / cellsNum
             return CGSize(width: cellSize, height: cellSize)
         default:
             return .zero

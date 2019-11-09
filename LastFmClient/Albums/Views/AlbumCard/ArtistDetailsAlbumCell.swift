@@ -1,6 +1,6 @@
 import UIKit
 
-class ArtistDetailsAlbumCard: UICollectionViewCell {
+class ArtistDetailsAlbumCell: UICollectionViewCell, NibLoadable {
     @IBOutlet weak var coverImage: UIImageView?
     @IBOutlet weak var tracksNumber: UILabel?
     @IBOutlet weak var tracksIcon: UIImageView?
@@ -25,13 +25,13 @@ class ArtistDetailsAlbumCard: UICollectionViewCell {
     }
 }
 
-extension ArtistDetailsAlbumCard {
+extension ArtistDetailsAlbumCell {
     func setupCell() {
         tracksNumber?.text = "1"
     }
 }
 
-extension ArtistDetailsAlbumCard {
+extension ArtistDetailsAlbumCell {
     @IBAction func onAlbumStore(_ sender: UISwitch) {
     }
 }
