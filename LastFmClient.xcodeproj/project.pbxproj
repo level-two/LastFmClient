@@ -9,9 +9,14 @@
 /* Begin PBXBuildFile section */
 		048DDFE336092F6392613758 /* Pods_LastFmClient_LastFmClientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94703BFECF5492FD1BB29B6 /* Pods_LastFmClient_LastFmClientUITests.framework */; };
 		3D5C2889C931053DD9608F4B /* Pods_LastFmClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B58F173981E82C8CBBEAF /* Pods_LastFmClient.framework */; };
-		9EBBCE542373666500862456 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE532373666500862456 /* AppDelegate.swift */; };
-		9EBBCE562373666500862456 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE552373666500862456 /* MainViewController.swift */; };
-		9EBBCE592373666500862456 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* Main.storyboard */; };
+		9E01FDF6237775D000D2CF84 /* SceneNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDF5237775D000D2CF84 /* SceneNavigator.swift */; };
+		9E01FDF82377765F00D2CF84 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDF72377765F00D2CF84 /* DependencyContainer.swift */; };
+		9E01FDFA2377767700D2CF84 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDF92377767700D2CF84 /* ViewControllerFactory.swift */; };
+		9E01FDFC237776C500D2CF84 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDFB237776C500D2CF84 /* Navigator.swift */; };
+		9E01FE022377811000D2CF84 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */; };
+		9EBBCE542373666500862456 /* ApplicationMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE532373666500862456 /* ApplicationMain.swift */; };
+		9EBBCE562373666500862456 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE552373666500862456 /* HomeScreenViewController.swift */; };
+		9EBBCE592373666500862456 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* HomeScreen.storyboard */; };
 		9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5A2373666600862456 /* Assets.xcassets */; };
 		9EBBCE5E2373666600862456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */; };
 		9EBBCE692373666600862456 /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE682373666600862456 /* LastFmClientTests.swift */; };
@@ -63,10 +68,15 @@
 		631095619D1612FFE5333156 /* Pods-LastFmClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient.debug.xcconfig"; path = "Target Support Files/Pods-LastFmClient/Pods-LastFmClient.debug.xcconfig"; sourceTree = "<group>"; };
 		664F400C9AF25EB2E691D525 /* Pods-LastFmClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClientTests.debug.xcconfig"; path = "Target Support Files/Pods-LastFmClientTests/Pods-LastFmClientTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CC8BBB1F16DADDD1D9F6C06 /* Pods-LastFmClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient.release.xcconfig"; path = "Target Support Files/Pods-LastFmClient/Pods-LastFmClient.release.xcconfig"; sourceTree = "<group>"; };
+		9E01FDF5237775D000D2CF84 /* SceneNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneNavigator.swift; sourceTree = "<group>"; };
+		9E01FDF72377765F00D2CF84 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		9E01FDF92377767700D2CF84 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		9E01FDFB237776C500D2CF84 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
 		9EBBCE502373666500862456 /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9EBBCE532373666500862456 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9EBBCE552373666500862456 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9EBBCE582373666500862456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9EBBCE532373666500862456 /* ApplicationMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMain.swift; sourceTree = "<group>"; };
+		9EBBCE552373666500862456 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		9EBBCE582373666500862456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeScreen.storyboard; sourceTree = "<group>"; };
 		9EBBCE5A2373666600862456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9EBBCE5D2373666600862456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9EBBCE5F2373666600862456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,6 +160,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9E01FDF4237775BE00D2CF84 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				9E01FDFB237776C500D2CF84 /* Navigator.swift */,
+				9E01FDF5237775D000D2CF84 /* SceneNavigator.swift */,
+				9E01FDF92377767700D2CF84 /* ViewControllerFactory.swift */,
+				9E01FDF72377765F00D2CF84 /* DependencyContainer.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		9EBBCE472373666500862456 = {
 			isa = PBXGroup;
 			children = (
@@ -175,11 +196,12 @@
 		9EBBCE522373666500862456 /* LastFmClient */ = {
 			isa = PBXGroup;
 			children = (
-				9EBBCE532373666500862456 /* AppDelegate.swift */,
-				9EC109EF2373904A0012986F /* Main */,
-				9EC109F2237390A00012986F /* Search */,
-				9EC109F02373906A0012986F /* Albums */,
-				9EC109F1237390870012986F /* Details */,
+				9EBBCE532373666500862456 /* ApplicationMain.swift */,
+				9E01FDF4237775BE00D2CF84 /* Router */,
+				9EC109EF2373904A0012986F /* HomeScreen */,
+				9EC109F2237390A00012986F /* ArtistSearch */,
+				9EC109F02373906A0012986F /* ArtistDetails */,
+				9EC109F1237390870012986F /* AlbumDetails */,
 				9EF829FE2374B3D6006CCEC2 /* Extensions */,
 				9EBBCE5A2373666600862456 /* Assets.xcassets */,
 				9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */,
@@ -206,43 +228,43 @@
 			path = LastFmClientUITests;
 			sourceTree = "<group>";
 		};
-		9EC109EF2373904A0012986F /* Main */ = {
+		9EC109EF2373904A0012986F /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				9EBBCE552373666500862456 /* MainViewController.swift */,
-				9EBBCE572373666500862456 /* Main.storyboard */,
+				9EBBCE552373666500862456 /* HomeScreenViewController.swift */,
+				9EBBCE572373666500862456 /* HomeScreen.storyboard */,
 				9EF829FB2374A84C006CCEC2 /* View */,
 			);
-			path = Main;
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
-		9EC109F02373906A0012986F /* Albums */ = {
+		9EC109F02373906A0012986F /* ArtistDetails */ = {
 			isa = PBXGroup;
 			children = (
 				9EF82A162374F1A8006CCEC2 /* ArtistDetailsViewController.swift */,
 				9EF82A092374DF4B006CCEC2 /* ArtistDetails.storyboard */,
 				9EF82A152374E35B006CCEC2 /* Views */,
 			);
-			path = Albums;
+			path = ArtistDetails;
 			sourceTree = "<group>";
 		};
-		9EC109F1237390870012986F /* Details */ = {
+		9EC109F1237390870012986F /* AlbumDetails */ = {
 			isa = PBXGroup;
 			children = (
 				9EF82A052374DE01006CCEC2 /* AlbumDetailsViewController.swift */,
 				9EF82A072374DE1F006CCEC2 /* AlbumDetails.storyboard */,
 				9EC71E782376C376002FED82 /* Views */,
 			);
-			path = Details;
+			path = AlbumDetails;
 			sourceTree = "<group>";
 		};
-		9EC109F2237390A00012986F /* Search */ = {
+		9EC109F2237390A00012986F /* ArtistSearch */ = {
 			isa = PBXGroup;
 			children = (
 				9EF82A012374CE1D006CCEC2 /* ArtistSearchViewController.swift */,
 				9EF82A032374CE2A006CCEC2 /* ArtistSearch.storyboard */,
 			);
-			path = Search;
+			path = ArtistSearch;
 			sourceTree = "<group>";
 		};
 		9EC71E782376C376002FED82 /* Views */ = {
@@ -269,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				9EF829FF2374B3E4006CCEC2 /* NibLoadable.swift */,
+				9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */,
 				9EC71E832376F33B002FED82 /* UITableView+registerReusable.swift */,
 				9EC71E852376F9E4002FED82 /* UICollectionView+registerReusable.swift */,
 			);
@@ -419,7 +442,7 @@
 				9EF82A0C2374DFFF006CCEC2 /* ArtistDetailsAlbumCell.xib in Resources */,
 				9EF82A132374E312006CCEC2 /* ArtistInformationCell.xib in Resources */,
 				9EF82A042374CE2A006CCEC2 /* ArtistSearch.storyboard in Resources */,
-				9EBBCE592373666500862456 /* Main.storyboard in Resources */,
+				9EBBCE592373666500862456 /* HomeScreen.storyboard in Resources */,
 				9EF82A0A2374DF4B006CCEC2 /* ArtistDetails.storyboard in Resources */,
 				9EF82A082374DE1F006CCEC2 /* AlbumDetails.storyboard in Resources */,
 				9EC71E7E2376CFA7002FED82 /* AlbumDetailsTrackCell.xib in Resources */,
@@ -568,17 +591,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E01FDF6237775D000D2CF84 /* SceneNavigator.swift in Sources */,
+				9E01FDFC237776C500D2CF84 /* Navigator.swift in Sources */,
+				9E01FDF82377765F00D2CF84 /* DependencyContainer.swift in Sources */,
 				9EC71E822376F075002FED82 /* ArtistDetailsAlbumCell.swift in Sources */,
-				9EBBCE562373666500862456 /* MainViewController.swift in Sources */,
+				9EBBCE562373666500862456 /* HomeScreenViewController.swift in Sources */,
 				9EC71E842376F33B002FED82 /* UITableView+registerReusable.swift in Sources */,
 				9EF82A002374B3E4006CCEC2 /* NibLoadable.swift in Sources */,
+				9E01FE022377811000D2CF84 /* StoryboardLoadable.swift in Sources */,
 				9EC71E7C2376C6B9002FED82 /* AlbumDetailsHeaderView.swift in Sources */,
-				9EBBCE542373666500862456 /* AppDelegate.swift in Sources */,
+				9EBBCE542373666500862456 /* ApplicationMain.swift in Sources */,
 				9EF82A112374E300006CCEC2 /* ArtistInformationCell.swift in Sources */,
 				9EF829FA2374A7F9006CCEC2 /* AlbumCardCell.swift in Sources */,
 				9EF82A062374DE01006CCEC2 /* AlbumDetailsViewController.swift in Sources */,
 				9EC71E862376F9E4002FED82 /* UICollectionView+registerReusable.swift in Sources */,
 				9EC71E802376F026002FED82 /* AlbumDetailsTrackCell.swift in Sources */,
+				9E01FDFA2377767700D2CF84 /* ViewControllerFactory.swift in Sources */,
 				9EF82A022374CE1D006CCEC2 /* ArtistSearchViewController.swift in Sources */,
 				9EF82A172374F1A8006CCEC2 /* ArtistDetailsViewController.swift in Sources */,
 			);
@@ -616,12 +644,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9EBBCE572373666500862456 /* Main.storyboard */ = {
+		9EBBCE572373666500862456 /* HomeScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9EBBCE582373666500862456 /* Base */,
 			);
-			name = Main.storyboard;
+			name = HomeScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */ = {

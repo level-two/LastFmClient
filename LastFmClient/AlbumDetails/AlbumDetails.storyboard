@@ -12,7 +12,7 @@
         <!--Album Details View Controller-->
         <scene sceneID="IzX-19-Tok">
             <objects>
-                <tableViewController id="u7m-5J-Ffq" customClass="AlbumDetailsViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AlbumDetailsViewController" id="u7m-5J-Ffq" customClass="AlbumDetailsViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" id="7QS-DW-vtk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

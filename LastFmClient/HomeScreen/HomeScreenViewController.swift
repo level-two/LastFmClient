@@ -1,21 +1,25 @@
 import UIKit
 
-class MainViewController: UICollectionViewController {
+class HomeScreenViewController: UICollectionViewController, StoryboardLoadable {
+    fileprivate weak var navigator: SceneNavigator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         collectionView.registerReusableCell(AlbumCardCell.self)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search,
-                                                            target: self,
-                                                            action: #selector(self.action(sender:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self,
+                                                            action: #selector(self.onSearchButton(sender:)))
     }
 
-    @objc func action(sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "ArtistSearch", sender: nil)
+    func setupDependencies(navigator: SceneNavigator) {
+        self.navigator = navigator
+    }
+
+    @objc func onSearchButton(sender: UIBarButtonItem) {
+        navigator?.navigate(to: .artistSearch)
     }
 }
 
-extension MainViewController {
+extension HomeScreenViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         return 10

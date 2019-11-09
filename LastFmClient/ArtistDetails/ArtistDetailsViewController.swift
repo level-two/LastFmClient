@@ -1,12 +1,13 @@
 import UIKit
 
-class ArtistDetailsViewController: UIViewController {
+class ArtistDetailsViewController: UIViewController, StoryboardLoadable {
     @IBOutlet weak var collectionView: UICollectionView?
     @IBOutlet weak var collectionViewTopOffsetConstraint: NSLayoutConstraint?
     @IBOutlet weak var artistPhoto: UIImageView?
     @IBOutlet weak var artistPhotoTopOffsetConstraint: NSLayoutConstraint?
 
-    var cellsPerRow = 1
+    fileprivate var cellsPerRow = 1
+    fileprivate weak var navigator: SceneNavigator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +17,10 @@ class ArtistDetailsViewController: UIViewController {
 
         collectionView?.registerReusableCell(ArtistInformationCell.self)
         collectionView?.registerReusableCell(ArtistDetailsAlbumCell.self)
+    }
+
+    func setupDependencies(navigator: SceneNavigator) {
+        self.navigator = navigator
     }
 }
 

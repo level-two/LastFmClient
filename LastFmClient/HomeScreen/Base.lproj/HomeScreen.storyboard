@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fhd-vg-F73">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jG0-s2-uNC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,26 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="U8j-3a-pzV">
-            <objects>
-                <navigationController id="fhd-vg-F73" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1ZH-nl-PkC">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="jG0-s2-uNC" kind="relationship" relationship="rootViewController" id="W7m-Tj-aHA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hAs-NQ-nAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="104" y="-688"/>
-        </scene>
-        <!--Main View Controller-->
+        <!--Home Screen View Controller-->
         <scene sceneID="vCR-h9-ABA">
             <objects>
-                <collectionViewController id="jG0-s2-uNC" customClass="MainViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="jG0-s2-uNC" customClass="HomeScreenViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="PoT-bC-8q6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,21 +30,10 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="MNm-nL-ohd"/>
-                    <connections>
-                        <segue destination="ya0-aI-d4h" kind="show" identifier="ArtistSearch" id="uIe-zO-Epf"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAg-7d-Lmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="850" y="-689"/>
-        </scene>
-        <!--ArtistSearch-->
-        <scene sceneID="xeB-re-Guh">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2i9-NL-nGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewControllerPlaceholder storyboardName="ArtistSearch" bundleIdentifier="com.ylychkouski.lastfmclient.LastFmClient" referencedIdentifier="ArtistSearch" id="ya0-aI-d4h" sceneMemberID="viewController"/>
-            </objects>
-            <point key="canvasLocation" x="1473" y="-812"/>
         </scene>
     </scenes>
 </document>

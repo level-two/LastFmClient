@@ -13,7 +13,7 @@
         <!--Artist Details View Controller-->
         <scene sceneID="aFA-13-t8V">
             <objects>
-                <viewController id="54j-LL-oPn" customClass="ArtistDetailsViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArtistDetailsViewController" id="54j-LL-oPn" customClass="ArtistDetailsViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rMf-qh-Hpw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

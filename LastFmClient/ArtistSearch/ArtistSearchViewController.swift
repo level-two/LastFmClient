@@ -1,9 +1,8 @@
 import UIKit
 
-class ArtistSearchViewController: UITableViewController {
-//    fileprivate let reuseIdentifier = "AlbumCardCell"
-
-    let searchController = UISearchController(searchResultsController: nil)
+class ArtistSearchViewController: UITableViewController, StoryboardLoadable {
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
+    fileprivate weak var navigator: SceneNavigator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,6 +11,10 @@ class ArtistSearchViewController: UITableViewController {
 //                                forCellWithReuseIdentifier: String(describing: AlbumCardCell.self))
 
         setupView()
+    }
+
+    func setupDependencies(navigator: SceneNavigator) {
+        self.navigator = navigator
     }
 }
 

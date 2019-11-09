@@ -1,11 +1,17 @@
 import UIKit
 
-class AlbumDetailsViewController: UITableViewController {
+class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
+    fileprivate weak var navigator: SceneNavigator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.registerReusableHeaderFooter(AlbumDetailsHeaderView.self)
         tableView.registerReusableCell(AlbumDetailsTrackCell.self)
+    }
+
+    func setupDependencies(navigator: SceneNavigator) {
+        self.navigator = navigator
     }
 }
 
