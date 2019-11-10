@@ -160,7 +160,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9E01FDF4237775BE00D2CF84 /* Router */ = {
+		9E01FDF4237775BE00D2CF84 /* Navigator */ = {
 			isa = PBXGroup;
 			children = (
 				9E01FDFB237776C500D2CF84 /* Navigator.swift */,
@@ -168,7 +168,47 @@
 				9E01FDF92377767700D2CF84 /* ViewControllerFactory.swift */,
 				9E01FDF72377765F00D2CF84 /* DependencyContainer.swift */,
 			);
-			path = Router;
+			path = Navigator;
+			sourceTree = "<group>";
+		};
+		9E01FE032377939A00D2CF84 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9E01FDF4237775BE00D2CF84 /* Navigator */,
+				9EC109EF2373904A0012986F /* HomeScreen */,
+				9EC109F2237390A00012986F /* ArtistSearch */,
+				9EC109F02373906A0012986F /* ArtistDetails */,
+				9EC109F1237390870012986F /* AlbumDetails */,
+				9EF829FE2374B3D6006CCEC2 /* Extensions */,
+				9E01FE06237793EC00D2CF84 /* Resources */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9E01FE04237793AC00D2CF84 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9E01FE05237793CA00D2CF84 /* Application */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		9E01FE05237793CA00D2CF84 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9EBBCE532373666500862456 /* ApplicationMain.swift */,
+				9EBBCE5F2373666600862456 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		9E01FE06237793EC00D2CF84 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */,
+				9EBBCE5A2373666600862456 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		9EBBCE472373666500862456 = {
@@ -196,16 +236,8 @@
 		9EBBCE522373666500862456 /* LastFmClient */ = {
 			isa = PBXGroup;
 			children = (
-				9EBBCE532373666500862456 /* ApplicationMain.swift */,
-				9E01FDF4237775BE00D2CF84 /* Router */,
-				9EC109EF2373904A0012986F /* HomeScreen */,
-				9EC109F2237390A00012986F /* ArtistSearch */,
-				9EC109F02373906A0012986F /* ArtistDetails */,
-				9EC109F1237390870012986F /* AlbumDetails */,
-				9EF829FE2374B3D6006CCEC2 /* Extensions */,
-				9EBBCE5A2373666600862456 /* Assets.xcassets */,
-				9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */,
-				9EBBCE5F2373666600862456 /* Info.plist */,
+				9E01FE04237793AC00D2CF84 /* Core */,
+				9E01FE032377939A00D2CF84 /* UI */,
 			);
 			path = LastFmClient;
 			sourceTree = "<group>";
@@ -787,7 +819,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H488UP8W94;
-				INFOPLIST_FILE = LastFmClient/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LastFmClient/Core/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -808,7 +840,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H488UP8W94;
-				INFOPLIST_FILE = LastFmClient/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LastFmClient/Core/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
