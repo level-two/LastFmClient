@@ -9,7 +9,10 @@ class ApplicationMain: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let navigationController = UINavigationController()
+
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
 
         let sceneNavigator = SceneNavigator(navigationController: navigationController)
         sceneNavigator.navigate(to: .homeScreen)

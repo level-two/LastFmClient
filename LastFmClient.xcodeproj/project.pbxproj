@@ -14,11 +14,21 @@
 		9E01FDFA2377767700D2CF84 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDF92377767700D2CF84 /* ViewControllerFactory.swift */; };
 		9E01FDFC237776C500D2CF84 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDFB237776C500D2CF84 /* Navigator.swift */; };
 		9E01FE022377811000D2CF84 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */; };
+		9EAB9EDE23781DAE002F9AD6 /* AlbumDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EDD23781DAE002F9AD6 /* AlbumDetailsViewModel.swift */; };
+		9EAB9EE12378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE02378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift */; };
+		9EAB9EE323783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE223783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift */; };
+		9EAB9EE623783929002F9AD6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE523783929002F9AD6 /* Theme.swift */; };
+		9EAB9EE82378394A002F9AD6 /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE72378394A002F9AD6 /* DefaultTheme.swift */; };
+		9EAB9EEA23787377002F9AD6 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE923787377002F9AD6 /* ColorPalette.swift */; };
+		9EAB9EEC23787394002F9AD6 /* FontSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EEB23787394002F9AD6 /* FontSet.swift */; };
+		9EAB9EEE237873B5002F9AD6 /* DefaultColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EED237873B5002F9AD6 /* DefaultColorPalette.swift */; };
+		9EAB9EF0237873CA002F9AD6 /* DefaultFontSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EEF237873CA002F9AD6 /* DefaultFontSet.swift */; };
+		9EAB9EF22378744C002F9AD6 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EF12378744C002F9AD6 /* UIColor+hex.swift */; };
+		9EAB9EF42378A650002F9AD6 /* HomeScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* HomeScreenViewController.storyboard */; };
+		9EAB9EF52378A658002F9AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */; };
 		9EBBCE542373666500862456 /* ApplicationMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE532373666500862456 /* ApplicationMain.swift */; };
 		9EBBCE562373666500862456 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE552373666500862456 /* HomeScreenViewController.swift */; };
-		9EBBCE592373666500862456 /* HomeScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* HomeScreenViewController.storyboard */; };
 		9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5A2373666600862456 /* Assets.xcassets */; };
-		9EBBCE5E2373666600862456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */; };
 		9EBBCE692373666600862456 /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE682373666600862456 /* LastFmClientTests.swift */; };
 		9EBBCE742373666600862456 /* LastFmClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE732373666600862456 /* LastFmClientUITests.swift */; };
 		9EC71E7A2376C396002FED82 /* AlbumDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC71E792376C396002FED82 /* AlbumDetailsHeaderView.xib */; };
@@ -73,6 +83,16 @@
 		9E01FDF92377767700D2CF84 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		9E01FDFB237776C500D2CF84 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
+		9EAB9EDD23781DAE002F9AD6 /* AlbumDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewModel.swift; sourceTree = "<group>"; };
+		9EAB9EE02378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsHeaderViewModel.swift; sourceTree = "<group>"; };
+		9EAB9EE223783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsTrackCellViewModel.swift; sourceTree = "<group>"; };
+		9EAB9EE523783929002F9AD6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		9EAB9EE72378394A002F9AD6 /* DefaultTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTheme.swift; sourceTree = "<group>"; };
+		9EAB9EE923787377002F9AD6 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		9EAB9EEB23787394002F9AD6 /* FontSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSet.swift; sourceTree = "<group>"; };
+		9EAB9EED237873B5002F9AD6 /* DefaultColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultColorPalette.swift; sourceTree = "<group>"; };
+		9EAB9EEF237873CA002F9AD6 /* DefaultFontSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFontSet.swift; sourceTree = "<group>"; };
+		9EAB9EF12378744C002F9AD6 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		9EBBCE502373666500862456 /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBBCE532373666500862456 /* ApplicationMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMain.swift; sourceTree = "<group>"; };
 		9EBBCE552373666500862456 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +194,7 @@
 		9E01FE032377939A00D2CF84 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9EAB9EE423783917002F9AD6 /* Theme */,
 				9E01FDF4237775BE00D2CF84 /* Navigator */,
 				9EC109EF2373904A0012986F /* HomeScreen */,
 				9EC109F2237390A00012986F /* ArtistSearch */,
@@ -209,6 +230,36 @@
 				9EBBCE5A2373666600862456 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9EAB9EDC23781D85002F9AD6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9EAB9EDD23781DAE002F9AD6 /* AlbumDetailsViewModel.swift */,
+				9EAB9EE02378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift */,
+				9EAB9EE223783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9EAB9EDF237835D0002F9AD6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9EAB9EE423783917002F9AD6 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				9EAB9EE523783929002F9AD6 /* Theme.swift */,
+				9EAB9EEB23787394002F9AD6 /* FontSet.swift */,
+				9EAB9EE923787377002F9AD6 /* ColorPalette.swift */,
+				9EAB9EE72378394A002F9AD6 /* DefaultTheme.swift */,
+				9EAB9EEF237873CA002F9AD6 /* DefaultFontSet.swift */,
+				9EAB9EED237873B5002F9AD6 /* DefaultColorPalette.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		9EBBCE472373666500862456 = {
@@ -283,9 +334,9 @@
 		9EC109F1237390870012986F /* AlbumDetails */ = {
 			isa = PBXGroup;
 			children = (
-				9EF82A052374DE01006CCEC2 /* AlbumDetailsViewController.swift */,
-				9EF82A072374DE1F006CCEC2 /* AlbumDetailsViewController.storyboard */,
-				9EC71E782376C376002FED82 /* Views */,
+				9EAB9EDF237835D0002F9AD6 /* Model */,
+				9EC71E782376C376002FED82 /* View */,
+				9EAB9EDC23781D85002F9AD6 /* ViewModel */,
 			);
 			path = AlbumDetails;
 			sourceTree = "<group>";
@@ -299,15 +350,17 @@
 			path = ArtistSearch;
 			sourceTree = "<group>";
 		};
-		9EC71E782376C376002FED82 /* Views */ = {
+		9EC71E782376C376002FED82 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9EF82A052374DE01006CCEC2 /* AlbumDetailsViewController.swift */,
+				9EF82A072374DE1F006CCEC2 /* AlbumDetailsViewController.storyboard */,
 				9EC71E7B2376C6B9002FED82 /* AlbumDetailsHeaderView.swift */,
 				9EC71E792376C396002FED82 /* AlbumDetailsHeaderView.xib */,
 				9EC71E7F2376F026002FED82 /* AlbumDetailsTrackCell.swift */,
 				9EC71E7D2376CFA7002FED82 /* AlbumDetailsTrackCell.xib */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		9EF829FB2374A84C006CCEC2 /* View */ = {
@@ -326,6 +379,7 @@
 				9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */,
 				9EC71E832376F33B002FED82 /* UITableView+registerReusable.swift */,
 				9EC71E852376F9E4002FED82 /* UICollectionView+registerReusable.swift */,
+				9EAB9EF12378744C002F9AD6 /* UIColor+hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -467,14 +521,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EBBCE5E2373666600862456 /* LaunchScreen.storyboard in Resources */,
+				9EAB9EF52378A658002F9AD6 /* LaunchScreen.storyboard in Resources */,
+				9EAB9EF42378A650002F9AD6 /* HomeScreenViewController.storyboard in Resources */,
 				9EF829FD2374A86E006CCEC2 /* AlbumCardCell.xib in Resources */,
 				9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */,
 				9EC71E7A2376C396002FED82 /* AlbumDetailsHeaderView.xib in Resources */,
 				9EF82A0C2374DFFF006CCEC2 /* ArtistDetailsAlbumCell.xib in Resources */,
 				9EF82A132374E312006CCEC2 /* ArtistInformationCell.xib in Resources */,
 				9EF82A042374CE2A006CCEC2 /* ArtistSearchViewController.storyboard in Resources */,
-				9EBBCE592373666500862456 /* HomeScreenViewController.storyboard in Resources */,
 				9EF82A0A2374DF4B006CCEC2 /* ArtistDetailsViewController.storyboard in Resources */,
 				9EF82A082374DE1F006CCEC2 /* AlbumDetailsViewController.storyboard in Resources */,
 				9EC71E7E2376CFA7002FED82 /* AlbumDetailsTrackCell.xib in Resources */,
@@ -623,9 +677,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EAB9EF0237873CA002F9AD6 /* DefaultFontSet.swift in Sources */,
 				9E01FDF6237775D000D2CF84 /* SceneNavigator.swift in Sources */,
 				9E01FDFC237776C500D2CF84 /* Navigator.swift in Sources */,
 				9E01FDF82377765F00D2CF84 /* DependencyContainer.swift in Sources */,
+				9EAB9EE82378394A002F9AD6 /* DefaultTheme.swift in Sources */,
+				9EAB9EDE23781DAE002F9AD6 /* AlbumDetailsViewModel.swift in Sources */,
+				9EAB9EEA23787377002F9AD6 /* ColorPalette.swift in Sources */,
+				9EAB9EE12378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift in Sources */,
+				9EAB9EEC23787394002F9AD6 /* FontSet.swift in Sources */,
+				9EAB9EE323783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift in Sources */,
 				9EC71E822376F075002FED82 /* ArtistDetailsAlbumCell.swift in Sources */,
 				9EBBCE562373666500862456 /* HomeScreenViewController.swift in Sources */,
 				9EC71E842376F33B002FED82 /* UITableView+registerReusable.swift in Sources */,
@@ -635,6 +696,9 @@
 				9EBBCE542373666500862456 /* ApplicationMain.swift in Sources */,
 				9EF82A112374E300006CCEC2 /* ArtistInformationCell.swift in Sources */,
 				9EF829FA2374A7F9006CCEC2 /* AlbumCardCell.swift in Sources */,
+				9EAB9EE623783929002F9AD6 /* Theme.swift in Sources */,
+				9EAB9EEE237873B5002F9AD6 /* DefaultColorPalette.swift in Sources */,
+				9EAB9EF22378744C002F9AD6 /* UIColor+hex.swift in Sources */,
 				9EF82A062374DE01006CCEC2 /* AlbumDetailsViewController.swift in Sources */,
 				9EC71E862376F9E4002FED82 /* UICollectionView+registerReusable.swift in Sources */,
 				9EC71E802376F026002FED82 /* AlbumDetailsTrackCell.swift in Sources */,

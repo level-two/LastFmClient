@@ -50,7 +50,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.74576418570000003" blue="0.68014749760000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Um7-tv-eDd" secondAttribute="bottom" priority="995" constant="8" id="4pl-CM-NBP"/>
                         <constraint firstItem="MxH-Al-IxU" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" constant="8" id="Ctn-m3-RoV"/>

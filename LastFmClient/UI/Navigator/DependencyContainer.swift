@@ -1,6 +1,7 @@
 import UIKit
 
 class DependencyContainer: ViewControllerFactory {
+    fileprivate let theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
     fileprivate weak var navigator: SceneNavigator?
 
     init(navigator: SceneNavigator) {
@@ -27,7 +28,7 @@ class DependencyContainer: ViewControllerFactory {
 
     func makeAlbumDetailsViewController() -> UIViewController {
         let viewController = AlbumDetailsViewController.loadFromStoryboard()
-        viewController.setupDependencies(navigator: navigator)
+        viewController.setupDependencies(navigator: navigator, theme: theme)
         return viewController
     }
 }
