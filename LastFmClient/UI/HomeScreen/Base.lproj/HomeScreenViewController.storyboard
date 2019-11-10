@@ -12,7 +12,7 @@
         <!--Home Screen View Controller-->
         <scene sceneID="vCR-h9-ABA">
             <objects>
-                <collectionViewController id="jG0-s2-uNC" customClass="HomeScreenViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="HomeScreenViewController" id="jG0-s2-uNC" customClass="HomeScreenViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="PoT-bC-8q6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,6 @@
                             <outlet property="delegate" destination="jG0-s2-uNC" id="MLk-Zm-w3M"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="MNm-nL-ohd"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAg-7d-Lmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

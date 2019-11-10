@@ -16,7 +16,7 @@
 		9E01FE022377811000D2CF84 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */; };
 		9EBBCE542373666500862456 /* ApplicationMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE532373666500862456 /* ApplicationMain.swift */; };
 		9EBBCE562373666500862456 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE552373666500862456 /* HomeScreenViewController.swift */; };
-		9EBBCE592373666500862456 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* HomeScreen.storyboard */; };
+		9EBBCE592373666500862456 /* HomeScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* HomeScreenViewController.storyboard */; };
 		9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5A2373666600862456 /* Assets.xcassets */; };
 		9EBBCE5E2373666600862456 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */; };
 		9EBBCE692373666600862456 /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE682373666600862456 /* LastFmClientTests.swift */; };
@@ -32,10 +32,10 @@
 		9EF829FD2374A86E006CCEC2 /* AlbumCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF829FC2374A86E006CCEC2 /* AlbumCardCell.xib */; };
 		9EF82A002374B3E4006CCEC2 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF829FF2374B3E4006CCEC2 /* NibLoadable.swift */; };
 		9EF82A022374CE1D006CCEC2 /* ArtistSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF82A012374CE1D006CCEC2 /* ArtistSearchViewController.swift */; };
-		9EF82A042374CE2A006CCEC2 /* ArtistSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A032374CE2A006CCEC2 /* ArtistSearch.storyboard */; };
+		9EF82A042374CE2A006CCEC2 /* ArtistSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A032374CE2A006CCEC2 /* ArtistSearchViewController.storyboard */; };
 		9EF82A062374DE01006CCEC2 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF82A052374DE01006CCEC2 /* AlbumDetailsViewController.swift */; };
-		9EF82A082374DE1F006CCEC2 /* AlbumDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A072374DE1F006CCEC2 /* AlbumDetails.storyboard */; };
-		9EF82A0A2374DF4B006CCEC2 /* ArtistDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A092374DF4B006CCEC2 /* ArtistDetails.storyboard */; };
+		9EF82A082374DE1F006CCEC2 /* AlbumDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A072374DE1F006CCEC2 /* AlbumDetailsViewController.storyboard */; };
+		9EF82A0A2374DF4B006CCEC2 /* ArtistDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A092374DF4B006CCEC2 /* ArtistDetailsViewController.storyboard */; };
 		9EF82A0C2374DFFF006CCEC2 /* ArtistDetailsAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A0B2374DFFF006CCEC2 /* ArtistDetailsAlbumCell.xib */; };
 		9EF82A112374E300006CCEC2 /* ArtistInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF82A102374E300006CCEC2 /* ArtistInformationCell.swift */; };
 		9EF82A132374E312006CCEC2 /* ArtistInformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EF82A122374E312006CCEC2 /* ArtistInformationCell.xib */; };
@@ -76,7 +76,7 @@
 		9EBBCE502373666500862456 /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBBCE532373666500862456 /* ApplicationMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMain.swift; sourceTree = "<group>"; };
 		9EBBCE552373666500862456 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
-		9EBBCE582373666500862456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeScreen.storyboard; sourceTree = "<group>"; };
+		9EBBCE582373666500862456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HomeScreenViewController.storyboard; sourceTree = "<group>"; };
 		9EBBCE5A2373666600862456 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9EBBCE5D2373666600862456 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9EBBCE5F2373666600862456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,10 +97,10 @@
 		9EF829FC2374A86E006CCEC2 /* AlbumCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCardCell.xib; sourceTree = "<group>"; };
 		9EF829FF2374B3E4006CCEC2 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		9EF82A012374CE1D006CCEC2 /* ArtistSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSearchViewController.swift; sourceTree = "<group>"; };
-		9EF82A032374CE2A006CCEC2 /* ArtistSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistSearch.storyboard; sourceTree = "<group>"; };
+		9EF82A032374CE2A006CCEC2 /* ArtistSearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistSearchViewController.storyboard; sourceTree = "<group>"; };
 		9EF82A052374DE01006CCEC2 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
-		9EF82A072374DE1F006CCEC2 /* AlbumDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumDetails.storyboard; sourceTree = "<group>"; };
-		9EF82A092374DF4B006CCEC2 /* ArtistDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistDetails.storyboard; sourceTree = "<group>"; };
+		9EF82A072374DE1F006CCEC2 /* AlbumDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlbumDetailsViewController.storyboard; sourceTree = "<group>"; };
+		9EF82A092374DF4B006CCEC2 /* ArtistDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtistDetailsViewController.storyboard; sourceTree = "<group>"; };
 		9EF82A0B2374DFFF006CCEC2 /* ArtistDetailsAlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistDetailsAlbumCell.xib; sourceTree = "<group>"; };
 		9EF82A102374E300006CCEC2 /* ArtistInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInformationCell.swift; sourceTree = "<group>"; };
 		9EF82A122374E312006CCEC2 /* ArtistInformationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistInformationCell.xib; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				9EBBCE552373666500862456 /* HomeScreenViewController.swift */,
-				9EBBCE572373666500862456 /* HomeScreen.storyboard */,
+				9EBBCE572373666500862456 /* HomeScreenViewController.storyboard */,
 				9EF829FB2374A84C006CCEC2 /* View */,
 			);
 			path = HomeScreen;
@@ -274,7 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				9EF82A162374F1A8006CCEC2 /* ArtistDetailsViewController.swift */,
-				9EF82A092374DF4B006CCEC2 /* ArtistDetails.storyboard */,
+				9EF82A092374DF4B006CCEC2 /* ArtistDetailsViewController.storyboard */,
 				9EF82A152374E35B006CCEC2 /* Views */,
 			);
 			path = ArtistDetails;
@@ -284,7 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				9EF82A052374DE01006CCEC2 /* AlbumDetailsViewController.swift */,
-				9EF82A072374DE1F006CCEC2 /* AlbumDetails.storyboard */,
+				9EF82A072374DE1F006CCEC2 /* AlbumDetailsViewController.storyboard */,
 				9EC71E782376C376002FED82 /* Views */,
 			);
 			path = AlbumDetails;
@@ -294,7 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				9EF82A012374CE1D006CCEC2 /* ArtistSearchViewController.swift */,
-				9EF82A032374CE2A006CCEC2 /* ArtistSearch.storyboard */,
+				9EF82A032374CE2A006CCEC2 /* ArtistSearchViewController.storyboard */,
 			);
 			path = ArtistSearch;
 			sourceTree = "<group>";
@@ -473,10 +473,10 @@
 				9EC71E7A2376C396002FED82 /* AlbumDetailsHeaderView.xib in Resources */,
 				9EF82A0C2374DFFF006CCEC2 /* ArtistDetailsAlbumCell.xib in Resources */,
 				9EF82A132374E312006CCEC2 /* ArtistInformationCell.xib in Resources */,
-				9EF82A042374CE2A006CCEC2 /* ArtistSearch.storyboard in Resources */,
-				9EBBCE592373666500862456 /* HomeScreen.storyboard in Resources */,
-				9EF82A0A2374DF4B006CCEC2 /* ArtistDetails.storyboard in Resources */,
-				9EF82A082374DE1F006CCEC2 /* AlbumDetails.storyboard in Resources */,
+				9EF82A042374CE2A006CCEC2 /* ArtistSearchViewController.storyboard in Resources */,
+				9EBBCE592373666500862456 /* HomeScreenViewController.storyboard in Resources */,
+				9EF82A0A2374DF4B006CCEC2 /* ArtistDetailsViewController.storyboard in Resources */,
+				9EF82A082374DE1F006CCEC2 /* AlbumDetailsViewController.storyboard in Resources */,
 				9EC71E7E2376CFA7002FED82 /* AlbumDetailsTrackCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -676,12 +676,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9EBBCE572373666500862456 /* HomeScreen.storyboard */ = {
+		9EBBCE572373666500862456 /* HomeScreenViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9EBBCE582373666500862456 /* Base */,
 			);
-			name = HomeScreen.storyboard;
+			name = HomeScreenViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */ = {

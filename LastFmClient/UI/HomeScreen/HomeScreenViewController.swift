@@ -1,7 +1,7 @@
 import UIKit
 
 class HomeScreenViewController: UICollectionViewController, StoryboardLoadable {
-    fileprivate weak var navigator: SceneNavigator?
+    fileprivate var navigator: SceneNavigator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -10,7 +10,7 @@ class HomeScreenViewController: UICollectionViewController, StoryboardLoadable {
                                                             action: #selector(self.onSearchButton(sender:)))
     }
 
-    func setupDependencies(navigator: SceneNavigator) {
+    func setupDependencies(navigator: SceneNavigator?) {
         self.navigator = navigator
     }
 
@@ -29,6 +29,10 @@ extension HomeScreenViewController {
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(AlbumCardCell.self, for: indexPath)
         return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigator?.navigate(to: .albumDetails)
     }
 }
 

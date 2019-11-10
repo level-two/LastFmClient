@@ -1,7 +1,7 @@
 import UIKit
 
 class DependencyContainer: ViewControllerFactory {
-    fileprivate var navigator: SceneNavigator
+    fileprivate weak var navigator: SceneNavigator?
 
     init(navigator: SceneNavigator) {
         self.navigator = navigator

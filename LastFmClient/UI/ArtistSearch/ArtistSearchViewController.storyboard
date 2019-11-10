@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search-->
+        <!--Artist Search View Controller-->
         <scene sceneID="G9t-7W-pgM">
             <objects>
                 <tableViewController storyboardIdentifier="ArtistSearchViewController" id="vxp-YL-gvj" customClass="ArtistSearchViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,7 +22,6 @@
                             <outlet property="delegate" destination="vxp-YL-gvj" id="zfR-Kv-kKw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="0Sj-0h-Dtd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08T-MH-OT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

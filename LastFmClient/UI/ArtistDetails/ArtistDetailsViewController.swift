@@ -7,7 +7,7 @@ class ArtistDetailsViewController: UIViewController, StoryboardLoadable {
     @IBOutlet weak var artistPhotoTopOffsetConstraint: NSLayoutConstraint?
 
     fileprivate var cellsPerRow = 1
-    fileprivate weak var navigator: SceneNavigator?
+    fileprivate var navigator: SceneNavigator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class ArtistDetailsViewController: UIViewController, StoryboardLoadable {
         collectionView?.registerReusableCell(ArtistDetailsAlbumCell.self)
     }
 
-    func setupDependencies(navigator: SceneNavigator) {
+    func setupDependencies(navigator: SceneNavigator?) {
         self.navigator = navigator
     }
 }
@@ -73,6 +73,13 @@ extension ArtistDetailsViewController: UICollectionViewDelegateFlowLayout {
             return .zero
         }
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            navigator?.navigate(to: .albumDetails)
+        }
+    }
+
 }
 
 extension ArtistDetailsViewController: UIScrollViewDelegate {

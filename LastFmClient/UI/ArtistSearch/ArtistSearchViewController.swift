@@ -2,7 +2,7 @@ import UIKit
 
 class ArtistSearchViewController: UITableViewController, StoryboardLoadable {
     fileprivate let searchController = UISearchController(searchResultsController: nil)
-    fileprivate weak var navigator: SceneNavigator?
+    fileprivate var navigator: SceneNavigator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,7 +13,7 @@ class ArtistSearchViewController: UITableViewController, StoryboardLoadable {
         setupView()
     }
 
-    func setupDependencies(navigator: SceneNavigator) {
+    func setupDependencies(navigator: SceneNavigator?) {
         self.navigator = navigator
     }
 }
@@ -48,6 +48,10 @@ extension ArtistSearchViewController {
         let cell = UITableViewCell()
         cell.textLabel?.text = "\(indexPath.row)"
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigator?.navigate(to: .artistDetails)
     }
 }
 

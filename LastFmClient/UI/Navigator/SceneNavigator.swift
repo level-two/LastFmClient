@@ -19,15 +19,12 @@ class SceneNavigator: Navigator {
     }
 
     func navigate(to destination: Destination) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            let viewController = self.makeViewController(for: destination)
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
+        let viewController = self.makeViewController(for: destination)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
-extension SceneNavigator {
+fileprivate extension SceneNavigator {
     func makeViewController(for destination: Destination) -> UIViewController {
         switch destination {
         case .homeScreen:

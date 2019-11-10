@@ -9,9 +9,9 @@ class ApplicationMain: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let navigationController = UINavigationController()
-        let sceneNavigator = SceneNavigator(navigationController: navigationController)
         window?.rootViewController = navigationController
 
+        let sceneNavigator = SceneNavigator(navigationController: navigationController)
         sceneNavigator.navigate(to: .homeScreen)
 
         return true
