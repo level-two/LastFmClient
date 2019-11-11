@@ -5,9 +5,10 @@ class AlbumDetailsViewModel {
     fileprivate let albumId: String
     fileprivate let modelController: AlbumDetailsModelController
 
-    init(albumId: String, networkService: NetworkService) {
+    init(albumId: String, networkService: NetworkService, databaseProvider: DatabaseProvider) {
         self.albumId = albumId
-        self.modelController = AlbumDetailsModelController(networkService: networkService)
+        self.modelController = AlbumDetailsModelController(networkService: networkService,
+                                                           databaseProvider: databaseProvider)
     }
 
     func requestData(completion: @escaping (Error?) -> Void) {

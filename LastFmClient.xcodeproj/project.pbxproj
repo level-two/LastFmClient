@@ -15,6 +15,10 @@
 		9E01FDFC237776C500D2CF84 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDFB237776C500D2CF84 /* Navigator.swift */; };
 		9E01FE022377811000D2CF84 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */; };
 		9E0FD12D2379534600EFF1E5 /* AlbumDetailsModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0FD12C2379534600EFF1E5 /* AlbumDetailsModelController.swift */; };
+		9E696951237A1BE7003E88C7 /* DatabaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E696950237A1BE7003E88C7 /* DatabaseProvider.swift */; };
+		9E696953237A1C33003E88C7 /* DefaultDatabaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E696952237A1C33003E88C7 /* DefaultDatabaseProvider.swift */; };
+		9E696956237A1DDE003E88C7 /* Bundle+infoPlistValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E696955237A1DDE003E88C7 /* Bundle+infoPlistValues.swift */; };
+		9E696958237A2399003E88C7 /* URL+replacingLastPathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E696957237A2399003E88C7 /* URL+replacingLastPathComponent.swift */; };
 		9EAB9EDE23781DAE002F9AD6 /* AlbumDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EDD23781DAE002F9AD6 /* AlbumDetailsViewModel.swift */; };
 		9EAB9EE12378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE02378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift */; };
 		9EAB9EE323783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE223783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift */; };
@@ -34,6 +38,8 @@
 		9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5A2373666600862456 /* Assets.xcassets */; };
 		9EBBCE692373666600862456 /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE682373666600862456 /* LastFmClientTests.swift */; };
 		9EBBCE742373666600862456 /* LastFmClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE732373666600862456 /* LastFmClientUITests.swift */; };
+		9EC1D64F2379BA7800B851CF /* AlbumDatabaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC1D64E2379BA7800B851CF /* AlbumDatabaseObject.swift */; };
+		9EC1D6512379BA9700B851CF /* TrackDatabaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC1D6502379BA9700B851CF /* TrackDatabaseObject.swift */; };
 		9EC71E7A2376C396002FED82 /* AlbumDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC71E792376C396002FED82 /* AlbumDetailsHeaderView.xib */; };
 		9EC71E7C2376C6B9002FED82 /* AlbumDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC71E7B2376C6B9002FED82 /* AlbumDetailsHeaderView.swift */; };
 		9EC71E7E2376CFA7002FED82 /* AlbumDetailsTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC71E7D2376CFA7002FED82 /* AlbumDetailsTrackCell.xib */; };
@@ -87,6 +93,10 @@
 		9E01FDFB237776C500D2CF84 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
 		9E0FD12C2379534600EFF1E5 /* AlbumDetailsModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsModelController.swift; sourceTree = "<group>"; };
+		9E696950237A1BE7003E88C7 /* DatabaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProvider.swift; sourceTree = "<group>"; };
+		9E696952237A1C33003E88C7 /* DefaultDatabaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDatabaseProvider.swift; sourceTree = "<group>"; };
+		9E696955237A1DDE003E88C7 /* Bundle+infoPlistValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+infoPlistValues.swift"; sourceTree = "<group>"; };
+		9E696957237A2399003E88C7 /* URL+replacingLastPathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+replacingLastPathComponent.swift"; sourceTree = "<group>"; };
 		9EAB9EDD23781DAE002F9AD6 /* AlbumDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewModel.swift; sourceTree = "<group>"; };
 		9EAB9EE02378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsHeaderViewModel.swift; sourceTree = "<group>"; };
 		9EAB9EE223783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsTrackCellViewModel.swift; sourceTree = "<group>"; };
@@ -112,6 +122,8 @@
 		9EBBCE6F2373666600862456 /* LastFmClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastFmClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBBCE732373666600862456 /* LastFmClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFmClientUITests.swift; sourceTree = "<group>"; };
 		9EBBCE752373666600862456 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EC1D64E2379BA7800B851CF /* AlbumDatabaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDatabaseObject.swift; sourceTree = "<group>"; };
+		9EC1D6502379BA9700B851CF /* TrackDatabaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDatabaseObject.swift; sourceTree = "<group>"; };
 		9EC71E792376C396002FED82 /* AlbumDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumDetailsHeaderView.xib; sourceTree = "<group>"; };
 		9EC71E7B2376C6B9002FED82 /* AlbumDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsHeaderView.swift; sourceTree = "<group>"; };
 		9EC71E7D2376CFA7002FED82 /* AlbumDetailsTrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumDetailsTrackCell.xib; sourceTree = "<group>"; };
@@ -216,6 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				9E01FE05237793CA00D2CF84 /* Application */,
+				9EC1D6522379BA9C00B851CF /* Database */,
+				9E696954237A1DCC003E88C7 /* Extensions */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -236,6 +250,15 @@
 				9EBBCE5A2373666600862456 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		9E696954237A1DCC003E88C7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9E696955237A1DDE003E88C7 /* Bundle+infoPlistValues.swift */,
+				9E696957237A2399003E88C7 /* URL+replacingLastPathComponent.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9EAB9EDC23781D85002F9AD6 /* ViewModel */ = {
@@ -357,6 +380,25 @@
 				9EF82A032374CE2A006CCEC2 /* ArtistSearchViewController.storyboard */,
 			);
 			path = ArtistSearch;
+			sourceTree = "<group>";
+		};
+		9EC1D6522379BA9C00B851CF /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				9EC1D6532379BAB300B851CF /* Model */,
+				9E696950237A1BE7003E88C7 /* DatabaseProvider.swift */,
+				9E696952237A1C33003E88C7 /* DefaultDatabaseProvider.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		9EC1D6532379BAB300B851CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9EC1D64E2379BA7800B851CF /* AlbumDatabaseObject.swift */,
+				9EC1D6502379BA9700B851CF /* TrackDatabaseObject.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9EC71E782376C376002FED82 /* View */ = {
@@ -690,6 +732,7 @@
 				9EAB9EF0237873CA002F9AD6 /* DefaultFontSet.swift in Sources */,
 				9E01FDF6237775D000D2CF84 /* SceneNavigator.swift in Sources */,
 				9E01FDFC237776C500D2CF84 /* Navigator.swift in Sources */,
+				9EC1D64F2379BA7800B851CF /* AlbumDatabaseObject.swift in Sources */,
 				9E01FDF82377765F00D2CF84 /* DependencyContainer.swift in Sources */,
 				9EAB9EE82378394A002F9AD6 /* DefaultTheme.swift in Sources */,
 				9EAB9EDE23781DAE002F9AD6 /* AlbumDetailsViewModel.swift in Sources */,
@@ -698,6 +741,7 @@
 				9EAB9EE12378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift in Sources */,
 				9EAB9EEC23787394002F9AD6 /* FontSet.swift in Sources */,
 				9EAB9EE323783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift in Sources */,
+				9E696951237A1BE7003E88C7 /* DatabaseProvider.swift in Sources */,
 				9EC71E822376F075002FED82 /* ArtistDetailsAlbumCell.swift in Sources */,
 				9EBBCE562373666500862456 /* HomeScreenViewController.swift in Sources */,
 				9EC71E842376F33B002FED82 /* UITableView+registerReusable.swift in Sources */,
@@ -708,11 +752,15 @@
 				9EF82A112374E300006CCEC2 /* ArtistInformationCell.swift in Sources */,
 				9EF829FA2374A7F9006CCEC2 /* AlbumCardCell.swift in Sources */,
 				9EAB9EE623783929002F9AD6 /* Theme.swift in Sources */,
+				9E696958237A2399003E88C7 /* URL+replacingLastPathComponent.swift in Sources */,
 				9EAB9EEE237873B5002F9AD6 /* DefaultColorPalette.swift in Sources */,
 				9E0FD12D2379534600EFF1E5 /* AlbumDetailsModelController.swift in Sources */,
+				9E696956237A1DDE003E88C7 /* Bundle+infoPlistValues.swift in Sources */,
+				9EC1D6512379BA9700B851CF /* TrackDatabaseObject.swift in Sources */,
 				9EAB9EF22378744C002F9AD6 /* UIColor+hex.swift in Sources */,
 				9EF82A062374DE01006CCEC2 /* AlbumDetailsViewController.swift in Sources */,
 				9EC71E862376F9E4002FED82 /* UICollectionView+registerReusable.swift in Sources */,
+				9E696953237A1C33003E88C7 /* DefaultDatabaseProvider.swift in Sources */,
 				9EC71E802376F026002FED82 /* AlbumDetailsTrackCell.swift in Sources */,
 				9E01FDFA2377767700D2CF84 /* ViewControllerFactory.swift in Sources */,
 				9EF82A022374CE1D006CCEC2 /* ArtistSearchViewController.swift in Sources */,

@@ -12,10 +12,16 @@ class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
         styleView()
     }
 
-    func setupDependencies(albumId: String, navigator: SceneNavigator?, networkService: NetworkService, theme: Theme?) {
+    func setupDependencies(albumId: String,
+                           navigator: SceneNavigator?,
+                           networkService: NetworkService,
+                           databaseProvider: DatabaseProvider,
+                           theme: Theme?) {
         self.navigator = navigator
         self.theme = theme
-        self.viewModel = AlbumDetailsViewModel(albumId: albumId, networkService: networkService)
+        self.viewModel = AlbumDetailsViewModel(albumId: albumId,
+                                               networkService: networkService,
+                                               databaseProvider: databaseProvider)
     }
 
     override func viewWillAppear(_ animated: Bool) {
