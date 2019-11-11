@@ -14,12 +14,15 @@ class DefaultTheme: Theme {
         case .normal:
             label?.font = fontSet.regular
             label?.textColor = colorPalette.base
+        case .light:
+            label?.font = fontSet.regular
+            label?.textColor = colorPalette.primary2
         case .dark:
             label?.font = fontSet.regular
             label?.textColor = colorPalette.primary4
         case .description:
             label?.font = fontSet.small
-            label?.textColor = colorPalette.primary4
+            label?.textColor = colorPalette.base
         }
     }
 

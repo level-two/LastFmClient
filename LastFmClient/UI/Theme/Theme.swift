@@ -2,6 +2,7 @@ import UIKit
 
 enum LabelStyle {
     case normal
+    case light
     case dark
     case description
 }

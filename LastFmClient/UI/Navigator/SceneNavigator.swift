@@ -5,7 +5,7 @@ class SceneNavigator: Navigator {
         case homeScreen
         case artistSearch
         case artistDetails
-        case albumDetails
+        case albumDetails(albumId: String)
     }
 
     fileprivate lazy var factory: ViewControllerFactory = {
@@ -33,8 +33,8 @@ fileprivate extension SceneNavigator {
             return factory.makeArtistSearchViewController()
         case .artistDetails:
             return factory.makeArtistDetailsViewController()
-        case .albumDetails:
-            return factory.makeAlbumDetailsViewController()
+        case .albumDetails(let albumId):
+            return factory.makeAlbumDetailsViewController(albumId: albumId)
         }
     }
 }

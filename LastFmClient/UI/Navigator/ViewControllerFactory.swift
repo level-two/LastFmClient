@@ -4,5 +4,5 @@ protocol ViewControllerFactory: class {
     func makeHomeScreenViewController() -> UIViewController
     func makeArtistSearchViewController() -> UIViewController
     func makeArtistDetailsViewController() -> UIViewController
-    func makeAlbumDetailsViewController() -> UIViewController
+    func makeAlbumDetailsViewController(albumId: String) -> UIViewController
 }

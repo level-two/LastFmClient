@@ -11,7 +11,7 @@ class AlbumDetailsTrackCell: UITableViewCell, NibLoadable {
 
     func style(with theme: Theme) {
         theme.apply(style: .normal, to: track)
-        theme.apply(style: .normal, to: trackLength)
+        theme.apply(style: .dark, to: trackLength)
         theme.apply(style: .tableCellBackground, to: self.contentView)
     }
 }

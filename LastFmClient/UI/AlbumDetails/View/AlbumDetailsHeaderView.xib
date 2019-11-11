@@ -37,14 +37,8 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MxH-Al-IxU">
-                            <rect key="frame" x="8" y="380.5" width="34" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-tv-eDd">
-                            <rect key="frame" x="8" y="405" width="88" height="105"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Year" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-tv-eDd" userLabel="Year">
+                            <rect key="frame" x="8" y="380.5" width="34" height="129.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -52,21 +46,18 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Um7-tv-eDd" secondAttribute="bottom" priority="995" constant="8" id="4pl-CM-NBP"/>
-                        <constraint firstItem="MxH-Al-IxU" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" constant="8" id="Ctn-m3-RoV"/>
                         <constraint firstItem="iiY-VJ-5hr" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" id="DCn-mh-mge"/>
                         <constraint firstItem="17J-ky-FLg" firstAttribute="firstBaseline" secondItem="iiY-VJ-5hr" secondAttribute="baseline" priority="995" constant="24.5" symbolType="layoutAnchor" id="HN8-xp-tdv"/>
+                        <constraint firstItem="Um7-tv-eDd" firstAttribute="firstBaseline" secondItem="hFT-ok-xOr" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="IjN-q1-LjV"/>
                         <constraint firstAttribute="bottom" secondItem="Um7-tv-eDd" secondAttribute="bottom" priority="250" constant="8" id="JgP-e2-lFn"/>
                         <constraint firstItem="hFT-ok-xOr" firstAttribute="firstBaseline" secondItem="17J-ky-FLg" secondAttribute="baseline" priority="995" constant="24" symbolType="layoutAnchor" id="Mj5-Rl-fnZ"/>
                         <constraint firstItem="Um7-tv-eDd" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" constant="8" id="S1u-nO-Hih"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="17J-ky-FLg" secondAttribute="trailing" priority="995" constant="8" id="U2g-66-Ynj"/>
                         <constraint firstItem="hFT-ok-xOr" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" constant="8" id="Va1-hi-LQw"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Um7-tv-eDd" secondAttribute="trailing" priority="995" constant="8" id="WsW-FP-Kfg"/>
-                        <constraint firstItem="MxH-Al-IxU" firstAttribute="firstBaseline" secondItem="hFT-ok-xOr" secondAttribute="baseline" priority="995" constant="24" symbolType="layoutAnchor" id="i3J-PN-ERx"/>
                         <constraint firstItem="17J-ky-FLg" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" constant="8" id="mZd-yO-lKe"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hFT-ok-xOr" secondAttribute="trailing" priority="995" constant="8" id="nqf-cc-IZF"/>
-                        <constraint firstItem="Um7-tv-eDd" firstAttribute="firstBaseline" secondItem="MxH-Al-IxU" secondAttribute="baseline" priority="995" constant="24" symbolType="layoutAnchor" id="rkI-hE-tyg"/>
                         <constraint firstItem="iiY-VJ-5hr" firstAttribute="top" secondItem="A1k-fP-Ra0" secondAttribute="top" priority="995" id="vxv-D7-ESy"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MxH-Al-IxU" secondAttribute="trailing" priority="995" constant="8" id="y04-Q5-poe"/>
                         <constraint firstAttribute="trailing" secondItem="iiY-VJ-5hr" secondAttribute="trailing" priority="995" id="z8l-FX-fgT"/>
                     </constraints>
                 </view>
@@ -80,11 +71,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="albumDescription" destination="Um7-tv-eDd" id="uid-CK-bcG"/>
                 <outlet property="artist" destination="hFT-ok-xOr" id="Zi0-97-AjB"/>
                 <outlet property="cover" destination="iiY-VJ-5hr" id="9vV-q8-W1J"/>
                 <outlet property="title" destination="17J-ky-FLg" id="Fcz-kD-XN3"/>
-                <outlet property="year" destination="MxH-Al-IxU" id="bAx-0r-oxs"/>
+                <outlet property="year" destination="Um7-tv-eDd" id="haN-Zl-ulK"/>
             </connections>
             <point key="canvasLocation" x="98.400000000000006" y="-9.8950524737631191"/>
         </view>

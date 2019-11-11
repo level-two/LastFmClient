@@ -76,7 +76,8 @@ extension ArtistDetailsViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            navigator?.navigate(to: .albumDetails)
+            // FIXME: Stub
+            navigator?.navigate(to: .albumDetails(albumId: "61bf0388-b8a9-48f4-81d1-7eb02706dfb0"))
         }
     }
 

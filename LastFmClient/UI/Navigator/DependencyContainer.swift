@@ -1,8 +1,9 @@
 import UIKit
 
 class DependencyContainer: ViewControllerFactory {
-    fileprivate let theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
     fileprivate weak var navigator: SceneNavigator?
+    fileprivate lazy var theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
+    fileprivate lazy var networkService = NetworkService()
 
     init(navigator: SceneNavigator) {
         self.navigator = navigator
@@ -26,9 +27,12 @@ class DependencyContainer: ViewControllerFactory {
         return viewController
     }
 
-    func makeAlbumDetailsViewController() -> UIViewController {
+    func makeAlbumDetailsViewController(albumId: String) -> UIViewController {
         let viewController = AlbumDetailsViewController.loadFromStoryboard()
-        viewController.setupDependencies(navigator: navigator, theme: theme)
+        viewController.setupDependencies(albumId: albumId,
+                                         navigator: navigator,
+                                         networkService: networkService,
+                                         theme: theme)
         return viewController
     }
 }

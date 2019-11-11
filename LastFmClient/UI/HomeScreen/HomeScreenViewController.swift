@@ -32,7 +32,8 @@ extension HomeScreenViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigator?.navigate(to: .albumDetails)
+        // FIXME
+        navigator?.navigate(to: .albumDetails(albumId: "61bf0388-b8a9-48f4-81d1-7eb02706dfb0"))
     }
 }
 

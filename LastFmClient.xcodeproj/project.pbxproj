@@ -14,6 +14,7 @@
 		9E01FDFA2377767700D2CF84 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDF92377767700D2CF84 /* ViewControllerFactory.swift */; };
 		9E01FDFC237776C500D2CF84 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FDFB237776C500D2CF84 /* Navigator.swift */; };
 		9E01FE022377811000D2CF84 /* StoryboardLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */; };
+		9E0FD12D2379534600EFF1E5 /* AlbumDetailsModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0FD12C2379534600EFF1E5 /* AlbumDetailsModelController.swift */; };
 		9EAB9EDE23781DAE002F9AD6 /* AlbumDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EDD23781DAE002F9AD6 /* AlbumDetailsViewModel.swift */; };
 		9EAB9EE12378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE02378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift */; };
 		9EAB9EE323783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EE223783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift */; };
@@ -26,6 +27,8 @@
 		9EAB9EF22378744C002F9AD6 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EF12378744C002F9AD6 /* UIColor+hex.swift */; };
 		9EAB9EF42378A650002F9AD6 /* HomeScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE572373666500862456 /* HomeScreenViewController.storyboard */; };
 		9EAB9EF52378A658002F9AD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5C2373666600862456 /* LaunchScreen.storyboard */; };
+		9EAB9EF72378CC45002F9AD6 /* AlbumDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EF62378CC45002F9AD6 /* AlbumDetailsModel.swift */; };
+		9EAB9EFB2378EC8D002F9AD6 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB9EFA2378EC8D002F9AD6 /* MockNetworkService.swift */; };
 		9EBBCE542373666500862456 /* ApplicationMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE532373666500862456 /* ApplicationMain.swift */; };
 		9EBBCE562373666500862456 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBBCE552373666500862456 /* HomeScreenViewController.swift */; };
 		9EBBCE5B2373666600862456 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EBBCE5A2373666600862456 /* Assets.xcassets */; };
@@ -83,6 +86,7 @@
 		9E01FDF92377767700D2CF84 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		9E01FDFB237776C500D2CF84 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		9E01FE012377811000D2CF84 /* StoryboardLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLoadable.swift; sourceTree = "<group>"; };
+		9E0FD12C2379534600EFF1E5 /* AlbumDetailsModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsModelController.swift; sourceTree = "<group>"; };
 		9EAB9EDD23781DAE002F9AD6 /* AlbumDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewModel.swift; sourceTree = "<group>"; };
 		9EAB9EE02378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsHeaderViewModel.swift; sourceTree = "<group>"; };
 		9EAB9EE223783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsTrackCellViewModel.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 		9EAB9EED237873B5002F9AD6 /* DefaultColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultColorPalette.swift; sourceTree = "<group>"; };
 		9EAB9EEF237873CA002F9AD6 /* DefaultFontSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFontSet.swift; sourceTree = "<group>"; };
 		9EAB9EF12378744C002F9AD6 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		9EAB9EF62378CC45002F9AD6 /* AlbumDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsModel.swift; sourceTree = "<group>"; };
+		9EAB9EFA2378EC8D002F9AD6 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		9EBBCE502373666500862456 /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EBBCE532373666500862456 /* ApplicationMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationMain.swift; sourceTree = "<group>"; };
 		9EBBCE552373666500862456 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +251,9 @@
 		9EAB9EDF237835D0002F9AD6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9E0FD12C2379534600EFF1E5 /* AlbumDetailsModelController.swift */,
+				9EAB9EF62378CC45002F9AD6 /* AlbumDetailsModel.swift */,
+				9EAB9EFA2378EC8D002F9AD6 /* MockNetworkService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,9 +343,9 @@
 		9EC109F1237390870012986F /* AlbumDetails */ = {
 			isa = PBXGroup;
 			children = (
-				9EAB9EDF237835D0002F9AD6 /* Model */,
 				9EC71E782376C376002FED82 /* View */,
 				9EAB9EDC23781D85002F9AD6 /* ViewModel */,
+				9EAB9EDF237835D0002F9AD6 /* Model */,
 			);
 			path = AlbumDetails;
 			sourceTree = "<group>";
@@ -677,6 +686,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EAB9EFB2378EC8D002F9AD6 /* MockNetworkService.swift in Sources */,
 				9EAB9EF0237873CA002F9AD6 /* DefaultFontSet.swift in Sources */,
 				9E01FDF6237775D000D2CF84 /* SceneNavigator.swift in Sources */,
 				9E01FDFC237776C500D2CF84 /* Navigator.swift in Sources */,
@@ -684,6 +694,7 @@
 				9EAB9EE82378394A002F9AD6 /* DefaultTheme.swift in Sources */,
 				9EAB9EDE23781DAE002F9AD6 /* AlbumDetailsViewModel.swift in Sources */,
 				9EAB9EEA23787377002F9AD6 /* ColorPalette.swift in Sources */,
+				9EAB9EF72378CC45002F9AD6 /* AlbumDetailsModel.swift in Sources */,
 				9EAB9EE12378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift in Sources */,
 				9EAB9EEC23787394002F9AD6 /* FontSet.swift in Sources */,
 				9EAB9EE323783631002F9AD6 /* AlbumDetailsTrackCellViewModel.swift in Sources */,
@@ -698,6 +709,7 @@
 				9EF829FA2374A7F9006CCEC2 /* AlbumCardCell.swift in Sources */,
 				9EAB9EE623783929002F9AD6 /* Theme.swift in Sources */,
 				9EAB9EEE237873B5002F9AD6 /* DefaultColorPalette.swift in Sources */,
+				9E0FD12D2379534600EFF1E5 /* AlbumDetailsModelController.swift in Sources */,
 				9EAB9EF22378744C002F9AD6 /* UIColor+hex.swift in Sources */,
 				9EF82A062374DE01006CCEC2 /* AlbumDetailsViewController.swift in Sources */,
 				9EC71E862376F9E4002FED82 /* UICollectionView+registerReusable.swift in Sources */,
