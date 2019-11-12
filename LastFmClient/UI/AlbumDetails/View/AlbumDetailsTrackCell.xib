@@ -49,6 +49,7 @@
                     <constraint firstItem="BOm-bs-Jfc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qei-qL-RPE" secondAttribute="trailing" id="yzp-HG-JQy"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
             <connections>
                 <outlet property="track" destination="Qei-qL-RPE" id="zvn-l4-v1B"/>
                 <outlet property="trackLength" destination="BOm-bs-Jfc" id="XGV-b5-hkY"/>

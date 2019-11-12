@@ -29,8 +29,9 @@ class DefaultTheme: Theme {
     func apply(style: NavigationBarStyle, to navigationBar: UINavigationBar?) {
         switch style {
         case .normal:
+            navigationBar?.titleTextAttributes = [.foregroundColor: colorPalette.primary1]
             navigationBar?.tintColor = colorPalette.primary1
-            navigationBar?.barTintColor = colorPalette.primary5
+            navigationBar?.barTintColor = colorPalette.dark1
         }
     }
 

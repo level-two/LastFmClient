@@ -70,7 +70,7 @@ extension AlbumDetailsViewController {
 
 extension AlbumDetailsViewController {
     func styleView() {
-        //theme?.apply(style: .normal, to: self.navigationItem)
+        theme?.apply(style: .normal, to: self.navigationController?.navigationBar)
         theme?.apply(style: .tableBackground, to: tableView)
     }
 }
