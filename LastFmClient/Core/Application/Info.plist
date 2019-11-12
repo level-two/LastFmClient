@@ -22,6 +22,13 @@
 	<integer>1</integer>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>LastFmApiKey</key>
+	<string>a17be6c3047fa729debd98447434398c</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

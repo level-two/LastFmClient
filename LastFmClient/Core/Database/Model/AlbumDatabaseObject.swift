@@ -6,5 +6,5 @@ class AlbumDatabaseObject: Object {
     @objc dynamic var artist = ""
     @objc dynamic var releaseDate: Date?
     var tracks = List<TrackDatabaseObject>()
-    @objc dynamic var mediumImageUrl = ""
+    @objc dynamic var mediumImageUrl: String?
 }

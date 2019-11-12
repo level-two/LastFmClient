@@ -12,4 +12,9 @@ extension Bundle {
     var databaseSchemaVersion: Int? {
         return object(forInfoDictionaryKey: "DatabaseSchemaVersion") as? Int
     }
+
+    // FIXME: this should be moved to the AppDefaults or AppSettings
+    var lastFmApiKey: String? {
+        return object(forInfoDictionaryKey: "LastFmApiKey") as? String
+    }
 }
