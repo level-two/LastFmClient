@@ -32,11 +32,11 @@ extension DefaultNetworkService {
             return completion(.failure(ImageDownloadError.badUrl))
         }
 
-        if let cachedImage = imageCache.object(forKey: urlString as NSString)  {
+        if let cachedImage = imageCache.object(forKey: urlString as NSString) {
             return completion(.success(cachedImage))
         }
 
-        URLSession.shared.dataTask(with: url, completionHandler: { [weak self] (data, response, error) in
+        URLSession.shared.dataTask(with: url, completionHandler: { [weak self] data, _, error in
             guard error == nil else {
                 return completion(.failure(ImageDownloadError.downloadError))
             }
