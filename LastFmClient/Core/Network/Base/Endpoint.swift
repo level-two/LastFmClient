@@ -8,7 +8,15 @@ protocol Endpoint {
 }
 
 extension Endpoint {
-    var urlComponents: URLComponents {
+    var request: URLRequest {
+        guard let url = urlComponents.url else {
+            fatalError("Failed to create URLRequest")
+        }
+
+        return URLRequest(url: url)
+    }
+
+    fileprivate var urlComponents: URLComponents {
         guard var components = URLComponents(string: host) else {
             fatalError("Failed to create URLComponents")
         }
@@ -20,13 +28,5 @@ extension Endpoint {
         components.setQueryItems(with: parameters)
 
         return components
-    }
-
-    var request: URLRequest {
-        guard let url = urlComponents.url else {
-            fatalError("Failed to create URLRequest")
-        }
-
-        return URLRequest(url: url)
     }
 }

@@ -30,7 +30,9 @@ class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
         // show indicator
         viewModel?.requestData { [weak self] _ in
             // hide indicator
-            self?.tableView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
         }
     }
 }

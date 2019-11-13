@@ -17,38 +17,47 @@ class AlbumDetailsModelController {
         if let albumObject = albums.first(where: { $0.albumId == albumId }),
             let imageUrl = albumObject.mediumImageUrl {
 
-            networkService.getImage(imageUrl) { image in
-                var albumModel = AlbumDetailsModel(from: albumObject)
-                albumModel.coverImage = image
-                completion(albumModel, nil)
-            }
+            var albumModel = AlbumDetailsModel(from: albumObject)
 
+            networkService.getImage(imageUrl) { result in
+                switch result {
+                case .success(let image):
+                    albumModel.coverImage = image
+                    completion(albumModel, nil)
+                case .failure(let error):
+                    completion(nil, error)
+                }
+            }
         } else {
-            LastFmClient().getAlbumDetails(from: .info(albumId: albumId)) { [weak self] result in
+            networkService.getAlbumDetails(from: .info(albumId: albumId)) { [weak self] result in
                 guard let self = self else { return }
 
                 switch result {
-                case .failure(let error):
-                    completion(nil, error)
                 case .success(let albumDetails):
+                    let albumObject = AlbumDatabaseObject(from: albumDetails)
+                    let realm = self.databaseProvider.defaultRealm
+
                     do {
-                        let albumObject = AlbumDatabaseObject(from: albumDetails)
-                        let realm = self.databaseProvider.defaultRealm
+                        try realm.write { realm.add(albumObject) }
+                    } catch {
+                        return completion(nil, error)
+                    }
 
-                        try realm.write {
-                            realm.add(albumObject)
-                        }
+                    var albumModel = AlbumDetailsModel(from: albumObject)
 
-                        if let imageUrl = albumObject.mediumImageUrl {
-                            self.networkService.getImage(imageUrl) { image in
-                                var albumModel = AlbumDetailsModel(from: albumObject)
+                    if let imageUrl = albumObject.mediumImageUrl {
+                        self.networkService.getImage(imageUrl) { result in
+                            switch result {
+                            case .success(let image):
                                 albumModel.coverImage = image
                                 completion(albumModel, nil)
+                            case .failure(let error):
+                                completion(nil, error)
                             }
                         }
-                    } catch {
-                        completion(nil, error)
                     }
+                case .failure(let error):
+                    completion(nil, error)
                 }
             }
         }

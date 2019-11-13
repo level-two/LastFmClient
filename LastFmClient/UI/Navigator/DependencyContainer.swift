@@ -3,8 +3,8 @@ import UIKit
 class DependencyContainer: ViewControllerFactory {
     fileprivate weak var navigator: SceneNavigator?
     fileprivate lazy var theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
-    fileprivate lazy var networkService = NetworkService()
-    fileprivate lazy var defaultDatabaseProvider = DefaultDatabaseProvider()
+    fileprivate lazy var networkService: NetworkService = DefaultNetworkService()
+    fileprivate lazy var databaseProvider: DatabaseProvider = DefaultDatabaseProvider()
 
     init(navigator: SceneNavigator) {
         self.navigator = navigator
@@ -33,7 +33,7 @@ class DependencyContainer: ViewControllerFactory {
         viewController.setupDependencies(albumId: albumId,
                                          navigator: navigator,
                                          networkService: networkService,
-                                         databaseProvider: defaultDatabaseProvider,
+                                         databaseProvider: databaseProvider,
                                          theme: theme)
         return viewController
     }
