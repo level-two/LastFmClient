@@ -6,8 +6,6 @@ target 'LastFmClient' do
   use_frameworks!
 
   # Pods for LastFmClient
-  pod 'Alamofire'
-  pod 'AlamofireImage'
   pod 'RealmSwift'
   pod 'SwiftLint'
 
