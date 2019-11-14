@@ -1,6 +1,11 @@
+import PromiseKit
+
 class AlbumDetailsViewModel {
     var headerViewModel: AlbumDetailsHeaderViewModel?
+    var footerViewModel: AlbumDetailsFooterViewModel?
     var trackViewModel: [AlbumDetailsTrackCellViewModel] = []
+
+    var onViewModelUpdated: (() -> Void)?
 
     fileprivate let albumId: String
     fileprivate let modelController: AlbumDetailsModelController
@@ -9,22 +14,40 @@ class AlbumDetailsViewModel {
         self.albumId = albumId
         self.modelController = AlbumDetailsModelController(networkService: networkService,
                                                            databaseProvider: databaseProvider)
+
+        modelController.onAlbumStoredStateChanged(for: albumId) { [weak self] isStored in
+            self?.footerViewModel?.isAlbumInCollection = isStored
+            self?.onViewModelUpdated?()
+        }
+
+        _ = modelController.retrieveModel(for: albumId).done { [weak self] model in
+            self?.updateViewModel(from: model)
+            self?.onViewModelUpdated?()
+        }
     }
 
-    func requestData(completion: @escaping (Error?) -> Void) {
-        modelController.request(albumId: albumId) { [weak self] albumData, error in
-            if let albumData = albumData {
-                self?.parse(albumData: albumData)
-                completion(nil)
-            }
-            completion(error)
+    func loadData() -> Promise<Void> {
+        return firstly {
+            modelController.retrieveModel(for: albumId)
+        }.done { [weak self] model in
+            self?.updateViewModel(from: model)
+            self?.onViewModelUpdated?()
         }
+    }
+
+    func storeAlbum() {
+        modelController.storeAlbum(with: albumId)
+    }
+
+    func removeAlbum() {
+        modelController.removeAlbum(with: albumId)
     }
 }
 
 extension AlbumDetailsViewModel {
-    fileprivate func parse(albumData: AlbumDetailsModel) {
-        headerViewModel = AlbumDetailsHeaderViewModel(from: albumData)
-        trackViewModel = albumData.tracks.map { AlbumDetailsTrackCellViewModel(from: $0) }
+    fileprivate func updateViewModel(from model: AlbumDetailsModel) {
+        headerViewModel = AlbumDetailsHeaderViewModel(from: model)
+        trackViewModel = model.tracks.map { AlbumDetailsTrackCellViewModel(from: $0) }
+        footerViewModel = AlbumDetailsFooterViewModel(from: model)
     }
 }

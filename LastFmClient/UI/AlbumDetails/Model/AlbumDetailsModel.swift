@@ -27,12 +27,15 @@ struct AlbumDetailsModel {
     var year: String
     var coverImage: UIImage?
     var tracks: [TrackModel]
+    var isStored: Bool
 
     init(from albumInfo: AlbumInfoResponse) {
         self.title = albumInfo.album.name
         self.artist = albumInfo.album.artist
+        // FIXME:
         self.year = "1999 STUB" // albumInfo.album.releaseDate
         self.tracks = albumInfo.album.tracks.track.map(TrackModel.init)
+        self.isStored = false
     }
 
     init(from albumObject: AlbumDatabaseObject) {
@@ -47,5 +50,6 @@ struct AlbumDetailsModel {
         }
 
         self.tracks = albumObject.tracks.map(TrackModel.init)
+        self.isStored = false
     }
 }

@@ -25,6 +25,10 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Ij2-7c-QVS"/>
                             </constraints>
                             <state key="normal" title="Add to collection "/>
+                            <connections>
+                                <action selector="onAddButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="dQa-8D-qDT"/>
+                                <action selector="onButton:" destination="-1" eventType="touchUpInside" id="fIU-dy-ysW"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyR-sD-pGn" userLabel="removeButton">
                             <rect key="frame" x="24" y="8" width="327" height="101"/>
@@ -32,6 +36,9 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="emU-oa-wHZ"/>
                             </constraints>
                             <state key="normal" title="Remove from collection"/>
+                            <connections>
+                                <action selector="onRemoveButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="m5V-mA-T00"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

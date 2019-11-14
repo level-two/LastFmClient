@@ -1,5 +1,5 @@
-import Foundation
 import UIKit
+import PromiseKit
 
 class DefaultNetworkService: NetworkService, APIClient {
     let session: URLSession
@@ -15,8 +15,9 @@ class DefaultNetworkService: NetworkService, APIClient {
 }
 
 extension DefaultNetworkService {
-    func getAlbumDetails(from request: AlbumInfoRequest, completion: @escaping (Result<AlbumInfoResponse>) -> Void) {
-        fetch(with: request.request, completion: completion)
+    func getAlbumDetails(for albumId: String) -> Promise<AlbumInfoResponse> {
+        let request = AlbumInfoRequest.info(albumId: albumId)
+        return fetch(with: request.request)
     }
 }
 
@@ -24,30 +25,28 @@ extension DefaultNetworkService {
     enum ImageDownloadError: Error {
         case badUrl
         case downloadError
-        case incorrectData
     }
 
-    func getImage(_ urlString: String, completion: @escaping (Result<UIImage>) -> Void) {
-        guard let url = URL(string: urlString) else {
-            return completion(.failure(ImageDownloadError.badUrl))
-        }
-
-        if let cachedImage = imageCache.object(forKey: urlString as NSString) {
-            return completion(.success(cachedImage))
-        }
-
-        URLSession.shared.dataTask(with: url, completionHandler: { [weak self] data, _, error in
-            guard error == nil else {
-                return completion(.failure(ImageDownloadError.downloadError))
+    func getImage(_ urlString: String) -> Promise<UIImage> {
+        return .init { seal in
+            guard let url = URL(string: urlString) else {
+                return seal.reject(ImageDownloadError.badUrl)
             }
 
-            guard let data = data, let image = UIImage(data: data) else {
-                return completion(.failure(ImageDownloadError.incorrectData))
+            if let cachedImage = imageCache.object(forKey: urlString as NSString) {
+                return seal.fulfill(cachedImage)
             }
 
-            self?.imageCache.setObject(image, forKey: urlString as NSString)
-            completion(.success(image))
-
-        }).resume()
+            firstly {
+                URLSession.shared.dataTask(.promise, with: url)
+            }.compactMap {
+                UIImage(data: $0.data)
+            }.done {
+                self.imageCache.setObject($0, forKey: urlString as NSString)
+                seal.fulfill($0)
+            }.catch { _ in
+                seal.reject(ImageDownloadError.downloadError)
+            }
+        }
     }
 }

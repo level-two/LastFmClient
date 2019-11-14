@@ -22,18 +22,20 @@ class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
         self.viewModel = AlbumDetailsViewModel(albumId: albumId,
                                                networkService: networkService,
                                                databaseProvider: databaseProvider)
+
+        viewModel?.onViewModelUpdated = { [weak self] in
+            DispatchQueue.main.async { [weak self] in
+                self?.tableView.reloadData()
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         showHudOverlay()
-
-        viewModel?.requestData { [weak self] _ in
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
-                self?.removeHudOverlay()
-            }
+        _ = viewModel?.loadData().done { [weak self] in
+            self?.removeHudOverlay()
         }
     }
 }
@@ -63,14 +65,19 @@ extension AlbumDetailsViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footer = tableView.dequeueReusableHeaderFooterView(AlbumDetailsFooterView.self)
 
-//        if let headerViewModel = viewModel?.headerViewModel, let theme = theme {
-//            header.configure(with: headerViewModel)
-//            header.style(with: theme)
-//        }
-        footer.configure()
-        if let theme = theme {
+        if let footerViewModel = viewModel?.footerViewModel, let theme = theme {
+            footer.configure(with: footerViewModel)
             footer.style(with: theme)
         }
+
+        footer.onAdd = { [weak self] in
+            self?.viewModel?.storeAlbum()
+        }
+
+        footer.onRemove = { [weak self] in
+            self?.viewModel?.removeAlbum()
+        }
+
         return footer
     }
 

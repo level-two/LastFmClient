@@ -1,77 +1,91 @@
 import UIKit
 import RealmSwift
+import PromiseKit
 
 class AlbumDetailsModelController {
     fileprivate let networkService: NetworkService
     fileprivate let databaseProvider: DatabaseProvider
+    fileprivate var notificationToken: NotificationToken?
 
     init(networkService: NetworkService, databaseProvider: DatabaseProvider) {
         self.networkService = networkService
         self.databaseProvider = databaseProvider
     }
 
-    func request(albumId: String, completion: @escaping (AlbumDetailsModel?, Error?) -> Void) {
+    deinit{
+        notificationToken?.invalidate()
+    }
 
-        let albums = databaseProvider.defaultRealm.objects(AlbumDatabaseObject.self)
-
-        if let albumObject = albums.first(where: { $0.albumId == albumId }),
-            let imageUrl = albumObject.imageUrl {
-
-            var albumModel = AlbumDetailsModel(from: albumObject)
-
-            networkService.getImage(imageUrl) { result in
-                switch result {
-                case .success(let image):
-                    albumModel.coverImage = image
-                    completion(albumModel, nil)
-                case .failure(let error):
-                    completion(nil, error)
-                }
-            }
-        } else {
-            networkService.getAlbumDetails(from: .info(albumId: albumId)) { [weak self] result in
-                guard let self = self else { return }
-
-                switch result {
-                case .success(let albumDetails):
-                    let albumObject = AlbumDatabaseObject(from: albumDetails)
-                    let realm = self.databaseProvider.defaultRealm
-
-                    do {
-                        try realm.write { realm.add(albumObject) }
-                    } catch {
-                        return completion(nil, error)
-                    }
-
-                    var albumModel = AlbumDetailsModel(from: albumObject)
-
-                    if let imageUrl = albumObject.imageUrl {
-                        self.networkService.getImage(imageUrl) { result in
-                            switch result {
-                            case .success(let image):
-                                albumModel.coverImage = image
-                                completion(albumModel, nil)
-                            case .failure(let error):
-                                completion(nil, error)
-                            }
-                        }
-                    }
-                case .failure(let error):
-                    completion(nil, error)
-                }
-            }
+    func onAlbumStoredStateChanged(for albumId: String, callback: @escaping (Bool) -> Void) {
+        notificationToken?.invalidate()
+        notificationToken = databaseProvider.onAlbumStateUpdate(albumId: albumId) { [weak self] in
+            guard let isStored = self?.databaseProvider.isAlbumStored(albumId: albumId) else { return }
+            callback(isStored)
         }
+    }
+
+    func retrieveModel(for albumId: String) -> Promise<AlbumDetailsModel> {
+        var model: AlbumDetailsModel?
+
+        return firstly {
+            self.getAlbum(for: albumId)
+        }.then { album -> Promise<UIImage> in
+            model = AlbumDetailsModel(from: album)
+            model?.isStored = self.getAlbumState(for: albumId).isStored
+            return self.getImage(with: album.imageUrl)
+        }.compactMap { image -> AlbumDetailsModel? in
+            model?.coverImage = image
+            return model
+        }
+    }
+
+    func storeAlbum(with albumId: String) {
+        databaseProvider.setAlbumStored(albumId: albumId, stored: true)
+    }
+
+    func removeAlbum(with albumId: String) {
+        databaseProvider.setAlbumStored(albumId: albumId, stored: false)
     }
 }
 
-extension AlbumDatabaseObject {
+fileprivate extension AlbumDetailsModelController {
+    func getAlbum(for albumId: String) -> Promise<AlbumDatabaseObject> {
+        if let album = databaseProvider.getAlbum(with: albumId) {
+            return .init { $0.fulfill(album) }
+        }
+
+        return networkService.getAlbumDetails(for: albumId).map { [weak self] response in
+            let album = AlbumDatabaseObject(from: response)
+            self?.databaseProvider.storeAlbum(album)
+            return album
+        }
+    }
+
+    func getAlbumState(for albumId: String) -> AlbumStateDatabaseObject {
+        if let state = databaseProvider.getAlbumState(for: albumId) {
+            return state
+        }
+
+        let defaultState = AlbumStateDatabaseObject()
+        defaultState.albumId = albumId
+        databaseProvider.storeAlbumState(defaultState)
+        return defaultState
+    }
+
+    func getImage(with url: String) -> Promise<UIImage> {
+        return networkService.getImage(url)
+    }
+}
+
+// TODO: Refactor this part
+fileprivate extension AlbumDatabaseObject {
     convenience init(from albumInfoResponse: AlbumInfoResponse) {
         self.init()
 
         self.albumId = albumInfoResponse.album.mbid
         self.name = albumInfoResponse.album.name
         self.artist = albumInfoResponse.album.artist
-        self.imageUrl = albumInfoResponse.album.image.first { $0.size == "large" }?.url
+        self.imageUrl = albumInfoResponse.album.image.first { $0.size == "large" }?.url ?? ""
 
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
@@ -84,7 +98,7 @@ extension AlbumDatabaseObject {
     }
 }
 
-extension TrackDatabaseObject {
+fileprivate extension TrackDatabaseObject {
     convenience init(from track: AlbumInfoResponse.Track) {
         self.init()
 
