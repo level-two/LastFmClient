@@ -1,6 +1,6 @@
 import UIKit
 
-fileprivate class HudOverlay: UIView {
+private class HudOverlay: UIView {
     var blurEffectView: UIVisualEffectView?
 
     override init(frame: CGRect) {

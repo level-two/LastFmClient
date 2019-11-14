@@ -45,9 +45,27 @@ class DefaultTheme: Theme {
             view?.backgroundColor = colorPalette.dark1
         case .tableHeaderBackground:
             view?.backgroundColor = colorPalette.dark1
+        case .tableFooterBackground:
+            view?.backgroundColor = colorPalette.dark1
         case .tableCellBackground:
             view?.backgroundColor = colorPalette.dark1
+        }
+    }
 
+    func apply(style: ButtonStyle, to button: UIButton?) {
+        guard let button = button else { return }
+
+        button.setTitleColor(colorPalette.base, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = button.bounds.height/2
+
+        switch style {
+        case .normal:
+            button.layer.borderColor = colorPalette.primary1.cgColor
+        case .addButton:
+            button.layer.borderColor = colorPalette.primary3.cgColor
+        case .removeButton:
+            button.layer.borderColor = colorPalette.primary4.cgColor
         }
     }
 }

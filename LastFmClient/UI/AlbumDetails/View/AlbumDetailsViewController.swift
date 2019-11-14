@@ -28,7 +28,7 @@ class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
         super.viewWillAppear(animated)
 
         showHudOverlay()
-        
+
         viewModel?.requestData { [weak self] _ in
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
@@ -41,6 +41,7 @@ class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
 extension AlbumDetailsViewController {
     func registerReusableViews() {
         tableView.registerReusableHeaderFooter(AlbumDetailsHeaderView.self)
+        tableView.registerReusableHeaderFooter(AlbumDetailsFooterView.self)
         tableView.registerReusableCell(AlbumDetailsTrackCell.self)
     }
 
@@ -57,6 +58,20 @@ extension AlbumDetailsViewController {
         }
 
         return header
+    }
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = tableView.dequeueReusableHeaderFooterView(AlbumDetailsFooterView.self)
+
+//        if let headerViewModel = viewModel?.headerViewModel, let theme = theme {
+//            header.configure(with: headerViewModel)
+//            header.style(with: theme)
+//        }
+        footer.configure()
+        if let theme = theme {
+            footer.style(with: theme)
+        }
+        return footer
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

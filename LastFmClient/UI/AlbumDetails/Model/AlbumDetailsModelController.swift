@@ -15,7 +15,7 @@ class AlbumDetailsModelController {
         let albums = databaseProvider.defaultRealm.objects(AlbumDatabaseObject.self)
 
         if let albumObject = albums.first(where: { $0.albumId == albumId }),
-            let imageUrl = albumObject.mediumImageUrl {
+            let imageUrl = albumObject.imageUrl {
 
             var albumModel = AlbumDetailsModel(from: albumObject)
 
@@ -45,7 +45,7 @@ class AlbumDetailsModelController {
 
                     var albumModel = AlbumDetailsModel(from: albumObject)
 
-                    if let imageUrl = albumObject.mediumImageUrl {
+                    if let imageUrl = albumObject.imageUrl {
                         self.networkService.getImage(imageUrl) { result in
                             switch result {
                             case .success(let image):
@@ -71,7 +71,7 @@ extension AlbumDatabaseObject {
         self.albumId = albumInfoResponse.album.mbid
         self.name = albumInfoResponse.album.name
         self.artist = albumInfoResponse.album.artist
-        self.mediumImageUrl = albumInfoResponse.album.image.first { $0.size == "medium" }?.url
+        self.imageUrl = albumInfoResponse.album.image.first { $0.size == "large" }?.url
 
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")

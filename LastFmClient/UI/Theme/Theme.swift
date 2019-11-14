@@ -16,7 +16,14 @@ enum ViewStyle {
     case collectionBackground
     case tableBackground
     case tableHeaderBackground
+    case tableFooterBackground
     case tableCellBackground
+}
+
+enum ButtonStyle {
+    case normal
+    case addButton
+    case removeButton
 }
 
 protocol Theme {
@@ -24,4 +31,5 @@ protocol Theme {
     func apply(style: LabelStyle, to label: UILabel?)
     func apply(style: NavigationBarStyle, to navigationBar: UINavigationBar?)
     func apply(style: ViewStyle, to interfaceElement: UIView?)
+    func apply(style: ButtonStyle, to button: UIButton?)
 }
