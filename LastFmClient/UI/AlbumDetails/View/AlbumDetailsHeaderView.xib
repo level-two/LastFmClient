@@ -19,7 +19,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1k-fP-Ra0">
                     <rect key="frame" x="10" y="36" width="411" height="492"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="LaunchImage-320x480" translatesAutoresizingMaskIntoConstraints="NO" id="iiY-VJ-5hr" userLabel="Cover">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="iiY-VJ-5hr" userLabel="Cover">
                             <rect key="frame" x="0.0" y="0.0" width="411" height="308.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="iiY-VJ-5hr" secondAttribute="height" multiplier="4:3" priority="995" id="3Fb-eW-cfc"/>
@@ -79,7 +79,4 @@
             <point key="canvasLocation" x="98.400000000000006" y="-9.8950524737631191"/>
         </view>
     </objects>
-    <resources>
-        <image name="LaunchImage-320x480" width="320" height="480"/>
-    </resources>
 </document>

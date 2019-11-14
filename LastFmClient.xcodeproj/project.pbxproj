@@ -17,6 +17,7 @@
 		9E0633C8237B6E6F0015B5C0 /* DefaultNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0633C7237B6E6F0015B5C0 /* DefaultNetworkService.swift */; };
 		9E0F8D43237CBBBD0043C720 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F8D42237CBBBD0043C720 /* NetworkService.swift */; };
 		9E0FD12D2379534600EFF1E5 /* AlbumDetailsModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0FD12C2379534600EFF1E5 /* AlbumDetailsModelController.swift */; };
+		9E50F71C237CE3750001C0E0 /* HudOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E50F71B237CE3750001C0E0 /* HudOverlay.swift */; };
 		9E696951237A1BE7003E88C7 /* DatabaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E696950237A1BE7003E88C7 /* DatabaseProvider.swift */; };
 		9E696953237A1C33003E88C7 /* DefaultDatabaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E696952237A1C33003E88C7 /* DefaultDatabaseProvider.swift */; };
 		9E696956237A1DDE003E88C7 /* Bundle+infoPlistValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E696955237A1DDE003E88C7 /* Bundle+infoPlistValues.swift */; };
@@ -104,6 +105,7 @@
 		9E0633C7237B6E6F0015B5C0 /* DefaultNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkService.swift; sourceTree = "<group>"; };
 		9E0F8D42237CBBBD0043C720 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		9E0FD12C2379534600EFF1E5 /* AlbumDetailsModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsModelController.swift; sourceTree = "<group>"; };
+		9E50F71B237CE3750001C0E0 /* HudOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudOverlay.swift; sourceTree = "<group>"; };
 		9E696950237A1BE7003E88C7 /* DatabaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProvider.swift; sourceTree = "<group>"; };
 		9E696952237A1C33003E88C7 /* DefaultDatabaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDatabaseProvider.swift; sourceTree = "<group>"; };
 		9E696955237A1DDE003E88C7 /* Bundle+infoPlistValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+infoPlistValues.swift"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		9E01FE032377939A00D2CF84 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9E50F71D237CE3A70001C0E0 /* Common */,
 				9EAB9EE423783917002F9AD6 /* Theme */,
 				9E01FDF4237775BE00D2CF84 /* Navigator */,
 				9EC109EF2373904A0012986F /* HomeScreen */,
@@ -286,6 +289,14 @@
 				9EF3E91B237AE7D8006FE6C1 /* AlbumInfoResponse.swift */,
 			);
 			path = Responses;
+			sourceTree = "<group>";
+		};
+		9E50F71D237CE3A70001C0E0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9E50F71B237CE3750001C0E0 /* HudOverlay.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		9E696954237A1DCC003E88C7 /* Extensions */ = {
@@ -799,6 +810,7 @@
 				9EF3E911237ABCDD006FE6C1 /* APIClient.swift in Sources */,
 				9EAB9EEA23787377002F9AD6 /* ColorPalette.swift in Sources */,
 				9EAB9EF72378CC45002F9AD6 /* AlbumDetailsModel.swift in Sources */,
+				9E50F71C237CE3750001C0E0 /* HudOverlay.swift in Sources */,
 				9EAB9EE12378361E002F9AD6 /* AlbumDetailsHeaderViewModel.swift in Sources */,
 				9E0F8D43237CBBBD0043C720 /* NetworkService.swift in Sources */,
 				9EAB9EEC23787394002F9AD6 /* FontSet.swift in Sources */,

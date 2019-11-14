@@ -27,11 +27,12 @@ class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // show indicator
+        showHudOverlay()
+        
         viewModel?.requestData { [weak self] _ in
-            // hide indicator
             DispatchQueue.main.async { [weak self] in
                 self?.tableView.reloadData()
+                self?.removeHudOverlay()
             }
         }
     }

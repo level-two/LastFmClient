@@ -6,6 +6,23 @@ class AlbumDetailsHeaderView: UITableViewHeaderFooterView, NibLoadable {
     @IBOutlet weak var artist: UILabel?
     @IBOutlet weak var year: UILabel?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        cleanFields()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cleanFields()
+    }
+
+    func cleanFields() {
+        cover?.image = nil
+        title?.text = ""
+        artist?.text = ""
+        year?.text = ""
+    }
+
     func configure(with viewModel: AlbumDetailsHeaderViewModel) {
         self.cover?.image = viewModel.cover
         self.title?.text = viewModel.title
