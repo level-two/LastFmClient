@@ -6,6 +6,7 @@ target 'LastFmClient' do
   use_frameworks!
 
   # Pods for LastFmClient
+  pod 'PromiseKit'
   pod 'RealmSwift'
   pod 'SwiftLint'
 
