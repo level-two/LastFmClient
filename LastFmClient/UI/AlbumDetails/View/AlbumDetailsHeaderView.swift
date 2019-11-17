@@ -34,6 +34,6 @@ class AlbumDetailsHeaderView: UITableViewHeaderFooterView, NibLoadable {
         theme.apply(style: .normal, to: title)
         theme.apply(style: .normal, to: artist)
         theme.apply(style: .dark, to: year)
-        theme.apply(style: .tableHeaderBackground, to: self.contentView)
+        theme.apply(style: .lightDarkBackground, to: self)
     }
 }

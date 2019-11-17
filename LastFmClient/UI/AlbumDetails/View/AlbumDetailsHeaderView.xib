@@ -19,46 +19,42 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1k-fP-Ra0">
                     <rect key="frame" x="10" y="36" width="411" height="492"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="iiY-VJ-5hr" userLabel="Cover">
-                            <rect key="frame" x="0.0" y="0.0" width="411" height="308.5"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="iiY-VJ-5hr" secondAttribute="height" multiplier="4:3" priority="995" id="3Fb-eW-cfc"/>
-                            </constraints>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="iiY-VJ-5hr" userLabel="Cover">
+                            <rect key="frame" x="0.0" y="0.0" width="411" height="406.5"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17J-ky-FLg" userLabel="Title">
-                            <rect key="frame" x="8" y="317" width="34" height="20.5"/>
+                            <rect key="frame" x="8" y="415" width="34" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFT-ok-xOr" userLabel="Artist">
-                            <rect key="frame" x="8" y="341" width="41.5" height="21"/>
+                            <rect key="frame" x="8" y="439" width="41.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Year" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um7-tv-eDd" userLabel="Year">
-                            <rect key="frame" x="8" y="365.5" width="34" height="118.5"/>
+                            <rect key="frame" x="8" y="463.5" width="34" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Um7-tv-eDd" secondAttribute="bottom" priority="995" constant="8" id="4pl-CM-NBP"/>
-                        <constraint firstItem="iiY-VJ-5hr" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" id="DCn-mh-mge"/>
-                        <constraint firstItem="17J-ky-FLg" firstAttribute="firstBaseline" secondItem="iiY-VJ-5hr" secondAttribute="baseline" priority="995" constant="24.5" symbolType="layoutAnchor" id="HN8-xp-tdv"/>
+                        <constraint firstItem="iiY-VJ-5hr" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" id="DCn-mh-mge"/>
+                        <constraint firstItem="17J-ky-FLg" firstAttribute="firstBaseline" secondItem="iiY-VJ-5hr" secondAttribute="baseline" constant="24.5" symbolType="layoutAnchor" id="HN8-xp-tdv"/>
                         <constraint firstItem="Um7-tv-eDd" firstAttribute="firstBaseline" secondItem="hFT-ok-xOr" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="IjN-q1-LjV"/>
-                        <constraint firstAttribute="bottom" secondItem="Um7-tv-eDd" secondAttribute="bottom" priority="250" constant="8" id="JgP-e2-lFn"/>
-                        <constraint firstItem="hFT-ok-xOr" firstAttribute="firstBaseline" secondItem="17J-ky-FLg" secondAttribute="baseline" priority="995" constant="24" symbolType="layoutAnchor" id="Mj5-Rl-fnZ"/>
-                        <constraint firstItem="Um7-tv-eDd" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" constant="8" id="S1u-nO-Hih"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="17J-ky-FLg" secondAttribute="trailing" priority="995" constant="8" id="U2g-66-Ynj"/>
-                        <constraint firstItem="hFT-ok-xOr" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" constant="8" id="Va1-hi-LQw"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Um7-tv-eDd" secondAttribute="trailing" priority="995" constant="8" id="WsW-FP-Kfg"/>
-                        <constraint firstItem="17J-ky-FLg" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" priority="995" constant="8" id="mZd-yO-lKe"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hFT-ok-xOr" secondAttribute="trailing" priority="995" constant="8" id="nqf-cc-IZF"/>
-                        <constraint firstItem="iiY-VJ-5hr" firstAttribute="top" secondItem="A1k-fP-Ra0" secondAttribute="top" priority="995" id="vxv-D7-ESy"/>
-                        <constraint firstAttribute="trailing" secondItem="iiY-VJ-5hr" secondAttribute="trailing" priority="995" id="z8l-FX-fgT"/>
+                        <constraint firstAttribute="bottom" secondItem="Um7-tv-eDd" secondAttribute="bottom" constant="8" id="JgP-e2-lFn"/>
+                        <constraint firstItem="hFT-ok-xOr" firstAttribute="firstBaseline" secondItem="17J-ky-FLg" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="Mj5-Rl-fnZ"/>
+                        <constraint firstItem="Um7-tv-eDd" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" constant="8" id="S1u-nO-Hih"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="17J-ky-FLg" secondAttribute="trailing" constant="8" id="U2g-66-Ynj"/>
+                        <constraint firstItem="hFT-ok-xOr" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" constant="8" id="Va1-hi-LQw"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Um7-tv-eDd" secondAttribute="trailing" constant="8" id="WsW-FP-Kfg"/>
+                        <constraint firstItem="17J-ky-FLg" firstAttribute="leading" secondItem="A1k-fP-Ra0" secondAttribute="leading" constant="8" id="mZd-yO-lKe"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hFT-ok-xOr" secondAttribute="trailing" constant="8" id="nqf-cc-IZF"/>
+                        <constraint firstItem="iiY-VJ-5hr" firstAttribute="top" secondItem="A1k-fP-Ra0" secondAttribute="top" id="vxv-D7-ESy"/>
+                        <constraint firstAttribute="trailing" secondItem="iiY-VJ-5hr" secondAttribute="trailing" id="z8l-FX-fgT"/>
                     </constraints>
                 </view>
             </subviews>

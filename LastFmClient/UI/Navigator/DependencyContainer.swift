@@ -12,7 +12,7 @@ class DependencyContainer: ViewControllerFactory {
 
     func makeHomeScreenViewController() -> UIViewController {
         let viewController = HomeScreenViewController.loadFromStoryboard()
-        viewController.setupDependencies(navigator: navigator)
+        viewController.setupDependencies(navigator: navigator, theme: theme)
         return viewController
     }
 
@@ -24,7 +24,10 @@ class DependencyContainer: ViewControllerFactory {
 
     func makeArtistDetailsViewController() -> UIViewController {
         let viewController = ArtistDetailsViewController.loadFromStoryboard()
-        viewController.setupDependencies(navigator: navigator)
+        viewController.setupDependencies(navigator: navigator,
+                                         networkService: networkService,
+                                         databaseProvider: databaseProvider,
+                                         theme: theme)
         return viewController
     }
 

@@ -5,8 +5,8 @@ extension UICollectionView {
         register(T.nib, forCellWithReuseIdentifier: String(describing: type))
     }
 
-    func registerSupplementaryView<T>(_ type: T.Type, kind: String) where T: UICollectionViewCell & NibLoadable {
-        register(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: type))
+    func registerSupplementaryView<T>(_ type: T.Type, kind: String) where T: UICollectionReusableView & NibLoadable {
+        register(T.nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: String(describing: type))
     }
 
     func dequeueReusableCell<T>(_ type: T.Type, for indexPath: IndexPath) -> T where T: UICollectionViewCell {

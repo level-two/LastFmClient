@@ -2,7 +2,7 @@ import PromiseKit
 
 protocol APIClient {
     var session: URLSession { get }
-    func fetch<T: Decodable>(with request: URLRequest) -> Promise<T> 
+    func fetch<T: Decodable>(with request: URLRequest) -> Promise<T>
 }
 
 extension APIClient {

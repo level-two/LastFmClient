@@ -1,6 +1,9 @@
 import UIKit
 
-class AlbumDetailsFooterView: UITableViewHeaderFooterView, NibLoadable {
+class ArtistDetailsAlbumCell: UICollectionViewCell, NibLoadable {
+    @IBOutlet weak var coverImage: UIImageView?
+    @IBOutlet weak var tracksNumber: UILabel?
+    @IBOutlet weak var albumTitle: UILabel?
     @IBOutlet weak var addButton: UIButton?
     @IBOutlet weak var removeButton: UIButton?
 
@@ -13,26 +16,30 @@ class AlbumDetailsFooterView: UITableViewHeaderFooterView, NibLoadable {
         case none
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupView()
+    override public func awakeFromNib() {
+        setupCell()
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        setupView()
+        setupCell()
         onAdd = nil
         onRemove = nil
     }
 
-    func configure(with viewModel: AlbumDetailsFooterViewModel) {
+    func configure(with viewModel: ArtistDetailsAlbumViewModel) {
+        coverImage?.image = viewModel.cover
+        tracksNumber?.text = "\(viewModel.tracksNumber)"
+        albumTitle?.text = viewModel.title
+
         setButtonState(viewModel.isAlbumInCollection ? .remove : .add)
     }
 
     func style(with theme: Theme) {
-        theme.apply(style: .addButton, to: addButton)
-        theme.apply(style: .removeButton, to: removeButton)
-        theme.apply(style: .lightDarkBackground, to: self)
+        theme.apply(style: .normal, to: tracksNumber)
+        theme.apply(style: .normal, to: albumTitle)
+        theme.apply(style: .darkBackground, to: self)
+        theme.apply(style: .subtleShadow, to: self.layer)
     }
 
     @IBAction func onAddButton(_ sender: UIButton) {
@@ -44,9 +51,11 @@ class AlbumDetailsFooterView: UITableViewHeaderFooterView, NibLoadable {
     }
 }
 
-extension AlbumDetailsFooterView {
-    fileprivate func setupView() {
+extension ArtistDetailsAlbumCell {
+    fileprivate func setupCell() {
         setButtonState(.none)
+
+        self.layer.cornerRadius = 8
     }
 
     fileprivate func setButtonState(_ state: ButtonState) {

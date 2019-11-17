@@ -12,7 +12,7 @@ class AlbumDetailsModelController {
         self.databaseProvider = databaseProvider
     }
 
-    deinit{
+    deinit {
         notificationToken?.invalidate()
     }
 

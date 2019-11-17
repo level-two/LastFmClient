@@ -11,13 +11,20 @@ enum NavigationBarStyle {
     case normal
 }
 
-enum ViewStyle {
-    case cardBackground
-    case collectionBackground
-    case tableBackground
-    case tableHeaderBackground
-    case tableFooterBackground
-    case tableCellBackground
+enum TableCellStyle {
+    case normal
+}
+
+enum TableHeaderFooterStyle {
+    case normal
+}
+
+enum CollectionCellStyle {
+    case normal
+}
+
+enum CollectionReusableViewStyle {
+    case normal
 }
 
 enum ButtonStyle {
@@ -26,10 +33,23 @@ enum ButtonStyle {
     case removeButton
 }
 
+enum ViewStyle {
+    case darkBackground
+    case lightDarkBackground
+}
+
+enum NavBarStyle {
+    case lightDark
+}
+
+enum LayerShadowStyle {
+    case subtleShadow
+}
+
 protocol Theme {
-    init(fontSet: FontSet, colorPalette: ColorPalette)
     func apply(style: LabelStyle, to label: UILabel?)
-    func apply(style: NavigationBarStyle, to navigationBar: UINavigationBar?)
-    func apply(style: ViewStyle, to interfaceElement: UIView?)
     func apply(style: ButtonStyle, to button: UIButton?)
+    func apply(style: ViewStyle, to view: UIView?)
+    func apply(style: NavBarStyle, to view: UINavigationBar?)
+    func apply(style: LayerShadowStyle, to layer: CALayer?)
 }

@@ -9,7 +9,6 @@ class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerReusableViews()
-        styleView()
     }
 
     func setupDependencies(albumId: String,
@@ -32,6 +31,7 @@ class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        styleView()
 
         showHudOverlay()
         _ = viewModel?.loadData().done { [weak self] in
@@ -94,8 +94,8 @@ extension AlbumDetailsViewController {
 }
 
 extension AlbumDetailsViewController {
-    func styleView() {
-        theme?.apply(style: .normal, to: self.navigationController?.navigationBar)
-        theme?.apply(style: .tableBackground, to: tableView)
+    fileprivate func styleView() {
+        theme?.apply(style: .lightDarkBackground, to: tableView)
+        theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
     }
 }

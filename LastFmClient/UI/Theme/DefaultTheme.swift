@@ -4,7 +4,7 @@ class DefaultTheme: Theme {
     fileprivate let fontSet: FontSet
     fileprivate let colorPalette: ColorPalette
 
-    required init(fontSet: FontSet, colorPalette: ColorPalette) {
+    init(fontSet: FontSet, colorPalette: ColorPalette) {
         self.fontSet = fontSet
         self.colorPalette = colorPalette
     }
@@ -35,23 +35,6 @@ class DefaultTheme: Theme {
         }
     }
 
-    func apply(style: ViewStyle, to view: UIView?) {
-        switch style {
-        case .cardBackground:
-            view?.backgroundColor = colorPalette.primary4
-        case .collectionBackground:
-            view?.backgroundColor = colorPalette.primary3
-        case .tableBackground:
-            view?.backgroundColor = colorPalette.dark1
-        case .tableHeaderBackground:
-            view?.backgroundColor = colorPalette.dark1
-        case .tableFooterBackground:
-            view?.backgroundColor = colorPalette.dark1
-        case .tableCellBackground:
-            view?.backgroundColor = colorPalette.dark1
-        }
-    }
-
     func apply(style: ButtonStyle, to button: UIButton?) {
         guard let button = button else { return }
 
@@ -66,6 +49,36 @@ class DefaultTheme: Theme {
             button.layer.borderColor = colorPalette.primary3.cgColor
         case .removeButton:
             button.layer.borderColor = colorPalette.primary4.cgColor
+        }
+    }
+
+    func apply(style: ViewStyle, to view: UIView?) {
+        switch style {
+        case .darkBackground:
+            view?.backgroundColor = colorPalette.dark1
+        case .lightDarkBackground:
+            view?.backgroundColor = colorPalette.dark2
+        }
+    }
+
+    func apply(style: NavBarStyle, to navigationBar: UINavigationBar?) {
+        switch style {
+        case .lightDark:
+            navigationBar?.isTranslucent = false
+            navigationBar?.barTintColor = colorPalette.dark2
+            navigationBar?.tintColor = colorPalette.base
+            navigationBar?.titleTextAttributes =
+                [NSAttributedString.Key.foregroundColor: colorPalette.base]
+        }
+    }
+
+    func apply(style: LayerShadowStyle, to layer: CALayer?) {
+        switch style {
+        case .subtleShadow:
+            layer?.shadowColor = colorPalette.light1.cgColor
+            layer?.shadowOffset = CGSize(width: 0, height: 4)
+            layer?.shadowOpacity = 0.1
+            layer?.shadowRadius = 8
         }
     }
 }
