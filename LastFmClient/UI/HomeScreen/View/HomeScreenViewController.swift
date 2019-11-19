@@ -3,7 +3,7 @@ import UIKit
 class HomeScreenViewController: UICollectionViewController, StoryboardLoadable {
     fileprivate var navigator: SceneNavigator?
     fileprivate var theme: Theme?
-    fileprivate var viewModel: HomeScreenViewModel? = HomeScreenViewModel()
+    fileprivate var viewModel: HomeScreenViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +17,19 @@ class HomeScreenViewController: UICollectionViewController, StoryboardLoadable {
         styleView()
     }
 
-    func setupDependencies(navigator: SceneNavigator?, theme: Theme) {
+    func setupDependencies(navigator: SceneNavigator?,
+                           networkService: NetworkService,
+                           databaseProvider: DatabaseProvider,
+                           theme: Theme) {
         self.navigator = navigator
         self.theme = theme
+        // TODO: Think of constructing veiw model outside view controller
+        self.viewModel = HomeScreenViewModel(networkService: networkService,
+                                             databaseProvider: databaseProvider)
+
+        viewModel?.onViewModelUpdated = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
 
     @objc func onSearchButton(sender: UIBarButtonItem) {
@@ -39,6 +49,11 @@ extension HomeScreenViewController {
             cell.configure(with: viewModel.albumsViewModel[indexPath.item])
             cell.style(with: theme)
         }
+
+        cell.onRemove = { [weak self] in
+            self?.viewModel?.removeAlbum(at: indexPath.item)
+        }
+
         return cell
     }
 

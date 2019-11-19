@@ -12,7 +12,10 @@ class DependencyContainer: ViewControllerFactory {
 
     func makeHomeScreenViewController() -> UIViewController {
         let viewController = HomeScreenViewController.loadFromStoryboard()
-        viewController.setupDependencies(navigator: navigator, theme: theme)
+        viewController.setupDependencies(navigator: navigator,
+                                         networkService: networkService,
+                                         databaseProvider: databaseProvider,
+                                         theme: theme)
         return viewController
     }
 
