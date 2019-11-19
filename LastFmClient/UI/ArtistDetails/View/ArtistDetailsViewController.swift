@@ -34,10 +34,6 @@ class ArtistDetailsViewController: UICollectionViewController, StoryboardLoadabl
 }
 
 extension ArtistDetailsViewController {
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.albumsViewModel.count ?? 0
     }
@@ -45,6 +41,7 @@ extension ArtistDetailsViewController {
     override func collectionView(_ collectionView: UICollectionView,
                                  viewForSupplementaryElementOfKind kind: String,
                                  at indexPath: IndexPath) -> UICollectionReusableView {
+
         let view = collectionView.dequeueReusableSupplementaryView(ArtistDetailsHeaderView.self,
                                                                    ofKind: UICollectionView.elementKindSectionHeader,
                                                                    for: indexPath)
@@ -52,16 +49,19 @@ extension ArtistDetailsViewController {
             view.configure(with: viewModel.headerViewModel)
             view.style(with: theme)
         }
+
         return view
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         let cell = collectionView.dequeueReusableCell(ArtistDetailsAlbumCell.self, for: indexPath)
         if let viewModel = viewModel, let theme = theme {
             cell.configure(with: viewModel.albumsViewModel[indexPath.item])
             cell.style(with: theme)
         }
+
         return cell
     }
 
