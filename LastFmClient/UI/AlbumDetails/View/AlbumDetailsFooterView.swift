@@ -32,7 +32,7 @@ class AlbumDetailsFooterView: UITableViewHeaderFooterView, NibLoadable {
     func style(with theme: Theme) {
         theme.apply(style: .addButton, to: addButton)
         theme.apply(style: .removeButton, to: removeButton)
-        theme.apply(style: .lightDarkBackground, to: self)
+        theme.apply(style: .lightDarkBackground, to: self.contentView)
     }
 
     @IBAction func onAddButton(_ sender: UIButton) {

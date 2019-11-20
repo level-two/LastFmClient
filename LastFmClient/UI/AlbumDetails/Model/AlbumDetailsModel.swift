@@ -50,6 +50,6 @@ struct AlbumDetailsModel {
         }
 
         self.tracks = albumObject.tracks.map(TrackModel.init)
-        self.isStored = false
+        self.isStored = albumObject.isStored
     }
 }

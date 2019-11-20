@@ -12,7 +12,7 @@ class AlbumDetailsTrackCell: UITableViewCell, NibLoadable {
     func style(with theme: Theme) {
         theme.apply(style: .normal, to: track)
         theme.apply(style: .dark, to: trackLength)
-        theme.apply(style: .lightDarkBackground, to: self)
+        theme.apply(style: .lightDarkBackground, to: self.contentView)
     }
 }
 

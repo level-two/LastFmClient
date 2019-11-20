@@ -38,43 +38,27 @@ extension DefaultDatabaseProvider {
         }
     }
 
-    func getAlbumState(for albumId: String) -> AlbumStateDatabaseObject? {
-        return self.defaultRealm
-            .objects(AlbumStateDatabaseObject.self)
-            .first(where: { $0.albumId == albumId })
-    }
-
-    func storeAlbumState(_ albumState: AlbumStateDatabaseObject) {
-        do {
-            let realm = self.defaultRealm
-            try realm.write { realm.add(albumState) }
-        } catch {
-            fatalError("Failed to store album state to realm: \(error)")
-        }
-    }
-
     func isAlbumStored(albumId: String) -> Bool? {
-        return getAlbumState(for: albumId)?.isStored
+        return getAlbum(with: albumId)?.isStored
     }
 
     func setAlbumStored(albumId: String, stored: Bool) {
         do {
             let realm = self.defaultRealm
 
-            let albumState = realm
-                .objects(AlbumStateDatabaseObject.self)
+            let album = realm
+                .objects(AlbumDatabaseObject.self)
                 .first { $0.albumId == albumId }
 
-            try realm.write { albumState?.isStored = stored }
+            try realm.write { album?.isStored = stored }
         } catch {
             print("Failed to set album isStored state: \(error)")
         }
     }
 
-    func onAlbumStateUpdate(albumId: String, callback: @escaping () -> Void) -> NotificationToken? {
+    func onAlbumUpdate(albumId: String, callback: @escaping () -> Void) -> NotificationToken? {
         return self.defaultRealm
-            .objects(AlbumStateDatabaseObject.self)
-//            .first { $0.albumId == albumId }?
+            .objects(AlbumDatabaseObject.self)
             .filter("albumId == '\(albumId)'")
             .observe { change in
                 guard case .update(_, _, _, _) = change else { return }

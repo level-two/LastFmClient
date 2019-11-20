@@ -19,11 +19,6 @@ class AlbumDetailsViewModel {
             self?.footerViewModel?.isAlbumInCollection = isStored
             self?.onViewModelUpdated?()
         }
-
-        _ = modelController.retrieveModel(for: albumId).done { [weak self] model in
-            self?.updateViewModel(from: model)
-            self?.onViewModelUpdated?()
-        }
     }
 
     func loadData() -> Promise<Void> {

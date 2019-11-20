@@ -18,7 +18,7 @@ class AlbumDetailsModelController {
 
     func onAlbumStoredStateChanged(for albumId: String, callback: @escaping (Bool) -> Void) {
         notificationToken?.invalidate()
-        notificationToken = databaseProvider.onAlbumStateUpdate(albumId: albumId) { [weak self] in
+        notificationToken = databaseProvider.onAlbumUpdate(albumId: albumId) { [weak self] in
             guard let isStored = self?.databaseProvider.isAlbumStored(albumId: albumId) else { return }
             callback(isStored)
         }
@@ -31,7 +31,6 @@ class AlbumDetailsModelController {
             self.getAlbum(for: albumId)
         }.then { album -> Promise<UIImage> in
             model = AlbumDetailsModel(from: album)
-            model?.isStored = self.getAlbumState(for: albumId).isStored
             return self.getImage(with: album.imageUrl)
         }.compactMap { image -> AlbumDetailsModel? in
             model?.coverImage = image
@@ -59,17 +58,6 @@ fileprivate extension AlbumDetailsModelController {
             self?.databaseProvider.storeAlbum(album)
             return album
         }
-    }
-
-    func getAlbumState(for albumId: String) -> AlbumStateDatabaseObject {
-        if let state = databaseProvider.getAlbumState(for: albumId) {
-            return state
-        }
-
-        let defaultState = AlbumStateDatabaseObject()
-        defaultState.albumId = albumId
-        databaseProvider.storeAlbumState(defaultState)
-        return defaultState
     }
 
     func getImage(with url: String) -> Promise<UIImage> {

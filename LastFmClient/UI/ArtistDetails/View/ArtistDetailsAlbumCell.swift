@@ -38,7 +38,7 @@ class ArtistDetailsAlbumCell: UICollectionViewCell, NibLoadable {
     func style(with theme: Theme) {
         theme.apply(style: .normal, to: tracksNumber)
         theme.apply(style: .normal, to: albumTitle)
-        theme.apply(style: .darkBackground, to: self)
+        theme.apply(style: .darkBackground, to: self.contentView)
         theme.apply(style: .subtleShadow, to: self.layer)
     }
 
