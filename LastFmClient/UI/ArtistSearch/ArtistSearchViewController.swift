@@ -25,7 +25,7 @@ extension ArtistSearchViewController {
 
     func setupSearchController() {
         searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.sizeToFit()
         tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
