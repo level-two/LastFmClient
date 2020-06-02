@@ -1,5 +1,5 @@
 //
-//  HomeScreenViewModel.swift
+//  MockAlbumCardService.swift
 //  LastFmClient
 //
 //  Created by Yauheni Lychkouski on 6/1/20.
