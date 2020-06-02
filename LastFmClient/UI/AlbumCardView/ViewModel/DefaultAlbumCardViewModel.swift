@@ -1,18 +1,22 @@
 import UIKit
 
-struct HomeScreenAlbumViewModel {
+struct DefaultAlbumCardViewModel: AlbumCardViewModel {
     let cover: UIImage?
     let title: String
     let year: String
     let tracksNumber: Int
-    let isAlbumInCollection: Bool
+    let inCollection: Bool
+}
 
-    static var mock: HomeScreenAlbumViewModel {
-        return .init(
+extension DefaultAlbumCardViewModel {
+
+    static var mock: AlbumCardViewModel {
+        return DefaultAlbumCardViewModel(
             cover: UIImage(named: "Golova"),
             title: "Golova",
             year: "2013",
             tracksNumber: 13,
-            isAlbumInCollection: true)
+            inCollection: true)
     }
+
 }
