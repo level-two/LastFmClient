@@ -1,12 +1,14 @@
 import UIKit
+import RxSwift
 
 protocol AlbumCardViewModel {
-    var cover: UIImage? { get }
+    var artist: String { get }
     var title: String { get }
-    var inCollection: Bool { get }
 
-    func addToCollection()
-    func removeFromCollection()
+    var cover: Observable<UIImage> { get }
+    var onShowLoadingHud: Observable<Bool> { get }
 
-    var delegate: AlbumCardViewModelDelegate? { get set }
+    var stored: Observable<Bool> { get }
+
+
 }
