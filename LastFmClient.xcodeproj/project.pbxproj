@@ -3,11 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		62BFDC1051610BCFAC7C91AF /* Pods_LastFmClientTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0430F2EC1428ADAA305E18A8 /* Pods_LastFmClientTests.framework */; };
+		9EAAAAEA2486494B000F4F4E /* DefaultAlbumCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE02486494B000F4F4E /* DefaultAlbumCardViewModel.swift */; };
+		9EAAAAEB2486494C000F4F4E /* AlbumCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE12486494B000F4F4E /* AlbumCardViewModel.swift */; };
+		9EAAAAEC2486494C000F4F4E /* AlbumCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE32486494B000F4F4E /* AlbumCardModel.swift */; };
+		9EAAAAED2486494C000F4F4E /* AlbumCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE52486494B000F4F4E /* AlbumCardView.swift */; };
+		9EAAAAEE2486494C000F4F4E /* AlbumCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE62486494B000F4F4E /* AlbumCardView.xib */; };
+		9EAAAAF02486494C000F4F4E /* AlbumDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE92486494B000F4F4E /* AlbumDetailsService.swift */; };
+		9EAAAAF2248663DF000F4F4E /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */; };
+		9EAAAAF424866976000F4F4E /* AlbumStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */; };
+		9EAAAAF624867160000F4F4E /* AlbumCardViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF524867160000F4F4E /* AlbumCardViewModelDelegate.swift */; };
 		9EFF93532484FD820077683D /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93522484FD820077683D /* LastFmClientTests.swift */; };
 		9EFF93BF2484FDDC0077683D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93602484FDDC0077683D /* Assets.xcassets */; };
 		9EFF93C02484FDDC0077683D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93612484FDDC0077683D /* LaunchScreen.storyboard */; };
@@ -94,6 +103,15 @@
 		7D4A1152EA36FF6412073807 /* Pods_LastFmClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LastFmClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9841F97FC78D96D08958604F /* Pods-LastFmClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LastFmClient/Pods-LastFmClient.debug.xcconfig"; sourceTree = "<group>"; };
 		99D1994EEF62ED21E96146AF /* Pods-LastFmClientTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LastFmClientTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LastFmClientTests/Pods-LastFmClientTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9EAAAAE02486494B000F4F4E /* DefaultAlbumCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAlbumCardViewModel.swift; sourceTree = "<group>"; };
+		9EAAAAE12486494B000F4F4E /* AlbumCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCardViewModel.swift; sourceTree = "<group>"; };
+		9EAAAAE32486494B000F4F4E /* AlbumCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCardModel.swift; sourceTree = "<group>"; };
+		9EAAAAE52486494B000F4F4E /* AlbumCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCardView.swift; sourceTree = "<group>"; };
+		9EAAAAE62486494B000F4F4E /* AlbumCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCardView.xib; sourceTree = "<group>"; };
+		9EAAAAE92486494B000F4F4E /* AlbumDetailsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailsService.swift; sourceTree = "<group>"; };
+		9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
+		9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumStoreService.swift; sourceTree = "<group>"; };
+		9EAAAAF524867160000F4F4E /* AlbumCardViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCardViewModelDelegate.swift; sourceTree = "<group>"; };
 		9EFF93382484FD800077683D /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFF934E2484FD820077683D /* LastFmClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastFmClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFF93522484FD820077683D /* LastFmClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFmClientTests.swift; sourceTree = "<group>"; };
@@ -206,6 +224,53 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9EAAAADE2486494B000F4F4E /* AlbumCardView */ = {
+			isa = PBXGroup;
+			children = (
+				9EAAAAE42486494B000F4F4E /* View */,
+				9EAAAADF2486494B000F4F4E /* ViewModel */,
+				9EAAAAE22486494B000F4F4E /* Model */,
+				9EAAAAE72486494B000F4F4E /* Services */,
+			);
+			path = AlbumCardView;
+			sourceTree = "<group>";
+		};
+		9EAAAADF2486494B000F4F4E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9EAAAAE12486494B000F4F4E /* AlbumCardViewModel.swift */,
+				9EAAAAE02486494B000F4F4E /* DefaultAlbumCardViewModel.swift */,
+				9EAAAAF524867160000F4F4E /* AlbumCardViewModelDelegate.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9EAAAAE22486494B000F4F4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9EAAAAE32486494B000F4F4E /* AlbumCardModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9EAAAAE42486494B000F4F4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9EAAAAE62486494B000F4F4E /* AlbumCardView.xib */,
+				9EAAAAE52486494B000F4F4E /* AlbumCardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9EAAAAE72486494B000F4F4E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */,
+				9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		9EFF932F2484FD800077683D = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +312,7 @@
 		9EFF935E2484FDDC0077683D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9EAAAADE2486494B000F4F4E /* AlbumCardView */,
 				9EFF936E2484FDDC0077683D /* Theme */,
 				9EFF938F2484FDDC0077683D /* Navigator */,
 				9EFF93832484FDDC0077683D /* HomeScreen */,
@@ -403,6 +469,7 @@
 		9EFF93942484FDDC0077683D /* AlbumDetails */ = {
 			isa = PBXGroup;
 			children = (
+				9EAAAAE92486494B000F4F4E /* AlbumDetailsService.swift */,
 				9EFF939D2484FDDC0077683D /* View */,
 				9EFF93952484FDDC0077683D /* ViewModel */,
 				9EFF939A2484FDDC0077683D /* Model */,
@@ -627,6 +694,7 @@
 				9EFF93DD2484FDDC0077683D /* HomeScreenViewController.storyboard in Resources */,
 				9EFF93D52484FDDC0077683D /* ArtistDetailsHeaderView.xib in Resources */,
 				9EFF93EE2484FDDC0077683D /* AlbumDetailsViewController.storyboard in Resources */,
+				9EAAAAEE2486494C000F4F4E /* AlbumCardView.xib in Resources */,
 				9EFF93ED2484FDDC0077683D /* AlbumDetailsHeaderView.xib in Resources */,
 				9EFF93EC2484FDDC0077683D /* AlbumDetailsTrackCell.xib in Resources */,
 			);
@@ -747,13 +815,17 @@
 				9EFF93D92484FDDC0077683D /* HomeScreenViewModel.swift in Sources */,
 				9EFF93FE2484FDDC0077683D /* Bundle+infoPlistValues.swift in Sources */,
 				9EFF93D62484FDDC0077683D /* ArtistDetailsViewController.swift in Sources */,
+				9EAAAAF624867160000F4F4E /* AlbumCardViewModelDelegate.swift in Sources */,
 				9EFF93E82484FDDC0077683D /* AlbumDetailsModelController.swift in Sources */,
 				9EFF93E02484FDDC0077683D /* DependencyContainer.swift in Sources */,
+				9EAAAAF02486494C000F4F4E /* AlbumDetailsService.swift in Sources */,
 				9EFF93DE2484FDDC0077683D /* HomeScreenAlbumCell.swift in Sources */,
 				9EFF93C12484FDDC0077683D /* StoryboardLoadable.swift in Sources */,
 				9EFF93CB2484FDDC0077683D /* DefaultTheme.swift in Sources */,
+				9EAAAAEA2486494B000F4F4E /* DefaultAlbumCardViewModel.swift in Sources */,
 				9EFF93C42484FDDC0077683D /* UICollectionView+registerReusable.swift in Sources */,
 				9EFF93CA2484FDDC0077683D /* DefaultColorPalette.swift in Sources */,
+				9EAAAAF424866976000F4F4E /* AlbumStoreService.swift in Sources */,
 				9EFF93C52484FDDC0077683D /* NibLoadable.swift in Sources */,
 				9EFF93E12484FDDC0077683D /* SceneNavigator.swift in Sources */,
 				9EFF93F92484FDDC0077683D /* AlbumInfoRequest.swift in Sources */,
@@ -764,6 +836,7 @@
 				9EFF93E42484FDDC0077683D /* AlbumDetailsHeaderViewModel.swift in Sources */,
 				9EFF94002484FDDC0077683D /* ApplicationMain.swift in Sources */,
 				9EFF93F22484FDDC0077683D /* DatabaseProvider.swift in Sources */,
+				9EAAAAED2486494C000F4F4E /* AlbumCardView.swift in Sources */,
 				9EFF93E92484FDDC0077683D /* AlbumDetailsModel.swift in Sources */,
 				9EFF93F42484FDDC0077683D /* TrackDatabaseObject.swift in Sources */,
 				9EFF93F52484FDDC0077683D /* AlbumDatabaseObject.swift in Sources */,
@@ -778,9 +851,12 @@
 				9EFF93DA2484FDDC0077683D /* HomeScreenAlbumViewModel.swift in Sources */,
 				9EFF93F82484FDDC0077683D /* NetworkService.swift in Sources */,
 				9EFF93C22484FDDC0077683D /* UIColor+hex.swift in Sources */,
+				9EAAAAEC2486494C000F4F4E /* AlbumCardModel.swift in Sources */,
+				9EAAAAEB2486494C000F4F4E /* AlbumCardViewModel.swift in Sources */,
 				9EFF93CD2484FDDC0077683D /* ColorPalette.swift in Sources */,
 				9EFF93DB2484FDDC0077683D /* HomeScreenModel.swift in Sources */,
 				9EFF93D32484FDDC0077683D /* ArtistDetailsAlbumCell.swift in Sources */,
+				9EAAAAF2248663DF000F4F4E /* ImageDownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
