@@ -22,6 +22,14 @@ DEPENDENCIES:
   - RealmSwift
   - SwiftLint
 
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - PromiseKit
+    - Realm
+    - RealmSwift
+    - SwiftLint
+
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
@@ -31,4 +39,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 60064932f79adf4bdc0418c82fa2d215a153f1c7
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.9.3
