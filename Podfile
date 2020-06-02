@@ -3,10 +3,12 @@ platform :ios, '12.0'
 target 'LastFmClient' do
     use_frameworks!
 
+    pod 'RxSwift'
+    pod 'RxCocoa'
     pod 'PromiseKit'
     pod 'RealmSwift'
-    pod 'SwiftLint'
     pod 'Alamofire'
+    pod 'SwiftLint'
 
     target 'LastFmClientTests' do
         inherit! :search_paths
