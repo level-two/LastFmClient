@@ -1,9 +1,14 @@
-//
-//  AlbumCardModel.swift
-//  LastFmClient
-//
-//  Created by Yauheni Lychkouski on 6/1/20.
-//  Copyright © 2020 Yauheni Lychkouski. All rights reserved.
-//
 
-import Foundation
+enum AlbumCoverSize {
+    case small
+    case medium
+    case large
+}
+
+protocol AlbumCardModel {
+    var mbid: String { get }
+    var coverUrl: [AlbumCoverSize: String] { get }
+    var title: String { get }
+    var year: String { get }
+    var numberOfTracks: Int { get }
+}

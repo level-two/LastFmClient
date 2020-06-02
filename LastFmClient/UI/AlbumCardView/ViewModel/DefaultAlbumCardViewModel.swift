@@ -1,11 +1,15 @@
 import UIKit
 
-struct DefaultAlbumCardViewModel: AlbumCardViewModel {
+class DefaultAlbumCardViewModel: AlbumCardViewModel {
     let cover: UIImage?
     let title: String
     let year: String
     let tracksNumber: Int
     let inCollection: Bool
+
+
+
+    
 }
 
 extension DefaultAlbumCardViewModel {
