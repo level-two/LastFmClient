@@ -24,7 +24,6 @@ class HomeScreenModel {
 //        }
 //    }
 
-
     func removeAlbum(with albumId: String) {
 //        databaseProvider.setAlbumStored(albumId: albumId, stored: false)
     }

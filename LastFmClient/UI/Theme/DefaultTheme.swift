@@ -72,13 +72,15 @@ class DefaultTheme: Theme {
         }
     }
 
-    func apply(style: LayerShadowStyle, to layer: CALayer?) {
+    func apply(style: LayerShadowStyle, cornerRadius: CGFloat, to layer: CALayer?) {
+        layer?.cornerRadius = cornerRadius
+
         switch style {
         case .subtleShadow:
             layer?.shadowColor = colorPalette.light1.cgColor
             layer?.shadowOffset = CGSize(width: 0, height: 4)
             layer?.shadowOpacity = 0.1
-            layer?.shadowRadius = 8
+            layer?.shadowRadius = cornerRadius
         }
     }
 }

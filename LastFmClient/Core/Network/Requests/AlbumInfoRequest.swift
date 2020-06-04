@@ -7,7 +7,7 @@ enum AlbumInfoRequest {
 extension AlbumInfoRequest: LastFmEndpoint {
     var method: String {
         switch self {
-        case .info(_): return "album.getinfo"
+        case .info: return "album.getinfo"
         }
     }
 
