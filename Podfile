@@ -9,6 +9,7 @@ target 'LastFmClient' do
     pod 'RealmSwift'
     pod 'Alamofire'
     pod 'AlamofireImage'
+    pod 'AlamofireNetworkActivityIndicator'
     pod 'SwiftLint'
 
     target 'LastFmClientTests' do

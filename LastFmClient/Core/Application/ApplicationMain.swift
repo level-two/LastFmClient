@@ -17,6 +17,9 @@ class ApplicationMain: UIResponder, UIApplicationDelegate {
         let sceneNavigator = SceneNavigator(navigationController: navigationController)
         sceneNavigator.navigate(to: .homeScreen)
 
+        // TODO: Configure this inside network manager or some other proper point
+        NetworkActivityIndicatorManager.shared.isEnabled = true
+
         return true
     }
 }
