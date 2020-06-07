@@ -72,6 +72,10 @@ class DefaultTheme: Theme {
         }
     }
 
+    func apply(style: LayerShadowStyle, to layer: CALayer?) {
+        apply(style: style, cornerRadius: 0, to: layer)
+    }
+
     func apply(style: LayerShadowStyle, cornerRadius: CGFloat, to layer: CALayer?) {
         layer?.cornerRadius = cornerRadius
 

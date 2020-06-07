@@ -27,7 +27,7 @@
 		9EAAAAF2248663DF000F4F4E /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */; };
 		9EAAAAF424866976000F4F4E /* AlbumStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */; };
 		9EC5929E248A529F00DE82ED /* Results+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5929D248A529F00DE82ED /* Results+rx.swift */; };
-		9EC592A0248A808D00DE82ED /* DefaultImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5929F248A808D00DE82ED /* DefaultImageDownloadService.swift */; };
+		9EC592A2248D0F3A00DE82ED /* ImageDownloader+ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC592A1248D0F3A00DE82ED /* ImageDownloader+ImageDownloadService.swift */; };
 		9EFF93532484FD820077683D /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93522484FD820077683D /* LastFmClientTests.swift */; };
 		9EFF93BF2484FDDC0077683D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93602484FDDC0077683D /* Assets.xcassets */; };
 		9EFF93C02484FDDC0077683D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93612484FDDC0077683D /* LaunchScreen.storyboard */; };
@@ -128,7 +128,7 @@
 		9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
 		9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumStoreService.swift; sourceTree = "<group>"; };
 		9EC5929D248A529F00DE82ED /* Results+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Results+rx.swift"; sourceTree = "<group>"; };
-		9EC5929F248A808D00DE82ED /* DefaultImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageDownloadService.swift; sourceTree = "<group>"; };
+		9EC592A1248D0F3A00DE82ED /* ImageDownloader+ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageDownloader+ImageDownloadService.swift"; sourceTree = "<group>"; };
 		9EFF93382484FD800077683D /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFF934E2484FD820077683D /* LastFmClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastFmClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFF93522484FD820077683D /* LastFmClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFmClientTests.swift; sourceTree = "<group>"; };
@@ -280,9 +280,7 @@
 		9EAAAAE72486494B000F4F4E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */,
 				9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */,
-				9EC5929F248A808D00DE82ED /* DefaultImageDownloadService.swift */,
 				9EFF93A92484FDDC0077683D /* RealmAlbumStoreService.swift */,
 			);
 			path = Services;
@@ -294,6 +292,15 @@
 				9EC5929D248A529F00DE82ED /* Results+rx.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9EC592A4248D283B00DE82ED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */,
+				9EC592A1248D0F3A00DE82ED /* ImageDownloader+ImageDownloadService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		9EFF932F2484FD800077683D = {
@@ -542,6 +549,7 @@
 				9EFF93BC2484FDDC0077683D /* Application */,
 				9EFF93AD2484FDDC0077683D /* Network */,
 				9EFF93A72484FDDC0077683D /* Database */,
+				9EC592A4248D283B00DE82ED /* Services */,
 				9EFF93B82484FDDC0077683D /* Extensions */,
 			);
 			path = Core;
@@ -868,6 +876,7 @@
 				9E0773052487E194004E0E36 /* ImageSize.swift in Sources */,
 				9EFF94002484FDDC0077683D /* ApplicationMain.swift in Sources */,
 				9EAAAAED2486494C000F4F4E /* AlbumCardViewCell.swift in Sources */,
+				9EC592A2248D0F3A00DE82ED /* ImageDownloader+ImageDownloadService.swift in Sources */,
 				9EFF93E92484FDDC0077683D /* AlbumDetailsModel.swift in Sources */,
 				9EFF93F52484FDDC0077683D /* AlbumObject.swift in Sources */,
 				9EFF93FB2484FDDC0077683D /* APIClient.swift in Sources */,
@@ -884,7 +893,6 @@
 				9EFF93C22484FDDC0077683D /* UIColor+hex.swift in Sources */,
 				9EAAAAEC2486494C000F4F4E /* Album.swift in Sources */,
 				9EAAAAEB2486494C000F4F4E /* AlbumCardViewModel.swift in Sources */,
-				9EC592A0248A808D00DE82ED /* DefaultImageDownloadService.swift in Sources */,
 				9EFF93CD2484FDDC0077683D /* ColorPalette.swift in Sources */,
 				9EFF93DB2484FDDC0077683D /* HomeScreenModel.swift in Sources */,
 				9EFF93D32484FDDC0077683D /* ArtistDetailsAlbumCell.swift in Sources */,
