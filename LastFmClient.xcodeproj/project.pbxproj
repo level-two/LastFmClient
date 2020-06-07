@@ -282,6 +282,8 @@
 			children = (
 				9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */,
 				9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */,
+				9EC5929F248A808D00DE82ED /* DefaultImageDownloadService.swift */,
+				9EFF93A92484FDDC0077683D /* RealmAlbumStoreService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -550,7 +552,6 @@
 			children = (
 				9E0F139624893E6C00A46DFA /* Realm+Default.swift */,
 				9E0F139A248955F800A46DFA /* RealmConfiguration+default.swift */,
-				9EFF93A92484FDDC0077683D /* RealmAlbumStoreService.swift */,
 				9EFF93AA2484FDDC0077683D /* Model */,
 				9EC5929C248A526B00DE82ED /* Extensions */,
 			);
@@ -572,7 +573,6 @@
 			children = (
 				9EFF93B12484FDDC0077683D /* NetworkService.swift */,
 				9EFF93AE2484FDDC0077683D /* DefaultNetworkService.swift */,
-				9EC5929F248A808D00DE82ED /* DefaultImageDownloadService.swift */,
 				9EFF93B52484FDDC0077683D /* Base */,
 				9EFF93B22484FDDC0077683D /* Requests */,
 				9EFF93AF2484FDDC0077683D /* Responses */,

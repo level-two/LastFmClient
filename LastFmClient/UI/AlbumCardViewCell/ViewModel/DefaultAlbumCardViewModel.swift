@@ -56,7 +56,7 @@ private extension DefaultAlbumCardViewModel {
         showLoadingHud.accept(true)
 
         firstly {
-            self.service.getImage(url: url ?? "")
+            self.service.getImage(url)
         }.done { [weak self] image in
             self?.cover.accept(image)
         }.catch { [weak self] _ in

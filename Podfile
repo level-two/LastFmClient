@@ -8,6 +8,7 @@ target 'LastFmClient' do
     pod 'PromiseKit'
     pod 'RealmSwift'
     pod 'Alamofire'
+    pod 'AlamofireImage'
     pod 'SwiftLint'
 
     target 'LastFmClientTests' do
