@@ -1,7 +1,7 @@
 import RealmSwift
 
 class AlbumTrack: Object, Track {
-    dynamic var rank: String = ""
+    dynamic var rank: Int = 0
     dynamic var name: String = ""
     dynamic var artist: String = ""
     dynamic var duration: Int = 0
