@@ -1,0 +1,1 @@
+protocol DatabaseService: AlbumStoreService { }

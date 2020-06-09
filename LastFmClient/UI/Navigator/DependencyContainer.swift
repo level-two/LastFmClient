@@ -3,8 +3,8 @@ import UIKit
 class DependencyContainer: ViewControllerFactory {
     fileprivate weak var navigator: SceneNavigator?
     fileprivate lazy var theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
-    fileprivate lazy var networkService: NetworkService = DefaultNetworkService()
-    fileprivate lazy var databaseProvider: DatabaseProvider = DefaultDatabaseProvider()
+    fileprivate lazy var networkService: NetworkService = AlamofireNetworkService()
+    fileprivate lazy var databaseService: DatabaseService = RealmDatabaseService()
 
     init(navigator: SceneNavigator) {
         self.navigator = navigator
@@ -14,7 +14,7 @@ class DependencyContainer: ViewControllerFactory {
         let viewController = HomeScreenViewController.loadFromStoryboard()
         viewController.setupDependencies(navigator: navigator,
                                          networkService: networkService,
-                                         databaseProvider: databaseProvider,
+                                         databaseService: databaseService,
                                          theme: theme)
         return viewController
     }
@@ -29,7 +29,7 @@ class DependencyContainer: ViewControllerFactory {
         let viewController = ArtistDetailsViewController.loadFromStoryboard()
         viewController.setupDependencies(navigator: navigator,
                                          networkService: networkService,
-                                         databaseProvider: databaseProvider,
+                                         databaseService: databaseService,
                                          theme: theme)
         return viewController
     }
@@ -39,7 +39,7 @@ class DependencyContainer: ViewControllerFactory {
         viewController.setupDependencies(albumId: albumId,
                                          navigator: navigator,
                                          networkService: networkService,
-                                         databaseProvider: databaseProvider,
+                                         databaseService: databaseService,
                                          theme: theme)
         return viewController
     }

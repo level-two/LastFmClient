@@ -1,7 +1,7 @@
 import RealmSwift
 import RxSwift
 
-class RealmAlbumStoreService: AlbumStoreService {
+class RealmDatabaseService: DatabaseService {
     func storeAlbum(_ album: Album) {
         do {
             let realm = Realm.default
