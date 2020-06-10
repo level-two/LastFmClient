@@ -5,6 +5,7 @@ import RxCocoa
 final class AlbumCardViewCell: UICollectionViewCell, NibLoadable {
     func set(viewModel: AlbumCardViewModel) {
         self.viewModel = viewModel
+        viewModel.downloadContent()
     }
 
     func style(with theme: Theme?) {
