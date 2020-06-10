@@ -73,8 +73,6 @@ private extension HomeScreenViewController {
             cell.style(with: theme)
             return cell
         }
-
-        collectionView.dataSource = dataSource
     }
 
     func addSearchButton() {
@@ -108,7 +106,5 @@ private extension HomeScreenViewController {
                 self?.viewModel?.onCardSelected(at: indexPath.row)
             }
         }.disposed(by: disposeBag)
-
-        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 }
