@@ -5,6 +5,7 @@ target 'LastFmClient' do
 
     pod 'RxSwift'
     pod 'RxCocoa'
+    pod 'RxDataSources'
     pod 'PromiseKit'
     pod 'RealmSwift'
     pod 'Alamofire'
