@@ -34,6 +34,8 @@
 		9E68E874248E436800CEB3BB /* AlamofireNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E68E873248E436800CEB3BB /* AlamofireNetworkService.swift */; };
 		9E68E876248E445A00CEB3BB /* TrackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E68E875248E445A00CEB3BB /* TrackResponse.swift */; };
 		9E873E0F24868AE400EE8964 /* DefaultHomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E873E0E24868AE400EE8964 /* DefaultHomeScreenViewModel.swift */; };
+		9EA2FCF824910CFF00557C69 /* UICollectionView+registerReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA2FCF724910CFF00557C69 /* UICollectionView+registerReusable.swift */; };
+		9EA2FCFA2491480500557C69 /* AlbumCardHashableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA2FCF92491480500557C69 /* AlbumCardHashableWrapper.swift */; };
 		9EAAAAEA2486494B000F4F4E /* DefaultAlbumCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE02486494B000F4F4E /* DefaultAlbumCardViewModel.swift */; };
 		9EAAAAEB2486494C000F4F4E /* AlbumCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE12486494B000F4F4E /* AlbumCardViewModel.swift */; };
 		9EAAAAEC2486494C000F4F4E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE32486494B000F4F4E /* Album.swift */; };
@@ -42,6 +44,7 @@
 		9EAAAAF02486494C000F4F4E /* AlbumDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE92486494B000F4F4E /* AlbumDetailsService.swift */; };
 		9EAAAAF2248663DF000F4F4E /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */; };
 		9EAAAAF424866976000F4F4E /* AlbumStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */; };
+		9EAB1FBF2491035F0074B04D /* HomeScreenSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB1FBE2491035E0074B04D /* HomeScreenSections.swift */; };
 		9EC5929E248A529F00DE82ED /* Results+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC5929D248A529F00DE82ED /* Results+rx.swift */; };
 		9EFF93532484FD820077683D /* LastFmClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93522484FD820077683D /* LastFmClientTests.swift */; };
 		9EFF93BF2484FDDC0077683D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93602484FDDC0077683D /* Assets.xcassets */; };
@@ -144,6 +147,8 @@
 		9E68E873248E436800CEB3BB /* AlamofireNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkService.swift; sourceTree = "<group>"; };
 		9E68E875248E445A00CEB3BB /* TrackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackResponse.swift; sourceTree = "<group>"; };
 		9E873E0E24868AE400EE8964 /* DefaultHomeScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultHomeScreenViewModel.swift; sourceTree = "<group>"; };
+		9EA2FCF724910CFF00557C69 /* UICollectionView+registerReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+registerReusable.swift"; sourceTree = "<group>"; };
+		9EA2FCF92491480500557C69 /* AlbumCardHashableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCardHashableWrapper.swift; sourceTree = "<group>"; };
 		9EAAAAE02486494B000F4F4E /* DefaultAlbumCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAlbumCardViewModel.swift; sourceTree = "<group>"; };
 		9EAAAAE12486494B000F4F4E /* AlbumCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCardViewModel.swift; sourceTree = "<group>"; };
 		9EAAAAE32486494B000F4F4E /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
@@ -152,6 +157,7 @@
 		9EAAAAE92486494B000F4F4E /* AlbumDetailsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailsService.swift; sourceTree = "<group>"; };
 		9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadService.swift; sourceTree = "<group>"; };
 		9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumStoreService.swift; sourceTree = "<group>"; };
+		9EAB1FBE2491035E0074B04D /* HomeScreenSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenSections.swift; sourceTree = "<group>"; };
 		9EC5929D248A529F00DE82ED /* Results+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Results+rx.swift"; sourceTree = "<group>"; };
 		9EFF93382484FD800077683D /* LastFmClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastFmClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EFF934E2484FD820077683D /* LastFmClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LastFmClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -438,6 +444,7 @@
 				9EFF93652484FDDC0077683D /* UIColor+hex.swift */,
 				9EFF93682484FDDC0077683D /* NibLoadable.swift */,
 				9EFF93642484FDDC0077683D /* StoryboardLoadable.swift */,
+				9EA2FCF724910CFF00557C69 /* UICollectionView+registerReusable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -536,6 +543,8 @@
 			children = (
 				9EFF938B2484FDDC0077683D /* HomeScreenViewController.storyboard */,
 				9EFF938E2484FDDC0077683D /* HomeScreenViewController.swift */,
+				9EAB1FBE2491035E0074B04D /* HomeScreenSections.swift */,
+				9EA2FCF92491480500557C69 /* AlbumCardHashableWrapper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -894,6 +903,7 @@
 				9EFF93D02484FDDC0077683D /* ArtistDetailsHeaderViewModel.swift in Sources */,
 				9EFF93E62484FDDC0077683D /* AlbumDetailsTrackCellViewModel.swift in Sources */,
 				9EFF93FF2484FDDC0077683D /* URL+replacingLastPathComponent.swift in Sources */,
+				9EA2FCF824910CFF00557C69 /* UICollectionView+registerReusable.swift in Sources */,
 				9E4FBE9F2490CCF50038BE7B /* UICollectionViewCell+defaultIdentifier.swift in Sources */,
 				9E0773072487EA2B004E0E36 /* AlbumImageUrlObject.swift in Sources */,
 				9EFF93EF2484FDDC0077683D /* AlbumDetailsTrackCell.swift in Sources */,
@@ -930,7 +940,9 @@
 				9EFF94002484FDDC0077683D /* ApplicationMain.swift in Sources */,
 				9EAAAAED2486494C000F4F4E /* AlbumCardViewCell.swift in Sources */,
 				9E4FBE94248FDA090038BE7B /* AlbumFetchService.swift in Sources */,
+				9EAB1FBF2491035F0074B04D /* HomeScreenSections.swift in Sources */,
 				9EFF93E92484FDDC0077683D /* AlbumDetailsModel.swift in Sources */,
+				9EA2FCFA2491480500557C69 /* AlbumCardHashableWrapper.swift in Sources */,
 				9EFF93F52484FDDC0077683D /* AlbumObject.swift in Sources */,
 				9EFF93E52484FDDC0077683D /* AlbumDetailsFooterViewModel.swift in Sources */,
 				9EFF93FA2484FDDC0077683D /* LastFmEndpoint.swift in Sources */,
@@ -1040,7 +1052,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1094,7 +1106,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

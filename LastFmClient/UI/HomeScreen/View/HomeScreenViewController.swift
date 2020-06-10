@@ -3,6 +3,9 @@ import RxSwift
 import RxCocoa
 
 class HomeScreenViewController: UICollectionViewController, StoryboardLoadable {
+    private typealias DataSource = UICollectionViewDiffableDataSource<HomeScreenSections, AlbumCardHashableWrapper>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<HomeScreenSections, AlbumCardHashableWrapper>
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -19,32 +22,8 @@ class HomeScreenViewController: UICollectionViewController, StoryboardLoadable {
     private var viewModel: HomeScreenViewModel?
     private var navigator: SceneNavigator?
     private var theme: Theme?
+    private var dataSource: DataSource?
     private let disposeBag = DisposeBag()
-}
-
-extension HomeScreenViewController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.albumsViewModel.count ?? 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(HomeScreenAlbumCell.self, for: indexPath)
-        if let viewModel = viewModel, let theme = theme {
-            cell.configure(with: viewModel.albumsViewModel[indexPath.item])
-            cell.style(with: theme)
-        }
-
-        cell.onRemove = { [weak self] in
-            self?.viewModel?.removeAlbum(at: indexPath.item)
-        }
-
-        return cell
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigator?.navigate(to: .albumDetails(albumId: "63b3a8ca-26f2-4e2b-b867-647a6ec2bebd"))
-    }
 }
 
 extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
@@ -74,13 +53,28 @@ extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
 private extension HomeScreenViewController {
     func setupView() {
         registerReusableCells()
+        setupDataSource()
+
         addSearchButton()
         styleView()
         setupBindings()
     }
 
     func registerReusableCells() {
-        collectionView.registerReusableCell(HomeScreenAlbumCell.self)
+        collectionView.registerReusableCell(AlbumCardViewCell.self)
+    }
+
+    func setupDataSource() {
+        let theme = self.theme
+
+        dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, cardWrapper in
+            let cell = collectionView.dequeueReusableCell(AlbumCardViewCell.self, for: indexPath)
+            cell.set(viewModel: cardWrapper.wrappedCard)
+            cell.style(with: theme)
+            return cell
+        }
+
+        collectionView.dataSource = dataSource
     }
 
     func addSearchButton() {
@@ -93,23 +87,28 @@ private extension HomeScreenViewController {
     }
 
     func setupBindings() {
-//        viewModel?.onViewModelUpdated = { [weak self] in
-//            self?.collectionView.reloadData()
-//        }
-
 //        navigationItem.rightBarButtonItem?.rx.bind(to: viweModel.onSearch).disposed(by: disposeBag)
 //
 //        viewModel?.onSwitchToArtistSearch.bind(onNext: {
 //            navigator?.navigate(to: .artistSearch)
 //        }).disposed(by: disposeBag)
 
-        viewModel?.albumCells.bind(to:
-            collectionView.rx.items(cellIdentifier: AlbumCardViewCell.defaultIdentifier,
-                                    cellType: AlbumCardViewCell.self)) { [weak self] _, viewModel, cell in
-                cell.set(viewModel: viewModel)
-                cell.style(with: self?.theme)
+        viewModel?.albumCells.bind { [weak self] albumCells in
+            var snapshot = Snapshot()
+            snapshot.appendSections([.storedAlbums])
+            snapshot.appendItems(albumCells.map(AlbumCardHashableWrapper.init))
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }.disposed(by: disposeBag)
 
-        //collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+        collectionView.rx.itemSelected.bind { [weak self] indexPath in
+            guard let section = HomeScreenSections(rawValue: indexPath.section) else { return }
+            switch section {
+            case .storedAlbums:
+                //self?.navigator?.navigate(to: .albumDetails(albumId: "63b3a8ca-26f2-4e2b-b867-647a6ec2bebd"))
+                self?.viewModel?.onCardSelected(at: indexPath.row)
+            }
+        }.disposed(by: disposeBag)
+
+        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 }
