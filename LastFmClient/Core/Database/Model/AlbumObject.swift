@@ -1,9 +1,9 @@
 import RealmSwift
 
 class AlbumObject: Object, Album {
-    dynamic var mbid: String = ""
-    dynamic var title: String = ""
-    dynamic var artist: String = ""
+    @objc dynamic var mbid: String = ""
+    @objc dynamic var title: String = ""
+    @objc dynamic var artist: String = ""
     var albumTracks = List<AlbumTrack>()
     var albumImageUrl = List<AlbumImageUrlObject>()
 
@@ -18,7 +18,7 @@ class AlbumObject: Object, Album {
     var imageUrl: [ImageSize: String] {
         get {
             var dic = [ImageSize: String]()
-            albumImageUrl.forEach { dic[$0.imageSize] = $0.imageUrl }
+            albumImageUrl.forEach { dic[$0.size.imageSize] = $0.url }
             return dic
         }
         set {

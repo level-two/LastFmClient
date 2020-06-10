@@ -12,35 +12,36 @@ class DependencyContainer: ViewControllerFactory {
 
     func makeHomeScreenViewController() -> UIViewController {
         let viewController = HomeScreenViewController.loadFromStoryboard()
-        viewController.setupDependencies(navigator: navigator,
-                                         networkService: networkService,
-                                         databaseService: databaseService,
-                                         theme: theme)
-        return viewController
-    }
-
-    func makeArtistSearchViewController() -> UIViewController {
-        let viewController = ArtistSearchViewController.loadFromStoryboard()
-        viewController.setupDependencies(navigator: navigator)
-        return viewController
-    }
-
-    func makeArtistDetailsViewController() -> UIViewController {
-        let viewController = ArtistDetailsViewController.loadFromStoryboard()
-        viewController.setupDependencies(navigator: navigator,
-                                         networkService: networkService,
-                                         databaseService: databaseService,
-                                         theme: theme)
-        return viewController
-    }
-
-    func makeAlbumDetailsViewController(albumId: String) -> UIViewController {
-        let viewController = AlbumDetailsViewController.loadFromStoryboard()
-        viewController.setupDependencies(albumId: albumId,
+        let viewModel = DefaultHomeScreenViewModel(imageDownloadService: networkService,
+                                                   albumStoreService: databaseService)
+        viewController.setupDependencies(viewModel: viewModel,
                                          navigator: navigator,
-                                         networkService: networkService,
-                                         databaseService: databaseService,
                                          theme: theme)
         return viewController
     }
+
+//    func makeArtistSearchViewController() -> UIViewController {
+//        let viewController = ArtistSearchViewController.loadFromStoryboard()
+//        viewController.setupDependencies(navigator: navigator)
+//        return viewController
+//    }
+//
+//    func makeArtistDetailsViewController() -> UIViewController {
+//        let viewController = ArtistDetailsViewController.loadFromStoryboard()
+//        viewController.setupDependencies(navigator: navigator,
+//                                         networkService: networkService,
+//                                         databaseService: databaseService,
+//                                         theme: theme)
+//        return viewController
+//    }
+//
+//    func makeAlbumDetailsViewController(albumId: String) -> UIViewController {
+//        let viewController = AlbumDetailsViewController.loadFromStoryboard()
+//        viewController.setupDependencies(albumId: albumId,
+//                                         navigator: navigator,
+//                                         networkService: networkService,
+//                                         databaseService: databaseService,
+//                                         theme: theme)
+//        return viewController
+//    }
 }

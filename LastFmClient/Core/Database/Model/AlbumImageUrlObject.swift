@@ -1,16 +1,16 @@
 import RealmSwift
 
 class AlbumImageUrlObject: Object {
-    dynamic var imageSize: ImageSize = .small
-    dynamic var imageUrl: String = ""
+    @objc dynamic var size: AlbumImageSize = .small
+    @objc dynamic var url: String = ""
 
     required init() {
         super.init()
     }
 
-    init(imageSize: ImageSize, imageUrl: String) {
+    init(size: ImageSize, url: String) {
         super.init()
-        self.imageSize = imageSize
-        self.imageUrl = imageUrl
+        self.size = AlbumImageSize(from: size)
+        self.url = url
     }
 }

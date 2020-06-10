@@ -36,12 +36,12 @@
 		9E873E0F24868AE400EE8964 /* DefaultHomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E873E0E24868AE400EE8964 /* DefaultHomeScreenViewModel.swift */; };
 		9EA2FCF824910CFF00557C69 /* UICollectionView+registerReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA2FCF724910CFF00557C69 /* UICollectionView+registerReusable.swift */; };
 		9EA2FCFA2491480500557C69 /* AlbumCardHashableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA2FCF92491480500557C69 /* AlbumCardHashableWrapper.swift */; };
+		9EA2FCFD2491533200557C69 /* AlbumImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA2FCFC2491533100557C69 /* AlbumImageSize.swift */; };
 		9EAAAAEA2486494B000F4F4E /* DefaultAlbumCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE02486494B000F4F4E /* DefaultAlbumCardViewModel.swift */; };
 		9EAAAAEB2486494C000F4F4E /* AlbumCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE12486494B000F4F4E /* AlbumCardViewModel.swift */; };
 		9EAAAAEC2486494C000F4F4E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE32486494B000F4F4E /* Album.swift */; };
 		9EAAAAED2486494C000F4F4E /* AlbumCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE52486494B000F4F4E /* AlbumCardViewCell.swift */; };
 		9EAAAAEE2486494C000F4F4E /* AlbumCardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE62486494B000F4F4E /* AlbumCardViewCell.xib */; };
-		9EAAAAF02486494C000F4F4E /* AlbumDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAE92486494B000F4F4E /* AlbumDetailsService.swift */; };
 		9EAAAAF2248663DF000F4F4E /* ImageDownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF1248663DF000F4F4E /* ImageDownloadService.swift */; };
 		9EAAAAF424866976000F4F4E /* AlbumStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAAAAF324866976000F4F4E /* AlbumStoreService.swift */; };
 		9EAB1FBF2491035F0074B04D /* HomeScreenSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAB1FBE2491035E0074B04D /* HomeScreenSections.swift */; };
@@ -54,23 +54,12 @@
 		9EFF93C32484FDDC0077683D /* UITableView+registerReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93662484FDDC0077683D /* UITableView+registerReusable.swift */; };
 		9EFF93C52484FDDC0077683D /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93682484FDDC0077683D /* NibLoadable.swift */; };
 		9EFF93C62484FDDC0077683D /* HudOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF936A2484FDDC0077683D /* HudOverlay.swift */; };
-		9EFF93C72484FDDC0077683D /* ArtistSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF936C2484FDDC0077683D /* ArtistSearchViewController.swift */; };
-		9EFF93C82484FDDC0077683D /* ArtistSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF936D2484FDDC0077683D /* ArtistSearchViewController.storyboard */; };
 		9EFF93C92484FDDC0077683D /* FontSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF936F2484FDDC0077683D /* FontSet.swift */; };
 		9EFF93CA2484FDDC0077683D /* DefaultColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93702484FDDC0077683D /* DefaultColorPalette.swift */; };
 		9EFF93CB2484FDDC0077683D /* DefaultTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93712484FDDC0077683D /* DefaultTheme.swift */; };
 		9EFF93CC2484FDDC0077683D /* DefaultFontSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93722484FDDC0077683D /* DefaultFontSet.swift */; };
 		9EFF93CD2484FDDC0077683D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93732484FDDC0077683D /* ColorPalette.swift */; };
 		9EFF93CE2484FDDC0077683D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93742484FDDC0077683D /* Theme.swift */; };
-		9EFF93CF2484FDDC0077683D /* ArtistDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93772484FDDC0077683D /* ArtistDetailsViewModel.swift */; };
-		9EFF93D02484FDDC0077683D /* ArtistDetailsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93782484FDDC0077683D /* ArtistDetailsHeaderViewModel.swift */; };
-		9EFF93D12484FDDC0077683D /* ArtistDetailsAlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93792484FDDC0077683D /* ArtistDetailsAlbumViewModel.swift */; };
-		9EFF93D32484FDDC0077683D /* ArtistDetailsAlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF937D2484FDDC0077683D /* ArtistDetailsAlbumCell.swift */; };
-		9EFF93D42484FDDC0077683D /* ArtistDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF937E2484FDDC0077683D /* ArtistDetailsViewController.storyboard */; };
-		9EFF93D52484FDDC0077683D /* ArtistDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF937F2484FDDC0077683D /* ArtistDetailsHeaderView.xib */; };
-		9EFF93D62484FDDC0077683D /* ArtistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93802484FDDC0077683D /* ArtistDetailsViewController.swift */; };
-		9EFF93D72484FDDC0077683D /* ArtistDetailsAlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93812484FDDC0077683D /* ArtistDetailsAlbumCell.xib */; };
-		9EFF93D82484FDDC0077683D /* ArtistDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93822484FDDC0077683D /* ArtistDetailsHeaderView.swift */; };
 		9EFF93D92484FDDC0077683D /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93852484FDDC0077683D /* HomeScreenViewModel.swift */; };
 		9EFF93DD2484FDDC0077683D /* HomeScreenViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF938B2484FDDC0077683D /* HomeScreenViewController.storyboard */; };
 		9EFF93DF2484FDDC0077683D /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF938E2484FDDC0077683D /* HomeScreenViewController.swift */; };
@@ -78,20 +67,6 @@
 		9EFF93E12484FDDC0077683D /* SceneNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93912484FDDC0077683D /* SceneNavigator.swift */; };
 		9EFF93E22484FDDC0077683D /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93922484FDDC0077683D /* ViewControllerFactory.swift */; };
 		9EFF93E32484FDDC0077683D /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93932484FDDC0077683D /* Navigator.swift */; };
-		9EFF93E42484FDDC0077683D /* AlbumDetailsHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93962484FDDC0077683D /* AlbumDetailsHeaderViewModel.swift */; };
-		9EFF93E52484FDDC0077683D /* AlbumDetailsFooterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93972484FDDC0077683D /* AlbumDetailsFooterViewModel.swift */; };
-		9EFF93E62484FDDC0077683D /* AlbumDetailsTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93982484FDDC0077683D /* AlbumDetailsTrackCellViewModel.swift */; };
-		9EFF93E72484FDDC0077683D /* AlbumDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93992484FDDC0077683D /* AlbumDetailsViewModel.swift */; };
-		9EFF93E82484FDDC0077683D /* AlbumDetailsModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF939B2484FDDC0077683D /* AlbumDetailsModelController.swift */; };
-		9EFF93E92484FDDC0077683D /* AlbumDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF939C2484FDDC0077683D /* AlbumDetailsModel.swift */; };
-		9EFF93EA2484FDDC0077683D /* AlbumDetailsFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF939E2484FDDC0077683D /* AlbumDetailsFooterView.xib */; };
-		9EFF93EB2484FDDC0077683D /* AlbumDetailsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF939F2484FDDC0077683D /* AlbumDetailsFooterView.swift */; };
-		9EFF93EC2484FDDC0077683D /* AlbumDetailsTrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93A02484FDDC0077683D /* AlbumDetailsTrackCell.xib */; };
-		9EFF93ED2484FDDC0077683D /* AlbumDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93A12484FDDC0077683D /* AlbumDetailsHeaderView.xib */; };
-		9EFF93EE2484FDDC0077683D /* AlbumDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EFF93A22484FDDC0077683D /* AlbumDetailsViewController.storyboard */; };
-		9EFF93EF2484FDDC0077683D /* AlbumDetailsTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93A32484FDDC0077683D /* AlbumDetailsTrackCell.swift */; };
-		9EFF93F02484FDDC0077683D /* AlbumDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93A42484FDDC0077683D /* AlbumDetailsHeaderView.swift */; };
-		9EFF93F12484FDDC0077683D /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93A52484FDDC0077683D /* AlbumDetailsViewController.swift */; };
 		9EFF93F32484FDDC0077683D /* RealmDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93A92484FDDC0077683D /* RealmDatabaseService.swift */; };
 		9EFF93F52484FDDC0077683D /* AlbumObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93AC2484FDDC0077683D /* AlbumObject.swift */; };
 		9EFF93F72484FDDC0077683D /* AlbumResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFF93B02484FDDC0077683D /* AlbumResponse.swift */; };
@@ -149,6 +124,7 @@
 		9E873E0E24868AE400EE8964 /* DefaultHomeScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultHomeScreenViewModel.swift; sourceTree = "<group>"; };
 		9EA2FCF724910CFF00557C69 /* UICollectionView+registerReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+registerReusable.swift"; sourceTree = "<group>"; };
 		9EA2FCF92491480500557C69 /* AlbumCardHashableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCardHashableWrapper.swift; sourceTree = "<group>"; };
+		9EA2FCFC2491533100557C69 /* AlbumImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumImageSize.swift; sourceTree = "<group>"; };
 		9EAAAAE02486494B000F4F4E /* DefaultAlbumCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAlbumCardViewModel.swift; sourceTree = "<group>"; };
 		9EAAAAE12486494B000F4F4E /* AlbumCardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCardViewModel.swift; sourceTree = "<group>"; };
 		9EAAAAE32486494B000F4F4E /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
@@ -634,6 +610,7 @@
 				9EFF93AC2484FDDC0077683D /* AlbumObject.swift */,
 				9E0773062487EA2B004E0E36 /* AlbumImageUrlObject.swift */,
 				9E0F139C248A3CAB00A46DFA /* AlbumTrack.swift */,
+				9EA2FCFC2491533100557C69 /* AlbumImageSize.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -772,16 +749,8 @@
 			files = (
 				9EFF93BF2484FDDC0077683D /* Assets.xcassets in Resources */,
 				9EFF93C02484FDDC0077683D /* LaunchScreen.storyboard in Resources */,
-				9EFF93D72484FDDC0077683D /* ArtistDetailsAlbumCell.xib in Resources */,
-				9EFF93EA2484FDDC0077683D /* AlbumDetailsFooterView.xib in Resources */,
-				9EFF93D42484FDDC0077683D /* ArtistDetailsViewController.storyboard in Resources */,
-				9EFF93C82484FDDC0077683D /* ArtistSearchViewController.storyboard in Resources */,
 				9EFF93DD2484FDDC0077683D /* HomeScreenViewController.storyboard in Resources */,
-				9EFF93D52484FDDC0077683D /* ArtistDetailsHeaderView.xib in Resources */,
-				9EFF93EE2484FDDC0077683D /* AlbumDetailsViewController.storyboard in Resources */,
 				9EAAAAEE2486494C000F4F4E /* AlbumCardViewCell.xib in Resources */,
-				9EFF93ED2484FDDC0077683D /* AlbumDetailsHeaderView.xib in Resources */,
-				9EFF93EC2484FDDC0077683D /* AlbumDetailsTrackCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,9 +852,7 @@
 			files = (
 				9EFF93C62484FDDC0077683D /* HudOverlay.swift in Sources */,
 				9EFF93C32484FDDC0077683D /* UITableView+registerReusable.swift in Sources */,
-				9EFF93D12484FDDC0077683D /* ArtistDetailsAlbumViewModel.swift in Sources */,
 				9E0773032487D7D3004E0E36 /* ArtistBio.swift in Sources */,
-				9EFF93C72484FDDC0077683D /* ArtistSearchViewController.swift in Sources */,
 				9EFF93C92484FDDC0077683D /* FontSet.swift in Sources */,
 				9E68E874248E436800CEB3BB /* AlamofireNetworkService.swift in Sources */,
 				9E68E876248E445A00CEB3BB /* TrackResponse.swift in Sources */,
@@ -893,26 +860,18 @@
 				9EFF93F32484FDDC0077683D /* RealmDatabaseService.swift in Sources */,
 				9E4FBE87248FAA9E0038BE7B /* TrackRankResponse.swift in Sources */,
 				9EFF93FC2484FDDC0077683D /* Endpoint.swift in Sources */,
-				9EFF93CF2484FDDC0077683D /* ArtistDetailsViewModel.swift in Sources */,
-				9EFF93D82484FDDC0077683D /* ArtistDetailsHeaderView.swift in Sources */,
 				9E0772FD2487D217004E0E36 /* Track.swift in Sources */,
 				9E4FBE85248FA5F00038BE7B /* AlbumTracksResponse.swift in Sources */,
 				9E4FBE8E248FAB500038BE7B /* AlbumResponse+Album.swift in Sources */,
 				9EFF93CE2484FDDC0077683D /* Theme.swift in Sources */,
 				9EFF93F72484FDDC0077683D /* AlbumResponse.swift in Sources */,
-				9EFF93D02484FDDC0077683D /* ArtistDetailsHeaderViewModel.swift in Sources */,
-				9EFF93E62484FDDC0077683D /* AlbumDetailsTrackCellViewModel.swift in Sources */,
 				9EFF93FF2484FDDC0077683D /* URL+replacingLastPathComponent.swift in Sources */,
 				9EA2FCF824910CFF00557C69 /* UICollectionView+registerReusable.swift in Sources */,
 				9E4FBE9F2490CCF50038BE7B /* UICollectionViewCell+defaultIdentifier.swift in Sources */,
 				9E0773072487EA2B004E0E36 /* AlbumImageUrlObject.swift in Sources */,
-				9EFF93EF2484FDDC0077683D /* AlbumDetailsTrackCell.swift in Sources */,
 				9EFF93D92484FDDC0077683D /* HomeScreenViewModel.swift in Sources */,
 				9EFF93FE2484FDDC0077683D /* Bundle+infoPlistValues.swift in Sources */,
-				9EFF93D62484FDDC0077683D /* ArtistDetailsViewController.swift in Sources */,
-				9EFF93E82484FDDC0077683D /* AlbumDetailsModelController.swift in Sources */,
 				9EFF93E02484FDDC0077683D /* DependencyContainer.swift in Sources */,
-				9EAAAAF02486494C000F4F4E /* AlbumDetailsService.swift in Sources */,
 				9E0773012487D761004E0E36 /* Artist.swift in Sources */,
 				9EFF93C12484FDDC0077683D /* StoryboardLoadable.swift in Sources */,
 				9EFF93CB2484FDDC0077683D /* DefaultTheme.swift in Sources */,
@@ -931,26 +890,19 @@
 				9E0F139D248A3CAB00A46DFA /* AlbumTrack.swift in Sources */,
 				9EFF93DF2484FDDC0077683D /* HomeScreenViewController.swift in Sources */,
 				9E4FBE89248FAAC90038BE7B /* TrackArtistResponse.swift in Sources */,
-				9EFF93EB2484FDDC0077683D /* AlbumDetailsFooterView.swift in Sources */,
-				9EFF93F12484FDDC0077683D /* AlbumDetailsViewController.swift in Sources */,
 				9E0F139724893E6C00A46DFA /* Realm+Default.swift in Sources */,
 				9EFF93CC2484FDDC0077683D /* DefaultFontSet.swift in Sources */,
-				9EFF93E42484FDDC0077683D /* AlbumDetailsHeaderViewModel.swift in Sources */,
 				9E0773052487E194004E0E36 /* ImageSize.swift in Sources */,
 				9EFF94002484FDDC0077683D /* ApplicationMain.swift in Sources */,
 				9EAAAAED2486494C000F4F4E /* AlbumCardViewCell.swift in Sources */,
 				9E4FBE94248FDA090038BE7B /* AlbumFetchService.swift in Sources */,
 				9EAB1FBF2491035F0074B04D /* HomeScreenSections.swift in Sources */,
-				9EFF93E92484FDDC0077683D /* AlbumDetailsModel.swift in Sources */,
 				9EA2FCFA2491480500557C69 /* AlbumCardHashableWrapper.swift in Sources */,
 				9EFF93F52484FDDC0077683D /* AlbumObject.swift in Sources */,
-				9EFF93E52484FDDC0077683D /* AlbumDetailsFooterViewModel.swift in Sources */,
 				9EFF93FA2484FDDC0077683D /* LastFmEndpoint.swift in Sources */,
 				9EFF93E32484FDDC0077683D /* Navigator.swift in Sources */,
-				9EFF93F02484FDDC0077683D /* AlbumDetailsHeaderView.swift in Sources */,
 				9E4FBE7F248F86610038BE7B /* URLBuilder.swift in Sources */,
 				9E0772FF2487D505004E0E36 /* ArtistSearchMatch.swift in Sources */,
-				9EFF93E72484FDDC0077683D /* AlbumDetailsViewModel.swift in Sources */,
 				9EC5929E248A529F00DE82ED /* Results+rx.swift in Sources */,
 				9E4FBE81248FA5AC0038BE7B /* AlbumInfoResponse.swift in Sources */,
 				9EFF93E22484FDDC0077683D /* ViewControllerFactory.swift in Sources */,
@@ -959,8 +911,8 @@
 				9EAAAAEC2486494C000F4F4E /* Album.swift in Sources */,
 				9EAAAAEB2486494C000F4F4E /* AlbumCardViewModel.swift in Sources */,
 				9EFF93CD2484FDDC0077683D /* ColorPalette.swift in Sources */,
-				9EFF93D32484FDDC0077683D /* ArtistDetailsAlbumCell.swift in Sources */,
 				9EAAAAF2248663DF000F4F4E /* ImageDownloadService.swift in Sources */,
+				9EA2FCFD2491533200557C69 /* AlbumImageSize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,9 +3,9 @@ import UIKit
 class SceneNavigator: Navigator {
     enum Destination {
         case homeScreen
-        case artistSearch
-        case artistDetails
-        case albumDetails(albumId: String)
+//        case artistSearch
+//        case artistDetails
+//        case albumDetails(albumId: String)
     }
 
     fileprivate lazy var factory: ViewControllerFactory = {
@@ -29,12 +29,12 @@ fileprivate extension SceneNavigator {
         switch destination {
         case .homeScreen:
             return factory.makeHomeScreenViewController()
-        case .artistSearch:
-            return factory.makeArtistSearchViewController()
-        case .artistDetails:
-            return factory.makeArtistDetailsViewController()
-        case .albumDetails(let albumId):
-            return factory.makeAlbumDetailsViewController(albumId: albumId)
+//        case .artistSearch:
+//            return factory.makeArtistSearchViewController()
+//        case .artistDetails:
+//            return factory.makeArtistDetailsViewController()
+//        case .albumDetails(let albumId):
+//            return factory.makeAlbumDetailsViewController(albumId: albumId)
         }
     }
 }
