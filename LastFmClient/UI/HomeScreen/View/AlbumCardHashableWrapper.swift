@@ -1,21 +1,19 @@
 import Foundation
 
-class AlbumCardHashableWrapper {
+class AlbumCardHashableWrapper: Hashable {
     let wrappedCard: AlbumCardViewModel
 
     init(wrappedCard: AlbumCardViewModel) {
         self.wrappedCard = wrappedCard
     }
-
-    private let id = UUID()
 }
 
-extension AlbumCardHashableWrapper: Hashable {
+extension AlbumCardHashableWrapper {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
+        hasher.combine(wrappedCard.mbid)
     }
 
     static func == (lhs: AlbumCardHashableWrapper, rhs: AlbumCardHashableWrapper) -> Bool {
-        lhs.id == rhs.id
+        lhs.wrappedCard.mbid == rhs.wrappedCard.mbid
     }
 }

@@ -4,6 +4,7 @@ import RxRelay
 import PromiseKit
 
 class DefaultAlbumCardViewModel: AlbumCardViewModel {
+    var mbid: String { return album.mbid }
     var artist: String { return album.artist }
     var title: String { return album.title }
     var onCover: Observable<UIImage?> { return cover.asObservable() }
@@ -29,7 +30,7 @@ class DefaultAlbumCardViewModel: AlbumCardViewModel {
 
     private let album: Album
 
-    private let onStore = BehaviorSubject<Void>(value: ())
+    private let onStore = PublishSubject<Void>()
     private let stored: BehaviorRelay<Bool>
     private let cover = BehaviorRelay<UIImage?>(value: nil)
     private let showLoadingHud = BehaviorRelay<Bool>(value: false)

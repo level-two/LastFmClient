@@ -3,6 +3,7 @@ import RxSwift
 import RxRelay
 
 protocol AlbumCardViewModel {
+    var mbid: String { get }
     var artist: String { get }
     var title: String { get }
 
