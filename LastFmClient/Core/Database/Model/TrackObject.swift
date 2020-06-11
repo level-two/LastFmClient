@@ -1,6 +1,6 @@
 import RealmSwift
 
-class AlbumTrack: Object, Track {
+class TrackObject: Object {
     @objc dynamic var rank: Int = 0
     @objc dynamic var name: String = ""
     @objc dynamic var artist: String = ""
@@ -16,5 +16,16 @@ class AlbumTrack: Object, Track {
         self.name = track.name
         self.artist = track.artist
         self.duration = track.duration
+    }
+
+    var toTrack: Track {
+        struct TrackCopy: Track {
+            let rank: Int
+            let name: String
+            let artist: String
+            let duration: Int
+        }
+
+        return TrackCopy(rank: rank, name: name, artist: artist, duration: duration)
     }
 }

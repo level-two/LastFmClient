@@ -26,6 +26,7 @@ class RealmDatabaseService: DatabaseService {
         return Realm.default
             .objects(AlbumObject.self)
             .first { $0.mbid == mbid }
+            .map { $0.toAlbum }
     }
 
     func isAlbumStored(with mbid: String) -> Bool {
@@ -40,5 +41,12 @@ class RealmDatabaseService: DatabaseService {
             .filter("mbid == '\(mbid)'")
             .asObservable
             .map { !$0.isEmpty }
+    }
+
+    func storedAlbums() -> Observable<[Album]> {
+        return Realm.default
+        .objects(AlbumObject.self)
+        .asObservable
+        .map { $0.map { $0.toAlbum } }
     }
 }

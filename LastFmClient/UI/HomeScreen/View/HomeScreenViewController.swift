@@ -91,10 +91,10 @@ private extension HomeScreenViewController {
 //            navigator?.navigate(to: .artistSearch)
 //        }).disposed(by: disposeBag)
 
-        viewModel?.albumCells.bind { [weak self] albumCells in
+        viewModel?.onStoredAlbums.bind { [weak self] albums in
             var snapshot = Snapshot()
             snapshot.appendSections([.storedAlbums])
-            snapshot.appendItems(albumCells.map(AlbumCardHashableWrapper.init))
+            snapshot.appendItems(albums.map(AlbumCardHashableWrapper.init))
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }.disposed(by: disposeBag)
 

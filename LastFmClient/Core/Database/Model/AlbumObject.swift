@@ -1,31 +1,11 @@
 import RealmSwift
 
-class AlbumObject: Object, Album {
+class AlbumObject: Object {
     @objc dynamic var mbid: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var artist: String = ""
-    var albumTracks = List<AlbumTrack>()
-    var albumImageUrl = List<AlbumImageUrlObject>()
-
-    var tracks: [Track] {
-        get { Array(albumTracks) }
-        set {
-            albumTracks.removeAll()
-            albumTracks.append(objectsIn: newValue.map(AlbumTrack.init))
-        }
-    }
-
-    var imageUrl: [ImageSize: String] {
-        get {
-            var dic = [ImageSize: String]()
-            albumImageUrl.forEach { dic[$0.size.imageSize] = $0.url }
-            return dic
-        }
-        set {
-            albumImageUrl.removeAll()
-            albumImageUrl.append(objectsIn: newValue.map(AlbumImageUrlObject.init))
-        }
-    }
+    var albumTracks = List<TrackObject>()
+    var albumImageUrl = List<ImageUrlObject>()
 
     required init() {
         super.init()
@@ -36,7 +16,22 @@ class AlbumObject: Object, Album {
         self.mbid = album.mbid
         self.title = album.title
         self.artist = album.artist
-        self.imageUrl = album.imageUrl
-        self.tracks = album.tracks
+        self.albumImageUrl.append(objectsIn: album.imageUrl.map(ImageUrlObject.init))
+        self.albumTracks.append(objectsIn: album.tracks.map(TrackObject.init))
+    }
+
+    var toAlbum: Album {
+        struct AlbumCopy: Album {
+            let mbid: String
+            let title: String
+            let artist: String
+            let imageUrl: [ImageSize: String]
+            let tracks: [Track]
+        }
+
+        let tracks = Array(albumTracks.map { $0.toTrack })
+        let imageUrl = Dictionary(albumImageUrl.map { $0.toImageUrl }, uniquingKeysWith: { _, new in new })
+
+        return AlbumCopy(mbid: mbid, title: title, artist: artist, imageUrl: imageUrl, tracks: tracks)
     }
 }

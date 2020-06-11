@@ -6,4 +6,5 @@ protocol AlbumStoreService {
     func getAlbum(with mbid: String) -> Album?
     func isAlbumStored(with mbid: String) -> Bool
     func onAlbumStoredStateChange(with mbid: String) -> Observable<Bool>
+    func storedAlbums() -> Observable<[Album]>
 }

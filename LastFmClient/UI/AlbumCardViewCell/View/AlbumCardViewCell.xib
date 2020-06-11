@@ -75,7 +75,7 @@
                             <constraint firstItem="o3g-tN-y91" firstAttribute="leading" secondItem="n7x-oh-Qki" secondAttribute="leading" constant="20" symbolic="YES" id="CmE-oD-xum"/>
                             <constraint firstAttribute="bottom" secondItem="o3g-tN-y91" secondAttribute="baseline" constant="12.5" symbolType="layoutAnchor" id="IMH-OY-Q6a"/>
                             <constraint firstItem="kvI-9w-Lsk" firstAttribute="top" secondItem="n7x-oh-Qki" secondAttribute="top" constant="20" symbolic="YES" id="JCK-7h-OdZ"/>
-                            <constraint firstItem="o3g-tN-y91" firstAttribute="top" secondItem="9t3-Wl-KRW" secondAttribute="baseline" symbolic="YES" id="KV1-dH-e0w"/>
+                            <constraint firstItem="o3g-tN-y91" firstAttribute="top" secondItem="9t3-Wl-KRW" secondAttribute="baseline" id="KV1-dH-e0w"/>
                             <constraint firstItem="kvI-9w-Lsk" firstAttribute="leading" secondItem="n7x-oh-Qki" secondAttribute="leading" constant="20" symbolic="YES" id="Qle-vX-ToJ"/>
                             <constraint firstItem="9t3-Wl-KRW" firstAttribute="leading" secondItem="n7x-oh-Qki" secondAttribute="leading" constant="20" symbolic="YES" id="Wr5-nG-uNi"/>
                             <constraint firstAttribute="trailing" secondItem="kvI-9w-Lsk" secondAttribute="trailing" constant="20" symbolic="YES" id="dD9-8J-sNo"/>

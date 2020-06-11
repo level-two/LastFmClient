@@ -1,6 +1,6 @@
 import RealmSwift
 
-@objc enum AlbumImageSize: Int, RealmEnum {
+@objc enum ImageSizeObject: Int, RealmEnum {
     case small
     case medium
     case large
@@ -16,7 +16,7 @@ import RealmSwift
         }
     }
 
-    var imageSize: ImageSize {
+    var toImageSize: ImageSize {
         switch self {
         case .small:
             return .small
