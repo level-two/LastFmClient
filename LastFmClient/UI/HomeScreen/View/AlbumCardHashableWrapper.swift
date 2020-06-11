@@ -1,6 +1,6 @@
 import Foundation
 
-class AlbumCardHashableWrapper: Hashable {
+final class AlbumCardHashableWrapper: Hashable {
     let wrappedCard: AlbumCardViewModel
 
     init(wrappedCard: AlbumCardViewModel) {

@@ -3,7 +3,7 @@ import RxSwift
 import RxRelay
 import PromiseKit
 
-class DefaultAlbumCardViewModel: AlbumCardViewModel {
+final class DefaultAlbumCardViewModel: AlbumCardViewModel {
     var mbid: String { return album.mbid }
     var artist: String { return album.artist }
     var title: String { return album.title }

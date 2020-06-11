@@ -36,10 +36,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bcb-Be-wTw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="bcb-Be-wTw" firstAttribute="leading" secondItem="3Ps-9J-Gy9" secondAttribute="leading" id="Dgl-rZ-2Rq"/>
+                            <constraint firstItem="3Ps-9J-Gy9" firstAttribute="trailing" secondItem="bcb-Be-wTw" secondAttribute="trailing" id="It1-PW-gVf"/>
                             <constraint firstItem="3Ps-9J-Gy9" firstAttribute="trailing" secondItem="KF2-Yf-fHt" secondAttribute="trailing" id="PdT-64-xu3"/>
+                            <constraint firstItem="bcb-Be-wTw" firstAttribute="top" secondItem="3Ps-9J-Gy9" secondAttribute="top" id="RgY-vE-JWg"/>
+                            <constraint firstItem="3Ps-9J-Gy9" firstAttribute="bottom" secondItem="bcb-Be-wTw" secondAttribute="bottom" id="YLb-pl-fej"/>
                             <constraint firstItem="KF2-Yf-fHt" firstAttribute="leading" secondItem="3Ps-9J-Gy9" secondAttribute="leading" id="dBE-h0-OpC"/>
                             <constraint firstItem="KF2-Yf-fHt" firstAttribute="top" secondItem="3Ps-9J-Gy9" secondAttribute="top" id="moz-aa-cTL"/>
                             <constraint firstItem="3Ps-9J-Gy9" firstAttribute="bottom" secondItem="KF2-Yf-fHt" secondAttribute="bottom" id="zeG-eo-ms3"/>
@@ -48,6 +56,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="KF2-Yf-fHt" id="fh7-nW-ghg"/>
+                        <outlet property="searchTableView" destination="bcb-Be-wTw" id="PUw-b2-ezR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cps-V0-1Uh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

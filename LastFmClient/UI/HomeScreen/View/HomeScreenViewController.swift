@@ -2,8 +2,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class HomeScreenViewController: UIViewController, StoryboardLoadable {
+final class HomeScreenViewController: UIViewController, StoryboardLoadable {
     @IBOutlet private var collectionView: UICollectionView?
+    @IBOutlet private var searchTableView: UITableView?
 
     private typealias DataSource = UICollectionViewDiffableDataSource<HomeScreenSections, AlbumCardHashableWrapper>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<HomeScreenSections, AlbumCardHashableWrapper>
@@ -53,7 +54,7 @@ private extension HomeScreenViewController {
     }
 
     func setupCollectionDataSource() {
-        guard let collectionView = self.collectionView else { return }
+        guard let collectionView = collectionView else { return }
 
         let theme = self.theme
         dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, cardWrapper in
@@ -80,8 +81,7 @@ private extension HomeScreenViewController {
             guard let section = HomeScreenSections(rawValue: indexPath.section) else { return }
             switch section {
             case .storedAlbums:
-                //self?.navigator?.navigate(to: .albumDetails(albumId: "63b3a8ca-26f2-4e2b-b867-647a6ec2bebd"))
-                self?.viewModel?.onCardSelected(at: indexPath.row)
+                self?.viewModel?.doSelectCard.onNext(indexPath.row)
             }
         }.disposed(by: disposeBag)
     }
@@ -115,6 +115,32 @@ extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - Table View
+private extension HomeScreenViewController {
+    func setupSearchTableView() {
+        setupSearchTableBindings()
+        setupSearchTableStyle()
+    }
+
+    func setupSearchTableBindings() {
+        guard let tableView = searchTableView, let viewModel = viewModel else { return }
+
+        viewModel.onSearchResults
+            .bind(to: tableView.rx.items(cellIdentifier: UITableViewCell.defaultIdentifier)) { _, element, cell in
+                cell.textLabel?.text = element.artist
+                cell.accessoryType = .disclosureIndicator
+            }.disposed(by: disposeBag)
+
+        tableView.rx.modelSelected(ArtistSearchViewModel.self)
+            .bind(to: viewModel.doSelectSearchItem)
+            .disposed(by: disposeBag)
+    }
+
+    func setupSearchTableStyle() {
+        theme?.apply(style: .semiTransparentBackground, to: searchTableView)
+    }
+}
+
 // MARK: - Search and nav bar
 private extension HomeScreenViewController {
     func addSearchButton() {
@@ -126,10 +152,20 @@ private extension HomeScreenViewController {
     }
 
     func setupBindings() {
-//        navigationItem.rightBarButtonItem?.rx.bind(to: viweModel.onSearch).disposed(by: disposeBag)
+        guard let viewModel = viewModel else { return }
+
+        navigationItem.rightBarButtonItem?.rx.tap
+            .map { true }
+            .bind(to: viewModel.doSearchModeEnable)
+            .disposed(by: disposeBag)
+
+//        viewModel?.onShowAlbumDetails
+//            .bind { [weak self] mbid self?.navigator?.navigate(to: .albumDetails(mbid)) }
+//            .disposed(by: disposeBag)
 //
-//        viewModel?.onSwitchToArtistSearch.bind(onNext: {
-//            navigator?.navigate(to: .artistSearch)
-//        }).disposed(by: disposeBag)
+//        viewModel?.onShowArtistDetails
+//            .bind { [weak self] mbid self?.navigator?.navigate(to: .artistDetails(mbid)) }
+//            .disposed(by: disposeBag)
+
     }
 }

@@ -36,6 +36,7 @@ enum ButtonStyle {
 enum ViewStyle {
     case darkBackground
     case lightDarkBackground
+    case semiTransparentBackground
 }
 
 enum NavBarStyle {

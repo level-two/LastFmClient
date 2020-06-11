@@ -58,6 +58,8 @@ class DefaultTheme: Theme {
             view?.backgroundColor = colorPalette.dark1
         case .lightDarkBackground:
             view?.backgroundColor = colorPalette.dark2
+        case .semiTransparentBackground:
+            view?.backgroundColor = colorPalette.dark2.withAlphaComponent(0.5)
         }
     }
 

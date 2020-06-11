@@ -63,6 +63,11 @@ private extension AlbumCardViewCell {
         storeButton?.rx.tap
             .bind(to: viewModel.onStoreButton)
             .disposed(by: disposeBag)
+
+        viewModel.onStored.bind { [weak self] isStored in
+            let image = UIImage(named: isStored ? "remove" : "add")
+            self?.storeButton?.setImage(image, for: .normal)
+        }.disposed(by: disposeBag)
     }
 
     func cleanBindings() {

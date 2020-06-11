@@ -6,6 +6,34 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
         return storedAlbums.asObservable()
     }
 
+    var onShowAlbumDetails: Observable<String> {
+        return doShowAlbumDetails.asObservable()
+    }
+
+    var doSelectCard: AnyObserver<Int> {
+        return onCardSelected.asObserver()
+    }
+
+    var doSearchModeEnable: AnyObserver<Bool> {
+        return onSearchModeEnable.asObserver()
+    }
+
+    var doArtistSearch: AnyObserver<String> {
+       return onArtistSearch.asObserver()
+   }
+
+    var onSearchResults: Observable<[ArtistSearchViewModel]> {
+        return searchResults.asObservable()
+    }
+
+    var doSelectSearchItem: AnyObserver<ArtistSearchViewModel> {
+        return onSearchItemSelected.asObserver()
+    }
+
+    var onShowArtistDetails: Observable<String> {
+        return doShowArtistDetails.asObservable()
+    }
+
     init(imageDownloadService: ImageDownloadService, albumStoreService: AlbumStoreService) {
         self.imageDownloadService = imageDownloadService
         self.albumStoreService = albumStoreService
@@ -14,45 +42,21 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
         //makeMock()
     }
 
-    func onCardSelected(at row: Int) {
-
-    }
-
     private let storedAlbums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
+    private let doShowAlbumDetails = BehaviorRelay<String>(value: "")
+    private let onCardSelected = PublishSubject<Int>()
+
+    private let onSearchModeEnable = PublishSubject<Bool>()
+    private let onArtistSearch = PublishSubject<String>()
+
+    private let searchResults = BehaviorRelay<[ArtistSearchViewModel]>(value: [])
+    private let onSearchItemSelected = PublishSubject<ArtistSearchViewModel>()
+    private let doShowArtistDetails = BehaviorRelay<String>(value: "")
+
     private let imageDownloadService: ImageDownloadService
     private let albumStoreService: AlbumStoreService
+
     private let disposeBag = DisposeBag()
-
-//    init(networkService: NetworkService, databaseProvider: DatabaseProvider) {
-//        self.modelController = HomeScreenModelController(networkService: networkService,
-//                                                         databaseProvider: databaseProvider)
-//
-//        modelController.onStoredAlbumsUpdate { [weak self] storedAlbums in
-//            self?.albumsViewModel = storedAlbums.map(HomeScreenAlbumViewModel.init)
-//            self?.onViewModelUpdated?()
-//        }
-
-//        _ = modelController.retrieveModel(for: albumId).done { [weak self] model in
-//            self?.updateViewModel(from: model)
-//            self?.onViewModelUpdated?()
-//        }
-//    }
-
-//    func loadData() -> Promise<Void> {
-//        return firstly {
-//            modelController.retrieveModel(for: albumId)
-//            }.done { [weak self] model in
-//                self?.updateViewModel(from: model)
-//                self?.onViewModelUpdated?()
-//        }
-//    }
-
-//    func removeAlbum(at index: Int) {
-//        let albumId = albumsViewModel[index].albumId
-//        modelController.removeAlbum(with: albumId)
-//        albumsViewModel.remove(at: index)
-//        onViewModelUpdated?()
-//    }
 }
 
 private extension DefaultHomeScreenViewModel {
@@ -60,16 +64,47 @@ private extension DefaultHomeScreenViewModel {
         let imageDownloadService = self.imageDownloadService
         let albumStoreService = self.albumStoreService
 
-        albumStoreService.storedAlbums().map { albums in
-            albums.map {
-                DefaultAlbumCardViewModel(
-                    album: $0,
-                    imageDownloadService: imageDownloadService,
-                    albumStoreService: albumStoreService)
-            }
-        }
-        .bind(to: storedAlbums)
-        .disposed(by: disposeBag)
+        albumStoreService.storedAlbums()
+            .map { albums in
+                albums.map { DefaultAlbumCardViewModel(album: $0,
+                                                       imageDownloadService: imageDownloadService,
+                                                       albumStoreService: albumStoreService) }
+            }.bind(to: storedAlbums)
+            .disposed(by: disposeBag)
+
+        onCardSelected
+            .compactMap { [weak self] index in self?.storedAlbums.value[safe: index]?.mbid }
+            .bind(to: doShowAlbumDetails)
+            .disposed(by: disposeBag)
+
+        Observable
+            .merge(onSearchModeEnable, onArtistSearch.map { $0.isEmpty })
+            .filter { $0 }
+            // .map { databaseService.getSearchHistory() }
+            .map { _ in [DefaultArtistSearchViewModel(mbid: "61bf0388-b8a9-48f4-81d1-7eb02706dfb0", artist: "Golova")] }
+            .bind(to: searchResults)
+            .disposed(by: disposeBag)
+
+        onArtistSearch
+            .filter { !$0.isEmpty }
+            .throttle(.seconds(1), scheduler: MainScheduler())
+            .map { _ in [DefaultArtistSearchViewModel(mbid: "61bf0388-b8a9-48f4-81d1-7eb02706dfb0", artist: "Golova")] }
+            .bind(to: searchResults)
+            .disposed(by: disposeBag)
+
+        onSearchItemSelected
+            .map { $0.mbid }
+            .bind(to: doShowArtistDetails)
+            .disposed(by: disposeBag)
+
+        onSearchItemSelected
+            .map { [weak self] searchResult in
+                // delete repeating element if exists
+                // store to the search history
+                return searchResult.mbid
+            }.bind(to: doShowArtistDetails)
+            .disposed(by: disposeBag)
+
     }
 
     func makeMock() {
