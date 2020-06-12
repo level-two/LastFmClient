@@ -14,13 +14,15 @@ final class HomeScreenViewController: UIViewController, StoryboardLoadable {
         setupView()
     }
 
-    func setupDependencies(viewModel: HomeScreenViewModel,
-                           navigator: SceneNavigator?,
-                           theme: Theme) {
+    func setupDependencies(viewModel: HomeScreenViewModel, navigator: SceneNavigator?, theme: Theme) {
         self.viewModel = viewModel
         self.navigator = navigator
         self.theme = theme
     }
+
+    private lazy var searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
+    private lazy var searchCloseButton = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: nil)
+    private lazy var searchBar = UISearchBar()
 
     private var viewModel: HomeScreenViewModel?
     private var navigator: SceneNavigator?
@@ -32,8 +34,8 @@ final class HomeScreenViewController: UIViewController, StoryboardLoadable {
 private extension HomeScreenViewController {
     func setupView() {
         setupCollection()
-
-        addSearchButton()
+        setupSearchTableView()
+        addSearchButtons()
         styleView()
         setupBindings()
     }
@@ -118,15 +120,25 @@ extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Table View
 private extension HomeScreenViewController {
     func setupSearchTableView() {
-        setupSearchTableBindings()
+        registerSearchTableReusableCells()
         setupSearchTableStyle()
+        setupSearchTableBindings()
+        setupSearchTableState()
+    }
+
+    func registerSearchTableReusableCells() {
+        searchTableView?.registerReusableCell(SearchTableCellView.self)
+    }
+
+    func setupSearchTableState() {
+        searchTableView?.isHidden = true
     }
 
     func setupSearchTableBindings() {
         guard let tableView = searchTableView, let viewModel = viewModel else { return }
 
         viewModel.onSearchResults
-            .bind(to: tableView.rx.items(cellIdentifier: UITableViewCell.defaultIdentifier)) { _, element, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: SearchTableCellView.defaultIdentifier)) { _, element, cell in
                 cell.textLabel?.text = element.artist
                 cell.accessoryType = .disclosureIndicator
             }.disposed(by: disposeBag)
@@ -143,8 +155,8 @@ private extension HomeScreenViewController {
 
 // MARK: - Search and nav bar
 private extension HomeScreenViewController {
-    func addSearchButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
+    func addSearchButtons() {
+        navigationItem.rightBarButtonItem = searchButton
     }
 
     func styleView() {
@@ -154,11 +166,6 @@ private extension HomeScreenViewController {
     func setupBindings() {
         guard let viewModel = viewModel else { return }
 
-        navigationItem.rightBarButtonItem?.rx.tap
-            .map { true }
-            .bind(to: viewModel.doSearchModeEnable)
-            .disposed(by: disposeBag)
-
 //        viewModel?.onShowAlbumDetails
 //            .bind { [weak self] mbid self?.navigator?.navigate(to: .albumDetails(mbid)) }
 //            .disposed(by: disposeBag)
@@ -167,5 +174,22 @@ private extension HomeScreenViewController {
 //            .bind { [weak self] mbid self?.navigator?.navigate(to: .artistDetails(mbid)) }
 //            .disposed(by: disposeBag)
 
+        searchButton.rx.tap
+            .bind { [weak self] in
+                self?.searchTableView?.isHidden = false
+                self?.navigationItem.rightBarButtonItem = self?.searchCloseButton
+                self?.navigationItem.titleView = self?.searchBar
+                self?.searchBar.becomeFirstResponder()
+                viewModel.doSearchModeEnable.onNext(true)
+            }.disposed(by: disposeBag)
+
+        searchCloseButton.rx.tap
+            .bind { [weak self] in
+                self?.searchTableView?.isHidden = true
+                self?.navigationItem.rightBarButtonItem = self?.searchButton
+                self?.navigationItem.titleView = nil
+                self?.searchBar.resignFirstResponder()
+                viewModel.doSearchModeEnable.onNext(false)
+            }.disposed(by: disposeBag)
     }
 }
