@@ -13,6 +13,7 @@ class DependencyContainer: ViewControllerFactory {
     func makeHomeScreenViewController() -> UIViewController {
         let viewController = HomeScreenViewController.loadFromStoryboard()
         let viewModel = DefaultHomeScreenViewModel(imageDownloadService: networkService,
+                                                   artistSearchService: networkService,
                                                    albumStoreService: databaseService)
         viewController.setupDependencies(viewModel: viewModel,
                                          navigator: navigator,

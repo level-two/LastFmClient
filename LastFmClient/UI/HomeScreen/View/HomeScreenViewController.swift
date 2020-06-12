@@ -143,7 +143,7 @@ private extension HomeScreenViewController {
                 cell.accessoryType = .disclosureIndicator
             }.disposed(by: disposeBag)
 
-        tableView.rx.modelSelected(ArtistSearchViewModel.self)
+        tableView.rx.modelSelected(ArtistSearchMatch.self)
             .bind(to: viewModel.doSelectSearchItem)
             .disposed(by: disposeBag)
     }
@@ -191,5 +191,7 @@ private extension HomeScreenViewController {
                 self?.searchBar.resignFirstResponder()
                 viewModel.doSearchModeEnable.onNext(false)
             }.disposed(by: disposeBag)
+
+        searchBar.rx.text.orEmpty.bind(to: viewModel.doArtistSearch).disposed(by: disposeBag)
     }
 }

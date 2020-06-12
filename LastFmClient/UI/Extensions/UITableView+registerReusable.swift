@@ -13,7 +13,8 @@ extension UITableView {
         self.register(T.nib, forHeaderFooterViewReuseIdentifier: type.defaultIdentifier)
     }
 
-    func dequeueReusableCell<T>(_ type: T.Type, for indexPath: IndexPath) -> T where T: UITableViewCell & TypeIdentifiable {
+    func dequeueReusableCell<T>(_ type: T.Type,
+                                for indexPath: IndexPath) -> T where T: UITableViewCell & TypeIdentifiable {
         guard let cell = dequeueReusableCell(withIdentifier: type.defaultIdentifier, for: indexPath) as? T else {
             fatalError("Failed to dequeue reusable cell of type \(type.defaultIdentifier)")
         }

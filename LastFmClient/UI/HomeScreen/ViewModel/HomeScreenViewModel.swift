@@ -9,8 +9,8 @@ protocol HomeScreenViewModel {
     var doSearchModeEnable: AnyObserver<Bool> { get }
     var doArtistSearch: AnyObserver<String> { get }
 
-    var onSearchResults: Observable<[ArtistSearchViewModel]> { get }
-    var doSelectSearchItem: AnyObserver<ArtistSearchViewModel> { get }
+    var onSearchResults: Observable<[ArtistSearchMatch]> { get }
+    var doSelectSearchItem: AnyObserver<ArtistSearchMatch> { get }
 
     var onShowArtistDetails: Observable<String> { get }
 }

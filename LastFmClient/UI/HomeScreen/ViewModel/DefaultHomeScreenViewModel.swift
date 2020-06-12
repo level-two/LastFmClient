@@ -1,5 +1,6 @@
 import RxSwift
 import RxRelay
+import PromiseKit
 
 final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     var onStoredAlbums: Observable<[AlbumCardViewModel]> {
@@ -22,11 +23,11 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
        return onArtistSearch.asObserver()
    }
 
-    var onSearchResults: Observable<[ArtistSearchViewModel]> {
+    var onSearchResults: Observable<[ArtistSearchMatch]> {
         return searchResults.asObservable()
     }
 
-    var doSelectSearchItem: AnyObserver<ArtistSearchViewModel> {
+    var doSelectSearchItem: AnyObserver<ArtistSearchMatch> {
         return onSearchItemSelected.asObserver()
     }
 
@@ -34,8 +35,12 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
         return doShowArtistDetails.asObservable()
     }
 
-    init(imageDownloadService: ImageDownloadService, albumStoreService: AlbumStoreService) {
+    init(imageDownloadService: ImageDownloadService,
+         artistSearchService: ArtistSearchService,
+         albumStoreService: AlbumStoreService) {
+
         self.imageDownloadService = imageDownloadService
+        self.artistSearchService = artistSearchService
         self.albumStoreService = albumStoreService
 
         setupBindings()
@@ -49,10 +54,11 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     private let onSearchModeEnable = PublishSubject<Bool>()
     private let onArtistSearch = PublishSubject<String>()
 
-    private let searchResults = BehaviorRelay<[ArtistSearchViewModel]>(value: [])
-    private let onSearchItemSelected = PublishSubject<ArtistSearchViewModel>()
+    private let searchResults = BehaviorRelay<[ArtistSearchMatch]>(value: [])
+    private let onSearchItemSelected = PublishSubject<ArtistSearchMatch>()
     private let doShowArtistDetails = BehaviorRelay<String>(value: "")
 
+    private let artistSearchService: ArtistSearchService
     private let imageDownloadService: ImageDownloadService
     private let albumStoreService: AlbumStoreService
 
@@ -88,9 +94,12 @@ private extension DefaultHomeScreenViewModel {
         onArtistSearch
             .filter { !$0.isEmpty }
             .throttle(.seconds(1), scheduler: MainScheduler())
-            .map { _ in [DefaultArtistSearchViewModel(mbid: "61bf0388-b8a9-48f4-81d1-7eb02706dfb0", artist: "Golova")] }
-            .bind(to: searchResults)
-            .disposed(by: disposeBag)
+            .bind { [weak self] artist in
+                self?.artistSearchService
+                    .search(artist: artist)
+                    .done { self?.searchResults.accept($0) }
+                    .cauterize()
+            }.disposed(by: disposeBag)
 
         onSearchItemSelected
             .map { $0.mbid }
@@ -104,7 +113,6 @@ private extension DefaultHomeScreenViewModel {
                 return searchResult.mbid
             }.bind(to: doShowArtistDetails)
             .disposed(by: disposeBag)
-
     }
 
     func makeMock() {

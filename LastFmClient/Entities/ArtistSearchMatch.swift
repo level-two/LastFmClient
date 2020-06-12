@@ -1,5 +1,4 @@
 protocol ArtistSearchMatch {
     var mbid: String { get }
-    var name: String { get }
-    var imageUrl: [ImageSize: String] { get }
+    var artist: String { get }
 }

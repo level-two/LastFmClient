@@ -5,47 +5,47 @@ class URLBuilder {
         return components.url
     }
 
-    func fragment(_ fragment: String?) -> Self {
+    func fragment(_ fragment: String?) -> URLBuilder {
         components.fragment = fragment
         return self
     }
 
-    func host(_ host: String?) -> Self {
+    func host(_ host: String?) -> URLBuilder {
         components.host = host
         return self
     }
 
-    func password(_ password: String?) -> Self {
+    func password(_ password: String?) -> URLBuilder {
         components.password = password
         return self
     }
 
-    func path(_ path: String) -> Self {
+    func path(_ path: String) -> URLBuilder {
         components.path = path
         return self
     }
 
-    func port(_ port: Int?) -> Self {
+    func port(_ port: Int?) -> URLBuilder {
         components.port = port
         return self
     }
 
-    func query(_ query: String?) -> Self {
+    func query(_ query: String?) -> URLBuilder {
         components.query = query
         return self
     }
 
-    func queryItems(_ queryItems: [URLQueryItem]?) -> Self {
+    func queryItems(_ queryItems: [URLQueryItem]?) -> URLBuilder {
         components.queryItems = queryItems
         return self
     }
 
-    func scheme(_ scheme: String?) -> Self {
+    func scheme(_ scheme: String?) -> URLBuilder {
         components.scheme = scheme
         return self
     }
 
-    func user(_ user: String?) -> Self {
+    func user(_ user: String?) -> URLBuilder {
         components.user = user
         return self
     }

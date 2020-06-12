@@ -6,8 +6,12 @@ protocol LastFmEndpoint: Endpoint {
 }
 
 extension LastFmEndpoint {
+    var scheme: String {
+        return "http"
+    }
+
     var host: String {
-        return "http://ws.audioscrobbler.com"
+        return "ws.audioscrobbler.com"
     }
 
     var path: String {
