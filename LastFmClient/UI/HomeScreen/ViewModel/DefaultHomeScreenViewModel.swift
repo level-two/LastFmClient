@@ -3,48 +3,28 @@ import RxRelay
 import PromiseKit
 
 final class DefaultHomeScreenViewModel: HomeScreenViewModel {
-    var onStoredAlbums: Observable<[AlbumCardViewModel]> {
-        return storedAlbums.asObservable()
-    }
+    var onStoredAlbums: Observable<[AlbumCardViewModel]> { storedAlbums.asObservable() }
+    var onShowAlbumDetails: Observable<String> { doShowAlbumDetails.asObservable() }
+    var doSelectCard: AnyObserver<Int> { onCardSelected.asObserver() }
 
-    var onShowAlbumDetails: Observable<String> {
-        return doShowAlbumDetails.asObservable()
-    }
+    var doSearchModeEnable: AnyObserver<Bool> { onSearchModeEnable.asObserver() }
+    var doArtistSearch: AnyObserver<String> { onArtistSearch.asObserver() }
 
-    var doSelectCard: AnyObserver<Int> {
-        return onCardSelected.asObserver()
-    }
-
-    var doSearchModeEnable: AnyObserver<Bool> {
-        return onSearchModeEnable.asObserver()
-    }
-
-    var doArtistSearch: AnyObserver<String> {
-       return onArtistSearch.asObserver()
-   }
-
-    var onSearchResults: Observable<[ArtistSearchMatch]> {
-        return searchResults.asObservable()
-    }
-
-    var doSelectSearchItem: AnyObserver<ArtistSearchMatch> {
-        return onSearchItemSelected.asObserver()
-    }
-
-    var onShowArtistDetails: Observable<String> {
-        return doShowArtistDetails.asObservable()
-    }
+    var onSearchResults: Observable<[ArtistSearchMatch]> { searchResults.asObservable() }
+    var doSelectSearchItem: AnyObserver<ArtistSearchMatch> { onSearchItemSelected.asObserver() }
+    var onShowArtistDetails: Observable<String> { doShowArtistDetails.asObservable() }
 
     init(imageDownloadService: ImageDownloadService,
          artistSearchService: ArtistSearchService,
-         albumStoreService: AlbumStoreService) {
+         albumStoreService: AlbumStoreService,
+         searchHistoryService: ArtistSearchHistoryService) {
 
         self.imageDownloadService = imageDownloadService
         self.artistSearchService = artistSearchService
         self.albumStoreService = albumStoreService
+        self.searchHistoryService = searchHistoryService
 
         setupBindings()
-        //makeMock()
     }
 
     private let storedAlbums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
@@ -61,6 +41,7 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     private let artistSearchService: ArtistSearchService
     private let imageDownloadService: ImageDownloadService
     private let albumStoreService: AlbumStoreService
+    private let searchHistoryService: ArtistSearchHistoryService
 
     private let disposeBag = DisposeBag()
 }
@@ -86,8 +67,7 @@ private extension DefaultHomeScreenViewModel {
         Observable
             .merge(onSearchModeEnable, onArtistSearch.map { $0.isEmpty })
             .filter { $0 }
-            // .map { databaseService.getSearchHistory() }
-            .map { _ in [DefaultArtistSearchViewModel(mbid: "61bf0388-b8a9-48f4-81d1-7eb02706dfb0", artist: "Golova")] }
+            .compactMap { [weak self] _ in self?.searchHistoryService.searchHistory() }
             .bind(to: searchResults)
             .disposed(by: disposeBag)
 
@@ -107,45 +87,11 @@ private extension DefaultHomeScreenViewModel {
             .disposed(by: disposeBag)
 
         onSearchItemSelected
-            .map { [weak self] searchResult in
-                // delete repeating element if exists
-                // store to the search history
-                return searchResult.mbid
+            .map { [weak self] artistSearchMatch in
+                self?.searchHistoryService.removeFromSearchHistory(artistSearchMatch.mbid)
+                self?.searchHistoryService.addToSearchHistory(artistSearchMatch)
+                return artistSearchMatch.mbid
             }.bind(to: doShowArtistDetails)
             .disposed(by: disposeBag)
-    }
-
-    func makeMock() {
-        DispatchQueue.global(qos: .background).async {
-            stride(from: 0, to: 100, by: 1).forEach { [weak self] idx in
-                struct MockAlbum: Album {
-                    let mbid: String
-                    let title: String
-                    let artist: String
-                    let imageUrl: [ImageSize: String]
-                    let mockTracks: [MockTrack]
-
-                    var tracks: [Track] {
-                        return mockTracks
-                    }
-                }
-
-                struct MockTrack: Track {
-                    var rank: Int
-                    var name: String
-                    var artist: String
-                    var duration: Int
-                }
-
-                let mockAlbum = MockAlbum(
-                    mbid: "61bf0388-b8a9-48f4-81d1-7eb02706dfb0-\(idx)",
-                    title: "Album Title \(idx)",
-                    artist: "Supa Artist",
-                    imageUrl: [.medium: "https://habrastorage.org/webt/mr/u7/wu/mru7wusyxtgjbaptshr3o5olipu.png"],
-                    mockTracks: [])
-
-                self?.albumStoreService.storeAlbum(mockAlbum)
-            }
-        }
     }
 }

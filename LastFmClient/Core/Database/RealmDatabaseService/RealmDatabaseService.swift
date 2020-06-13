@@ -1,11 +1,15 @@
 import RealmSwift
 import RxSwift
 
-class RealmDatabaseService: DatabaseService {
+class RealmDatabaseService: DatabaseService { }
+
+// MARK: - AlbumStoreService conformance
+extension RealmDatabaseService {
     func storeAlbum(_ album: Album) {
+        let realm = Realm.default
+        let albumObject = AlbumObject(from: album)
+
         do {
-            let realm = Realm.default
-            let albumObject = AlbumObject(from: album)
             try realm.write { realm.add(albumObject) }
         } catch {
             fatalError("Failed to store album to realm: \(error)")
@@ -13,9 +17,11 @@ class RealmDatabaseService: DatabaseService {
     }
 
     func removeAlbum(with mbid: String) {
+        let realm = Realm.default
+
+        guard let albumObject = realm.objects(AlbumObject.self).first(where: { $0.mbid == mbid }) else { return }
+
         do {
-            let realm = Realm.default
-            guard let albumObject = realm.objects(AlbumObject.self).first(where: { $0.mbid == mbid }) else { return }
             try realm.write { realm.delete(albumObject) }
         } catch {
             fatalError("Failed to store album to realm: \(error)")
@@ -49,4 +55,34 @@ class RealmDatabaseService: DatabaseService {
         .asObservable
         .map { $0.map { $0.toAlbum } }
     }
+}
+
+// MARK: - ArtistSearchHistoryService conformance
+extension RealmDatabaseService {
+    func addToSearchHistory(_ artistMatch: ArtistSearchMatch) {
+        let realm = Realm.default
+        let artistMatchObject = ArtistMatchObject(from: artistMatch)
+
+        do {
+            try realm.write { realm.add(artistMatchObject) }
+        } catch {
+            fatalError("Failed to store album to realm: \(error)")
+        }
+    }
+
+    func removeFromSearchHistory(_ mbid: String) {
+        let realm = Realm.default
+        let artistMatchObjects = realm.objects(ArtistMatchObject.self).filter("mbid == '\(mbid)'")
+        do {
+            try realm.write { realm.delete(artistMatchObjects) }
+        } catch {
+            fatalError("Failed to store album to realm: \(error)")
+        }
+   }
+
+    func searchHistory() -> [ArtistSearchMatch] {
+        return Realm.default
+            .objects(ArtistMatchObject.self)
+            .map { $0.toArtistSearchMatch }
+   }
 }

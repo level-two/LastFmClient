@@ -14,7 +14,8 @@ class DependencyContainer: ViewControllerFactory {
         let viewController = HomeScreenViewController.loadFromStoryboard()
         let viewModel = DefaultHomeScreenViewModel(imageDownloadService: networkService,
                                                    artistSearchService: networkService,
-                                                   albumStoreService: databaseService)
+                                                   albumStoreService: databaseService,
+                                                   searchHistoryService: databaseService)
         viewController.setupDependencies(viewModel: viewModel,
                                          navigator: navigator,
                                          theme: theme)

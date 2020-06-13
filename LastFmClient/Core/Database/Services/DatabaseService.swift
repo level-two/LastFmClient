@@ -1,1 +1,1 @@
-protocol DatabaseService: AlbumStoreService { }
+protocol DatabaseService: AlbumStoreService & ArtistSearchHistoryService { }
