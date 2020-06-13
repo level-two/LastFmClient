@@ -9,6 +9,11 @@ final class HomeScreenViewController: UIViewController, StoryboardLoadable {
     private typealias DataSource = UICollectionViewDiffableDataSource<HomeScreenSections, AlbumCardHashableWrapper>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<HomeScreenSections, AlbumCardHashableWrapper>
 
+    enum UiMode {
+        case normal
+        case search
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -28,6 +33,7 @@ final class HomeScreenViewController: UIViewController, StoryboardLoadable {
     private var navigator: SceneNavigator?
     private var theme: Theme?
     private var dataSource: DataSource?
+    private let uiMode = BehaviorRelay<UiMode>(value: .normal)
     private let disposeBag = DisposeBag()
 }
 
@@ -134,17 +140,19 @@ private extension HomeScreenViewController {
     }
 
     func setupSearchTableBindings() {
-        guard let tableView = searchTableView, let viewModel = viewModel else { return }
+        guard let tableView = searchTableView else { return }
 
-        viewModel.onSearchResults
+        viewModel?.onSearchResults
             .bind(to: tableView.rx.items(cellIdentifier: SearchTableCellView.defaultIdentifier)) { _, element, cell in
                 cell.textLabel?.text = element.artist
                 cell.accessoryType = .disclosureIndicator
             }.disposed(by: disposeBag)
 
         tableView.rx.modelSelected(ArtistSearchItem.self)
-            .bind(to: viewModel.doSelectSearchItem)
-            .disposed(by: disposeBag)
+            .bind { [weak self] item in
+                self?.viewModel?.doSelectSearchItem.onNext(item)
+                self?.viewModel?.doSearchModeEnable.onNext(false)
+            }.disposed(by: disposeBag)
     }
 
     func setupSearchTableStyle() {
@@ -173,25 +181,32 @@ private extension HomeScreenViewController {
 //            .bind { [weak self] mbid self?.navigator?.navigate(to: .artistDetails(mbid)) }
 //            .disposed(by: disposeBag)
 
-        searchButton.rx.tap
-            .bind { [weak self] in
-                self?.searchTableView?.isHidden = false
-                self?.navigationItem.rightBarButtonItem = self?.searchCloseButton
-                self?.navigationItem.titleView = self?.searchBar
-                self?.searchBar.becomeFirstResponder()
-                viewModel.doSearchModeEnable.onNext(true)
-            }.disposed(by: disposeBag)
+        searchBar.rx.text.orEmpty.bind(to: viewModel.doArtistSearch).disposed(by: disposeBag)
 
-        searchCloseButton.rx.tap
-            .bind { [weak self] in
+        Observable
+            .merge(searchButton.rx.tap.map { .search },
+                   searchCloseButton.rx.tap.map { .normal },
+                   viewModel.onShowAlbumDetails.map { _ in .normal },
+                   viewModel.onShowArtistDetails.map { _ in .normal })
+            .bind(to: uiMode)
+            .disposed(by: disposeBag)
+
+        uiMode.bind { [weak self] mode in
+            switch mode {
+            case .normal:
                 self?.searchTableView?.isHidden = true
                 self?.navigationItem.rightBarButtonItem = self?.searchButton
                 self?.navigationItem.titleView = nil
                 self?.searchBar.text = ""
                 self?.searchBar.resignFirstResponder()
-                viewModel.doSearchModeEnable.onNext(false)
-            }.disposed(by: disposeBag)
-
-        searchBar.rx.text.orEmpty.bind(to: viewModel.doArtistSearch).disposed(by: disposeBag)
+                //self?.viewModel?.doSearchModeEnable.onNext(false)
+            case .search:
+                self?.searchTableView?.isHidden = false
+                self?.navigationItem.rightBarButtonItem = self?.searchCloseButton
+                self?.navigationItem.titleView = self?.searchBar
+                self?.searchBar.becomeFirstResponder()
+                //self?.viewModel?.doSearchModeEnable.onNext(true)
+            }
+        }.disposed(by: disposeBag)
     }
 }

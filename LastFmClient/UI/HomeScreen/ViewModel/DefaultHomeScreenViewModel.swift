@@ -50,6 +50,8 @@ private extension DefaultHomeScreenViewModel {
     func setupBindings() {
         let imageDownloadService = self.imageDownloadService
         let albumStoreService = self.albumStoreService
+        let searchHistoryService = self.searchHistoryService
+        let artistSearchService = self.artistSearchService
 
         albumStoreService.storedAlbums()
             .map { albums in
@@ -64,33 +66,27 @@ private extension DefaultHomeScreenViewModel {
             .bind(to: doShowAlbumDetails)
             .disposed(by: disposeBag)
 
-        Observable
-            .merge(onSearchModeEnable, onArtistSearch.map { $0.isEmpty })
-            .filter { $0 }
-            .compactMap { [weak self] _ in self?.searchHistoryService.searchHistory() }
+        onArtistSearch
+            .filter { $0.isEmpty }
+            .compactMap { _ in searchHistoryService.searchHistory() }
             .map { $0.reversed() }
             .bind(to: searchResults)
             .disposed(by: disposeBag)
 
         onArtistSearch
             .filter { !$0.isEmpty }
-            .throttle(.seconds(1), scheduler: MainScheduler())
+            .throttle(.milliseconds(500), scheduler: MainScheduler())
             .bind { [weak self] artist in
-                self?.artistSearchService
+                artistSearchService
                     .search(artist: artist)
                     .done { self?.searchResults.accept($0) }
                     .cauterize()
             }.disposed(by: disposeBag)
 
         onSearchItemSelected
-            .map { $0.mbid }
-            .bind(to: doShowArtistDetails)
-            .disposed(by: disposeBag)
-
-        onSearchItemSelected
-            .map { [weak self] artistSearchItem in
-                self?.searchHistoryService.removeFromSearchHistory(artistSearchItem.mbid)
-                self?.searchHistoryService.addToSearchHistory(artistSearchItem)
+            .map { artistSearchItem in
+                searchHistoryService.removeFromSearchHistory(artistSearchItem.mbid)
+                searchHistoryService.addToSearchHistory(artistSearchItem)
                 return artistSearchItem.mbid
             }.bind(to: doShowArtistDetails)
             .disposed(by: disposeBag)
