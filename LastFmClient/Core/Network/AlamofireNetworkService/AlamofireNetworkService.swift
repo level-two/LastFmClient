@@ -38,7 +38,7 @@ extension AlamofireNetworkService {
 
 // MARK: - ArtistSearchService conformance
 extension AlamofireNetworkService {
-    func search(artist: String) -> Promise<[ArtistSearchMatch]> {
+    func search(artist: String) -> Promise<[ArtistSearchItem]> {
         return Promise { seal in
             let request = ArtistRequest.search(artist: artist)
 

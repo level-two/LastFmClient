@@ -1,6 +1,6 @@
 import RealmSwift
 
-class ArtistMatchObject: Object {
+class ArtistSearchItemObject: Object {
     @objc dynamic var mbid: String = ""
     @objc dynamic var artist: String = ""
 

@@ -10,8 +10,8 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     var doSearchModeEnable: AnyObserver<Bool> { onSearchModeEnable.asObserver() }
     var doArtistSearch: AnyObserver<String> { onArtistSearch.asObserver() }
 
-    var onSearchResults: Observable<[ArtistSearchMatch]> { searchResults.asObservable() }
-    var doSelectSearchItem: AnyObserver<ArtistSearchMatch> { onSearchItemSelected.asObserver() }
+    var onSearchResults: Observable<[ArtistSearchItem]> { searchResults.asObservable() }
+    var doSelectSearchItem: AnyObserver<ArtistSearchItem> { onSearchItemSelected.asObserver() }
     var onShowArtistDetails: Observable<String> { doShowArtistDetails.asObservable() }
 
     init(imageDownloadService: ImageDownloadService,
@@ -34,8 +34,8 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     private let onSearchModeEnable = PublishSubject<Bool>()
     private let onArtistSearch = PublishSubject<String>()
 
-    private let searchResults = BehaviorRelay<[ArtistSearchMatch]>(value: [])
-    private let onSearchItemSelected = PublishSubject<ArtistSearchMatch>()
+    private let searchResults = BehaviorRelay<[ArtistSearchItem]>(value: [])
+    private let onSearchItemSelected = PublishSubject<ArtistSearchItem>()
     private let doShowArtistDetails = BehaviorRelay<String>(value: "")
 
     private let artistSearchService: ArtistSearchService
@@ -87,10 +87,10 @@ private extension DefaultHomeScreenViewModel {
             .disposed(by: disposeBag)
 
         onSearchItemSelected
-            .map { [weak self] artistSearchMatch in
-                self?.searchHistoryService.removeFromSearchHistory(artistSearchMatch.mbid)
-                self?.searchHistoryService.addToSearchHistory(artistSearchMatch)
-                return artistSearchMatch.mbid
+            .map { [weak self] artistSearchItem in
+                self?.searchHistoryService.removeFromSearchHistory(artistSearchItem.mbid)
+                self?.searchHistoryService.addToSearchHistory(artistSearchItem)
+                return artistSearchItem.mbid
             }.bind(to: doShowArtistDetails)
             .disposed(by: disposeBag)
     }

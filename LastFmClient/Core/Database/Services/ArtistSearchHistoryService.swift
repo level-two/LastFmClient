@@ -1,5 +1,5 @@
 protocol ArtistSearchHistoryService {
-    func addToSearchHistory(_ artistMatch: ArtistSearchMatch)
+    func addToSearchHistory(_ artistSearchItem: ArtistSearchItem)
     func removeFromSearchHistory(_ mbid: String)
-    func searchHistory() -> [ArtistSearchMatch]
+    func searchHistory() -> [ArtistSearchItem]
 }

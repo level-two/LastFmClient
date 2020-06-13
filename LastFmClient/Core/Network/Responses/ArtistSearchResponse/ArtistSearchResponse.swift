@@ -1,7 +1,7 @@
 import Foundation
 
 struct ArtistSearchResponse {
-    let matches: [ArtistSearchMatchResponse]
+    let matches: [ArtistSearchItemResponse]
 }
 
 extension ArtistSearchResponse: Decodable {
@@ -21,6 +21,6 @@ extension ArtistSearchResponse: Decodable {
         let rootContainer = try decoder.container(keyedBy: RootKey.self)
         let matchesContainer = try rootContainer.nestedContainer(keyedBy: MatchesKey.self, forKey: .results)
         let artistsContainer = try matchesContainer.nestedContainer(keyedBy: ArtistsKey.self, forKey: .matches)
-        matches = try artistsContainer.decode([ArtistSearchMatchResponse].self, forKey: .artists)
+        matches = try artistsContainer.decode([ArtistSearchItemResponse].self, forKey: .artists)
     }
 }

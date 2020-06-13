@@ -59,12 +59,12 @@ extension RealmDatabaseService {
 
 // MARK: - ArtistSearchHistoryService conformance
 extension RealmDatabaseService {
-    func addToSearchHistory(_ artistMatch: ArtistSearchMatch) {
+    func addToSearchHistory(_ artistSearchItem: ArtistSearchItem) {
         let realm = Realm.default
-        let artistMatchObject = ArtistMatchObject(from: artistMatch)
+        let artistSearchItemObject = ArtistSearchItemObject(from: artistSearchItem)
 
         do {
-            try realm.write { realm.add(artistMatchObject) }
+            try realm.write { realm.add(artistSearchItemObject) }
         } catch {
             fatalError("Failed to store album to realm: \(error)")
         }
@@ -72,17 +72,17 @@ extension RealmDatabaseService {
 
     func removeFromSearchHistory(_ mbid: String) {
         let realm = Realm.default
-        let artistMatchObjects = realm.objects(ArtistMatchObject.self).filter("mbid == '\(mbid)'")
+        let artistSearchItemObjects = realm.objects(ArtistSearchItemObject.self).filter("mbid == '\(mbid)'")
         do {
-            try realm.write { realm.delete(artistMatchObjects) }
+            try realm.write { realm.delete(artistSearchItemObjects) }
         } catch {
             fatalError("Failed to store album to realm: \(error)")
         }
    }
 
-    func searchHistory() -> [ArtistSearchMatch] {
+    func searchHistory() -> [ArtistSearchItem] {
         return Realm.default
-            .objects(ArtistMatchObject.self)
-            .map { $0.toArtistSearchMatch }
+            .objects(ArtistSearchItemObject.self)
+            .map { $0.toArtistSearchItem }
    }
 }

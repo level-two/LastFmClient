@@ -19,13 +19,13 @@ class TrackObject: Object {
     }
 
     var toTrack: Track {
-        struct TrackCopy: Track {
+        struct TrackImp: Track {
             let rank: Int
             let name: String
             let artist: String
             let duration: Int
         }
 
-        return TrackCopy(rank: rank, name: name, artist: artist, duration: duration)
+        return TrackImp(rank: rank, name: name, artist: artist, duration: duration)
     }
 }

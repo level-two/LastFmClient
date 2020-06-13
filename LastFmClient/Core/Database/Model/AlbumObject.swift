@@ -21,7 +21,7 @@ class AlbumObject: Object {
     }
 
     var toAlbum: Album {
-        struct AlbumCopy: Album {
+        struct AlbumImp: Album {
             let mbid: String
             let title: String
             let artist: String
@@ -32,6 +32,6 @@ class AlbumObject: Object {
         let tracks = Array(albumTracks.map { $0.toTrack })
         let imageUrl = Dictionary(albumImageUrl.map { $0.toImageUrl }, uniquingKeysWith: { _, new in new })
 
-        return AlbumCopy(mbid: mbid, title: title, artist: artist, imageUrl: imageUrl, tracks: tracks)
+        return AlbumImp(mbid: mbid, title: title, artist: artist, imageUrl: imageUrl, tracks: tracks)
     }
 }
