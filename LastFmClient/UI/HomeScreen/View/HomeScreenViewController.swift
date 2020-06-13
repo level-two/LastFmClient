@@ -72,20 +72,19 @@ private extension HomeScreenViewController {
     }
 
     func setupCollectionBindings() {
-        viewModel?.onStoredAlbums.bind { [weak self] albums in
+        guard let viewModel = viewModel else { return }
+
+        viewModel.onStoredAlbums.bind { [weak self] albums in
             var snapshot = Snapshot()
             snapshot.appendSections([.storedAlbums])
             snapshot.appendItems(albums.map(AlbumCardHashableWrapper.init))
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }.disposed(by: disposeBag)
 
-        collectionView?.rx.itemSelected.bind { [weak self] indexPath in
-            guard let section = HomeScreenSections(rawValue: indexPath.section) else { return }
-            switch section {
-            case .storedAlbums:
-                self?.viewModel?.doSelectCard.onNext(indexPath.row)
-            }
-        }.disposed(by: disposeBag)
+        collectionView?.rx.modelSelected(AlbumCardHashableWrapper.self)
+            .map { $0.wrappedCard }
+            .bind(to: viewModel.doSelectCard)
+            .disposed(by: disposeBag)
     }
 
     func setupCollectionStyle() {
@@ -188,6 +187,7 @@ private extension HomeScreenViewController {
                 self?.searchTableView?.isHidden = true
                 self?.navigationItem.rightBarButtonItem = self?.searchButton
                 self?.navigationItem.titleView = nil
+                self?.searchBar.text = ""
                 self?.searchBar.resignFirstResponder()
                 viewModel.doSearchModeEnable.onNext(false)
             }.disposed(by: disposeBag)

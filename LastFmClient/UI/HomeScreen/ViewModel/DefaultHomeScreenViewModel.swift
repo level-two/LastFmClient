@@ -5,7 +5,7 @@ import PromiseKit
 final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     var onStoredAlbums: Observable<[AlbumCardViewModel]> { storedAlbums.asObservable() }
     var onShowAlbumDetails: Observable<String> { doShowAlbumDetails.asObservable() }
-    var doSelectCard: AnyObserver<Int> { onCardSelected.asObserver() }
+    var doSelectCard: AnyObserver<AlbumCardViewModel> { onCardSelected.asObserver() }
 
     var doSearchModeEnable: AnyObserver<Bool> { onSearchModeEnable.asObserver() }
     var doArtistSearch: AnyObserver<String> { onArtistSearch.asObserver() }
@@ -29,7 +29,7 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
 
     private let storedAlbums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
     private let doShowAlbumDetails = BehaviorRelay<String>(value: "")
-    private let onCardSelected = PublishSubject<Int>()
+    private let onCardSelected = PublishSubject<AlbumCardViewModel>()
 
     private let onSearchModeEnable = PublishSubject<Bool>()
     private let onArtistSearch = PublishSubject<String>()
@@ -60,7 +60,7 @@ private extension DefaultHomeScreenViewModel {
             .disposed(by: disposeBag)
 
         onCardSelected
-            .compactMap { [weak self] index in self?.storedAlbums.value[safe: index]?.mbid }
+            .map { $0.mbid }
             .bind(to: doShowAlbumDetails)
             .disposed(by: disposeBag)
 
@@ -68,6 +68,7 @@ private extension DefaultHomeScreenViewModel {
             .merge(onSearchModeEnable, onArtistSearch.map { $0.isEmpty })
             .filter { $0 }
             .compactMap { [weak self] _ in self?.searchHistoryService.searchHistory() }
+            .map { $0.reversed() }
             .bind(to: searchResults)
             .disposed(by: disposeBag)
 

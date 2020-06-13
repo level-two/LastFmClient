@@ -2,7 +2,7 @@ import RxSwift
 
 protocol HomeScreenViewModel {
     var onStoredAlbums: Observable<[AlbumCardViewModel]> { get }
-    var doSelectCard: AnyObserver<Int> { get }
+    var doSelectCard: AnyObserver<AlbumCardViewModel> { get }
 
     var onShowAlbumDetails: Observable<String> { get }
 
