@@ -7,7 +7,6 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     var onShowAlbumDetails: Observable<String> { doShowAlbumDetails.asObservable() }
     var doSelectCard: AnyObserver<AlbumCardViewModel> { onCardSelected.asObserver() }
 
-    var doSearchModeEnable: AnyObserver<Bool> { onSearchModeEnable.asObserver() }
     var doArtistSearch: AnyObserver<String> { onArtistSearch.asObserver() }
 
     var onSearchResults: Observable<[ArtistSearchItem]> { searchResults.asObservable() }
@@ -31,7 +30,6 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     private let doShowAlbumDetails = BehaviorRelay<String>(value: "")
     private let onCardSelected = PublishSubject<AlbumCardViewModel>()
 
-    private let onSearchModeEnable = PublishSubject<Bool>()
     private let onArtistSearch = PublishSubject<String>()
 
     private let searchResults = BehaviorRelay<[ArtistSearchItem]>(value: [])
@@ -68,14 +66,17 @@ private extension DefaultHomeScreenViewModel {
 
         onArtistSearch
             .filter { $0.isEmpty }
-            .compactMap { _ in searchHistoryService.searchHistory() }
+            .compactMap { _ in
+                searchHistoryService.searchHistory()
+        }
             .map { $0.reversed() }
             .bind(to: searchResults)
             .disposed(by: disposeBag)
 
         onArtistSearch
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
             .filter { !$0.isEmpty }
-            .throttle(.milliseconds(500), scheduler: MainScheduler())
             .bind { [weak self] artist in
                 artistSearchService
                     .search(artist: artist)

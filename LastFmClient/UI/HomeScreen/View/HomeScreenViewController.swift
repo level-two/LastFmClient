@@ -52,7 +52,7 @@ private extension HomeScreenViewController {
     func setupCollection() {
         registerCollectionReusableCells()
         setupCollectionDataSource()
-        setupCollectionDelegate()
+        setupCollectionLayout()
         setupCollectionBindings()
         setupCollectionStyle()
     }
@@ -73,8 +73,8 @@ private extension HomeScreenViewController {
         }
     }
 
-    func setupCollectionDelegate() {
-        collectionView?.rx.setDelegate(self).disposed(by: disposeBag)
+    func setupCollectionLayout() {
+        collectionView?.collectionViewLayout = createLayout()
     }
 
     func setupCollectionBindings() {
@@ -98,27 +98,30 @@ private extension HomeScreenViewController {
     }
 }
 
-extension HomeScreenViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout: UICollectionViewLayout,
-                        sizeForItemAt: IndexPath) -> CGSize {
-        // FIXME: Issue with resizing after rotation
-        guard let flowLayout = layout as? UICollectionViewFlowLayout else {
-            return .zero
+private extension HomeScreenViewController {
+
+    func createLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { _, environment in
+            let containerSize = environment.container.effectiveContentSize
+
+            let columns = containerSize.width > 1000 ? 4 :
+                          containerSize.width > 600 ? 2 : 1
+
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                  heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .fractionalWidth(1.0/CGFloat(columns)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+            group.interItemSpacing = .fixed(20)
+
+            let section = NSCollectionLayoutSection(group: group)
+            section.interGroupSpacing = 20
+            section.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+
+            return section
         }
-
-        let insets = flowLayout.sectionInset.left + flowLayout.sectionInset.right +
-            collectionView.contentInset.left + collectionView.contentInset.right
-
-        let contentWidth = collectionView.frame.width
-        let availableContentWidth = contentWidth - insets
-
-        let space = flowLayout.minimumInteritemSpacing
-        let minCellWidth = 200 + space
-
-        let cellsPerRow = (availableContentWidth / minCellWidth).rounded(.down)
-        let cellWidth = (availableContentWidth - space * (cellsPerRow - 1)) / cellsPerRow
-        return CGSize(width: cellWidth, height: cellWidth)
     }
 }
 
@@ -151,7 +154,6 @@ private extension HomeScreenViewController {
         tableView.rx.modelSelected(ArtistSearchItem.self)
             .bind { [weak self] item in
                 self?.viewModel?.doSelectSearchItem.onNext(item)
-                self?.viewModel?.doSearchModeEnable.onNext(false)
             }.disposed(by: disposeBag)
     }
 
@@ -197,15 +199,14 @@ private extension HomeScreenViewController {
                 self?.searchTableView?.isHidden = true
                 self?.navigationItem.rightBarButtonItem = self?.searchButton
                 self?.navigationItem.titleView = nil
-                self?.searchBar.text = ""
                 self?.searchBar.resignFirstResponder()
-                //self?.viewModel?.doSearchModeEnable.onNext(false)
+                self?.searchBar.text = ""
+                self?.viewModel?.doArtistSearch.onNext("")
             case .search:
                 self?.searchTableView?.isHidden = false
                 self?.navigationItem.rightBarButtonItem = self?.searchCloseButton
                 self?.navigationItem.titleView = self?.searchBar
                 self?.searchBar.becomeFirstResponder()
-                //self?.viewModel?.doSearchModeEnable.onNext(true)
             }
         }.disposed(by: disposeBag)
     }

@@ -6,7 +6,6 @@ protocol HomeScreenViewModel {
 
     var onShowAlbumDetails: Observable<String> { get }
 
-    var doSearchModeEnable: AnyObserver<Bool> { get }
     var doArtistSearch: AnyObserver<String> { get }
 
     var onSearchResults: Observable<[ArtistSearchItem]> { get }
