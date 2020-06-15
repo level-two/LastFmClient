@@ -12,10 +12,7 @@ final class AlbumCardViewCell: UICollectionViewCell, NibLoadable {
         theme?.apply(style: .normal, to: artist)
         theme?.apply(style: .normal, to: title)
         theme?.apply(style: .darkBackground, to: self.contentView)
-
-        [contentView, cover, coverLoadingHud].compactMap { $0?.layer }.forEach {
-            theme?.apply(style: .subtleShadow, cornerRadius: 8, to: $0)
-        }
+        theme?.apply(style: .subtleShadow, cornerRadius: 8, to: contentView.layer)
     }
 
     override func prepareForReuse() {
