@@ -88,7 +88,8 @@ private extension HomeScreenViewController {
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }.disposed(by: disposeBag)
 
-        collectionView?.rx.modelSelected(AlbumCardHashableWrapper.self)
+        collectionView?.rx.itemSelected
+            .compactMap { [weak self] indexPath in self?.dataSource?.itemIdentifier(for: indexPath) }
             .map { $0.wrappedCard }
             .bind(to: viewModel.doSelectCard)
             .disposed(by: disposeBag)
