@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxKeyboard
 
 final class HomeScreenViewController: UIViewController, StoryboardLoadable {
     @IBOutlet private var collectionView: UICollectionView?
@@ -154,6 +155,15 @@ private extension HomeScreenViewController {
         tableView.rx.modelSelected(ArtistSearchItem.self)
             .bind { [weak self] item in
                 self?.viewModel?.doSelectSearchItem.onNext(item)
+            }.disposed(by: disposeBag)
+
+        RxKeyboard.instance
+            .visibleHeight
+            .asObservable().bind { [weak self] visibleHeight in
+                guard let self = self else { return }
+                let inset = visibleHeight == 0 ? 0 : visibleHeight - self.view.safeAreaInsets.bottom
+                self.searchTableView?.contentInset.bottom = inset
+                self.searchTableView?.verticalScrollIndicatorInsets.bottom = inset
             }.disposed(by: disposeBag)
     }
 
