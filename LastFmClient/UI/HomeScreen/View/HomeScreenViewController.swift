@@ -180,6 +180,7 @@ private extension HomeScreenViewController {
 
     func styleView() {
         theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
+        theme?.apply(style: .lightDarkBackground, to: self.view)
     }
 
     func setupBindings() {
