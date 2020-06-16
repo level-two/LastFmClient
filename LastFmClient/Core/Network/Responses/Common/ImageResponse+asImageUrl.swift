@@ -1,7 +1,6 @@
-import Foundation
+extension ImageResponse {
 
-extension AlbumImageResponse {
-    var imageUrl: (size: ImageSize, url: String)? {
+    var asImageUrl: (size: ImageSize, url: String)? {
         switch size {
         case "small":
             return (.small, url)
@@ -13,4 +12,5 @@ extension AlbumImageResponse {
             return nil
         }
     }
+
 }

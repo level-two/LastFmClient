@@ -1,10 +1,9 @@
 import UIKit
 
-class SceneNavigator: Navigator {
+final class SceneNavigator: Navigator {
     enum Destination {
         case homeScreen
-//        case artistSearch
-//        case artistDetails
+        case artistDetails(mbid: String)
 //        case albumDetails(albumId: String)
     }
 
@@ -29,10 +28,8 @@ fileprivate extension SceneNavigator {
         switch destination {
         case .homeScreen:
             return factory.makeHomeScreenViewController()
-//        case .artistSearch:
-//            return factory.makeArtistSearchViewController()
-//        case .artistDetails:
-//            return factory.makeArtistDetailsViewController()
+        case .artistDetails(let mbid):
+            return factory.makeArtistDetailsViewController(mbid: mbid)
 //        case .albumDetails(let albumId):
 //            return factory.makeAlbumDetailsViewController(albumId: albumId)
         }

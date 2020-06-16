@@ -1,8 +1,9 @@
 import UIKit
 
-class DependencyContainer: ViewControllerFactory {
+final class DependencyContainer: ViewControllerFactory {
     fileprivate weak var navigator: SceneNavigator?
-    fileprivate lazy var theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
+    //fileprivate lazy var theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
+    fileprivate lazy var theme: Theme = EmptyTheme()
     fileprivate lazy var networkService: NetworkService = AlamofireNetworkService()
     fileprivate lazy var databaseService: DatabaseService = RealmDatabaseService()
 
@@ -22,21 +23,18 @@ class DependencyContainer: ViewControllerFactory {
         return viewController
     }
 
-//    func makeArtistSearchViewController() -> UIViewController {
-//        let viewController = ArtistSearchViewController.loadFromStoryboard()
-//        viewController.setupDependencies(navigator: navigator)
-//        return viewController
-//    }
-//
-//    func makeArtistDetailsViewController() -> UIViewController {
-//        let viewController = ArtistDetailsViewController.loadFromStoryboard()
-//        viewController.setupDependencies(navigator: navigator,
-//                                         networkService: networkService,
-//                                         databaseService: databaseService,
-//                                         theme: theme)
-//        return viewController
-//    }
-//
+    func makeArtistDetailsViewController(mbid: String) -> UIViewController {
+        let viewController = ArtistDetailsViewController.loadFromStoryboard()
+        let viewModel = DefaultArtistDetailsViewModel(imageDownloadService: networkService,
+                                                      artistInfoService: networkService,
+                                                      albumStoreService: databaseService,
+                                                      artistMbid: mbid)
+        viewController.setupDependencies(viewModel: viewModel,
+                                         navigator: navigator,
+                                         theme: theme)
+        return viewController
+    }
+
 //    func makeAlbumDetailsViewController(albumId: String) -> UIViewController {
 //        let viewController = AlbumDetailsViewController.loadFromStoryboard()
 //        viewController.setupDependencies(albumId: albumId,

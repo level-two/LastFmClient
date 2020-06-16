@@ -1,5 +1,9 @@
 import Foundation
 
 struct AlbumTracksResponse: Decodable {
-    let track: [TrackResponse]
+    let tracks: [TrackResponse]
+
+    private enum CodingKeys: String, CodingKey {
+        case tracks = "track"
+    }
 }

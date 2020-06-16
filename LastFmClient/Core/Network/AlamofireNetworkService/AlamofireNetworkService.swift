@@ -4,7 +4,7 @@ import Alamofire
 import AlamofireImage
 import AlamofireNetworkActivityIndicator
 
-class AlamofireNetworkService: NetworkService {
+final class AlamofireNetworkService: NetworkService {
     init() {
         NetworkActivityIndicatorManager.shared.isEnabled = true
 
@@ -26,8 +26,8 @@ extension AlamofireNetworkService {
 
             AF.request(request).validate().responseDecodable(of: AlbumResponse.self) { response in
                 switch response.result {
-                case .success(let album):
-                    return seal.fulfill(album)
+                case .success(let albumResponse):
+                    return seal.fulfill(albumResponse.asAlbum)
                 case .failure(let error):
                     return seal.reject(error)
                 }
@@ -45,7 +45,41 @@ extension AlamofireNetworkService {
             AF.request(request).validate().responseDecodable(of: ArtistSearchResponse.self) { response in
                 switch response.result {
                 case .success(let searchResponse):
-                    return seal.fulfill(searchResponse.matches)
+                    return seal.fulfill(searchResponse.artistSearchItems)
+                case .failure(let error):
+                    return seal.reject(error)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - ArtistInfoService conformance
+extension AlamofireNetworkService {
+
+    func getInfo(mbid: String) -> Promise<Artist> {
+        return Promise { seal in
+            let request = ArtistRequest.getInfo(mbid: mbid)
+
+            AF.request(request).validate().responseDecodable(of: ArtistInfoResponse.self) { response in
+                switch response.result {
+                case .success(let info):
+                    return seal.fulfill(info.asArtist)
+                case .failure(let error):
+                    return seal.reject(error)
+                }
+            }
+        }
+    }
+
+    func getTopAlbums(mbid: String) -> Promise<[Album]> {
+        return Promise { seal in
+            let request = ArtistRequest.getTopAlbums(mbid: mbid)
+
+            AF.request(request).validate().responseDecodable(of: ArtistTopAlbumsResponse.self) { response in
+                switch response.result {
+                case .success(let albums):
+                    return seal.fulfill(albums.asArtistTopAlbums)
                 case .failure(let error):
                     return seal.reject(error)
                 }

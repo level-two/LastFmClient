@@ -1,6 +1,6 @@
 import Foundation
 
-struct AlbumImageResponse: Decodable {
+struct ImageResponse: Decodable {
     let url: String
     let size: String
 

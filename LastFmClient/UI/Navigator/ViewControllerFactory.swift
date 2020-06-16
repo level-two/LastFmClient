@@ -2,7 +2,6 @@ import UIKit
 
 protocol ViewControllerFactory: class {
     func makeHomeScreenViewController() -> UIViewController
-//    func makeArtistSearchViewController() -> UIViewController
-//    func makeArtistDetailsViewController() -> UIViewController
+    func makeArtistDetailsViewController(mbid: String) -> UIViewController
 //    func makeAlbumDetailsViewController(albumId: String) -> UIViewController
 }

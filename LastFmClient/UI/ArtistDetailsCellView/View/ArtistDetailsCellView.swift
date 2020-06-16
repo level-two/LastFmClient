@@ -1,11 +1,11 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
-class ArtistDetailsHeaderView: UICollectionReusableView, NibLoadable {
-    @IBOutlet weak var artistPhoto: UIImageView?
-    @IBOutlet weak var name: UILabel?
-    @IBOutlet weak var shortDescription: UILabel?
-
-    var onDescriptionTapped: (() -> Void)?
+final class ArtistDetailsCellView: UICollectionViewCell, NibLoadable {
+    @IBOutlet private var artistPhoto: UIImageView?
+    @IBOutlet private var name: UILabel?
+    @IBOutlet private var shortDescription: UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -14,10 +14,10 @@ class ArtistDetailsHeaderView: UICollectionReusableView, NibLoadable {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        onDescriptionTapped = nil
+        clearBindings()
     }
 
-    func configure(with viewModel: ArtistDetailsHeaderViewModel) {
+    func configure(with viewModel: ArtistDetailsCellViewModel) {
         artistPhoto?.image = viewModel.photo
         name?.text = viewModel.name
         shortDescription?.text = viewModel.shortDescription
@@ -28,14 +28,16 @@ class ArtistDetailsHeaderView: UICollectionReusableView, NibLoadable {
         theme.apply(style: .normal, to: shortDescription)
         theme.apply(style: .lightDarkBackground, to: self)
     }
+
+    private var disposeBag = DisposeBag()
 }
 
-extension ArtistDetailsHeaderView {
+extension ArtistDetailsCellView {
     fileprivate func setupView() {
 
     }
 
-    @IBAction func onDescriptionLabelTap(_ sender: Any) {
-        onDescriptionTapped?()
+    func clearBindings() {
+        disposeBag = DisposeBag()
     }
 }

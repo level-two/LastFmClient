@@ -1,6 +1,6 @@
 import UIKit
 
-class DefaultColorPalette: ColorPalette {
+final class DefaultColorPalette: ColorPalette {
     var base: UIColor { return UIColor(hex: 0xC0C0C0) }
     var light1: UIColor { return UIColor(hex: 0xFFFFFF) }
     var light2: UIColor { return UIColor(hex: 0xECECEC) }

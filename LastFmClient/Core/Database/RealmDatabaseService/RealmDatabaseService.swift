@@ -1,7 +1,7 @@
 import RealmSwift
 import RxSwift
 
-class RealmDatabaseService: DatabaseService { }
+final class RealmDatabaseService: DatabaseService { }
 
 // MARK: - AlbumStoreService conformance
 extension RealmDatabaseService {

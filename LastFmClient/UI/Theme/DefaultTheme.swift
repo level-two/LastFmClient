@@ -1,6 +1,6 @@
 import UIKit
 
-class DefaultTheme: Theme {
+final class DefaultTheme: Theme {
     fileprivate let fontSet: FontSet
     fileprivate let colorPalette: ColorPalette
 

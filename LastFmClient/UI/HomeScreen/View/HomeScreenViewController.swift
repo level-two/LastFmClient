@@ -7,10 +7,10 @@ final class HomeScreenViewController: UIViewController, StoryboardLoadable {
     @IBOutlet private var collectionView: UICollectionView?
     @IBOutlet private var searchTableView: UITableView?
 
-    private typealias DataSource = UICollectionViewDiffableDataSource<HomeScreenSections, AlbumCardHashableWrapper>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<HomeScreenSections, AlbumCardHashableWrapper>
+    private typealias DataSource = UICollectionViewDiffableDataSource<HomeScreenSection, AlbumCardHashableWrapper>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<HomeScreenSection, AlbumCardHashableWrapper>
 
-    enum UiMode {
+    private enum UiMode {
         case normal
         case search
     }
@@ -190,10 +190,10 @@ private extension HomeScreenViewController {
 //        viewModel?.onShowAlbumDetails
 //            .bind { [weak self] mbid self?.navigator?.navigate(to: .albumDetails(mbid)) }
 //            .disposed(by: disposeBag)
-//
-//        viewModel?.onShowArtistDetails
-//            .bind { [weak self] mbid self?.navigator?.navigate(to: .artistDetails(mbid)) }
-//            .disposed(by: disposeBag)
+
+        viewModel.onShowArtistDetails.bind { [weak self] mbid in
+            self?.navigator?.navigate(to: .artistDetails(mbid: mbid))
+        }.disposed(by: disposeBag)
 
         searchBar.rx.text.orEmpty.bind(to: viewModel.doArtistSearch).disposed(by: disposeBag)
 

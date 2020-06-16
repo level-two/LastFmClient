@@ -27,14 +27,14 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     }
 
     private let storedAlbums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
-    private let doShowAlbumDetails = BehaviorRelay<String>(value: "")
+    private let doShowAlbumDetails = PublishRelay<String>()
     private let onCardSelected = PublishSubject<AlbumCardViewModel>()
 
     private let onArtistSearch = PublishSubject<String>()
 
     private let searchResults = BehaviorRelay<[ArtistSearchItem]>(value: [])
     private let onSearchItemSelected = PublishSubject<ArtistSearchItem>()
-    private let doShowArtistDetails = BehaviorRelay<String>(value: "")
+    private let doShowArtistDetails = PublishRelay<String>()
 
     private let artistSearchService: ArtistSearchService
     private let imageDownloadService: ImageDownloadService

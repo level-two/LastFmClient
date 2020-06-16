@@ -1,128 +1,159 @@
 import UIKit
+import RxSwift
+import RxRelay
 
-class ArtistDetailsViewController: UICollectionViewController, StoryboardLoadable {
-    fileprivate var navigator: SceneNavigator?
-    fileprivate var networkService: NetworkService?
-    fileprivate var databaseProvider: DatabaseProvider?
-    fileprivate var theme: Theme?
+final class ArtistDetailsViewController: UIViewController, StoryboardLoadable {
+    @IBOutlet private var collectionView: UICollectionView?
 
-    fileprivate var viewModel: ArtistDetailsViewModel?
+    private typealias DataSource = UICollectionViewDiffableDataSource<ArtistDetailsViewSection, String>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<ArtistDetailsViewSection, String>
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.registerSupplementaryView(ArtistDetailsHeaderView.self,
-                                                 kind: UICollectionView.elementKindSectionHeader)
-        collectionView.registerReusableCell(ArtistDetailsAlbumCell.self)
+        setupView()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func setupDependencies(viewModel: ArtistDetailsViewModel, navigator: SceneNavigator?, theme: Theme) {
+        self.viewModel = viewModel
+        self.navigator = navigator
+        self.theme = theme
+    }
+
+    private let disposeBag = DisposeBag()
+    private var dataSource: DataSource?
+    private var navigator: SceneNavigator?
+    private var theme: Theme?
+    private var viewModel: ArtistDetailsViewModel?
+}
+
+private extension ArtistDetailsViewController {
+    func setupView() {
+        registerReusableCells()
+        setupDataSource()
+        setupLayout()
         styleView()
     }
 
-    func setupDependencies(navigator: SceneNavigator?,
-                           networkService: NetworkService,
-                           databaseProvider: DatabaseProvider,
-                           theme: Theme) {
-        self.navigator = navigator
-        self.networkService = networkService
-        self.databaseProvider = databaseProvider
-        self.theme = theme
-
-        self.viewModel = ArtistDetailsViewModel()
-    }
-}
-
-extension ArtistDetailsViewController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.albumsViewModel.count ?? 0
+    func registerReusableCells() {
+        collectionView?.registerReusableCell(ArtistDetailsCellView.self)
+        collectionView?.registerReusableCell(AlbumCardViewCell.self)
     }
 
-    override func collectionView(_ collectionView: UICollectionView,
-                                 viewForSupplementaryElementOfKind kind: String,
-                                 at indexPath: IndexPath) -> UICollectionReusableView {
+    func setupDataSource() {
+        guard let collectionView = collectionView,
+            let viewModel = viewModel,
+            let theme = theme
+            else { return }
 
-        let view = collectionView.dequeueReusableSupplementaryView(ArtistDetailsHeaderView.self,
-                                                                   ofKind: UICollectionView.elementKindSectionHeader,
-                                                                   for: indexPath)
-        if let viewModel = viewModel, let theme = theme {
-            view.configure(with: viewModel.headerViewModel)
-            view.style(with: theme)
+        let artistDetails = BehaviorRelay<[ArtistDetailsCellViewModel]>(value: [])
+        let albums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
+
+        viewModel.artistDetails.map { [$0] }.bind(to: artistDetails).disposed(by: disposeBag)
+        viewModel.albums.bind(to: albums).disposed(by: disposeBag)
+
+        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, _ in
+            guard let section = ArtistDetailsViewSection(rawValue: indexPath.section) else {
+                fatalError("Undefined section")
+            }
+
+            switch section {
+            case .artistDetails:
+                let cell = collectionView.dequeueReusableCell(ArtistDetailsCellView.self, for: indexPath)
+                cell.configure(with: artistDetails.value[indexPath.item])
+                cell.style(with: theme)
+                return cell
+            case .albums:
+                let cell = collectionView.dequeueReusableCell(AlbumCardViewCell.self, for: indexPath)
+                cell.set(viewModel: albums.value[indexPath.item])
+                cell.style(with: theme)
+                return cell
+            }
         }
 
-        return view
+        Observable
+            .combineLatest(artistDetails, albums)
+            .bind { artistDetails, albums in
+                var snapshot = Snapshot()
+                snapshot.appendSections([.artistDetails, .albums])
+                snapshot.appendItems(artistDetails.map { $0.mbid }, toSection: .artistDetails)
+                snapshot.appendItems(albums.map { $0.mbid }, toSection: .albums)
+                dataSource.apply(snapshot, animatingDifferences: true)
+            }.disposed(by: disposeBag)
     }
 
-    override func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func setupBindings() {
+        guard let viewModel = viewModel else { return }
 
-        let cell = collectionView.dequeueReusableCell(ArtistDetailsAlbumCell.self, for: indexPath)
-        if let viewModel = viewModel, let theme = theme {
-            cell.configure(with: viewModel.albumsViewModel[indexPath.item])
-            cell.style(with: theme)
-        }
+        //viewModel?.doShowFullBio
+        collectionView?.rx
+            .itemSelected
+            .filter { $0.section == ArtistDetailsViewSection.artistDetails.rawValue }
+            .map { _ in }
+            .bind(to: viewModel.doShowFullBio)
+            .disposed(by: disposeBag)
 
-        return cell
+        collectionView?.rx
+            .itemSelected
+            .filter { $0.section == ArtistDetailsViewSection.albums.rawValue }
+            .map { $0.item }
+            .bind(to: viewModel.doShowAlbumDetails)
+            .disposed(by: disposeBag)
     }
 
-    override func collectionView(_ collectionView: UICollectionView,
-                                 didSelectItemAt indexPath: IndexPath) {
-        navigator?.navigate(to: .albumDetails(albumId: "61bf0388-b8a9-48f4-81d1-7eb02706dfb0"))
-    }
-}
-
-extension ArtistDetailsViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-
-        // Get the view for the first header
-        let indexPath = IndexPath(row: 0, section: section)
-        let headerView = self.collectionView(collectionView,
-                                             viewForSupplementaryElementOfKind:
-                                                UICollectionView.elementKindSectionHeader,
-                                             at: indexPath)
-
-        let bounds = collectionView.bounds
-        var width = bounds.size.width -
-            collectionView.layoutMargins.left - collectionView.layoutMargins.right
-
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            width -= layout.sectionInset.left + layout.sectionInset.right
-        }
-
-        // Use this view to calculate the optimal size based on the collection view's width
-        return headerView.systemLayoutSizeFitting(CGSize(width: width, height: UIView.layoutFittingExpandedSize.height),
-                                                  withHorizontalFittingPriority: .required, // Width is fixed
-            verticalFittingPriority: .fittingSizeLevel) // Height can be as large as needed
+    func setupLayout() {
+        collectionView?.collectionViewLayout = createLayout()
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout: UICollectionViewLayout,
-                        sizeForItemAt: IndexPath) -> CGSize {
-
-        guard let flowLayout = layout as? UICollectionViewFlowLayout else {
-            return .zero
-        }
-
-        let insets = flowLayout.sectionInset.left + flowLayout.sectionInset.right +
-            collectionView.contentInset.left + collectionView.contentInset.right
-
-        let contentWidth = collectionView.frame.width
-        let availableContentWidth = contentWidth - insets
-
-        let space = flowLayout.minimumInteritemSpacing
-        let minCellWidth = 200 + space
-
-        let cellsPerRow = (availableContentWidth / minCellWidth).rounded(.down)
-        let cellWidth = (availableContentWidth - space * (cellsPerRow - 1)) / cellsPerRow
-        return CGSize(width: cellWidth, height: cellWidth)
-    }
-}
-
-extension ArtistDetailsViewController {
-    fileprivate func styleView() {
+    func styleView() {
         theme?.apply(style: .lightDarkBackground, to: collectionView)
         theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
+    }
+}
+
+private extension ArtistDetailsViewController {
+    func createLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { section, environment in
+            guard let section = ArtistDetailsViewSection(rawValue: section) else {
+                fatalError("Undefined section")
+            }
+
+            switch section {
+            case .artistDetails:
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                      heightDimension: .fractionalHeight(1.0))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                       heightDimension: .fractionalWidth(1.0))
+
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+
+                let artistSection = NSCollectionLayoutSection(group: group)
+                artistSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+
+                return artistSection
+
+            case .albums:
+                let containerSize = environment.container.effectiveContentSize
+
+                let columns = containerSize.width > 1000 ? 4 :
+                              containerSize.width > 600 ? 2 : 1
+
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                      heightDimension: .fractionalHeight(1.0))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                       heightDimension: .fractionalWidth(1.0/CGFloat(columns)))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+                group.interItemSpacing = .fixed(20)
+
+                let albumsSection = NSCollectionLayoutSection(group: group)
+                albumsSection.interGroupSpacing = 20
+                albumsSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+
+                return albumsSection
+            }
+        }
     }
 }
