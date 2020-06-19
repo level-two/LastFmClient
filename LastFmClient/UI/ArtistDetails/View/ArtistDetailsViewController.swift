@@ -110,6 +110,14 @@ private extension ArtistDetailsViewController {
             .bind(to: hudView.rx.isHidden)
             .disposed(by: disposeBag)
 
+        viewModel.showFullBio
+            .bind { [weak self] bio in self?.navigator?.navigate(to: .artistDescription(description: bio)) }
+            .disposed(by: disposeBag)
+
+//        viewModel.showAlbumDetails
+//            .bind { [weak self] mbid in self?.navigator?.navigate(to: .albumDetails(mbid: mbid) }
+//            .disposed(by: disposeBag)
+
         retryButton?.rx.tap
             .bind(to: viewModel.doRetry)
             .disposed(by: disposeBag)
@@ -117,7 +125,7 @@ private extension ArtistDetailsViewController {
         collectionView?.rx
             .itemSelected
             .filter { $0.section == ArtistDetailsViewSection.artistDetails.rawValue }
-            .map { _ in }
+            .map { $0.item }
             .bind(to: viewModel.doShowFullBio)
             .disposed(by: disposeBag)
 
@@ -140,16 +148,16 @@ private extension ArtistDetailsViewController {
             switch section {
             case .artistDetails:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .fractionalHeight(1.0))
+                                                      heightDimension: .estimated(500))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .fractionalWidth(1.0))
+                                                       heightDimension: .estimated(500))
 
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
                 let artistSection = NSCollectionLayoutSection(group: group)
-                artistSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+                //artistSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
 
                 return artistSection
 

@@ -35,6 +35,13 @@ final class DependencyContainer: ViewControllerFactory {
         return viewController
     }
 
+    func makeArtistDescriptionViewController(description: String) -> UIViewController {
+        let viewController = ArtistDescriptionViewController.loadFromStoryboard()
+        let viewModel = DefaultArtistDescriptionViewModel(with: description)
+        viewController.setupDependencies(viewModel: viewModel, theme: theme)
+        return viewController
+    }
+
 //    func makeAlbumDetailsViewController(albumId: String) -> UIViewController {
 //        let viewController = AlbumDetailsViewController.loadFromStoryboard()
 //        viewController.setupDependencies(albumId: albumId,

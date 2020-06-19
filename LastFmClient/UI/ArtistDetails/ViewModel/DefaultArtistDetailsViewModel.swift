@@ -11,7 +11,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
     var showNetworkError: Observable<Bool> { doShowNetworkError.asObservable() }
     var doRetry: AnyObserver<Void> { onRetry.asObserver() }
 
-    var doShowFullBio: AnyObserver<Void> { onShowArtistFullBio.asObserver() }
+    var doShowFullBio: AnyObserver<Int> { onShowArtistFullBio.asObserver() }
     var showFullBio: Observable<String> { doShowArtistFullBio.asObservable() }
     var doShowAlbumDetails: AnyObserver<Int> { onShowArtistAlbumDetails.asObserver() }
     var showAlbumDetails: Observable<String> { doShowArtistAlbumDetails.asObservable() }
@@ -23,7 +23,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
     private let doShowNetworkError = PublishSubject<Bool>()
     private let onRetry = PublishSubject<Void>()
 
-    private let onShowArtistFullBio = PublishSubject<Void>()
+    private let onShowArtistFullBio = PublishSubject<Int>()
     private let doShowArtistFullBio = PublishRelay<String>()
     private let onShowArtistAlbumDetails = PublishSubject<Int>()
     private let doShowArtistAlbumDetails = PublishRelay<String>()
@@ -55,7 +55,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
 private extension DefaultArtistDetailsViewModel {
     func setupBindings() {
         onShowArtistFullBio
-            .compactMap { [weak self] in self?.artistDetailsVar.value.first?.mbid }
+            .compactMap { [weak self] index in self?.artistDetailsVar.value[safe: index]?.longDescription }
             .bind(to: doShowArtistFullBio)
             .disposed(by: disposeBag)
 

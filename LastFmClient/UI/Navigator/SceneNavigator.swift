@@ -4,6 +4,7 @@ final class SceneNavigator: Navigator {
     enum Destination {
         case homeScreen
         case artistDetails(mbid: String)
+        case artistDescription(description: String)
 //        case albumDetails(albumId: String)
     }
 
@@ -30,6 +31,8 @@ fileprivate extension SceneNavigator {
             return factory.makeHomeScreenViewController()
         case .artistDetails(let mbid):
             return factory.makeArtistDetailsViewController(mbid: mbid)
+        case .artistDescription(let description):
+            return factory.makeArtistDescriptionViewController(description: description)
 //        case .albumDetails(let albumId):
 //            return factory.makeAlbumDetailsViewController(albumId: albumId)
         }

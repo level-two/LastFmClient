@@ -8,7 +8,7 @@ protocol ArtistDetailsViewModel {
     var showNetworkError: Observable<Bool> { get }
     var doRetry: AnyObserver<Void> { get }
 
-    var doShowFullBio: AnyObserver<Void> { get }
+    var doShowFullBio: AnyObserver<Int> { get }
     var showFullBio: Observable<String> { get }
     var doShowAlbumDetails: AnyObserver<Int> { get }
     var showAlbumDetails: Observable<String> { get }

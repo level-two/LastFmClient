@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvI-9w-Lsk" userLabel="Cover+HUD">
                                 <rect key="frame" x="20" y="20" width="274" height="187"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="vvK-Rt-V8R" userLabel="Cover">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="vvK-Rt-V8R" userLabel="Cover">
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="187"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVl-Au-d1m" userLabel="HUD">
@@ -102,7 +102,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="noimage" width="319" height="272"/>
+        <image name="noImage" width="319" height="272"/>
         <image name="remove" width="31" height="31"/>
     </resources>
 </document>

@@ -8,11 +8,6 @@ final class ArtistDetailsCellView: UICollectionViewCell, NibLoadable {
     @IBOutlet private var shortDescription: UILabel?
     @IBOutlet private var hudView: UIView?
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupView()
-    }
-
     override func prepareForReuse() {
         super.prepareForReuse()
         cleanBindings()
