@@ -22,5 +22,6 @@ private extension ArtistDescriptionViewController {
     func setupView() {
         guard let viewModel = viewModel else { return }
         textView?.attributedText = viewModel.attributedDescription
+        textView?.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 20, right: 20)
     }
 }
