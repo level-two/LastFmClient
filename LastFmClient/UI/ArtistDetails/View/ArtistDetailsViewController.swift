@@ -32,14 +32,24 @@ final class ArtistDetailsViewController: UIViewController, StoryboardLoadable {
 private extension ArtistDetailsViewController {
     func setupView() {
         registerReusableCells()
-        setupDataSource()
-        setupLayout()
         styleView()
+        setupLayout()
+        setupDataSource()
+        setupBindings()
     }
 
     func registerReusableCells() {
         collectionView?.registerReusableCell(ArtistDetailsCellView.self)
         collectionView?.registerReusableCell(AlbumCardViewCell.self)
+    }
+
+    func styleView() {
+        theme?.apply(style: .lightDarkBackground, to: collectionView)
+        theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
+    }
+
+    func setupLayout() {
+        collectionView?.collectionViewLayout = createLayout()
     }
 
     func setupDataSource() {
@@ -117,15 +127,6 @@ private extension ArtistDetailsViewController {
             .map { $0.item }
             .bind(to: viewModel.doShowAlbumDetails)
             .disposed(by: disposeBag)
-    }
-
-    func setupLayout() {
-        collectionView?.collectionViewLayout = createLayout()
-    }
-
-    func styleView() {
-        theme?.apply(style: .lightDarkBackground, to: collectionView)
-        theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
     }
 }
 

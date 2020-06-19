@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "nointernet.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "nointernet.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

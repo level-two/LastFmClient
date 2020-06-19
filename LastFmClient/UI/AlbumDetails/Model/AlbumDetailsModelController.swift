@@ -65,7 +65,6 @@ fileprivate extension AlbumDetailsModelController {
     }
 }
 
-// TODO: Refactor this part
 fileprivate extension AlbumDatabaseObject {
     convenience init(from albumInfoResponse: AlbumInfoResponse) {
         self.init()

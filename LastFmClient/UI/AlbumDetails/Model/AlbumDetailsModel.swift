@@ -32,7 +32,7 @@ struct AlbumDetailsModel {
     init(from albumInfo: AlbumInfoResponse) {
         self.title = albumInfo.album.name
         self.artist = albumInfo.album.artist
-        // FIXME:
+
         self.year = "1999 STUB" // albumInfo.album.releaseDate
         self.tracks = albumInfo.album.tracks.track.map(TrackModel.init)
         self.isStored = false

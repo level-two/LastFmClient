@@ -65,7 +65,7 @@ private extension DefaultAlbumCardViewModel {
         }.done { [weak self] image in
             self?.cover.accept(image)
         }.catch { [weak self] _ in
-            self?.cover.accept(UIImage(named: "noimage"))
+            self?.cover.accept(UIImage(named: "noImage"))
         }.finally { [weak self] in
             self?.showLoadingHud.accept(false)
         }

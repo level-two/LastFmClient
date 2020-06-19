@@ -107,9 +107,11 @@ private extension DefaultArtistDetailsViewModel {
     func loadArtistInfo() -> Promise<Void> {
         return artistInfoService
             .getInfo(mbid: mbid)
-            .map { [weak self] _ in
-                let details = DefaultArtistDetailsCellViewModel.mock()
-                self?.artistDetailsVar.accept([details])
+            .map { [weak self] artist in
+                guard let self = self else { return }
+                let details = DefaultArtistDetailsCellViewModel(artist: artist,
+                                                                imageDownloadService: self.imageDownloadService)
+                self.artistDetailsVar.accept([details])
             }
     }
 
