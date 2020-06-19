@@ -4,6 +4,9 @@ import RxRelay
 
 final class ArtistDetailsViewController: UIViewController, StoryboardLoadable {
     @IBOutlet private var collectionView: UICollectionView?
+    @IBOutlet private var hudView: UIView?
+    @IBOutlet private var noConnectionView: UIView?
+    @IBOutlet private var retryButton: UIButton?
 
     private typealias DataSource = UICollectionViewDiffableDataSource<ArtistDetailsViewSection, String>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<ArtistDetailsViewSection, String>
@@ -48,7 +51,7 @@ private extension ArtistDetailsViewController {
         let artistDetails = BehaviorRelay<[ArtistDetailsCellViewModel]>(value: [])
         let albums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
 
-        viewModel.artistDetails.map { [$0] }.bind(to: artistDetails).disposed(by: disposeBag)
+        viewModel.artistDetails.bind(to: artistDetails).disposed(by: disposeBag)
         viewModel.albums.bind(to: albums).disposed(by: disposeBag)
 
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, _ in
@@ -82,9 +85,25 @@ private extension ArtistDetailsViewController {
     }
 
     func setupBindings() {
-        guard let viewModel = viewModel else { return }
+        guard let viewModel = viewModel,
+            let noConnectionView = noConnectionView,
+            let hudView = hudView
+            else { return }
 
-        //viewModel?.doShowFullBio
+        viewModel.showNetworkError
+            .map { !$0 }
+            .bind(to: noConnectionView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        viewModel.showHud
+            .map { !$0 }
+            .bind(to: hudView.rx.isHidden)
+            .disposed(by: disposeBag)
+
+        retryButton?.rx.tap
+            .bind(to: viewModel.doRetry)
+            .disposed(by: disposeBag)
+
         collectionView?.rx
             .itemSelected
             .filter { $0.section == ArtistDetailsViewSection.artistDetails.rawValue }

@@ -4,37 +4,29 @@ import RxRelay
 import PromiseKit
 
 class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
-    var artistDetails: Observable<ArtistDetailsCellViewModel> { artistDetailsVar.asObservable() }
+    var artistDetails: Observable<[ArtistDetailsCellViewModel]> { artistDetailsVar.asObservable() }
     var albums: Observable<[AlbumCardViewModel]> { albumsVar.asObservable() }
 
     var showHud: Observable<Bool> { doShowHud.asObservable() }
-    var showNetworkError: Observable<Void> { doShowNetworkError.asObservable() }
-    var doActionOnNetworkError: AnyObserver<NetworkErrorAction> { actionOnNetworkError.asObserver() }
+    var showNetworkError: Observable<Bool> { doShowNetworkError.asObservable() }
+    var doRetry: AnyObserver<Void> { onRetry.asObserver() }
 
     var doShowFullBio: AnyObserver<Void> { onShowArtistFullBio.asObserver() }
     var showFullBio: Observable<String> { doShowArtistFullBio.asObservable() }
-
     var doShowAlbumDetails: AnyObserver<Int> { onShowArtistAlbumDetails.asObserver() }
     var showAlbumDetails: Observable<String> { doShowArtistAlbumDetails.asObservable() }
 
-    var doGoBack: AnyObserver<Void> { onBack.asObserver() }
-    var showMainScreen: Observable<Void> { doShowMainScreen.asObservable() }
-
-    private let artistDetailsVar = PublishRelay<ArtistDetailsCellViewModel>()
+    private let artistDetailsVar = BehaviorRelay<[ArtistDetailsCellViewModel]>(value: [])
     private let albumsVar = BehaviorRelay<[AlbumCardViewModel]>(value: [])
 
     private let doShowHud = PublishSubject<Bool>()
-    private let doShowNetworkError = PublishSubject<Void>()
-    private let actionOnNetworkError = PublishSubject<NetworkErrorAction>()
+    private let doShowNetworkError = PublishSubject<Bool>()
+    private let onRetry = PublishSubject<Void>()
 
     private let onShowArtistFullBio = PublishSubject<Void>()
     private let doShowArtistFullBio = PublishRelay<String>()
-
     private let onShowArtistAlbumDetails = PublishSubject<Int>()
     private let doShowArtistAlbumDetails = PublishRelay<String>()
-
-    private let onBack = PublishSubject<Void>()
-    private let doShowMainScreen = PublishRelay<Void>()
 
     private let disposeBag = DisposeBag()
 
@@ -62,34 +54,27 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
 
 private extension DefaultArtistDetailsViewModel {
     func setupBindings() {
-        setupDataBindings()
-        setupNavigationBindings()
-    }
+        onShowArtistFullBio
+            .compactMap { [weak self] in self?.artistDetailsVar.value.first?.mbid }
+            .bind(to: doShowArtistFullBio)
+            .disposed(by: disposeBag)
 
-    func setupDataBindings() {
-//        Observable
-//            .merge(.just(()), actionOnNetworkError.filter { $0 == .retry }.map { _ in })
-//            .bind { [weak self] in
-//                self?.loadData()
-//
-//
-//
-//                // Load data
-//            }.disposed(by: disposeBag)
-    }
-
-    func setupNavigationBindings() {
-
+        onShowArtistAlbumDetails
+            .compactMap { [weak self] index in self?.albumsVar.value[safe: index]?.mbid }
+            .bind(to: doShowArtistAlbumDetails)
+            .disposed(by: disposeBag)
     }
 }
 
 private extension DefaultArtistDetailsViewModel {
     func loadData() {
         Observable
-            .merge(.just(()),
-                   actionOnNetworkError.filter { $0 == .retry }.map { _ in })
+            .merge(.just(()), onRetry)
             .bind { [weak self] in
+
+                self?.doShowNetworkError.onNext(false)
                 self?.doShowHud.onNext(true)
+
                 firstly {
                     self?.loadAlbums() ?? .failed
                 }.then {
@@ -97,8 +82,9 @@ private extension DefaultArtistDetailsViewModel {
                 }.ensure {
                     self?.doShowHud.onNext(false)
                 }.catch { _ in
-                    self?.doShowNetworkError.onNext(())
+                    self?.doShowNetworkError.onNext(true)
                 }
+
             }.disposed(by: disposeBag)
     }
 
@@ -123,7 +109,7 @@ private extension DefaultArtistDetailsViewModel {
             .getInfo(mbid: mbid)
             .map { [weak self] _ in
                 let details = DefaultArtistDetailsCellViewModel.mock()
-                self?.artistDetailsVar.accept(details)
+                self?.artistDetailsVar.accept([details])
             }
     }
 
