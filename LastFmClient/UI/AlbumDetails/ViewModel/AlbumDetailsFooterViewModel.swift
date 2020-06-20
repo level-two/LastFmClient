@@ -1,9 +1,6 @@
-import Foundation
+import RxSwift
 
-struct AlbumDetailsFooterViewModel {
-    var isAlbumInCollection: Bool = false
-
-    init(from model: AlbumDetailsModel) {
-        isAlbumInCollection = model.isStored
-    }
+protocol AlbumDetailsFooterViewModel {
+    var stored: Observable<Bool> { get }
+    var storeAlbum: AnyObserver<Void> { get }
 }

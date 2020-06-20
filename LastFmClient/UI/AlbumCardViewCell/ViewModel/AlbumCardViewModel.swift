@@ -11,7 +11,7 @@ protocol AlbumCardViewModel {
     var onShowLoadingHud: Observable<Bool> { get }
     var onStored: Observable<Bool> { get }
 
-    var onStoreButton: AnyObserver<()> { get }
+    var onStoreButton: AnyObserver<Void> { get }
 
     func downloadContent()
 }

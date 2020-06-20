@@ -1,56 +1,48 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AlbumDetailsFooterView: UITableViewHeaderFooterView, NibLoadable {
-    @IBOutlet weak var addButton: UIButton?
-    @IBOutlet weak var removeButton: UIButton?
-
-    var onAdd: (() -> Void)?
-    var onRemove: (() -> Void)?
-
-    fileprivate enum ButtonState {
-        case add
-        case remove
-        case none
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupView()
-    }
+    @IBOutlet private weak var button: UIButton?
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        setupView()
-        onAdd = nil
-        onRemove = nil
+        clearBindings()
     }
 
-    func configure(with viewModel: AlbumDetailsFooterViewModel) {
-        setButtonState(viewModel.isAlbumInCollection ? .remove : .add)
+    func configure(with viewModel: AlbumDetailsFooterViewModel, theme: Theme) {
+        self.viewModel = viewModel
+        self.theme = theme
+        setupBindings()
     }
 
     func style(with theme: Theme) {
-        theme.apply(style: .addButton, to: addButton)
-        theme.apply(style: .removeButton, to: removeButton)
         theme.apply(style: .lightDarkBackground, to: self.contentView)
     }
 
-    @IBAction func onAddButton(_ sender: UIButton) {
-        self.onAdd?()
-    }
-
-    @IBAction func onRemoveButton(_ sender: UIButton) {
-        self.onRemove?()
-    }
+    private var viewModel: AlbumDetailsFooterViewModel?
+    private var theme: Theme?
+    private var disposeBag = DisposeBag()
 }
 
-extension AlbumDetailsFooterView {
-    fileprivate func setupView() {
-        setButtonState(.none)
+private extension AlbumDetailsFooterView {
+    func setupBindings() {
+        clearBindings()
+
+        guard let viewModel = viewModel else { return }
+
+        viewModel.stored.bind { [weak self] isStored in
+            self?.theme?.apply(style: isStored ? .removeButton : .addButton, to: self?.button)
+            self?.button?.setTitle(isStored ? "remove" : "add", for: .normal)
+            self?.button?.setImage(UIImage(named: isStored ? "remove" : "add"), for: .normal)
+        }.disposed(by: disposeBag)
+
+        button?.rx.tap
+            .bind(to: viewModel.storeAlbum)
+            .disposed(by: disposeBag)
     }
 
-    fileprivate func setButtonState(_ state: ButtonState) {
-        addButton?.isHidden = !(state == .add)
-        removeButton?.isHidden = !(state == .remove)
+    func clearBindings() {
+        disposeBag = DisposeBag()
     }
 }

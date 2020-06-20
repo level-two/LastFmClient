@@ -10,6 +10,7 @@ final class DefaultAlbumCardViewModel: AlbumCardViewModel {
     var onCover: Observable<UIImage?> { return cover.asObservable() }
     var onShowLoadingHud: Observable<Bool> { return showLoadingHud.asObservable() }
     var onStored: Observable<Bool> { return stored.asObservable() }
+    var onStoreButton: AnyObserver<Void> { onStore.asObserver() }
 
     init(album: Album, imageDownloadService: ImageDownloadService, albumStoreService: AlbumStoreService) {
         self.album = album
@@ -19,11 +20,6 @@ final class DefaultAlbumCardViewModel: AlbumCardViewModel {
 
         setupBindings()
     }
-
-    var onStoreButton: AnyObserver<()> {
-        onStore.asObserver()
-    }
-
     func downloadContent() {
         downloadCoverImage(url: album.imageUrl[.medium])
     }

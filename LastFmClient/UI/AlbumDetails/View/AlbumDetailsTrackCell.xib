@@ -1,52 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="50" id="t3r-q0-z7x" customClass="AlbumDetailsTrackCell" customModule="LastFmClient" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="68" id="t3r-q0-z7x" customClass="AlbumDetailsTrackCell" customModule="LastFmClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t3r-q0-z7x" id="wKe-nk-cFS">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="note2_small" translatesAutoresizingMaskIntoConstraints="NO" id="Qzq-oX-qS4">
-                        <rect key="frame" x="20" y="8" width="33.5" height="33.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="note" translatesAutoresizingMaskIntoConstraints="NO" id="Qzq-oX-qS4">
+                        <rect key="frame" x="20" y="15.5" width="37" height="37"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="Qzq-oX-qS4" secondAttribute="height" multiplier="1:1" id="I7T-td-vBJ"/>
+                            <constraint firstAttribute="width" secondItem="Qzq-oX-qS4" secondAttribute="height" multiplier="1:1" id="kRT-K7-Scw"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qei-qL-RPE">
-                        <rect key="frame" x="69.5" y="8" width="89" height="33.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="1000" text="Track name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qei-qL-RPE">
+                        <rect key="frame" x="65" y="23.5" width="89" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:41" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOm-bs-Jfc">
-                        <rect key="frame" x="322" y="14.5" width="33" height="21"/>
+                        <rect key="frame" x="322" y="23.5" width="33" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="BOm-bs-Jfc" firstAttribute="centerY" secondItem="wKe-nk-cFS" secondAttribute="centerY" id="3Uz-Er-ykU"/>
-                    <constraint firstItem="Qei-qL-RPE" firstAttribute="leading" secondItem="Qzq-oX-qS4" secondAttribute="trailing" constant="16" id="3Zw-Al-a9P"/>
-                    <constraint firstItem="Qzq-oX-qS4" firstAttribute="centerY" secondItem="wKe-nk-cFS" secondAttribute="centerY" id="I4S-TV-XUP"/>
-                    <constraint firstItem="Qzq-oX-qS4" firstAttribute="height" secondItem="Qei-qL-RPE" secondAttribute="height" id="Rrk-ZQ-QQP"/>
-                    <constraint firstAttribute="bottom" secondItem="Qei-qL-RPE" secondAttribute="bottom" constant="8" id="VnN-KC-gFf"/>
-                    <constraint firstAttribute="trailing" secondItem="BOm-bs-Jfc" secondAttribute="trailing" constant="20" symbolic="YES" id="W13-tf-7vz"/>
-                    <constraint firstItem="Qzq-oX-qS4" firstAttribute="leading" secondItem="wKe-nk-cFS" secondAttribute="leading" constant="20" symbolic="YES" id="btt-ei-cPJ"/>
-                    <constraint firstItem="Qei-qL-RPE" firstAttribute="top" secondItem="wKe-nk-cFS" secondAttribute="top" constant="8" id="vx3-aH-nV5"/>
-                    <constraint firstItem="BOm-bs-Jfc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qei-qL-RPE" secondAttribute="trailing" id="yzp-HG-JQy"/>
+                    <constraint firstItem="Qzq-oX-qS4" firstAttribute="centerY" secondItem="wKe-nk-cFS" secondAttribute="centerY" id="Edh-F5-jpl"/>
+                    <constraint firstItem="Qei-qL-RPE" firstAttribute="centerY" secondItem="wKe-nk-cFS" secondAttribute="centerY" id="Jnb-f3-zce"/>
+                    <constraint firstItem="BOm-bs-Jfc" firstAttribute="centerY" secondItem="wKe-nk-cFS" secondAttribute="centerY" id="Z10-cj-IJt"/>
+                    <constraint firstItem="Qzq-oX-qS4" firstAttribute="leading" secondItem="wKe-nk-cFS" secondAttribute="leading" constant="20" id="abf-qp-GUd"/>
+                    <constraint firstItem="BOm-bs-Jfc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Qei-qL-RPE" secondAttribute="trailing" constant="8" symbolic="YES" id="bLm-tY-EhF"/>
+                    <constraint firstItem="Qzq-oX-qS4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wKe-nk-cFS" secondAttribute="top" constant="8" id="bq5-39-x5P"/>
+                    <constraint firstItem="Qei-qL-RPE" firstAttribute="leading" secondItem="Qzq-oX-qS4" secondAttribute="trailing" constant="8" symbolic="YES" id="cTo-Nj-ehE"/>
+                    <constraint firstAttribute="trailing" secondItem="BOm-bs-Jfc" secondAttribute="trailing" constant="20" id="kxi-Fv-OCs"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Qzq-oX-qS4" secondAttribute="bottom" constant="8" id="mIl-bg-nDg"/>
+                    <constraint firstItem="Qzq-oX-qS4" firstAttribute="height" secondItem="Qei-qL-RPE" secondAttribute="height" multiplier="1.75" id="xVq-G5-vQN"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -54,10 +52,10 @@
                 <outlet property="track" destination="Qei-qL-RPE" id="zvn-l4-v1B"/>
                 <outlet property="trackLength" destination="BOm-bs-Jfc" id="XGV-b5-hkY"/>
             </connections>
-            <point key="canvasLocation" x="-39.200000000000003" y="-26.086956521739133"/>
+            <point key="canvasLocation" x="-39.200000000000003" y="-17.991004497751124"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="note2_small" width="36" height="50"/>
+        <image name="note" width="64" height="82"/>
     </resources>
 </document>

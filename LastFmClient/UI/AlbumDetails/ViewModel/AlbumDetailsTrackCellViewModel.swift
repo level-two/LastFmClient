@@ -1,12 +1,20 @@
 import Foundation
 
 struct AlbumDetailsTrackCellViewModel {
-    var track: String
-    var trackLength: TimeInterval
-
-    init (from trackData: TrackModel) {
-        let artist = trackData.artist.count > 0 ? "\(trackData.artist) - " : ""
-        self.track = artist + trackData.name
-        self.trackLength = TimeInterval(trackData.duration)
-    }
+    var title: String
+    var duration: String
 }
+
+//extension TimeInterval {
+//    var formatted: String? {
+//        let formatter = DateComponentsFormatter()
+//        formatter.zeroFormattingBehavior = .pad
+//        formatter.allowedUnits = [.minute, .second]
+//
+//        if self >= 3600 {
+//            formatter.allowedUnits.insert(.hour)
+//        }
+//
+//        return formatter.string(from: self)
+//    }
+//}
