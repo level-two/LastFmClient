@@ -60,7 +60,7 @@ private extension DefaultArtistDetailsViewModel {
             .disposed(by: disposeBag)
 
         onShowArtistAlbumDetails
-            .compactMap { [weak self] index in self?.albumsVar.value[safe: index]?.mbid }
+            .compactMap { [weak self] index in self?.albumsVar.value[safe: index]?.album.mbid }
             .bind(to: doShowArtistAlbumDetails)
             .disposed(by: disposeBag)
     }
@@ -94,8 +94,8 @@ private extension DefaultArtistDetailsViewModel {
             .map { [weak self] albums in
                 guard let self = self else { return }
 
-                let cards = albums.map {
-                    DefaultAlbumCardViewModel(album: $0,
+                let cards = albums.map { album in
+                    DefaultAlbumCardViewModel(album: album,
                                               imageDownloadService: self.imageDownloadService,
                                               albumStoreService: self.albumStoreService)
                 }

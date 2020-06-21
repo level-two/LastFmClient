@@ -10,10 +10,10 @@ final class AlbumCardHashableWrapper: Hashable {
 
 extension AlbumCardHashableWrapper {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(wrappedCard.mbid)
+        hasher.combine(wrappedCard.album.mbid)
     }
 
     static func == (lhs: AlbumCardHashableWrapper, rhs: AlbumCardHashableWrapper) -> Bool {
-        lhs.wrappedCard.mbid == rhs.wrappedCard.mbid
+        lhs.wrappedCard.album.mbid == rhs.wrappedCard.album.mbid
     }
 }

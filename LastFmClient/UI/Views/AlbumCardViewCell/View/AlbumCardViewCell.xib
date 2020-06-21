@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="NVi-cq-PY5" customClass="AlbumCardViewCell" customModule="LastFmClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="314" height="260"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="314" height="260"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n7x-oh-Qki">
+                        <rect key="frame" x="0.0" y="0.0" width="314" height="260"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E5Z-1u-iua" customClass="AlbumView" customModule="LastFmClient" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="274" height="220"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zLf-5b-IIz" userLabel="Remove button">
+                                        <rect key="frame" x="243" y="0.0" width="31" height="31"/>
+                                        <state key="normal" image="remove"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="zLf-5b-IIz" firstAttribute="top" secondItem="E5Z-1u-iua" secondAttribute="top" id="CW2-GW-RFa"/>
+                                    <constraint firstItem="zLf-5b-IIz" firstAttribute="trailing" secondItem="E5Z-1u-iua" secondAttribute="trailing" id="hd5-8H-akP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="E5Z-1u-iua" secondAttribute="trailing" constant="20" symbolic="YES" id="3oH-wB-GGp"/>
+                            <constraint firstItem="E5Z-1u-iua" firstAttribute="top" secondItem="n7x-oh-Qki" secondAttribute="top" constant="20" symbolic="YES" id="VtR-Pa-eb3"/>
+                            <constraint firstAttribute="bottom" secondItem="E5Z-1u-iua" secondAttribute="bottom" constant="20" symbolic="YES" id="a2K-6x-zO8"/>
+                            <constraint firstItem="E5Z-1u-iua" firstAttribute="leading" secondItem="n7x-oh-Qki" secondAttribute="leading" constant="20" symbolic="YES" id="d1e-1h-Lq0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="n7x-oh-Qki" firstAttribute="bottom" secondItem="SBs-VU-4PC" secondAttribute="bottom" priority="995" id="7nT-hx-4Vz"/>
+                <constraint firstItem="n7x-oh-Qki" firstAttribute="trailing" secondItem="SBs-VU-4PC" secondAttribute="trailing" priority="995" id="GnR-0e-a0d"/>
+                <constraint firstItem="SBs-VU-4PC" firstAttribute="leading" secondItem="n7x-oh-Qki" secondAttribute="leading" priority="995" id="Sdj-KV-n32"/>
+                <constraint firstItem="SBs-VU-4PC" firstAttribute="top" secondItem="n7x-oh-Qki" secondAttribute="top" priority="995" id="goA-A4-rzM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SBs-VU-4PC"/>
+            <size key="customSize" width="314" height="260"/>
+            <connections>
+                <outlet property="albumView" destination="E5Z-1u-iua" id="OwO-wz-qpy"/>
+                <outlet property="storeButton" destination="zLf-5b-IIz" id="Cxp-QU-VVw"/>
+            </connections>
+            <point key="canvasLocation" x="-1356.8" y="105.24737631184409"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="remove" width="31" height="31"/>
+    </resources>
+</document>

@@ -52,23 +52,24 @@ private extension DefaultHomeScreenViewModel {
         let artistSearchService = self.artistSearchService
 
         albumStoreService.storedAlbums()
-            .map { albums in
-                albums.map { DefaultAlbumCardViewModel(album: $0,
-                                                       imageDownloadService: imageDownloadService,
-                                                       albumStoreService: albumStoreService) }
-            }.bind(to: storedAlbums)
+            .map { storedAlbums in
+                storedAlbums.map { album in
+                    DefaultAlbumCardViewModel(album: album,
+                                              imageDownloadService: imageDownloadService,
+                                              albumStoreService: albumStoreService)
+                }
+            }
+            .bind(to: storedAlbums)
             .disposed(by: disposeBag)
 
         onCardSelected
-            .map { $0.mbid }
+            .map { $0.album.mbid }
             .bind(to: doShowAlbumDetails)
             .disposed(by: disposeBag)
 
         onArtistSearch
             .filter { $0.isEmpty }
-            .compactMap { _ in
-                searchHistoryService.searchHistory()
-        }
+            .compactMap { _ in searchHistoryService.searchHistory() }
             .map { $0.reversed() }
             .bind(to: searchResults)
             .disposed(by: disposeBag)

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumView" customModule="LastFmClient" customModuleProvider="target">
+            <connections>
+                <outlet property="artist" destination="9t3-Wl-KRW" id="1Zw-DV-2YL"/>
+                <outlet property="cover" destination="vvK-Rt-V8R" id="KPW-ya-fbr"/>
+                <outlet property="coverLoadingHud" destination="DVl-Au-d1m" id="Ipi-r2-Ktb"/>
+                <outlet property="title" destination="o3g-tN-y91" id="M1Z-Hs-7h6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="n7x-oh-Qki">
+            <rect key="frame" x="0.0" y="0.0" width="467" height="508"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5B-QI-WPT">
+                    <rect key="frame" x="0.0" y="0.0" width="467" height="508"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="vvK-Rt-V8R" userLabel="Cover">
+                            <rect key="frame" x="0.0" y="0.0" width="467" height="260"/>
+                        </imageView>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVl-Au-d1m" userLabel="HUD">
+                            <rect key="frame" x="0.0" y="0.0" width="467" height="260"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KNa-hn-rJq">
+                                    <rect key="frame" x="223.5" y="120" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="KNa-hn-rJq" firstAttribute="centerY" secondItem="DVl-Au-d1m" secondAttribute="centerY" id="OvK-9g-jFN"/>
+                                <constraint firstItem="KNa-hn-rJq" firstAttribute="centerX" secondItem="DVl-Au-d1m" secondAttribute="centerX" id="vDr-kF-WV3"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9t3-Wl-KRW" userLabel="artist">
+                            <rect key="frame" x="0.0" y="268" width="467" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Album title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3g-tN-y91" userLabel="title">
+                            <rect key="frame" x="0.0" y="296.5" width="467" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="vvK-Rt-V8R" firstAttribute="top" secondItem="U5B-QI-WPT" secondAttribute="top" id="3L2-Zu-4F8"/>
+                        <constraint firstItem="DVl-Au-d1m" firstAttribute="height" secondItem="vvK-Rt-V8R" secondAttribute="height" id="F4W-ie-N5K"/>
+                        <constraint firstItem="9t3-Wl-KRW" firstAttribute="leading" secondItem="U5B-QI-WPT" secondAttribute="leading" id="Fif-Qo-3nQ"/>
+                        <constraint firstItem="DVl-Au-d1m" firstAttribute="width" secondItem="vvK-Rt-V8R" secondAttribute="width" id="KsK-Y5-qL4"/>
+                        <constraint firstItem="DVl-Au-d1m" firstAttribute="centerX" secondItem="vvK-Rt-V8R" secondAttribute="centerX" id="LYu-Y9-qyA"/>
+                        <constraint firstItem="vvK-Rt-V8R" firstAttribute="leading" secondItem="U5B-QI-WPT" secondAttribute="leading" id="O7t-du-aVU"/>
+                        <constraint firstItem="DVl-Au-d1m" firstAttribute="centerY" secondItem="vvK-Rt-V8R" secondAttribute="centerY" id="PCo-kp-EFZ"/>
+                        <constraint firstAttribute="trailing" secondItem="o3g-tN-y91" secondAttribute="trailing" id="eYy-hE-JMF"/>
+                        <constraint firstItem="o3g-tN-y91" firstAttribute="top" secondItem="9t3-Wl-KRW" secondAttribute="bottom" constant="8" symbolic="YES" id="fS5-d3-AVM"/>
+                        <constraint firstItem="o3g-tN-y91" firstAttribute="leading" secondItem="U5B-QI-WPT" secondAttribute="leading" id="gWC-CA-cFh"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="o3g-tN-y91" secondAttribute="bottom" id="hmv-8k-gcy"/>
+                        <constraint firstItem="9t3-Wl-KRW" firstAttribute="top" secondItem="vvK-Rt-V8R" secondAttribute="bottom" constant="8" symbolic="YES" id="iMQ-G4-NWq"/>
+                        <constraint firstAttribute="bottom" secondItem="o3g-tN-y91" secondAttribute="bottom" priority="100" id="pES-QI-tjv"/>
+                        <constraint firstAttribute="trailing" secondItem="vvK-Rt-V8R" secondAttribute="trailing" id="thg-7Q-Fy1"/>
+                        <constraint firstAttribute="trailing" secondItem="9t3-Wl-KRW" secondAttribute="trailing" id="yho-mf-d7J"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="U5B-QI-WPT" firstAttribute="leading" secondItem="mg8-hP-dwo" secondAttribute="leading" id="76S-MP-b5J"/>
+                <constraint firstItem="mg8-hP-dwo" firstAttribute="bottom" secondItem="U5B-QI-WPT" secondAttribute="bottom" id="FNJ-Dr-1r7"/>
+                <constraint firstItem="U5B-QI-WPT" firstAttribute="top" secondItem="mg8-hP-dwo" secondAttribute="top" id="sz3-Qd-gzl"/>
+                <constraint firstItem="U5B-QI-WPT" firstAttribute="trailing" secondItem="mg8-hP-dwo" secondAttribute="trailing" id="y61-5q-lv0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="mg8-hP-dwo"/>
+            <point key="canvasLocation" x="-1285.5999999999999" y="511.84407796101954"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="noPhoto" width="260" height="260"/>
+    </resources>
+</document>

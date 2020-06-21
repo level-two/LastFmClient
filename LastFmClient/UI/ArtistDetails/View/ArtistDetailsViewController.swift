@@ -89,7 +89,7 @@ private extension ArtistDetailsViewController {
                 var snapshot = Snapshot()
                 snapshot.appendSections([.artistDetails, .albums])
                 snapshot.appendItems(artistDetails.map { $0.mbid }, toSection: .artistDetails)
-                snapshot.appendItems(albums.map { $0.mbid }, toSection: .albums)
+                snapshot.appendItems(albums.map { $0.album.mbid }, toSection: .albums)
                 dataSource.apply(snapshot, animatingDifferences: true)
             }.disposed(by: disposeBag)
     }
