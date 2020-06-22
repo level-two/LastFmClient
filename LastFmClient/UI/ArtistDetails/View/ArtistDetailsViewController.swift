@@ -4,9 +4,6 @@ import RxRelay
 
 final class ArtistDetailsViewController: UIViewController, StoryboardLoadable {
     @IBOutlet private var collectionView: UICollectionView?
-    @IBOutlet private var hudView: UIView?
-    @IBOutlet private var noConnectionView: UIView?
-    @IBOutlet private var retryButton: UIButton?
 
     private typealias DataSource = UICollectionViewDiffableDataSource<ArtistDetailsViewSection, String>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<ArtistDetailsViewSection, String>
@@ -95,19 +92,14 @@ private extension ArtistDetailsViewController {
     }
 
     func setupBindings() {
-        guard let viewModel = viewModel,
-            let noConnectionView = noConnectionView,
-            let hudView = hudView
-            else { return }
+        guard let viewModel = viewModel else { return }
 
         viewModel.showNetworkError
-            .map { !$0 }
-            .bind(to: noConnectionView.rx.isHidden)
+            .bind(to: self.view.rx.showNetworkErrorOverlay)
             .disposed(by: disposeBag)
 
         viewModel.showHud
-            .map { !$0 }
-            .bind(to: hudView.rx.isHidden)
+            .bind(to: self.view.rx.showHud)
             .disposed(by: disposeBag)
 
         viewModel.showFullBio
@@ -117,10 +109,6 @@ private extension ArtistDetailsViewController {
 //        viewModel.showAlbumDetails
 //            .bind { [weak self] mbid in self?.navigator?.navigate(to: .albumDetails(mbid: mbid) }
 //            .disposed(by: disposeBag)
-
-        retryButton?.rx.tap
-            .bind(to: viewModel.doRetry)
-            .disposed(by: disposeBag)
 
         collectionView?.rx
             .itemSelected

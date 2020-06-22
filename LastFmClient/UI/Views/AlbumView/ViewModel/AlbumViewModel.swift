@@ -8,5 +8,5 @@ protocol AlbumViewModel {
     var title: String { get }
 
     var onCover: Observable<UIImage?> { get }
-    var onShowLoadingHud: Observable<Bool> { get }
+    var showHud: Observable<Bool> { get }
 }

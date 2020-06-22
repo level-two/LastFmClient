@@ -26,60 +26,18 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yUm-cV-RHP" userLabel="No Connection Stack">
-                                <rect key="frame" x="10" y="10" width="355" height="647"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="noInternet" translatesAutoresizingMaskIntoConstraints="NO" id="C3Q-dq-HjM">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="556.5"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="No internet connection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiW-pK-VkC">
-                                        <rect key="frame" x="90" y="576.5" width="175.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pA-N0-h4w">
-                                        <rect key="frame" x="159" y="617" width="37" height="30"/>
-                                        <state key="normal" title="Retry"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5a-Re-9eJ" userLabel="Hud View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="y6o-lP-uT3">
-                                        <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="y6o-lP-uT3" firstAttribute="centerY" secondItem="X5a-Re-9eJ" secondAttribute="centerY" id="XpS-ht-zQh"/>
-                                    <constraint firstItem="y6o-lP-uT3" firstAttribute="centerX" secondItem="X5a-Re-9eJ" secondAttribute="centerX" id="cw2-mk-w7Z"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="X5a-Re-9eJ" firstAttribute="top" secondItem="zbp-zz-0ya" secondAttribute="top" id="CwX-Xb-KJx"/>
-                            <constraint firstItem="yUm-cV-RHP" firstAttribute="centerY" secondItem="zbp-zz-0ya" secondAttribute="centerY" id="LHU-YE-3TU"/>
-                            <constraint firstItem="X5a-Re-9eJ" firstAttribute="leading" secondItem="zbp-zz-0ya" secondAttribute="leading" id="Nrv-6Z-VBh"/>
-                            <constraint firstItem="zbp-zz-0ya" firstAttribute="trailing" secondItem="X5a-Re-9eJ" secondAttribute="trailing" id="SDo-b7-7jG"/>
-                            <constraint firstItem="zbp-zz-0ya" firstAttribute="height" relation="greaterThanOrEqual" secondItem="yUm-cV-RHP" secondAttribute="height" constant="20" id="UNG-UJ-tgq"/>
                             <constraint firstItem="daN-lc-seT" firstAttribute="leading" secondItem="zbp-zz-0ya" secondAttribute="leading" id="Y8c-6u-GPn"/>
                             <constraint firstItem="daN-lc-seT" firstAttribute="top" secondItem="zbp-zz-0ya" secondAttribute="top" id="as8-IR-TGi"/>
-                            <constraint firstItem="yUm-cV-RHP" firstAttribute="centerX" secondItem="zbp-zz-0ya" secondAttribute="centerX" id="dWr-Ek-FoA"/>
                             <constraint firstItem="zbp-zz-0ya" firstAttribute="bottom" secondItem="daN-lc-seT" secondAttribute="bottom" id="grT-gZ-TSI"/>
-                            <constraint firstItem="zbp-zz-0ya" firstAttribute="bottom" secondItem="X5a-Re-9eJ" secondAttribute="bottom" id="gwa-kM-vkS"/>
-                            <constraint firstItem="zbp-zz-0ya" firstAttribute="width" relation="greaterThanOrEqual" secondItem="yUm-cV-RHP" secondAttribute="width" constant="20" id="hFK-gN-iQw"/>
                             <constraint firstItem="zbp-zz-0ya" firstAttribute="trailing" secondItem="daN-lc-seT" secondAttribute="trailing" id="qpO-rd-li5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zbp-zz-0ya"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="daN-lc-seT" id="ccN-fZ-07t"/>
-                        <outlet property="hudView" destination="X5a-Re-9eJ" id="TMu-Nx-FLk"/>
-                        <outlet property="noConnectionView" destination="yUm-cV-RHP" id="bBz-mJ-Jef"/>
-                        <outlet property="retryButton" destination="3pA-N0-h4w" id="5kF-pz-CLJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0OK-vd-8gY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -87,7 +45,4 @@
             <point key="canvasLocation" x="-2425" y="-1240"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="noInternet" width="700" height="596"/>
-    </resources>
 </document>

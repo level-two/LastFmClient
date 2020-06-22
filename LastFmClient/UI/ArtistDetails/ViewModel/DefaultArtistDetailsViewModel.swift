@@ -8,8 +8,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
     var albums: Observable<[AlbumCardViewModel]> { albumsVar.asObservable() }
 
     var showHud: Observable<Bool> { doShowHud.asObservable() }
-    var showNetworkError: Observable<Bool> { doShowNetworkError.asObservable() }
-    var doRetry: AnyObserver<Void> { onRetry.asObserver() }
+    var showNetworkError: Observable<NetworkErrorOverlayInteractor?> { doShowNetworkError.asObservable() }
 
     var doShowFullBio: AnyObserver<Int> { onShowArtistFullBio.asObserver() }
     var showFullBio: Observable<String> { doShowArtistFullBio.asObservable() }
@@ -20,7 +19,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
     private let albumsVar = BehaviorRelay<[AlbumCardViewModel]>(value: [])
 
     private let doShowHud = PublishSubject<Bool>()
-    private let doShowNetworkError = PublishSubject<Bool>()
+    private let doShowNetworkError = PublishSubject<NetworkErrorOverlayInteractor?>()
     private let onRetry = PublishSubject<Void>()
 
     private let onShowArtistFullBio = PublishSubject<Int>()
@@ -72,7 +71,7 @@ private extension DefaultArtistDetailsViewModel {
             .merge(.just(()), onRetry)
             .bind { [weak self] in
 
-                self?.doShowNetworkError.onNext(false)
+                self?.doShowNetworkError.onNext(nil)
                 self?.doShowHud.onNext(true)
 
                 firstly {
@@ -82,7 +81,9 @@ private extension DefaultArtistDetailsViewModel {
                 }.ensure {
                     self?.doShowHud.onNext(false)
                 }.catch { _ in
-                    self?.doShowNetworkError.onNext(true)
+                    guard let self = self else { return }
+                    let interactor = DefaultNetworkErrorOverlayInteractor(retry: self.onRetry.asObserver())
+                    self.doShowNetworkError.onNext(interactor)
                 }
 
             }.disposed(by: disposeBag)

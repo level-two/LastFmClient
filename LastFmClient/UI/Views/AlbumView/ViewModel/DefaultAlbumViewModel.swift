@@ -8,7 +8,7 @@ final class DefaultAlbumViewModel: AlbumViewModel {
     var artist: String { return album.artist }
     var title: String { return album.title }
     var onCover: Observable<UIImage?> { return cover.asObservable() }
-    var onShowLoadingHud: Observable<Bool> { return showLoadingHud.asObservable() }
+    var showHud: Observable<Bool> { return doShowHud.asObservable() }
 
     init(album: Album, imageDownloadService: ImageDownloadService) {
         self.album = album
@@ -18,14 +18,14 @@ final class DefaultAlbumViewModel: AlbumViewModel {
 
     private let album: Album
     private let cover = BehaviorRelay<UIImage?>(value: nil)
-    private let showLoadingHud = BehaviorRelay<Bool>(value: false)
+    private let doShowHud = BehaviorRelay<Bool>(value: false)
     private let disposeBag = DisposeBag()
     private let imageDownloadService: ImageDownloadService
 }
 
 private extension DefaultAlbumViewModel {
     func downloadCoverImage() {
-        showLoadingHud.accept(true)
+        doShowHud.accept(true)
 
         let url = album.imageUrl[.large]
 
@@ -36,7 +36,7 @@ private extension DefaultAlbumViewModel {
         }.catch { [weak self] _ in
             self?.cover.accept(UIImage(named: "noImage"))
         }.finally { [weak self] in
-            self?.showLoadingHud.accept(false)
+            self?.doShowHud.accept(false)
         }
     }
 }

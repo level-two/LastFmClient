@@ -11,7 +11,6 @@
             <connections>
                 <outlet property="artist" destination="9t3-Wl-KRW" id="1Zw-DV-2YL"/>
                 <outlet property="cover" destination="vvK-Rt-V8R" id="KPW-ya-fbr"/>
-                <outlet property="coverLoadingHud" destination="DVl-Au-d1m" id="Ipi-r2-Ktb"/>
                 <outlet property="title" destination="o3g-tN-y91" id="M1Z-Hs-7h6"/>
             </connections>
         </placeholder>
@@ -26,19 +25,6 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="noPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="vvK-Rt-V8R" userLabel="Cover">
                             <rect key="frame" x="0.0" y="0.0" width="467" height="260"/>
                         </imageView>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVl-Au-d1m" userLabel="HUD">
-                            <rect key="frame" x="0.0" y="0.0" width="467" height="260"/>
-                            <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KNa-hn-rJq">
-                                    <rect key="frame" x="223.5" y="120" width="20" height="20"/>
-                                </activityIndicatorView>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstItem="KNa-hn-rJq" firstAttribute="centerY" secondItem="DVl-Au-d1m" secondAttribute="centerY" id="OvK-9g-jFN"/>
-                                <constraint firstItem="KNa-hn-rJq" firstAttribute="centerX" secondItem="DVl-Au-d1m" secondAttribute="centerX" id="vDr-kF-WV3"/>
-                            </constraints>
-                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9t3-Wl-KRW" userLabel="artist">
                             <rect key="frame" x="0.0" y="268" width="467" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -55,12 +41,8 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="vvK-Rt-V8R" firstAttribute="top" secondItem="U5B-QI-WPT" secondAttribute="top" id="3L2-Zu-4F8"/>
-                        <constraint firstItem="DVl-Au-d1m" firstAttribute="height" secondItem="vvK-Rt-V8R" secondAttribute="height" id="F4W-ie-N5K"/>
                         <constraint firstItem="9t3-Wl-KRW" firstAttribute="leading" secondItem="U5B-QI-WPT" secondAttribute="leading" id="Fif-Qo-3nQ"/>
-                        <constraint firstItem="DVl-Au-d1m" firstAttribute="width" secondItem="vvK-Rt-V8R" secondAttribute="width" id="KsK-Y5-qL4"/>
-                        <constraint firstItem="DVl-Au-d1m" firstAttribute="centerX" secondItem="vvK-Rt-V8R" secondAttribute="centerX" id="LYu-Y9-qyA"/>
                         <constraint firstItem="vvK-Rt-V8R" firstAttribute="leading" secondItem="U5B-QI-WPT" secondAttribute="leading" id="O7t-du-aVU"/>
-                        <constraint firstItem="DVl-Au-d1m" firstAttribute="centerY" secondItem="vvK-Rt-V8R" secondAttribute="centerY" id="PCo-kp-EFZ"/>
                         <constraint firstAttribute="trailing" secondItem="o3g-tN-y91" secondAttribute="trailing" id="eYy-hE-JMF"/>
                         <constraint firstItem="o3g-tN-y91" firstAttribute="top" secondItem="9t3-Wl-KRW" secondAttribute="bottom" constant="8" symbolic="YES" id="fS5-d3-AVM"/>
                         <constraint firstItem="o3g-tN-y91" firstAttribute="leading" secondItem="U5B-QI-WPT" secondAttribute="leading" id="gWC-CA-cFh"/>

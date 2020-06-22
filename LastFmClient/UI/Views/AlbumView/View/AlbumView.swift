@@ -5,15 +5,11 @@ import RxCocoa
 final class AlbumView: UIView, NibLoadable {
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        loadFromNib()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
-    }
-
-    func commonInit() {
         loadFromNib()
     }
 
@@ -34,7 +30,6 @@ final class AlbumView: UIView, NibLoadable {
     @IBOutlet private weak var artist: UILabel?
     @IBOutlet private weak var title: UILabel?
     @IBOutlet private weak var cover: UIImageView?
-    @IBOutlet private weak var coverLoadingHud: UIView?
 }
 
 private extension AlbumView {
@@ -51,18 +46,14 @@ private extension AlbumView {
     func bindDynamicData() {
         cleanPreviousBindings()
 
-        guard let viewModel = viewModel,
-            let loadingHud = coverLoadingHud,
-            let cover = cover
-        else { return }
+        guard let viewModel = viewModel, let cover = cover else { return }
 
         viewModel.onCover
             .bind(to: cover.rx.image)
             .disposed(by: disposeBag)
 
-        viewModel.onShowLoadingHud
-            .map { !$0 }
-            .bind(to: loadingHud.rx.isHidden)
+        viewModel.showHud
+            .bind(to: cover.rx.showHud)
             .disposed(by: disposeBag)
     }
 

@@ -5,8 +5,7 @@ protocol ArtistDetailsViewModel {
     var albums: Observable<[AlbumCardViewModel]> { get }
 
     var showHud: Observable<Bool> { get }
-    var showNetworkError: Observable<Bool> { get }
-    var doRetry: AnyObserver<Void> { get }
+    var showNetworkError: Observable<NetworkErrorOverlayInteractor?> { get }
 
     var doShowFullBio: AnyObserver<Int> { get }
     var showFullBio: Observable<String> { get }
