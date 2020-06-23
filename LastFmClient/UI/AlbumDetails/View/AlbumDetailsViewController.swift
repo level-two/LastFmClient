@@ -114,7 +114,6 @@ private extension AlbumDetailsViewController {
             snapshot.appendItems([UUID()], toSection: .albumStore)
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }.disposed(by: disposeBag)
-
     }
 }
 
@@ -137,51 +136,36 @@ private extension AlbumDetailsViewController {
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
                 let artistSection = NSCollectionLayoutSection(group: group)
-                //artistSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-
                 return artistSection
 
             case .tracks:
-                let containerSize = environment.container.effectiveContentSize
-
-                let columns = containerSize.width > 1000 ? 4 :
-                              containerSize.width > 600 ? 2 : 1
-
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .fractionalHeight(1.0))
+                                                      heightDimension: .estimated(100))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .fractionalWidth(1.0/CGFloat(columns)))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
-                group.interItemSpacing = .fixed(20)
+                                                       heightDimension: .estimated(100))
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
                 let albumsSection = NSCollectionLayoutSection(group: group)
-                albumsSection.interGroupSpacing = 20
-                albumsSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-
+                //albumsSection.interGroupSpacing = 20
+                //albumsSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)s
                 return albumsSection
 
             case .albumStore:
-                let containerSize = environment.container.effectiveContentSize
-
-                let columns = containerSize.width > 1000 ? 4 :
-                              containerSize.width > 600 ? 2 : 1
-
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .fractionalHeight(1.0))
+                                                      heightDimension: .estimated(100))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .fractionalWidth(1.0/CGFloat(columns)))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+                                                       heightDimension: .estimated(100))
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
                 group.interItemSpacing = .fixed(20)
 
-                let albumsSection = NSCollectionLayoutSection(group: group)
-                albumsSection.interGroupSpacing = 20
-                albumsSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-
-                return albumsSection
+                let albumStore = NSCollectionLayoutSection(group: group)
+                albumStore.interGroupSpacing = 20
+                albumStore.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+                return albumStore
             }
         }
     }

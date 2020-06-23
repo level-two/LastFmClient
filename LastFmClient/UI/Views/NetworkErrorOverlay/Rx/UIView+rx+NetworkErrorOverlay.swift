@@ -6,12 +6,7 @@ extension Reactive where Base: UIView {
 
     /// Showing Hud on secified view
     var showNetworkErrorOverlay: Binder<NetworkErrorOverlayInteractor?> {
-        var overlayInstance: NetworkErrorOverlayView?
-
         return Binder(self.base) { view, interactor in
-            overlayInstance?.removeFromSuperview()
-            overlayInstance = nil
-
             if let interactor = interactor {
                 let overlay = NetworkErrorOverlayView(frame: view.bounds)
                 overlay.setupInteractions(interactor)
@@ -21,7 +16,10 @@ extension Reactive where Base: UIView {
                 overlay.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
                 overlay.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
                 overlay.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-                overlayInstance = overlay
+            } else {
+                view.subviews
+                    .filter { $0 is NetworkErrorOverlayView }
+                    .forEach { $0.removeFromSuperview() }
             }
         }
     }

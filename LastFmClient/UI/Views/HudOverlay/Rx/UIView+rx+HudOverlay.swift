@@ -6,12 +6,7 @@ extension Reactive where Base: UIView {
 
     /// Showing Hud on secified view
     var showHud: Binder<Bool> {
-        var overlayInstance: HudOverlayView?
-
         return Binder(self.base) { view, show in
-            overlayInstance?.removeFromSuperview()
-            overlayInstance = nil
-
             if show {
                 let overlay = HudOverlayView(frame: view.bounds)
                 view.addSubview(overlay)
@@ -20,7 +15,10 @@ extension Reactive where Base: UIView {
                 overlay.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
                 overlay.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
                 overlay.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-                overlayInstance = overlay
+            } else {
+                view.subviews
+                    .filter { $0 is HudOverlayView }
+                    .forEach { $0.removeFromSuperview() }
             }
         }
     }
