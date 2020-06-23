@@ -27,12 +27,23 @@ final class AlbumDetailsViewController: UIViewController, StoryboardLoadable {
 private extension AlbumDetailsViewController {
     func setupView() {
         styleView()
+        setupBindings()
         setupCollectionView()
     }
 
     func styleView() {
         theme?.apply(style: .lightDarkBackground, to: collectionView)
         theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
+    }
+
+    func setupBindings() {
+        viewModel?.showNetworkError
+            .bind(to: self.view.rx.showNetworkErrorOverlay)
+            .disposed(by: disposeBag)
+
+        viewModel?.showHud
+            .bind(to: self.view.rx.showHud)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -41,7 +52,7 @@ private extension AlbumDetailsViewController {
         registerReusableCells()
         setupLayout()
         setupDataSource()
-        setupContent()
+        bindDataSource()
     }
 
     func registerReusableCells() {
@@ -55,45 +66,55 @@ private extension AlbumDetailsViewController {
     }
 
     func setupDataSource() {
-        guard let collectionView = collectionView,
-            let viewModel = viewModel,
-            let theme = theme
-            else { return }
+        guard let collectionView = collectionView else { return }
 
-        dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, _ in
+        dataSource = DataSource(collectionView: collectionView) { [weak self] collectionView, indexPath, _ in
             guard let section = AlbumDetailsViewSection(rawValue: indexPath.section) else {
                 fatalError("Undefined section")
             }
 
+            guard let albumDetails = self?.viewModel?.albumDetails,
+                let tracks = self?.viewModel?.tracks,
+                let albumStore = self?.viewModel?.albumStore
+                else { return nil }
+
             switch section {
             case .albumDetails:
                 let cell = collectionView.dequeueReusableCell(AlbumDetailsAlbumCellView.self, for: indexPath)
-                cell.configure(with: viewModel.albumDetails)
-                cell.style(with: theme)
+                cell.configure(with: albumDetails)
+                cell.style(with: self?.theme)
                 return cell
             case .tracks:
                 let cell = collectionView.dequeueReusableCell(AlbumDetailsTrackCellView.self, for: indexPath)
-                cell.configure(with: viewModel.tracks[indexPath.item])
-                cell.style(with: theme)
+                cell.configure(with: tracks[indexPath.item])
+                cell.style(with: self?.theme)
                 return cell
             case .albumStore:
                 let cell = collectionView.dequeueReusableCell(AlbumDetailsStoreCellView.self, for: indexPath)
-                cell.configure(with: viewModel.albumStore)
-                cell.style(with: theme)
+                cell.configure(with: albumStore)
+                cell.style(with: self?.theme)
                 return cell
             }
         }
     }
 
-    func setupContent() {
-        guard let viewModel = viewModel else { return }
+    func bindDataSource() {
+        viewModel?.contentIsReady.bind { [weak self] in
+            var snapshot = Snapshot()
 
-        var snapshot = Snapshot()
-        snapshot.appendSections([.albumDetails, .tracks, .albumStore])
-        snapshot.appendItems([UUID()], toSection: .albumDetails)
-        snapshot.appendItems(viewModel.tracks.map { _ in UUID() }, toSection: .tracks)
-        snapshot.appendItems([UUID()], toSection: .albumStore)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+            snapshot.appendSections([.albumDetails])
+            snapshot.appendItems([UUID()], toSection: .albumDetails)
+
+            if let tracks = self?.viewModel?.tracks {
+                snapshot.appendSections([.tracks])
+                snapshot.appendItems(tracks.map { _ in UUID() }, toSection: .tracks)
+            }
+
+            snapshot.appendSections([.albumStore])
+            snapshot.appendItems([UUID()], toSection: .albumStore)
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
+        }.disposed(by: disposeBag)
+
     }
 }
 

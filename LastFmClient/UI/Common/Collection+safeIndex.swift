@@ -15,7 +15,7 @@ extension Collection {
 
 extension MutableCollection {
     subscript(safe index: Index) -> Element? {
-        get { return indices.contains(index) ? self[index] : nil }
+        get { indices.contains(index) ? self[index] : nil }
         set {
             guard let newValue = newValue, indices.contains(index) else { return }
             self[index] = newValue

@@ -8,10 +8,10 @@ extension TrackResponse {
             let duration: Int
         }
 
-        return TrackImp(rank: rank.rank,
+        return TrackImp(rank: Int(rank.rank) ?? 0,
                         name: name,
                         artist: artist.name,
-                        duration: duration)
+                        duration: Int(duration) ?? 0)
     }
 
 }

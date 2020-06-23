@@ -2,7 +2,7 @@ import Foundation
 
 struct TrackResponse: Decodable {
     let name: String
-    let duration: Int
+    let duration: String
     let rank: TrackRankResponse
     let artist: TrackArtistResponse
 

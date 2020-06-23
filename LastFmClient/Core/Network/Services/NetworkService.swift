@@ -1,1 +1,1 @@
-typealias NetworkService = AlbumFetchService & ImageDownloadService & ArtistSearchService & ArtistInfoService
+typealias NetworkService = AlbumInfoService & ImageDownloadService & ArtistSearchService & ArtistInfoService

@@ -13,7 +13,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
     var doShowFullBio: AnyObserver<Int> { onShowArtistFullBio.asObserver() }
     var showFullBio: Observable<String> { doShowArtistFullBio.asObservable() }
     var doShowAlbumDetails: AnyObserver<Int> { onShowArtistAlbumDetails.asObserver() }
-    var showAlbumDetails: Observable<Album> { doShowArtistAlbumDetails.asObservable() }
+    var showAlbumDetails: Observable<String> { doShowArtistAlbumDetails.asObservable() }
 
     private let artistDetailsVar = BehaviorRelay<[ArtistDetailsCellViewModel]>(value: [])
     private let albumsVar = BehaviorRelay<[AlbumCardViewModel]>(value: [])
@@ -25,7 +25,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
     private let onShowArtistFullBio = PublishSubject<Int>()
     private let doShowArtistFullBio = PublishRelay<String>()
     private let onShowArtistAlbumDetails = PublishSubject<Int>()
-    private let doShowArtistAlbumDetails = PublishRelay<Album>()
+    private let doShowArtistAlbumDetails = PublishRelay<String>()
 
     private let disposeBag = DisposeBag()
 
@@ -59,7 +59,7 @@ private extension DefaultArtistDetailsViewModel {
             .disposed(by: disposeBag)
 
         onShowArtistAlbumDetails
-            .compactMap { [weak self] index in self?.albumsVar.value[safe: index]?.album }
+            .compactMap { [weak self] index in self?.albumsVar.value[safe: index]?.album.mbid }
             .bind(to: doShowArtistAlbumDetails)
             .disposed(by: disposeBag)
     }
@@ -91,7 +91,7 @@ private extension DefaultArtistDetailsViewModel {
 
     func loadAlbums() -> Promise<Void> {
         return artistInfoService
-            .getTopAlbums(mbid: mbid)
+            .topAlbums(mbid: mbid)
             .map { [weak self] albums in
                 guard let self = self else { return }
 
@@ -107,7 +107,7 @@ private extension DefaultArtistDetailsViewModel {
 
     func loadArtistInfo() -> Promise<Void> {
         return artistInfoService
-            .getInfo(mbid: mbid)
+            .artistInfo(mbid: mbid)
             .map { [weak self] artist in
                 guard let self = self else { return }
                 let details = DefaultArtistDetailsCellViewModel(artist: artist,

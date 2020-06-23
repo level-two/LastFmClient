@@ -58,7 +58,7 @@ private extension ArtistDetailsViewController {
         let artistDetails = BehaviorRelay<[ArtistDetailsCellViewModel]>(value: [])
         let albums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
 
-        viewModel.artistDetails 
+        viewModel.artistDetails
             .bind(to: artistDetails)
             .disposed(by: disposeBag)
 
@@ -112,7 +112,7 @@ private extension ArtistDetailsViewController {
             .disposed(by: disposeBag)
 
         viewModel.showAlbumDetails
-            .bind { [weak self] album in self?.navigator?.navigate(to: .albumDetails(album: album)) }
+            .bind { [weak self] mbid in self?.navigator?.navigate(to: .albumDetails(mbid: mbid)) }
             .disposed(by: disposeBag)
 
         collectionView?.rx

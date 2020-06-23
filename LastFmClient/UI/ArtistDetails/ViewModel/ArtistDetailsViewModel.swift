@@ -10,5 +10,5 @@ protocol ArtistDetailsViewModel {
     var doShowFullBio: AnyObserver<Int> { get }
     var showFullBio: Observable<String> { get }
     var doShowAlbumDetails: AnyObserver<Int> { get }
-    var showAlbumDetails: Observable<Album> { get }
+    var showAlbumDetails: Observable<String> { get }
 }

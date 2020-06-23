@@ -2,6 +2,6 @@ import PromiseKit
 import Alamofire
 
 protocol ArtistInfoService {
-    func getInfo(mbid: String) -> Promise<Artist>
-    func getTopAlbums(mbid: String) -> Promise<[Album]>
+    func artistInfo(mbid: String) -> Promise<Artist>
+    func topAlbums(mbid: String) -> Promise<[Album]>
 }

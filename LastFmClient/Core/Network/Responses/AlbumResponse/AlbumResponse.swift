@@ -1,5 +1,9 @@
 import Foundation
 
 struct AlbumResponse: Decodable {
-    let albumInfo: AlbumInfoResponse
+    let mbid: String
+    let name: String
+    let artist: String
+    let tracks: AlbumTracksResponse
+    let image: [ImageResponse]
 }

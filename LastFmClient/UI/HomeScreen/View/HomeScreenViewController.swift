@@ -188,7 +188,7 @@ private extension HomeScreenViewController {
         guard let viewModel = viewModel else { return }
 
         viewModel.onShowAlbumDetails
-            .bind { [weak self] album in self?.navigator?.navigate(to: .albumDetails(album: album)) }
+            .bind { [weak self] mbid in self?.navigator?.navigate(to: .albumDetails(mbid: mbid)) }
             .disposed(by: disposeBag)
 
         viewModel.onShowArtistDetails

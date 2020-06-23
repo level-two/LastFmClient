@@ -10,13 +10,13 @@ extension AlbumResponse {
             let tracks: [Track]
         }
 
-        let imageUrl = Dictionary(albumInfo.image.compactMap { $0.asImageUrl }, uniquingKeysWith: { _, new in new })
+        let imageUrl = Dictionary(image.compactMap { $0.asImageUrl }, uniquingKeysWith: { _, new in new })
 
-        let album = AlbumImp(mbid: albumInfo.mbid,
-                             title: albumInfo.name,
-                             artist: albumInfo.artist,
+        let album = AlbumImp(mbid: mbid,
+                             title: name,
+                             artist: artist,
                              imageUrl: imageUrl,
-                             tracks: albumInfo.tracks.tracks.map { $0.asTrack })
+                             tracks: tracks.tracks.map { $0.asTrack })
         return album
     }
 }

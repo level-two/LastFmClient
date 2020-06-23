@@ -4,11 +4,11 @@ import RxRelay
 import PromiseKit
 
 final class DefaultAlbumViewModel: AlbumViewModel {
-    var mbid: String { return album.mbid }
-    var artist: String { return album.artist }
-    var title: String { return album.title }
-    var onCover: Observable<UIImage?> { return cover.asObservable() }
-    var showHud: Observable<Bool> { return doShowHud.asObservable() }
+    var mbid: String { album.mbid }
+    var artist: String { album.artist }
+    var title: String { album.title }
+    var onCover: Observable<UIImage?> { cover.asObservable() }
+    var showHud: Observable<Bool> { doShowHud.asObservable() }
 
     init(album: Album, imageDownloadService: ImageDownloadService) {
         self.album = album

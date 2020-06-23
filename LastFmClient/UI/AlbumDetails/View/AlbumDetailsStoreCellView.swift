@@ -15,9 +15,9 @@ class AlbumDetailsStoreCellView: UICollectionViewCell, NibLoadable, TypeIdentifi
         setupBindings()
     }
 
-    func style(with theme: Theme) {
+    func style(with theme: Theme?) {
         self.theme = theme
-        theme.apply(style: .lightDarkBackground, to: self.contentView)
+        theme?.apply(style: .lightDarkBackground, to: self.contentView)
     }
 
     private var viewModel: AlbumStoreViewModel?

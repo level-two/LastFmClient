@@ -20,14 +20,13 @@ final class AlamofireNetworkService: NetworkService {
 
 // MARK: - AlbumFetchService conformance
 extension AlamofireNetworkService {
-    func fetchAlbum(with mbid: String) -> Promise<Album> {
+    func albumInfo(mbid: String) -> Promise<Album> {
         return Promise { seal in
             let request = AlbumRequest.info(mbid: mbid)
-
-            AF.request(request).validate().responseDecodable(of: AlbumResponse.self) { response in
+            AF.request(request).validate().responseDecodable(of: AlbumInfoResponse.self) { response in
                 switch response.result {
                 case .success(let albumResponse):
-                    return seal.fulfill(albumResponse.asAlbum)
+                    return seal.fulfill(albumResponse.album.asAlbum)
                 case .failure(let error):
                     return seal.reject(error)
                 }
@@ -57,7 +56,7 @@ extension AlamofireNetworkService {
 // MARK: - ArtistInfoService conformance
 extension AlamofireNetworkService {
 
-    func getInfo(mbid: String) -> Promise<Artist> {
+    func artistInfo(mbid: String) -> Promise<Artist> {
         return Promise { seal in
             let request = ArtistRequest.getInfo(mbid: mbid)
 
@@ -72,7 +71,7 @@ extension AlamofireNetworkService {
         }
     }
 
-    func getTopAlbums(mbid: String) -> Promise<[Album]> {
+    func topAlbums(mbid: String) -> Promise<[Album]> {
         return Promise { seal in
             let request = ArtistRequest.getTopAlbums(mbid: mbid)
 
