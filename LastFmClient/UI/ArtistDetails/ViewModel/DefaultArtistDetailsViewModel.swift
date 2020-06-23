@@ -13,7 +13,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
     var doShowFullBio: AnyObserver<Int> { onShowArtistFullBio.asObserver() }
     var showFullBio: Observable<String> { doShowArtistFullBio.asObservable() }
     var doShowAlbumDetails: AnyObserver<Int> { onShowArtistAlbumDetails.asObserver() }
-    var showAlbumDetails: Observable<String> { doShowArtistAlbumDetails.asObservable() }
+    var showAlbumDetails: Observable<Album> { doShowArtistAlbumDetails.asObservable() }
 
     private let artistDetailsVar = BehaviorRelay<[ArtistDetailsCellViewModel]>(value: [])
     private let albumsVar = BehaviorRelay<[AlbumCardViewModel]>(value: [])
@@ -25,7 +25,7 @@ class DefaultArtistDetailsViewModel: ArtistDetailsViewModel {
     private let onShowArtistFullBio = PublishSubject<Int>()
     private let doShowArtistFullBio = PublishRelay<String>()
     private let onShowArtistAlbumDetails = PublishSubject<Int>()
-    private let doShowArtistAlbumDetails = PublishRelay<String>()
+    private let doShowArtistAlbumDetails = PublishRelay<Album>()
 
     private let disposeBag = DisposeBag()
 
@@ -59,7 +59,7 @@ private extension DefaultArtistDetailsViewModel {
             .disposed(by: disposeBag)
 
         onShowArtistAlbumDetails
-            .compactMap { [weak self] index in self?.albumsVar.value[safe: index]?.album.mbid }
+            .compactMap { [weak self] index in self?.albumsVar.value[safe: index]?.album }
             .bind(to: doShowArtistAlbumDetails)
             .disposed(by: disposeBag)
     }

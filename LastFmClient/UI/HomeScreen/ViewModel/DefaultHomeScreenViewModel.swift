@@ -4,7 +4,7 @@ import PromiseKit
 
 final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     var onStoredAlbums: Observable<[AlbumCardViewModel]> { storedAlbums.asObservable() }
-    var onShowAlbumDetails: Observable<String> { doShowAlbumDetails.asObservable() }
+    var onShowAlbumDetails: Observable<Album> { doShowAlbumDetails.asObservable() }
     var doSelectCard: AnyObserver<AlbumCardViewModel> { onCardSelected.asObserver() }
 
     var doArtistSearch: AnyObserver<String> { onArtistSearch.asObserver() }
@@ -27,7 +27,7 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
     }
 
     private let storedAlbums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
-    private let doShowAlbumDetails = PublishRelay<String>()
+    private let doShowAlbumDetails = PublishRelay<Album>()
     private let onCardSelected = PublishSubject<AlbumCardViewModel>()
 
     private let onArtistSearch = PublishSubject<String>()
@@ -63,7 +63,7 @@ private extension DefaultHomeScreenViewModel {
             .disposed(by: disposeBag)
 
         onCardSelected
-            .map { $0.album.mbid }
+            .map { $0.album }
             .bind(to: doShowAlbumDetails)
             .disposed(by: disposeBag)
 

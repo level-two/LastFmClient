@@ -187,15 +187,18 @@ private extension HomeScreenViewController {
     func setupBindings() {
         guard let viewModel = viewModel else { return }
 
-//        viewModel?.onShowAlbumDetails
-//            .bind { [weak self] mbid self?.navigator?.navigate(to: .albumDetails(mbid)) }
-//            .disposed(by: disposeBag)
+        viewModel.onShowAlbumDetails
+            .bind { [weak self] album in self?.navigator?.navigate(to: .albumDetails(album: album)) }
+            .disposed(by: disposeBag)
 
-        viewModel.onShowArtistDetails.bind { [weak self] mbid in
-            self?.navigator?.navigate(to: .artistDetails(mbid: mbid))
-        }.disposed(by: disposeBag)
+        viewModel.onShowArtistDetails
+            .bind { [weak self] mbid in self?.navigator?.navigate(to: .artistDetails(mbid: mbid)) }
+            .disposed(by: disposeBag)
 
-        searchBar.rx.text.orEmpty.bind(to: viewModel.doArtistSearch).disposed(by: disposeBag)
+        searchBar.rx
+            .text.orEmpty
+            .bind(to: viewModel.doArtistSearch)
+            .disposed(by: disposeBag)
 
         Observable
             .merge(searchButton.rx.tap.map { .search },

@@ -4,7 +4,7 @@ protocol HomeScreenViewModel {
     var onStoredAlbums: Observable<[AlbumCardViewModel]> { get }
     var doSelectCard: AnyObserver<AlbumCardViewModel> { get }
 
-    var onShowAlbumDetails: Observable<String> { get }
+    var onShowAlbumDetails: Observable<Album> { get }
 
     var doArtistSearch: AnyObserver<String> { get }
 

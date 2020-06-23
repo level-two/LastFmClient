@@ -58,8 +58,13 @@ private extension ArtistDetailsViewController {
         let artistDetails = BehaviorRelay<[ArtistDetailsCellViewModel]>(value: [])
         let albums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
 
-        viewModel.artistDetails.bind(to: artistDetails).disposed(by: disposeBag)
-        viewModel.albums.bind(to: albums).disposed(by: disposeBag)
+        viewModel.artistDetails 
+            .bind(to: artistDetails)
+            .disposed(by: disposeBag)
+
+        viewModel.albums
+            .bind(to: albums)
+            .disposed(by: disposeBag)
 
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, _ in
             guard let section = ArtistDetailsViewSection(rawValue: indexPath.section) else {
@@ -106,9 +111,9 @@ private extension ArtistDetailsViewController {
             .bind { [weak self] bio in self?.navigator?.navigate(to: .artistDescription(description: bio)) }
             .disposed(by: disposeBag)
 
-//        viewModel.showAlbumDetails
-//            .bind { [weak self] mbid in self?.navigator?.navigate(to: .albumDetails(mbid: mbid) }
-//            .disposed(by: disposeBag)
+        viewModel.showAlbumDetails
+            .bind { [weak self] album in self?.navigator?.navigate(to: .albumDetails(album: album)) }
+            .disposed(by: disposeBag)
 
         collectionView?.rx
             .itemSelected

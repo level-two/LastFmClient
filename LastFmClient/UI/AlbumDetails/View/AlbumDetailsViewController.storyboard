@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u7m-5J-Ffq">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PZA-QZ-s8L">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Album Details View Controller-->
-        <scene sceneID="IzX-19-Tok">
+        <scene sceneID="2OH-Yf-PgY">
             <objects>
-                <tableViewController storyboardIdentifier="AlbumDetailsViewController" id="u7m-5J-Ffq" customClass="AlbumDetailsViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="7QS-DW-vtk">
+                <viewController storyboardIdentifier="AlbumDetailsViewController" id="PZA-QZ-s8L" customClass="AlbumDetailsViewController" customModule="LastFmClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LM2-gr-vmX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="u7m-5J-Ffq" id="zgJ-kJ-l95"/>
-                            <outlet property="delegate" destination="u7m-5J-Ffq" id="VL9-1Y-9qI"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qph-x0-UX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u9e-Jy-WgM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VQo-Ye-Zq2">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TCr-Hz-rIg" firstAttribute="trailing" secondItem="u9e-Jy-WgM" secondAttribute="trailing" id="DC5-sA-0oK"/>
+                            <constraint firstItem="u9e-Jy-WgM" firstAttribute="leading" secondItem="TCr-Hz-rIg" secondAttribute="leading" id="XQk-1M-2b0"/>
+                            <constraint firstItem="TCr-Hz-rIg" firstAttribute="bottom" secondItem="u9e-Jy-WgM" secondAttribute="bottom" id="ojD-q5-5jt"/>
+                            <constraint firstItem="u9e-Jy-WgM" firstAttribute="top" secondItem="TCr-Hz-rIg" secondAttribute="top" id="tOB-gK-z3O"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TCr-Hz-rIg"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="u9e-Jy-WgM" id="1Y9-2N-dG4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HxD-DJ-5U4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="-64"/>
+            <point key="canvasLocation" x="508" y="76"/>
         </scene>
     </scenes>
 </document>

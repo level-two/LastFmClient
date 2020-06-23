@@ -2,7 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class AlbumDetailsFooterView: UITableViewHeaderFooterView, NibLoadable {
+class AlbumDetailsStoreCellView: UICollectionViewCell, NibLoadable, TypeIdentifiable {
     @IBOutlet private weak var button: UIButton?
 
     override func prepareForReuse() {
@@ -10,22 +10,22 @@ class AlbumDetailsFooterView: UITableViewHeaderFooterView, NibLoadable {
         clearBindings()
     }
 
-    func configure(with viewModel: AlbumDetailsFooterViewModel, theme: Theme) {
+    func configure(with viewModel: AlbumStoreViewModel) {
         self.viewModel = viewModel
-        self.theme = theme
         setupBindings()
     }
 
     func style(with theme: Theme) {
+        self.theme = theme
         theme.apply(style: .lightDarkBackground, to: self.contentView)
     }
 
-    private var viewModel: AlbumDetailsFooterViewModel?
+    private var viewModel: AlbumStoreViewModel?
     private var theme: Theme?
     private var disposeBag = DisposeBag()
 }
 
-private extension AlbumDetailsFooterView {
+private extension AlbumDetailsStoreCellView {
     func setupBindings() {
         clearBindings()
 
@@ -38,7 +38,7 @@ private extension AlbumDetailsFooterView {
         }.disposed(by: disposeBag)
 
         button?.rx.tap
-            .bind(to: viewModel.storeAlbum)
+            .bind(to: viewModel.store)
             .disposed(by: disposeBag)
     }
 

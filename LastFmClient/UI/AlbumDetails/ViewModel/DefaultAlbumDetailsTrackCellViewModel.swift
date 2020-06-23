@@ -2,19 +2,16 @@ import Foundation
 
 class DefaultAlbumDetailsTrackCellViewModel: AlbumDetailsTrackCellViewModel {
     let title: String
+    let duration: String
 
-    var duration: String {
+    init(from track: Track) {
+        self.title = track.name
+
+        let trackDuration = track.duration
         let formatter = DateComponentsFormatter()
         formatter.zeroFormattingBehavior = .pad
         formatter.allowedUnits = [.minute, .second]
         if trackDuration >= 3600 { formatter.allowedUnits.insert(.hour) }
-        return formatter.string(from: Double(trackDuration)) ?? ""
-    }
-
-    private let trackDuration: Int
-
-    init(from track: Track) {
-        self.title = track.name
-        self.trackDuration = track.duration
+        self.duration = formatter.string(from: Double(trackDuration)) ?? ""
     }
 }

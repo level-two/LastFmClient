@@ -1,101 +1,167 @@
 import UIKit
+import RxSwift
+import RxRelay
 
-class AlbumDetailsViewController: UITableViewController, StoryboardLoadable {
-    fileprivate var navigator: SceneNavigator?
-    fileprivate var theme: Theme?
+final class AlbumDetailsViewController: UIViewController, StoryboardLoadable {
+    @IBOutlet private var collectionView: UICollectionView?
 
-    fileprivate var viewModel: AlbumDetailsViewModel?
+    private typealias DataSource = UICollectionViewDiffableDataSource<AlbumDetailsViewSection, UUID>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<AlbumDetailsViewSection, UUID>
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerReusableViews()
+        setupView()
     }
 
-    func setupDependencies(albumId: String,
-                           navigator: SceneNavigator?,
-                           networkService: NetworkService,
-                           databaseProvider: DatabaseProvider,
-                           theme: Theme?) {
-        self.navigator = navigator
+    func setupDependencies(viewModel: AlbumDetailsViewModel, theme: Theme) {
+        self.viewModel = viewModel
         self.theme = theme
-        self.viewModel = AlbumDetailsViewModel(albumId: albumId,
-                                               networkService: networkService,
-                                               databaseProvider: databaseProvider)
+    }
 
-        viewModel?.onViewModelUpdated = { [weak self] in
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.reloadData()
+    private let disposeBag = DisposeBag()
+    private var dataSource: DataSource?
+    private var theme: Theme?
+    private var viewModel: AlbumDetailsViewModel?
+}
+
+private extension AlbumDetailsViewController {
+    func setupView() {
+        styleView()
+        setupCollectionView()
+    }
+
+    func styleView() {
+        theme?.apply(style: .lightDarkBackground, to: collectionView)
+        theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
+    }
+}
+
+private extension AlbumDetailsViewController {
+    func setupCollectionView() {
+        registerReusableCells()
+        setupLayout()
+        setupDataSource()
+        setupContent()
+    }
+
+    func registerReusableCells() {
+        collectionView?.registerReusableCell(AlbumDetailsAlbumCellView.self)
+        collectionView?.registerReusableCell(AlbumDetailsTrackCellView.self)
+        collectionView?.registerReusableCell(AlbumDetailsStoreCellView.self)
+    }
+
+    func setupLayout() {
+        collectionView?.collectionViewLayout = createLayout()
+    }
+
+    func setupDataSource() {
+        guard let collectionView = collectionView,
+            let viewModel = viewModel,
+            let theme = theme
+            else { return }
+
+        dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, _ in
+            guard let section = AlbumDetailsViewSection(rawValue: indexPath.section) else {
+                fatalError("Undefined section")
+            }
+
+            switch section {
+            case .albumDetails:
+                let cell = collectionView.dequeueReusableCell(AlbumDetailsAlbumCellView.self, for: indexPath)
+                cell.configure(with: viewModel.albumDetails)
+                cell.style(with: theme)
+                return cell
+            case .tracks:
+                let cell = collectionView.dequeueReusableCell(AlbumDetailsTrackCellView.self, for: indexPath)
+                cell.configure(with: viewModel.tracks[indexPath.item])
+                cell.style(with: theme)
+                return cell
+            case .albumStore:
+                let cell = collectionView.dequeueReusableCell(AlbumDetailsStoreCellView.self, for: indexPath)
+                cell.configure(with: viewModel.albumStore)
+                cell.style(with: theme)
+                return cell
             }
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        styleView()
+    func setupContent() {
+        guard let viewModel = viewModel else { return }
 
-        showHudOverlay()
-        _ = viewModel?.loadData().done { [weak self] in
-            self?.removeHudOverlay()
-        }
+        var snapshot = Snapshot()
+        snapshot.appendSections([.albumDetails, .tracks, .albumStore])
+        snapshot.appendItems([UUID()], toSection: .albumDetails)
+        snapshot.appendItems(viewModel.tracks.map { _ in UUID() }, toSection: .tracks)
+        snapshot.appendItems([UUID()], toSection: .albumStore)
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
 
-extension AlbumDetailsViewController {
-    func registerReusableViews() {
-        tableView.registerReusableHeaderFooter(AlbumDetailsHeaderView.self)
-        tableView.registerReusableHeaderFooter(AlbumDetailsFooterView.self)
-        tableView.registerReusableCell(AlbumDetailsTrackCell.self)
-    }
+private extension AlbumDetailsViewController {
+    func createLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { section, environment in
+            guard let section = AlbumDetailsViewSection(rawValue: section) else {
+                fatalError("Undefined section")
+            }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.trackViewModel.count ?? 0
-    }
+            switch section {
+            case .albumDetails:
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                      heightDimension: .estimated(500))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(AlbumDetailsHeaderView.self)
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                       heightDimension: .estimated(500))
 
-        if let headerViewModel = viewModel?.headerViewModel, let theme = theme {
-            header.configure(with: headerViewModel)
-            header.style(with: theme)
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+
+                let artistSection = NSCollectionLayoutSection(group: group)
+                //artistSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+
+                return artistSection
+
+            case .tracks:
+                let containerSize = environment.container.effectiveContentSize
+
+                let columns = containerSize.width > 1000 ? 4 :
+                              containerSize.width > 600 ? 2 : 1
+
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                      heightDimension: .fractionalHeight(1.0))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                       heightDimension: .fractionalWidth(1.0/CGFloat(columns)))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+                group.interItemSpacing = .fixed(20)
+
+                let albumsSection = NSCollectionLayoutSection(group: group)
+                albumsSection.interGroupSpacing = 20
+                albumsSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+
+                return albumsSection
+
+            case .albumStore:
+                let containerSize = environment.container.effectiveContentSize
+
+                let columns = containerSize.width > 1000 ? 4 :
+                              containerSize.width > 600 ? 2 : 1
+
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                      heightDimension: .fractionalHeight(1.0))
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                       heightDimension: .fractionalWidth(1.0/CGFloat(columns)))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+                group.interItemSpacing = .fixed(20)
+
+                let albumsSection = NSCollectionLayoutSection(group: group)
+                albumsSection.interGroupSpacing = 20
+                albumsSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+
+                return albumsSection
+            }
         }
-
-        return header
-    }
-
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = tableView.dequeueReusableHeaderFooterView(AlbumDetailsFooterView.self)
-
-        if let footerViewModel = viewModel?.footerViewModel, let theme = theme {
-            footer.configure(with: footerViewModel)
-            footer.style(with: theme)
-        }
-
-        footer.onAdd = { [weak self] in
-            self?.viewModel?.storeAlbum()
-        }
-
-        footer.onRemove = { [weak self] in
-            self?.viewModel?.removeAlbum()
-        }
-
-        return footer
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(AlbumDetailsTrackCell.self, for: indexPath)
-
-        if let trackViewModel = viewModel?.trackViewModel[indexPath.row], let theme = theme {
-            cell.configure(with: trackViewModel)
-            cell.style(with: theme)
-        }
-
-        return cell
-    }
-}
-
-extension AlbumDetailsViewController {
-    fileprivate func styleView() {
-        theme?.apply(style: .lightDarkBackground, to: tableView)
-        theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
     }
 }

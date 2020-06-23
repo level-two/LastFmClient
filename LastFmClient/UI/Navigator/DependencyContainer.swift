@@ -42,13 +42,12 @@ final class DependencyContainer: ViewControllerFactory {
         return viewController
     }
 
-//    func makeAlbumDetailsViewController(albumId: String) -> UIViewController {
-//        let viewController = AlbumDetailsViewController.loadFromStoryboard()
-//        viewController.setupDependencies(albumId: albumId,
-//                                         navigator: navigator,
-//                                         networkService: networkService,
-//                                         databaseService: databaseService,
-//                                         theme: theme)
-//        return viewController
-//    }
+    func makeAlbumDetailsViewController(album: Album) -> UIViewController {
+        let viewController = AlbumDetailsViewController.loadFromStoryboard()
+        let viewModel = DefaultAlbumDetailsViewModel(from: album,
+                                                     imageDownloadService: networkService,
+                                                     albumStoreService: databaseService)
+        viewController.setupDependencies(viewModel: viewModel, theme: theme)
+        return viewController
+    }
 }
