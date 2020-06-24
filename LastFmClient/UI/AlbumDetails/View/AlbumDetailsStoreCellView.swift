@@ -33,7 +33,7 @@ private extension AlbumDetailsStoreCellView {
 
         viewModel.stored.bind { [weak self] isStored in
             self?.theme?.apply(style: isStored ? .removeButton : .addButton, to: self?.button)
-            self?.button?.setTitle(isStored ? "remove" : "add", for: .normal)
+            self?.button?.setTitle(isStored ? "Remove" : "Add", for: .normal)
             self?.button?.setImage(UIImage(named: isStored ? "remove" : "add"), for: .normal)
         }.disposed(by: disposeBag)
 

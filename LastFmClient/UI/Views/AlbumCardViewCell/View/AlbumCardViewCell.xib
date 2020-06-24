@@ -27,13 +27,14 @@
                                         <state key="normal" image="remove"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="zLf-5b-IIz" firstAttribute="top" secondItem="E5Z-1u-iua" secondAttribute="top" id="CW2-GW-RFa"/>
                                     <constraint firstItem="zLf-5b-IIz" firstAttribute="trailing" secondItem="E5Z-1u-iua" secondAttribute="trailing" id="hd5-8H-akP"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="E5Z-1u-iua" secondAttribute="trailing" constant="20" symbolic="YES" id="3oH-wB-GGp"/>
                             <constraint firstItem="E5Z-1u-iua" firstAttribute="top" secondItem="n7x-oh-Qki" secondAttribute="top" constant="20" symbolic="YES" id="VtR-Pa-eb3"/>
