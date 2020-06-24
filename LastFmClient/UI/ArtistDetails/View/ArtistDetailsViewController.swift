@@ -141,11 +141,11 @@ private extension ArtistDetailsViewController {
             switch section {
             case .artistDetails:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(500))
+                                                      heightDimension: .estimated(1))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(500))
+                                                       heightDimension: .estimated(1))
 
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
@@ -161,11 +161,11 @@ private extension ArtistDetailsViewController {
                               containerSize.width > 600 ? 2 : 1
 
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(100))
+                                                      heightDimension: .estimated(1))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(100))
+                                                       heightDimension: .estimated(1))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
                 group.interItemSpacing = .fixed(20)
 

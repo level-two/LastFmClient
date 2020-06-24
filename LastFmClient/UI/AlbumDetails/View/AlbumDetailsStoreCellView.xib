@@ -10,29 +10,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cWR-Cl-lzg" customClass="AlbumDetailsStoreCellView" customModule="LastFmClient" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="361" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="284" height="74"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rRV-wH-n45">
-                <rect key="frame" x="0.0" y="0.0" width="361" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="284" height="74"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a51-BX-zcB">
-                        <rect key="frame" x="20" y="8" width="321" height="84"/>
+                        <rect key="frame" x="0.0" y="13" width="284" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="j3q-H2-89I"/>
+                        </constraints>
                         <state key="normal" title="Button"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="a51-BX-zcB" secondAttribute="bottom" constant="8" id="0lU-os-ke8"/>
-                    <constraint firstItem="a51-BX-zcB" firstAttribute="leading" secondItem="rRV-wH-n45" secondAttribute="leading" constant="20" id="LwJ-wd-FnB"/>
-                    <constraint firstItem="a51-BX-zcB" firstAttribute="top" secondItem="rRV-wH-n45" secondAttribute="top" constant="8" id="Se4-N5-0rQ"/>
-                    <constraint firstAttribute="trailing" secondItem="a51-BX-zcB" secondAttribute="trailing" constant="20" id="zKV-gg-OEc"/>
+                    <constraint firstItem="a51-BX-zcB" firstAttribute="centerX" secondItem="rRV-wH-n45" secondAttribute="centerX" id="JZD-0l-zEV"/>
+                    <constraint firstItem="a51-BX-zcB" firstAttribute="centerY" secondItem="rRV-wH-n45" secondAttribute="centerY" id="hXo-H0-8Xg"/>
+                    <constraint firstItem="a51-BX-zcB" firstAttribute="height" secondItem="rRV-wH-n45" secondAttribute="height" priority="750" id="hbc-No-cAg"/>
+                    <constraint firstItem="a51-BX-zcB" firstAttribute="width" secondItem="rRV-wH-n45" secondAttribute="width" id="vZ5-lx-rme"/>
                 </constraints>
             </collectionViewCellContentView>
-            <size key="customSize" width="361" height="100"/>
+            <size key="customSize" width="284" height="74"/>
             <connections>
                 <outlet property="button" destination="a51-BX-zcB" id="3I3-Kk-cz1"/>
             </connections>
-            <point key="canvasLocation" x="301.60000000000002" y="71.064467766116948"/>
+            <point key="canvasLocation" x="240" y="58.47076461769116"/>
         </collectionViewCell>
     </objects>
 </document>

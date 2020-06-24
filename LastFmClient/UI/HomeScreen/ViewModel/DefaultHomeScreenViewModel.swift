@@ -53,11 +53,13 @@ private extension DefaultHomeScreenViewModel {
 
         albumStoreService.storedAlbums()
             .map { storedAlbums in
-                storedAlbums.map { album in
-                    DefaultAlbumCardViewModel(album: album,
-                                              imageDownloadService: imageDownloadService,
-                                              albumStoreService: albumStoreService)
-                }
+                storedAlbums
+                    .reversed()
+                    .map { album in
+                        DefaultAlbumCardViewModel(album: album,
+                                                  imageDownloadService: imageDownloadService,
+                                                  albumStoreService: albumStoreService)
+                    }
             }
             .bind(to: storedAlbums)
             .disposed(by: disposeBag)

@@ -127,38 +127,38 @@ private extension AlbumDetailsViewController {
             switch section {
             case .albumDetails:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(500))
+                                                      heightDimension: .estimated(1))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(500))
+                                                       heightDimension: .estimated(1))
 
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
                 let artistSection = NSCollectionLayoutSection(group: group)
+                artistSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
                 return artistSection
 
             case .tracks:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(100))
+                                                      heightDimension: .estimated(1))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(100))
+                                                       heightDimension: .estimated(1))
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
                 let albumsSection = NSCollectionLayoutSection(group: group)
-                //albumsSection.interGroupSpacing = 20
-                //albumsSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)s
+                albumsSection.contentInsets = .init(top: 0, leading: 20, bottom: 0, trailing: 20)
                 return albumsSection
 
             case .albumStore:
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(100))
+                                                      heightDimension: .estimated(1))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
                 let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(100))
+                                                       heightDimension: .estimated(1))
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
                 group.interItemSpacing = .fixed(20)
 
