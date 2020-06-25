@@ -55,7 +55,6 @@ private extension AlbumDetailsViewController {
     }
 
     func setupBindings() {
-
         viewModel?.showNetworkError.bind { [weak self] interactor in
             self?.showNetworkErrorOverlay(interactor: interactor, theme: self?.theme)
         }.disposed(by: disposeBag)
@@ -118,21 +117,23 @@ private extension AlbumDetailsViewController {
     }
 
     func bindDataSource() {
-        viewModel?.contentIsReady.bind { [weak self] in
-            var snapshot = Snapshot()
+        viewModel?.contentIsReady
+            .filter { $0 }
+            .bind { [weak self] _ in
+                var snapshot = Snapshot()
 
-            snapshot.appendSections([.albumDetails])
-            snapshot.appendItems([UUID()], toSection: .albumDetails)
+                snapshot.appendSections([.albumDetails])
+                snapshot.appendItems([UUID()], toSection: .albumDetails)
 
-            if let tracks = self?.viewModel?.tracks {
-                snapshot.appendSections([.tracks])
-                snapshot.appendItems(tracks.map { _ in UUID() }, toSection: .tracks)
-            }
+                if let tracks = self?.viewModel?.tracks {
+                    snapshot.appendSections([.tracks])
+                    snapshot.appendItems(tracks.map { _ in UUID() }, toSection: .tracks)
+                }
 
-            snapshot.appendSections([.albumStore])
-            snapshot.appendItems([UUID()], toSection: .albumStore)
-            self?.dataSource?.apply(snapshot, animatingDifferences: true)
-        }.disposed(by: disposeBag)
+                snapshot.appendSections([.albumStore])
+                snapshot.appendItems([UUID()], toSection: .albumStore)
+                self?.dataSource?.apply(snapshot, animatingDifferences: true)
+            }.disposed(by: disposeBag)
     }
 }
 

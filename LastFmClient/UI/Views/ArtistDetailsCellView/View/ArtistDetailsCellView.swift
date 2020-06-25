@@ -35,9 +35,9 @@ final class ArtistDetailsCellView: UICollectionViewCell, NibLoadable {
         setupView()
     }
 
-    func style(with theme: Theme) {
-        theme.apply(style: .bold, to: name)
-        theme.apply(style: .text, to: shortDescription)
+    func style(with theme: Theme?) {
+        theme?.apply(style: .heading, to: name)
+        theme?.apply(style: .text, to: shortDescription)
     }
 
     private var viewModel: ArtistDetailsCellViewModel?

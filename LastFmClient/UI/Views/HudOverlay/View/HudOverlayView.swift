@@ -28,5 +28,10 @@ final class HudOverlayView: UIView, NibLoadable {
         loadFromNib()
     }
 
+    func style(with theme: Theme?) {
+        theme?.apply(style: .background, to: self)
+        theme?.apply(style: .normal, to: activityIndicator)
+    }
+
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView?
 }

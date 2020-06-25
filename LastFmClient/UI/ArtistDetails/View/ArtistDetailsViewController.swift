@@ -22,8 +22,8 @@ import RxRelay
 final class ArtistDetailsViewController: UIViewController, StoryboardLoadable {
     @IBOutlet private var collectionView: UICollectionView?
 
-    private typealias DataSource = UICollectionViewDiffableDataSource<ArtistDetailsViewSection, String>
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<ArtistDetailsViewSection, String>
+    private typealias DataSource = UICollectionViewDiffableDataSource<ArtistDetailsViewSection, UUID>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<ArtistDetailsViewSection, UUID>
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,48 +68,44 @@ private extension ArtistDetailsViewController {
     }
 
     func setupDataSource() {
-        guard let collectionView = collectionView,
-            let viewModel = viewModel,
-            let theme = theme
-            else { return }
+        guard let collectionView = collectionView else { return }
 
-        let artistDetails = BehaviorRelay<[ArtistDetailsCellViewModel]>(value: [])
-        let albums = BehaviorRelay<[AlbumCardViewModel]>(value: [])
-
-        viewModel.artistDetails
-            .bind(to: artistDetails)
-            .disposed(by: disposeBag)
-
-        viewModel.albums
-            .bind(to: albums)
-            .disposed(by: disposeBag)
-
-        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, _ in
+        let dataSource = DataSource(collectionView: collectionView) { [weak self] collectionView, indexPath, _ in
             guard let section = ArtistDetailsViewSection(rawValue: indexPath.section) else {
                 fatalError("Undefined section")
             }
 
+            guard let artistDetails = self?.viewModel?.artistDetails,
+                let albums = self?.viewModel?.albums
+                else { return nil }
+
             switch section {
             case .artistDetails:
                 let cell = collectionView.dequeueReusableCell(ArtistDetailsCellView.self, for: indexPath)
-                cell.configure(with: artistDetails.value[indexPath.item])
-                cell.style(with: theme)
+                cell.configure(with: artistDetails)
+                cell.style(with: self?.theme)
                 return cell
             case .albums:
                 let cell = collectionView.dequeueReusableCell(AlbumCardViewCell.self, for: indexPath)
-                cell.set(viewModel: albums.value[indexPath.item])
-                cell.style(with: theme)
+                cell.set(viewModel: albums[indexPath.item])
+                cell.style(with: self?.theme)
                 return cell
             }
         }
 
-        Observable
-            .combineLatest(artistDetails, albums)
-            .bind { artistDetails, albums in
+        viewModel?.contentIsReady
+            .filter { $0 }
+            .bind { [weak self] _ in
                 var snapshot = Snapshot()
-                snapshot.appendSections([.artistDetails, .albums])
-                snapshot.appendItems(artistDetails.map { $0.mbid }, toSection: .artistDetails)
-                snapshot.appendItems(albums.map { $0.album.mbid }, toSection: .albums)
+
+                snapshot.appendSections([.artistDetails])
+                snapshot.appendItems([UUID()], toSection: .artistDetails)
+
+                snapshot.appendSections([.albums])
+                if let albums = self?.viewModel?.albums {
+                    snapshot.appendItems(albums.map { _ in UUID() }, toSection: .albums)
+                }
+
                 dataSource.apply(snapshot, animatingDifferences: true)
             }.disposed(by: disposeBag)
     }
@@ -117,14 +113,13 @@ private extension ArtistDetailsViewController {
     func setupBindings() {
         guard let viewModel = viewModel else { return }
 
-        viewModel.showNetworkError
-            .bind { [weak self] interactor in
-                self?.showNetworkErrorOverlay(interactor: interactor, theme: self?.theme)
-            }.disposed(by: disposeBag)
+        viewModel.showNetworkError.bind { [weak self] interactor in
+            self?.showNetworkErrorOverlay(interactor: interactor, theme: self?.theme)
+        }.disposed(by: disposeBag)
 
-        viewModel.showHud
-            .bind { [weak self] show in self?.view.showHud(show, theme: self?.theme) }
-            .disposed(by: disposeBag)
+        viewModel.showHud.bind { [weak self] show in
+            self?.view.showHud(show, theme: self?.theme)
+        }.disposed(by: disposeBag)
 
         viewModel.showFullBio
             .bind { [weak self] bio in self?.navigator?.navigate(to: .artistDescription(description: bio)) }
@@ -137,7 +132,7 @@ private extension ArtistDetailsViewController {
         collectionView?.rx
             .itemSelected
             .filter { $0.section == ArtistDetailsViewSection.artistDetails.rawValue }
-            .map { $0.item }
+            .map { _ in }
             .bind(to: viewModel.doShowFullBio)
             .disposed(by: disposeBag)
 

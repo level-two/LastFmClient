@@ -21,7 +21,6 @@
                     <rect key="frame" x="188.5" y="434.5" width="37" height="37"/>
                 </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="bBU-bH-792" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="EW7-jg-51c"/>
                 <constraint firstItem="bBU-bH-792" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="q7V-4V-Zs4"/>

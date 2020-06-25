@@ -92,4 +92,12 @@ final class DefaultTheme: Theme {
             imageView?.setImageColor(color: colorPalette.primary2)
         }
     }
+
+    func apply(style: ActivityIndicatorStyle, to indicator: UIActivityIndicatorView?) {
+        switch style {
+        case .normal:
+            indicator?.tintColor = colorPalette.primary1
+        }
+    }
+
 }

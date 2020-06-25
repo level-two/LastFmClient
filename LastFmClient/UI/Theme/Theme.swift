@@ -62,6 +62,10 @@ enum LayerStyle {
     case roundedWithShadow
 }
 
+enum ActivityIndicatorStyle {
+    case normal
+}
+
 protocol Theme {
     func apply(style: LabelStyle, to label: UILabel?)
     func apply(style: ButtonStyle, to button: UIButton?)
@@ -69,4 +73,5 @@ protocol Theme {
     func apply(style: ImageStyle, to view: UIImageView?)
     func apply(style: NavigationBarStyle, to imageView: UINavigationBar?)
     func apply(style: LayerStyle, to layer: CALayer?)
+    func apply(style: ActivityIndicatorStyle, to indicator: UIActivityIndicatorView?)
 }

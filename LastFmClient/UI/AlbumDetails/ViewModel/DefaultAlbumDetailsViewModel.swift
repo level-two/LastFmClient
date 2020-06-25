@@ -25,7 +25,7 @@ final class DefaultAlbumDetailsViewModel: AlbumDetailsViewModel {
     var tracks: [AlbumDetailsTrackCellViewModel]?
     var albumStore: AlbumStoreViewModel?
 
-    var contentIsReady: Observable<Void> { onContentReady.asObservable() }
+    var contentIsReady: Observable<Bool> { onContentReady.asObservable() }
 
     var showHud: Observable<Bool> { doShowHud.asObservable() }
     var showNetworkError: Observable<NetworkErrorOverlayInteractor?> { doShowNetworkError.asObservable() }
@@ -42,9 +42,9 @@ final class DefaultAlbumDetailsViewModel: AlbumDetailsViewModel {
         loadData(mbid: mbid)
     }
 
-    private let onContentReady = PublishRelay<Void>()
-    private let doShowHud = PublishSubject<Bool>()
-    private let doShowNetworkError = PublishSubject<NetworkErrorOverlayInteractor?>()
+    private let onContentReady = BehaviorRelay<Bool>(value: false)
+    private let doShowHud = BehaviorRelay<Bool>(value: false)
+    private let doShowNetworkError = BehaviorRelay<NetworkErrorOverlayInteractor?>(value: nil)
     private let onRetry = PublishSubject<Void>()
     private let disposeBag = DisposeBag()
 
@@ -59,8 +59,8 @@ private extension DefaultAlbumDetailsViewModel {
             .merge(.just(()), onRetry)
             .bind { [weak self] in
 
-                self?.doShowNetworkError.onNext(nil)
-                self?.doShowHud.onNext(true)
+                self?.doShowNetworkError.accept(nil)
+                self?.doShowHud.accept(true)
 
                 firstly {
                     self?.albumInfoService.albumInfo(mbid: mbid) ?? .failed
@@ -71,13 +71,13 @@ private extension DefaultAlbumDetailsViewModel {
                     self.albumStore = DefaultAlbumStoreViewModel(album: album,
                                                                  albumStoreService: self.albumStoreService)
                     self.tracks = album.tracks.map(DefaultAlbumDetailsTrackCellViewModel.init)
-                    self.onContentReady.accept(())
+                    self.onContentReady.accept(true)
                 }.ensure {
-                    self?.doShowHud.onNext(false)
+                    self?.doShowHud.accept(false)
                 }.catch { _ in
                     guard let self = self else { return }
                     let interactor = DefaultNetworkErrorOverlayInteractor(retry: self.onRetry.asObserver())
-                    self.doShowNetworkError.onNext(interactor)
+                    self.doShowNetworkError.accept(interactor)
                 }
 
             }.disposed(by: disposeBag)

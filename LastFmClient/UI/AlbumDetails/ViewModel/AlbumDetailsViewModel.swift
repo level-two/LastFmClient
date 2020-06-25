@@ -22,7 +22,7 @@ protocol AlbumDetailsViewModel {
     var tracks: [AlbumDetailsTrackCellViewModel]? { get }
     var albumStore: AlbumStoreViewModel? { get }
 
-    var contentIsReady: Observable<Void> { get }
+    var contentIsReady: Observable<Bool> { get }
 
     var showHud: Observable<Bool> { get }
     var showNetworkError: Observable<NetworkErrorOverlayInteractor?> { get }

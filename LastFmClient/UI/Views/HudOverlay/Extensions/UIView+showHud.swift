@@ -23,6 +23,7 @@ extension UIView {
     func showHud(_ show: Bool, theme: Theme?) {
         if show {
             let overlay = HudOverlayView(frame: self.bounds)
+            overlay.style(with: theme)
             self.addSubview(overlay)
             overlay.translatesAutoresizingMaskIntoConstraints = false
             overlay.topAnchor.constraint(equalTo: self.topAnchor).isActive = true

@@ -37,7 +37,7 @@ final class AlbumView: UIView, NibLoadable {
 
     func style(with theme: Theme?) {
         self.theme = theme
-        theme?.apply(style: .bold, to: artist)
+        theme?.apply(style: .heading, to: artist)
         theme?.apply(style: .text, to: title)
     }
 
