@@ -46,7 +46,4 @@ extension NSCollectionLayoutSection {
         section.interGroupSpacing = interItemSpacing
         return section
     }
-
-
-
 }

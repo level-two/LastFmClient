@@ -63,32 +63,30 @@ final class DefaultHomeScreenViewModel: HomeScreenViewModel {
 
 private extension DefaultHomeScreenViewModel {
     func setupBindings() {
+        setupDataBindings()
+        setupSearchBindings()
+        setupCardSelectionBinding()
+    }
+
+    func setupDataBindings() {
         let imageDownloadService = self.imageDownloadService
         let albumStoreService = self.albumStoreService
-        let searchHistoryService = self.searchHistoryService
-        let artistSearchService = self.artistSearchService
 
         albumStoreService.storedAlbums()
             .map { storedAlbums in
-                storedAlbums
-                    .reversed()
-                    .map { album in
-                        DefaultAlbumCardViewModel(album: album,
-                                                  imageDownloadService: imageDownloadService,
-                                                  albumStoreService: albumStoreService)
-                    }
-            }
-            .bind(to: storedAlbums)
+                storedAlbums.reversed().map { album in
+                    DefaultAlbumCardViewModel(album: album,
+                                              imageDownloadService: imageDownloadService,
+                                              albumStoreService: albumStoreService)
+                }
+            }.bind(to: storedAlbums)
             .disposed(by: disposeBag)
+    }
 
-        onCardSelected
-            .map { $0.album.mbid }
-            .bind(to: doShowAlbumDetails)
-            .disposed(by: disposeBag)
-
+    func setupSearchBindings() {
         onArtistSearch
             .filter { $0.isEmpty }
-            .compactMap { _ in searchHistoryService.searchHistory() }
+            .compactMap { [weak self] _ in self?.searchHistoryService.searchHistory() }
             .map { $0.reversed() }
             .bind(to: searchResults)
             .disposed(by: disposeBag)
@@ -98,18 +96,25 @@ private extension DefaultHomeScreenViewModel {
             .distinctUntilChanged()
             .filter { !$0.isEmpty }
             .bind { [weak self] artist in
-                artistSearchService
+                self?.artistSearchService
                     .search(artist: artist)
                     .done { self?.searchResults.accept($0) }
                     .cauterize()
             }.disposed(by: disposeBag)
 
         onSearchItemSelected
-            .map { artistSearchItem in
-                searchHistoryService.removeFromSearchHistory(artistSearchItem.mbid)
-                searchHistoryService.addToSearchHistory(artistSearchItem)
+            .map { [weak self] artistSearchItem in
+                self?.searchHistoryService.removeFromSearchHistory(artistSearchItem.mbid)
+                self?.searchHistoryService.addToSearchHistory(artistSearchItem)
                 return artistSearchItem.mbid
             }.bind(to: doShowArtistDetails)
+            .disposed(by: disposeBag)
+    }
+
+    func setupCardSelectionBinding() {
+        onCardSelected
+            .map { $0.album.mbid }
+            .bind(to: doShowAlbumDetails)
             .disposed(by: disposeBag)
     }
 }
