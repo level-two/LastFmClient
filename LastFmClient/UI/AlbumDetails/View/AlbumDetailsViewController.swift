@@ -80,7 +80,8 @@ private extension AlbumDetailsViewController {
     }
 
     func setupLayout() {
-        collectionView?.collectionViewLayout = createLayout()
+        collectionView?.collectionViewLayout =
+            UICollectionViewCompositionalLayout(section: .fullScreenWideAutosized)
     }
 
     func setupDataSource() {
@@ -134,59 +135,5 @@ private extension AlbumDetailsViewController {
                 snapshot.appendItems([UUID()], toSection: .albumStore)
                 self?.dataSource?.apply(snapshot, animatingDifferences: true)
             }.disposed(by: disposeBag)
-    }
-}
-
-private extension AlbumDetailsViewController {
-    func createLayout() -> UICollectionViewLayout {
-        return UICollectionViewCompositionalLayout { section, _ in
-            guard let section = AlbumDetailsViewSection(rawValue: section) else {
-                fatalError("Undefined section")
-            }
-
-            switch section {
-            case .albumDetails:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(1))
-
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
-                let artistSection = NSCollectionLayoutSection(group: group)
-                artistSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-                return artistSection
-
-            case .tracks:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(1))
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
-                let albumsSection = NSCollectionLayoutSection(group: group)
-                albumsSection.contentInsets = .init(top: 0, leading: 20, bottom: 0, trailing: 20)
-                return albumsSection
-
-            case .albumStore:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(1))
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-                group.interItemSpacing = .fixed(20)
-
-                let albumStore = NSCollectionLayoutSection(group: group)
-                albumStore.interGroupSpacing = 20
-                albumStore.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-                return albumStore
-            }
-        }
     }
 }

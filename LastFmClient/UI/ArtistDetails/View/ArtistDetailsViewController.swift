@@ -154,40 +154,14 @@ private extension ArtistDetailsViewController {
 
             switch section {
             case .artistDetails:
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(1))
-
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
-                let artistSection = NSCollectionLayoutSection(group: group)
-                //artistSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-
-                return artistSection
-
+                return .fullScreenWideAutosized
             case .albums:
                 let containerSize = environment.container.effectiveContentSize
-
                 let columns = containerSize.width > 1000 ? 4 :
                               containerSize.width > 600 ? 2 : 1
-
-                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                      heightDimension: .estimated(1))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .estimated(1))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
-                group.interItemSpacing = .fixed(20)
-
-                let albumsSection = NSCollectionLayoutSection(group: group)
-                albumsSection.interGroupSpacing = 20
-                albumsSection.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-
-                return albumsSection
+                let section = NSCollectionLayoutSection.multipleColumnsAutosized(columns: columns, interItemSpacing: 20)
+                section.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
+                return section
             }
         }
     }

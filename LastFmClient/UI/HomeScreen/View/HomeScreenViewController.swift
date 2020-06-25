@@ -118,27 +118,13 @@ private extension HomeScreenViewController {
 }
 
 private extension HomeScreenViewController {
-
     func createLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { _, environment in
             let containerSize = environment.container.effectiveContentSize
-
             let columns = containerSize.width > 1000 ? 4 :
                           containerSize.width > 600 ? 2 : 1
-
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .estimated(1))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                   heightDimension: .estimated(1))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
-            group.interItemSpacing = .fixed(20)
-
-            let section = NSCollectionLayoutSection(group: group)
-            section.interGroupSpacing = 20
+            let section = NSCollectionLayoutSection.multipleColumnsAutosized(columns: columns, interItemSpacing: 20)
             section.contentInsets = .init(top: 20, leading: 20, bottom: 20, trailing: 20)
-
             return section
         }
     }

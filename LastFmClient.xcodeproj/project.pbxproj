@@ -40,6 +40,7 @@
 		9E37255624A1006800C70A5A /* AlbumDetailsViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37255524A1006800C70A5A /* AlbumDetailsViewSection.swift */; };
 		9E37255824A23FD800C70A5A /* AlbumInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37255724A23FD800C70A5A /* AlbumInfoResponse.swift */; };
 		9E37255A24A4ED3000C70A5A /* UIImageView+setImageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37255924A4ED3000C70A5A /* UIImageView+setImageColor.swift */; };
+		9E37255C24A513AC00C70A5A /* NSCollectionLayoutSection+presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E37255B24A513AC00C70A5A /* NSCollectionLayoutSection+presets.swift */; };
 		9E47C391249E7A05008F3E2C /* DefaultArtistDetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E47C37D249E7A05008F3E2C /* DefaultArtistDetailsCellViewModel.swift */; };
 		9E47C392249E7A05008F3E2C /* ArtistDetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E47C37E249E7A05008F3E2C /* ArtistDetailsCellViewModel.swift */; };
 		9E47C393249E7A05008F3E2C /* ArtistDetailsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E47C380249E7A05008F3E2C /* ArtistDetailsCellView.swift */; };
@@ -180,6 +181,7 @@
 		9E37255524A1006800C70A5A /* AlbumDetailsViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewSection.swift; sourceTree = "<group>"; };
 		9E37255724A23FD800C70A5A /* AlbumInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfoResponse.swift; sourceTree = "<group>"; };
 		9E37255924A4ED3000C70A5A /* UIImageView+setImageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+setImageColor.swift"; sourceTree = "<group>"; };
+		9E37255B24A513AC00C70A5A /* NSCollectionLayoutSection+presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutSection+presets.swift"; sourceTree = "<group>"; };
 		9E47C37D249E7A05008F3E2C /* DefaultArtistDetailsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultArtistDetailsCellViewModel.swift; sourceTree = "<group>"; };
 		9E47C37E249E7A05008F3E2C /* ArtistDetailsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistDetailsCellViewModel.swift; sourceTree = "<group>"; };
 		9E47C380249E7A05008F3E2C /* ArtistDetailsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistDetailsCellView.swift; sourceTree = "<group>"; };
@@ -766,6 +768,7 @@
 				9EA2FCF724910CFF00557C69 /* UICollectionView+registerReusable.swift */,
 				9EFF93652484FDDC0077683D /* UIColor+hex.swift */,
 				9E37255924A4ED3000C70A5A /* UIImageView+setImageColor.swift */,
+				9E37255B24A513AC00C70A5A /* NSCollectionLayoutSection+presets.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1203,6 +1206,7 @@
 				9E4FBE85248FA5F00038BE7B /* AlbumTracksResponse.swift in Sources */,
 				9E4FBE8E248FAB500038BE7B /* AlbumResponse+asAlbum.swift in Sources */,
 				9EFF93CE2484FDDC0077683D /* Theme.swift in Sources */,
+				9E37255C24A513AC00C70A5A /* NSCollectionLayoutSection+presets.swift in Sources */,
 				9EA7F48E2493C73D00AAE143 /* ArtistSearchResponse.swift in Sources */,
 				9E60276824A0AFB800E7C2A5 /* NetworkErrorOverlayInteractor.swift in Sources */,
 				9EF67A9D2498C0FC00AE942C /* ArtistDetailsViewController.swift in Sources */,

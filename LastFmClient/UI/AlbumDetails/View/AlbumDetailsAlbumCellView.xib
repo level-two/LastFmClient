@@ -17,14 +17,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1k-fP-Ra0" customClass="AlbumView" customModule="LastFmClient" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="489" height="182"/>
+                        <rect key="frame" x="20" y="20" width="449" height="142"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="A1k-fP-Ra0" firstAttribute="top" secondItem="9dV-4K-IF3" secondAttribute="top" id="4b9-wS-Qg9"/>
-                    <constraint firstAttribute="trailing" secondItem="A1k-fP-Ra0" secondAttribute="trailing" id="Nq5-ES-08y"/>
-                    <constraint firstAttribute="bottom" secondItem="A1k-fP-Ra0" secondAttribute="bottom" id="axQ-fF-1F0"/>
-                    <constraint firstItem="A1k-fP-Ra0" firstAttribute="leading" secondItem="9dV-4K-IF3" secondAttribute="leading" id="mLx-aT-nXd"/>
+                    <constraint firstItem="A1k-fP-Ra0" firstAttribute="top" secondItem="9dV-4K-IF3" secondAttribute="top" priority="995" constant="20" id="4b9-wS-Qg9"/>
+                    <constraint firstAttribute="trailing" secondItem="A1k-fP-Ra0" secondAttribute="trailing" priority="995" constant="20" id="Nq5-ES-08y"/>
+                    <constraint firstAttribute="bottom" secondItem="A1k-fP-Ra0" secondAttribute="bottom" priority="995" constant="20" id="axQ-fF-1F0"/>
+                    <constraint firstItem="A1k-fP-Ra0" firstAttribute="leading" secondItem="9dV-4K-IF3" secondAttribute="leading" priority="995" constant="20" id="mLx-aT-nXd"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="489" height="182"/>
