@@ -19,5 +19,8 @@ import UIKit
 
 protocol FontSet {
     var regular: UIFont { get }
+    var bold: UIFont { get }
+    var light: UIFont { get }
+    var heading: UIFont { get }
     var small: UIFont { get }
 }

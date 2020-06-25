@@ -19,8 +19,7 @@ import UIKit
 
 final class DependencyContainer: ViewControllerFactory {
     fileprivate weak var navigator: SceneNavigator?
-    //fileprivate lazy var theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
-    fileprivate lazy var theme: Theme = EmptyTheme()
+    fileprivate lazy var theme: Theme = DefaultTheme(fontSet: DefaultFontSet(), colorPalette: DefaultColorPalette())
     fileprivate lazy var networkService: NetworkService = AlamofireNetworkService()
     fileprivate lazy var databaseService: DatabaseService = RealmDatabaseService()
 

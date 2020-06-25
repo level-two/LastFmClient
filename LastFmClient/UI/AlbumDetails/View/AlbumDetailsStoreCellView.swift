@@ -33,8 +33,7 @@ class AlbumDetailsStoreCellView: UICollectionViewCell, NibLoadable, TypeIdentifi
     }
 
     func style(with theme: Theme?) {
-        self.theme = theme
-        theme?.apply(style: .lightDarkBackground, to: self.contentView)
+        theme?.apply(style: .normal, to: button)
     }
 
     private var viewModel: AlbumStoreViewModel?
@@ -49,7 +48,6 @@ private extension AlbumDetailsStoreCellView {
         guard let viewModel = viewModel else { return }
 
         viewModel.stored.bind { [weak self] isStored in
-            self?.theme?.apply(style: isStored ? .removeButton : .addButton, to: self?.button)
             self?.button?.setTitle(isStored ? "Remove" : "Add", for: .normal)
         }.disposed(by: disposeBag)
 

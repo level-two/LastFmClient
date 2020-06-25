@@ -28,8 +28,8 @@ final class AlbumCardViewCell: UICollectionViewCell, NibLoadable {
 
     func style(with theme: Theme?) {
         albumView?.style(with: theme)
-        theme?.apply(style: .darkBackground, to: self.contentView)
-        theme?.apply(style: .subtleShadow, cornerRadius: 8, to: contentView.layer)
+        theme?.apply(style: .surface, to: self.contentView)
+        theme?.apply(style: .roundedWithShadow, to: contentView.layer)
     }
 
     @IBOutlet private weak var albumView: AlbumView?

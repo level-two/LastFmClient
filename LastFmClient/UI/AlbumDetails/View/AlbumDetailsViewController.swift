@@ -49,17 +49,19 @@ private extension AlbumDetailsViewController {
     }
 
     func styleView() {
-        theme?.apply(style: .lightDarkBackground, to: collectionView)
-        theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
+        theme?.apply(style: .background, to: collectionView)
+        theme?.apply(style: .normal, to: navigationController?.navigationBar)
+        theme?.apply(style: .background, to: self.view)
     }
 
     func setupBindings() {
-        viewModel?.showNetworkError
-            .bind(to: self.view.rx.showNetworkErrorOverlay)
-            .disposed(by: disposeBag)
+
+        viewModel?.showNetworkError.bind { [weak self] interactor in
+            self?.showNetworkErrorOverlay(interactor: interactor, theme: self?.theme)
+        }.disposed(by: disposeBag)
 
         viewModel?.showHud
-            .bind(to: self.view.rx.showHud)
+            .bind { [weak self] show in self?.view.showHud(show, theme: self?.theme) }
             .disposed(by: disposeBag)
     }
 }
@@ -136,7 +138,7 @@ private extension AlbumDetailsViewController {
 
 private extension AlbumDetailsViewController {
     func createLayout() -> UICollectionViewLayout {
-        return UICollectionViewCompositionalLayout { section, environment in
+        return UICollectionViewCompositionalLayout { section, _ in
             guard let section = AlbumDetailsViewSection(rawValue: section) else {
                 fatalError("Undefined section")
             }

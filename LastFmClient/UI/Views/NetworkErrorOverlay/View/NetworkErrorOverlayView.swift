@@ -36,7 +36,14 @@ final class NetworkErrorOverlayView: UIView, NibLoadable {
             .disposed(by: disposeBag)
     }
 
+    func style(with theme: Theme?) {
+        theme?.apply(style: .background, to: self)
+        theme?.apply(style: .heading, to: label)
+        theme?.apply(style: .normal, to: button)
+    }
+
     private var disposeBag = DisposeBag()
 
+    @IBOutlet private weak var label: UILabel?
     @IBOutlet private weak var button: UIButton?
 }

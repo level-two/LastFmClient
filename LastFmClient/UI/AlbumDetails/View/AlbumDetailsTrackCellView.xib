@@ -38,7 +38,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Bh9-pp-ffI" firstAttribute="leading" secondItem="fyl-yD-901" secondAttribute="trailing" constant="8" id="2iu-i5-QpC"/>
                             <constraint firstItem="fyl-yD-901" firstAttribute="height" relation="lessThanOrEqual" secondItem="0cv-W2-pXk" secondAttribute="height" id="CHT-Lf-z6a"/>
@@ -63,6 +62,7 @@
             <size key="customSize" width="368" height="62"/>
             <connections>
                 <outlet property="duration" destination="W5s-Z7-0QI" id="qsf-PP-1b3"/>
+                <outlet property="image" destination="fyl-yD-901" id="pJD-l2-OJD"/>
                 <outlet property="track" destination="Bh9-pp-ffI" id="3og-zl-0c5"/>
             </connections>
             <point key="canvasLocation" x="140.80000000000001" y="92.653673163418304"/>

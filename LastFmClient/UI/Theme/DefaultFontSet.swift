@@ -19,5 +19,8 @@ import UIKit
 
 final class DefaultFontSet: FontSet {
     var regular: UIFont { .systemFont(ofSize: 15.0) }
+    var bold: UIFont { UIFont.systemFont(ofSize: 15.0, weight: .bold) }
+    var light: UIFont { UIFont.systemFont(ofSize: 15.0, weight: .light) }
+    var heading: UIFont { UIFont.systemFont(ofSize: 17.0) }
     var small: UIFont { .systemFont(ofSize: 12.0) }
 }

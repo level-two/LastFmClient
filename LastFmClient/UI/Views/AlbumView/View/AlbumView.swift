@@ -36,12 +36,13 @@ final class AlbumView: UIView, NibLoadable {
     }
 
     func style(with theme: Theme?) {
-        theme?.apply(style: .normal, to: artist)
-        theme?.apply(style: .normal, to: title)
-        theme?.apply(style: .darkBackground, to: self)
+        self.theme = theme
+        theme?.apply(style: .bold, to: artist)
+        theme?.apply(style: .text, to: title)
     }
 
     private var viewModel: AlbumViewModel?
+    private var theme: Theme?
     private var disposeBag = DisposeBag()
 
     @IBOutlet private weak var artist: UILabel?
@@ -70,7 +71,7 @@ private extension AlbumView {
             .disposed(by: disposeBag)
 
         viewModel.showHud
-            .bind(to: cover.rx.showHud)
+            .bind { [weak self] show in self?.cover?.showHud(show, theme: self?.theme) }
             .disposed(by: disposeBag)
     }
 

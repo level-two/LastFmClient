@@ -17,29 +17,23 @@
 
 import UIKit
 
-final class EmptyTheme: Theme {
+extension UIView {
 
-    init() {
+    /// Showing Hud on secified view
+    func showHud(_ show: Bool, theme: Theme?) {
+        if show {
+            let overlay = HudOverlayView(frame: self.bounds)
+            self.addSubview(overlay)
+            overlay.translatesAutoresizingMaskIntoConstraints = false
+            overlay.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            overlay.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            overlay.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+            overlay.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        } else {
+            self.subviews
+                .filter { $0 is HudOverlayView }
+                .forEach { $0.removeFromSuperview() }
+        }
     }
 
-    func apply(style: LabelStyle, to label: UILabel?) {
-    }
-
-    func apply(style: NavigationBarStyle, to navigationBar: UINavigationBar?) {
-    }
-
-    func apply(style: ButtonStyle, to button: UIButton?) {
-    }
-
-    func apply(style: ViewStyle, to view: UIView?) {
-    }
-
-    func apply(style: NavBarStyle, to navigationBar: UINavigationBar?) {
-    }
-
-    func apply(style: LayerShadowStyle, to layer: CALayer?) {
-    }
-
-    func apply(style: LayerShadowStyle, cornerRadius: CGFloat, to layer: CALayer?) {
-    }
 }

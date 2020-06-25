@@ -113,7 +113,7 @@ private extension HomeScreenViewController {
     }
 
     func setupCollectionStyle() {
-        theme?.apply(style: .lightDarkBackground, to: collectionView)
+        theme?.apply(style: .background, to: collectionView)
     }
 }
 
@@ -162,12 +162,13 @@ private extension HomeScreenViewController {
     }
 
     func setupSearchTableBindings() {
-        guard let tableView = searchTableView else { return }
+        guard let tableView = searchTableView, let theme = theme else { return }
 
         viewModel?.onSearchResults
             .bind(to: tableView.rx.items(cellIdentifier: SearchTableCellView.defaultIdentifier)) { _, element, cell in
                 cell.textLabel?.text = element.artist
                 cell.accessoryType = .disclosureIndicator
+                theme.apply(style: .background, to: cell)
             }.disposed(by: disposeBag)
 
         tableView.rx.modelSelected(ArtistSearchItem.self)
@@ -186,7 +187,7 @@ private extension HomeScreenViewController {
     }
 
     func setupSearchTableStyle() {
-        theme?.apply(style: .semiTransparentBackground, to: searchTableView)
+        theme?.apply(style: .background, to: searchTableView)
     }
 }
 
@@ -197,8 +198,8 @@ private extension HomeScreenViewController {
     }
 
     func styleView() {
-        theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
-        theme?.apply(style: .lightDarkBackground, to: self.view)
+        theme?.apply(style: .normal, to: navigationController?.navigationBar)
+        theme?.apply(style: .background, to: self.view)
     }
 
     func setupBindings() {

@@ -58,8 +58,9 @@ private extension ArtistDetailsViewController {
     }
 
     func styleView() {
-        theme?.apply(style: .lightDarkBackground, to: collectionView)
-        theme?.apply(style: .lightDark, to: navigationController?.navigationBar)
+        theme?.apply(style: .background, to: collectionView)
+        theme?.apply(style: .normal, to: navigationController?.navigationBar)
+        theme?.apply(style: .background, to: self.view)
     }
 
     func setupLayout() {
@@ -117,11 +118,12 @@ private extension ArtistDetailsViewController {
         guard let viewModel = viewModel else { return }
 
         viewModel.showNetworkError
-            .bind(to: self.view.rx.showNetworkErrorOverlay)
-            .disposed(by: disposeBag)
+            .bind { [weak self] interactor in
+                self?.showNetworkErrorOverlay(interactor: interactor, theme: self?.theme)
+            }.disposed(by: disposeBag)
 
         viewModel.showHud
-            .bind(to: self.view.rx.showHud)
+            .bind { [weak self] show in self?.view.showHud(show, theme: self?.theme) }
             .disposed(by: disposeBag)
 
         viewModel.showFullBio

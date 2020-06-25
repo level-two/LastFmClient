@@ -26,6 +26,6 @@ class AlbumDetailsAlbumCellView: UICollectionViewCell, NibLoadable, TypeIdentifi
 
     func style(with theme: Theme?) {
         albumView?.style(with: theme)
-        theme?.apply(style: .lightDarkBackground, to: self.contentView)
+        theme?.apply(style: .background, to: self.contentView)
     }
 }

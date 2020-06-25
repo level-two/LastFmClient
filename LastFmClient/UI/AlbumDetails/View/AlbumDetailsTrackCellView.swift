@@ -20,6 +20,7 @@ import UIKit
 class AlbumDetailsTrackCellView: UICollectionViewCell, NibLoadable, TypeIdentifiable {
     @IBOutlet weak var track: UILabel?
     @IBOutlet weak var duration: UILabel?
+    @IBOutlet weak var image: UIImageView?
 
     func configure(with viewModel: AlbumDetailsTrackCellViewModel) {
         self.track?.text = viewModel.title
@@ -27,8 +28,9 @@ class AlbumDetailsTrackCellView: UICollectionViewCell, NibLoadable, TypeIdentifi
     }
 
     func style(with theme: Theme?) {
-        theme?.apply(style: .normal, to: track)
-        theme?.apply(style: .dark, to: duration)
-        theme?.apply(style: .lightDarkBackground, to: self.contentView)
+        theme?.apply(style: .text, to: track)
+        theme?.apply(style: .light, to: duration)
+        theme?.apply(style: .tint, to: image)
+        theme?.apply(style: .background, to: self.contentView)
     }
 }

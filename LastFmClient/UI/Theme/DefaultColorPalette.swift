@@ -18,14 +18,11 @@
 import UIKit
 
 final class DefaultColorPalette: ColorPalette {
-    var base: UIColor { UIColor(hex: 0xC0C0C0) }
-    var light1: UIColor { UIColor(hex: 0xFFFFFF) }
-    var light2: UIColor { UIColor(hex: 0xECECEC) }
-    var dark1: UIColor { UIColor(hex: 0x262626) }
-    var dark2: UIColor { UIColor(hex: 0x353535) }
-    var primary1: UIColor { UIColor(hex: 0xAD916B) }
-    var primary2: UIColor { UIColor(hex: 0xFBEAD4) }
-    var primary3: UIColor { UIColor(hex: 0xD0B898) }
-    var primary4: UIColor { UIColor(hex: 0x8A6E4A) }
-    var primary5: UIColor { UIColor(hex: 0x725329) }
+    let primary1 = #colorLiteral(red: 0.6991340518, green: 0.5895544887, blue: 0.4892796278, alpha: 1)
+    let primary2 = #colorLiteral(red: 0.9027684331, green: 0.744086802, blue: 0.6807029843, alpha: 1)
+    let secondary = #colorLiteral(red: 0.9080011249, green: 0.8457893729, blue: 0.7895308733, alpha: 1)
+    let text = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    let surface = #colorLiteral(red: 0.9319081903, green: 0.8930419087, blue: 0.8804249763, alpha: 1)
+    let shadow = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+    let background = #colorLiteral(red: 0.9244653583, green: 0.9741626382, blue: 0.9731814265, alpha: 1)
 }

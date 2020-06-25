@@ -17,56 +17,10 @@
 
 import UIKit
 
-enum LabelStyle {
-    case text
-    case bold
-    case light
-    case heading
-}
-
-enum NavigationBarStyle {
-    case normal
-}
-
-enum TableCellStyle {
-    case normal
-}
-
-enum TableHeaderFooterStyle {
-    case normal
-}
-
-enum CollectionCellStyle {
-    case normal
-}
-
-enum CollectionReusableViewStyle {
-    case normal
-}
-
-enum ButtonStyle {
-    case normal
-}
-
-enum ImageStyle {
-    case tint
-}
-
-enum ViewStyle {
-    case background
-    case surface
-    case semiTransparent
-}
-
-enum LayerStyle {
-    case roundedWithShadow
-}
-
-protocol Theme {
-    func apply(style: LabelStyle, to label: UILabel?)
-    func apply(style: ButtonStyle, to button: UIButton?)
-    func apply(style: ViewStyle, to view: UIView?)
-    func apply(style: ImageStyle, to view: UIImageView?)
-    func apply(style: NavigationBarStyle, to imageView: UINavigationBar?)
-    func apply(style: LayerStyle, to layer: CALayer?)
+extension UIImageView {
+  func setImageColor(color: UIColor) {
+    let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+    self.image = templateImage
+    self.tintColor = color
+  }
 }
